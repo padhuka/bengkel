@@ -1,18 +1,17 @@
 
-        
   <!-- Left side column. contains the logo and sidebar -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-       <h1 style="text-align: center;font-size: 22px">
-        .:Data Arsip:.
+      <h1>
+        Data Admin
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Data Arsip</li>
+        <li class="active">Data Asuransi</li>
       </ol>
     </section>
 
@@ -40,13 +39,12 @@
     </section>
     <!-- /.content -->
   </div>
-        <div id="ModalPdf" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
         <div id="ModalAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
          <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
          <div id="ModalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
         <script type="text/javascript">
             $(document).ready(function (){
-                 $("#tabele").load('arsip/arsip_load.php');                 
+                 $("#tabele").load('asuransi/asuransi_load.php');                 
             });            
         </script>
 

@@ -9,16 +9,7 @@
                 switch($pag){
                         default : include_once 'middle.php'; break;
                         ## AREA ##
-                        case 'suratmasuk' : include_once 'suratmasuk/suratmasuk_tab.php'; break;
-                        case 'suratkeluar' : include_once 'suratkeluar/suratkeluar_tab.php'; break;
-                        case 'suratkeputusan' : include_once 'suratkeputusan/suratkeputusan_tab.php'; break;
-                        case 'arsip' : include_once 'arsip/arsip_tab.php'; break;
-                        case 'pengirim' : include_once 'pengirim/pengirim_tab.php'; break;
-                        case 'pejabat' : include_once 'pejabat/pejabat_tab.php'; break;
-                        case 'klasifikasi' : include_once 'klasifikasi/klasifikasi_tab.php'; break;
-                        case 'kodesurat' : include_once 'kodesurat/kodesurat_tab.php'; break;
-                        case 'kodewilayah' : include_once 'kodewilayah/kodewilayah_tab.php'; break;
-                        case 'tujuan' : include_once 'tujuan/tujuan_tab.php'; break;
+                        case 'asuransi' : include_once 'asuransi/asuransi_tab.php'; break;
                         case 'admin' : include_once 'admin/admin_tab.php'; break;
                         case 'backup' : include_once 'database/backup.php'; break;
                         case 'restore' : include_once 'database/restore.php'; break;
