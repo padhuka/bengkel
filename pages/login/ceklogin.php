@@ -18,7 +18,7 @@ if($_POST['txt_kode']!=$kode){
 	echo $idne;
 	echo $passworde;
 	*/
-	$sql = "SELECT * FROM t_admin WHERE username='$idne' AND password='$passworde'";
+	$sql = "SELECT * FROM t_user WHERE username='$idne' AND password='$passworde'";
 	//message_back($sql);
     $res = mysql_query( $sql );
     if ($res === FALSE) {
