@@ -9,7 +9,7 @@
         $level = trim($_POST['level']); 
         
 		 #cek idsurat
-        $sqlcek = "SELECT * FROM t_admin WHERE username='$username'";
+        $sqlcek = "SELECT * FROM t_user WHERE username='$username'";
         $qrycek = mysql_query($sqlcek);
         $row = mysql_fetch_array($qrycek);
 
@@ -19,7 +19,7 @@
             echo 'y';
         }else{
         	
-		    $sqltbemp = "INSERT INTO t_admin (username,password,nama,nip,level) VALUES ('$username','$password','$nama','$nip','$level')";
+		    $sqltbemp = "INSERT INTO t_user (username,password,nama,nip,level) VALUES ('$username','$password','$nama','$nip','$level')";
             mysql_query($sqltbemp);
             echo 'n';
         }

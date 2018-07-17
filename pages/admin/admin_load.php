@@ -14,7 +14,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_admin ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_user ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>

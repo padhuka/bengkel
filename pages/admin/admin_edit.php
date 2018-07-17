@@ -3,7 +3,7 @@
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
     $id = $_GET['id'];
-    $sqlemp = "SELECT * FROM t_admin WHERE id='$id'";
+    $sqlemp = "SELECT * FROM t_user WHERE id='$id'";
     $resemp = mysql_query( $sqlemp );
     $emp = mysql_fetch_array( $resemp );
     

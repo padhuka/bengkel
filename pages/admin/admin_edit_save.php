@@ -10,7 +10,7 @@
         $nip = trim($_POST['nip']); 
         $level = trim($_POST['level']); 
 		 #cek idsurat
-        $sqlcek = "SELECT * FROM t_admin WHERE username='$username' AND username<>'$usernamehid'";
+        $sqlcek = "SELECT * FROM t_user WHERE username='$username' AND username<>'$usernamehid'";
         $qrycek = mysql_query($sqlcek);
         $row = mysql_fetch_array($qrycek);
         if ($password==''){
@@ -24,7 +24,7 @@
             //unlink('../../file/tmp/'.$photo);
             echo 'y';
         }else{
-		        $sqltbemp = "UPDATE t_admin SET username='$username',password='$password',nama='$nama',nip='$nip',level='$level' WHERE id='$id'";		        
+		        $sqltbemp = "UPDATE t_user SET username='$username',password='$password',nama='$nama',nip='$nip',level='$level' WHERE id='$id'";		        
         		mysql_query($sqltbemp);
             echo 'n';
         }
