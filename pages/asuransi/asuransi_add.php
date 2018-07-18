@@ -89,7 +89,11 @@
 			                                            }else{
 			                                            	
 			                                                $("#tabele").load('asuransi/asuransi_load.php');
-                                                            alert('Data Berhasil Disimpan');
+                                                                      $('.modal-body').css('opacity', '');
+
+                                                           // alert('Data Berhasil Disimpan rere');
+                                                           //echo "<span class='label label-info'>Your feedback has been submitted with above details!</span>";
+
                                                             $('#ModalAdd').modal('hide');
 			                                            }   
                                                       }

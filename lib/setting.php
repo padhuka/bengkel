@@ -1,14 +1,14 @@
 <?php 
 	// DATA BASE
 	$user="root"; // userid untuk akses database anda
-	$db="db_bpn_rajaampat"; // nama database anda.
-	$passsw=""; // password untuk akses database anda
+	$db="bodyrepairdb"; // nama database anda.
+	$passsw="bismillah"; // password untuk akses database anda
 	// baris dibawah ini jangan diedit
-	$host="localhost:3356";
+	$host="localhost";
 
 	//WEB
-	$title="Aplikasi Arsip --Kantor Pertanahan Kabupaten Raja Ampat--";
-	$kabupaten="Kabupaten Raja Ampat";
-	$titlefooter="Badan Pertanahan Nasional Kabupaten Raja Ampat, Papua Barat";
+	$title="Gemilang - Cat & Body";
+	$kabupaten="Gemilang Semarang";
+	$titlefooter="Apikasi Cat & Body";
 
 ?>
