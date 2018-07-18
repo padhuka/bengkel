@@ -39,7 +39,7 @@
   			    $(".open_add").click(function (e){
   					                    //var m = $(this).attr("id_asuransi");
   					        $.ajax({
-  					        url: "admin/admin_add.php",
+  					        url: "asuransi/asuransi_add.php",
   					        type: "GET",
   				            success: function (ajaxData){
   				            	$("#ModalAdd").html(ajaxData);
@@ -49,7 +49,7 @@
   				  }); 
            function open_del(){
                                 $.ajax({
-                                    url: "admin/admin_del.php?id_asuransi="+id_asuransidel,
+                                    url: "asuransi/asuransi_del.php?id_asuransi="+id_asuransidel,
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalDelete").html(ajaxData);
@@ -60,7 +60,7 @@
 
             function open_modal(){
                               $.ajax({
-                                  url: "admin/admin_edit.php?id_asuransi="+id_asuransiedit,
+                                  url: "asuransi/asuransi_edit.php?id_asuransi="+id_asuransiedit,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEdit").html(ajaxData);

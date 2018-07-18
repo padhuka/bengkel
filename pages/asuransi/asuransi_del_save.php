@@ -1,8 +1,8 @@
 <?php
 		//$skrg = date('Y-m-d');
         include_once '../../lib/config.php';
-		$id = $_GET['id'];
+		$id_asuransi = $_GET['id_asuransi'];
 		# HAPUS DATA 
-		$sqlhapusproker = "DELETE FROM t_user WHERE id='$id'";
+		$sqlhapusproker = "DELETE FROM t_asuransi WHERE id_asuransi='$id_asuransi'";
    		mysql_query( $sqlhapusproker );
 ?>

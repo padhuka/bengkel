@@ -1,15 +1,16 @@
 <?php
         include_once '../../lib/config.php';
+        include_once '../../lib/fungsi.php';
 		 //$ip = ; // Ambil IP Address dari User
     
-		$username = trim($_POST['username']);
-        $password = trim(md5($_POST['password'])); 
-        $nama = trim($_POST['nama']); 
-        $nip = trim($_POST['nip']); 
-        $level = trim($_POST['level']); 
-        
+		$id_asuransi = trim($_POST['id_asuransi']);
+        $nama = trim($_POST['nama']);
+        $alamat = trim($_POST['alamat']); 
+        $no_telp = trim($_POST['no_telp']); 
+        $npwp = trim($_POST['npwp']); 
+        //message_back($id_asuransi);
 		 #cek idsurat
-        $sqlcek = "SELECT * FROM t_user WHERE username='$username'";
+        $sqlcek = "SELECT * FROM t_asuransi WHERE nama='$nama' OR id_asuransi='$id_asuransi'";
         $qrycek = mysql_query($sqlcek);
         $row = mysql_fetch_array($qrycek);
 
@@ -19,7 +20,7 @@
             echo 'y';
         }else{
         	
-		    $sqltbemp = "INSERT INTO t_user (username,password,nama,nip,level) VALUES ('$username','$password','$nama','$nip','$level')";
+		    $sqltbemp = "INSERT INTO t_asuransi (id_asuransi,nama,alamat,no_telp,npwp) VALUES ('$id_asuransi','$nama','$alamat','$no_telp','$npwp')";
             mysql_query($sqltbemp);
             echo 'n';
         }

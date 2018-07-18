@@ -7,7 +7,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Data Admin</h4>                        
+                        <h4 class="modal-title" id="myModalLabel">Tambah Data Asuransi</h4>                        
                     </div>
 
 				          <div class="box box-info">
@@ -18,16 +18,10 @@
 				            <!-- form start -->
 				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="fupForm">
 				              <div class="box-body">
-				                <div class="form-group">
-				                  <label for="inputEmail3" class="col-sm-4 control-label">Username</label>
-				                  <div class="col-sm-8">
-				                    <input type="text" class="form-control" id="username" name="username" required>
-				                  </div>
-				                </div>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-4 control-label">Password</label>
+                          <label for="inputEmail3" class="col-sm-4 control-label">Id Asuransi</label>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="password" name="password" required>
+                            <input type="text" class="form-control" id="id_asuransi" name="id_asuransi" required>
                           </div>
                         </div>
 				                <div class="form-group">
@@ -37,24 +31,24 @@
 				                  </div>
 				                </div>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-4 control-label">Nip</label>
+                          <label for="inputEmail3" class="col-sm-4 control-label">Alamat</label>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="nip" name="nip" required>
+                            <input type="text" class="form-control" id="alamat" name="alamat" required>
                           </div>
                         </div>
+				                <div class="form-group">
+				                  <label for="inputEmail3" class="col-sm-4 control-label">Telp</label>
+				                  <div class="col-sm-8">
+				                    <input type="text" class="form-control" id="no_telp" name="no_telp" required>
+				                  </div>
+				                </div>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-4 control-label">Level</label>
+                          <label for="inputEmail3" class="col-sm-4 control-label">NPWP</label>
                           <div class="col-sm-8">
-                               <select name="level" id="level">                              
-                                  <option value="Admin">Admin</option>
-                                  <option value="SuratMasuk">SuratMasuk</option>
-                                  <option value="SuratKeluar">SuratKeluar</option>
-                                  <option value="SuratKeputusan">SuratKeputusan</option>
-                                  <option value="Arsip">Arsip</option>
-                                </select> 
+                            <input type="text" class="form-control" id="npwp" name="npwp" required>
                           </div>
                         </div>
-                        		                
+                                                		                
 				                <div class="form-group">
 				                  <label for="inputEmail3" class="col-sm-4 control-label"></label>
 				                  <div class="col-sm-8">
@@ -78,7 +72,7 @@
                             //alert(disposisine)                       ;
                            						$.ajax({
                                                   type: 'POST',
-                                                  url: 'admin/admin_add_save.php',
+                                                  url: 'asuransi/asuransi_add_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
@@ -87,13 +81,14 @@
                                                         //alert('lolos');
                                                         var hsl=data.trim();
                                                         //alert(hsl);
+                                                        //return false;
                                                         if (hsl=='y'){
 			                                                alert('Data Sudah ada');  
 			                                                return false;
 			                                                exit();
 			                                            }else{
 			                                            	
-			                                                $("#tabele").load('admin/admin_load.php');
+			                                                $("#tabele").load('asuransi/asuransi_load.php');
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide');
 			                                            }   
