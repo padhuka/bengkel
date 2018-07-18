@@ -1,7 +1,7 @@
 			<?php
         		include_once '../../lib/config.php';
         	?>
-			<table id_asuransi="example1" class="table table-bordered table-striped">
+			<table id_asuransi="example1" class="table table-condensed table-bordered table-striped ">
                 <thead>
                 <tr>
                   		    <th>Nama</th>
@@ -19,11 +19,11 @@
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td><?php echo $catat['nama'];?></td>
-                          <td><?php echo $catat['alamat'];?></td>
-                          <td><?php echo $catat['no_telp'];?></td>
-                          <td><?php echo $catat['npwp'];?></td>                          
-                          <td>                                       
+                          <td ><?php echo $catat['nama'];?></td>
+                          <td ><?php echo $catat['alamat'];?></td>
+                          <td ><?php echo $catat['no_telp'];?></td>
+                          <td ><?php echo $catat['npwp'];?></td>                          
+                          <td >                                       
                                         <!--<button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php echo $catat['id_asuransi']; ?>"><span class="fa fa-print"></span></button>-->
                                         <button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php echo $catat['id_asuransi']; ?>" onclick="open_modal(id_asuransiedit=<?php echo $catat['id_asuransi']; ?>);"><span class="glyphicon glyphicon-pencil"></span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php echo $catat['id_asuransi']; ?>" onclick="open_del(id_asuransidel=<?php echo $catat['id_asuransi']; ?>);"><span class="glyphicon glyphicon-remove"></span></button>
@@ -69,3 +69,15 @@
                               });
             };	
 			</script>
+
+<style type="text/css">
+
+  .btn {
+
+    padding-bottom: 0px;
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+ 
+</style>
