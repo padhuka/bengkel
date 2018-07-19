@@ -45,7 +45,7 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
           <?php if ($seskdlvl=='Admin'){?>
            <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Master <i class="fa fa-gears dropdown-toggle"></i></button> </a>
-            <ul class="dropdown-menu">                      
+            <ul class="dropdown-menu">
               <li class="header"><a href="?p=asuransi">Asuransi</a></li>   
               <li class="header"><a href="?p=supplier">Supplier</a></li>
               <li class="header"><a href="?p=satuan">Satuan</a></li>
