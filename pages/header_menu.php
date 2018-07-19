@@ -9,7 +9,7 @@
       <table style="height: 50px;width: 350px";>
         <tr>
           <td> 
-            <div class="column" style="height: 50px;width: 50px";> <img src="../file/logobpn.png" style="width: 50px;height: 50px"> </div> 
+            <div class="column" style="height: 50px;width: 100px";> <img src="../file/logo.png" style="width: 100px;height: 50px"> </div> 
           </td>
         <td>
             <div class="column" style="height: 50px;width: 250px" align="left" ;> <b><?php echo $titlemenu;?> </b> 
@@ -36,7 +36,7 @@
           <!-- Messages: style can be found in dropdown.less
 Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
           -->
-            
+
           <!-- Notifications: style can be found in dropdown.less -->
           <li style="display: block;margin:0;padding:0;float: left;"><a href="index.php" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Home <i class="fa fa-home"></i></button></a></li>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
@@ -69,6 +69,8 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Master <i class="fa fa-gears dropdown-toggle"></i></button> </a>
             <ul class="dropdown-menu">                      
               <li class="header"><a href="?p=asuransi">Asuransi</a></li>   
+              <li class="header"><a href="?p=supplier">Supplier</a></li>
+              <li class="header"><a href="?p=satuan">Satuan</a></li>
               <li class="header"><a href="?p=part">Part</a></li>   
               <li class="header"><a href="?p=panel">Panel</a></li>   
               <li class="header"><a href="?p=group">Group Kendaraan</a></li>   
@@ -81,13 +83,12 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
               <li class="header"><a href="?p=backupfile">Backup File</a></li>
             </ul>
           </li><?php } ?>
-          
-          
+
           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;" class="dropdown notifications-menu">
             <a href="login/logout.php" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Logout <i class="fa fa-sign-out"></i></button></a></li>
-          
+
           </li>
-                   
+
         </ul>
       </div>
     </nav>

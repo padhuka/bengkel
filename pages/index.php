@@ -10,6 +10,8 @@
                         default : include_once 'middle.php'; break;
                         ## AREA ##
                         case 'asuransi' : include_once 'asuransi/asuransi_tab.php'; break;
+                        case 'supplier' : include_once 'supplier/supplier_tab.php'; break;
+                        case 'satuan' : include_once 'satuan/satuan_tab.php'; break;
                         case 'admin' : include_once 'admin/admin_tab.php'; break;
                         case 'backup' : include_once 'database/backup.php'; break;
                         case 'restore' : include_once 'database/restore.php'; break;
