@@ -26,9 +26,9 @@
                           <td ><?php echo $catat['no_telp'];?></td>
                           <td ><?php echo $catat['npwp'];?></td>
                           <td >
-                                        <!--<button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php echo $catat['id_asuransi']; ?>"><span class="fa fa-print"></span></button>-->
-                                        <button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php echo $catat['id_asuransi']; ?>" onclick="open_modal(id_asuransiedit=<?php echo $catat['id_asuransi']; ?>);"><span>Edit</span></button>
-                                         <button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php echo $catat['id_asuransi']; ?>" onclick="open_del(id_asuransidel=<?php echo $catat['id_asuransi']; ?>);"><span>Hapus</span></button>
+                                        <!--<button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php //echo $catat['id_asuransi']; ?>"><span class="fa fa-print"></span></button>-->
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_asuransi']; ?>" onclick="open_modal(id_asuransiedit=<?php echo $catat['id_asuransi']; ?>);"><span>Edit</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_asuransi']; ?>" onclick="open_del(id_asuransidel=<?php echo $catat['id_asuransi']; ?>);"><span>Hapus</span></button>
 
                                     </td>
                         </tr>
@@ -36,7 +36,7 @@
                 </tfoot>
               </table>
               <script>
-			       $('#example1').DataTable();
+			      $('#example1').DataTable();
   			    $(".open_add").click(function (e){
   					                    //var m = $(this).attr("id_asuransi");
   					        $.ajax({
@@ -49,7 +49,7 @@
   				            }
   				          });
   				  });
-           function open_del(){
+           function open_del(){                              
                                 $.ajax({
                                     url: "asuransi/asuransi_del.php?id_asuransi="+id_asuransidel,
                                     type: "GET",
