@@ -2,37 +2,15 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index.php" class="logo" style="width: 350px;height: 55px">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <!-- logo for regular state and mobile devices -->
-      <table style="height: 50px;width: 350px";>
-        <tr>
-          <td> 
-            <div class="column" style="height: 50px;width: 100px";> <img src="../file/logo.png" style="width: 100px;height: 50px"> </div> 
-          </td>
-        <td>
-            <div class="column" style="height: 50px;width: 250px" align="left" ;> <b><?php //echo $titlemenu;?> </b> 
-              <div class="row" style="height: 50px;width: 200px" align="center">
-              <span style="font-size:15px; text-align: center;"><?php echo $kabupaten;?></span>  
-            </div>
-
-            </div>
-        </td>
-    
-
-        </tr>
-
-      </table>
-    
-    </a>
+ 
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" style="margin-left: 270px">
+    <nav class="navbar fixed-top" style="margin-left: 0px">
       <!-- Sidebar toggle button-->
-  
-
+    <div class="container">
+      <a class="navbar-brand" href="index.php"> GEMILANG BODY REPAIR
+        </a>
       <div class="navbar-custom-menu" style="padding: 0 0 0 0;margin: 0 auto;">
-        <ul class="nav navbar-nav" style="list-style: none;padding: 0;margin: 0 auto;width: 900px;font-size: 0.7em;">
+        <ul class="nav navbar-nav" style="list-style: none;padding: 0;margin: 0 auto;font-size: 0.7em;">
           <!-- Messages: style can be found in dropdown.less
 Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
           -->
@@ -91,5 +69,20 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
 
         </ul>
       </div>
+    </div>
     </nav>
   </header>
+
+  <style type="text/css">
+    .navbar-brand {
+     font-weight: bold;
+     font-family: serif;
+
+    }
+    .container {
+      width: 1250px;
+    }
+    .layout-boxed .wrapper {
+      max-width: 1250px;
+    }
+  </style>

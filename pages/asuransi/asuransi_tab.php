@@ -25,7 +25,6 @@
              /.box-header -->
             <div class="box-body">
               <div id="tabele">
-              
               </div>
             </div>
             <!-- /.box-body -->
@@ -43,8 +42,8 @@
          <div id="ModalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
         <script type="text/javascript">
             $(document).ready(function (){
-                 $("#tabele").load('asuransi/asuransi_load.php');                 
-            });            
+                 $("#tabele").load('asuransi/asuransi_load.php');
+            });
         </script>
 <style type="text/css">
   .title-header {
@@ -54,4 +53,3 @@
     font-family: monospace;
   }
 </style>
-        
