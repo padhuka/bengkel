@@ -1,7 +1,7 @@
-<?php
+      <?php
             include_once '../../lib/config.php';
-          ?>
-      <table id_asuransi="example1" class="table table-condensed table-bordered table-striped table-hover">
+      ?>
+      <table id="example1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode Asuransi</th>
