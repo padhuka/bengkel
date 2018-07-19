@@ -14,8 +14,6 @@
         $row = mysql_fetch_array($qrycek);
 
         if ($row){
-            //echo 'var obat=new Array("'.$row[kode].'","'.$nama.'","'.$harga.'","'.$row[ukuran].'","'.$stkisi.'","'.$stk.'","'.$carabayar.'","'.$byre.'","'.$jl.'");';
-            //unlink('../../file/tmp/'.$photo);
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_asuransi (id_asuransi,nama,alamat,no_telp,npwp) VALUES ('$id_asuransi','$nama','$alamat','$no_telp','$npwp')";

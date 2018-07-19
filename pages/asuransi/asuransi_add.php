@@ -97,16 +97,19 @@
 			                                                alert('Data Sudah ada');  
 			                                                return false;
 			                                                exit();
-			                                            }else{
+			                                              }else{
 			                                            	
 			                                                $("#tabele").load('asuransi/asuransi_load.php');
                                                                       $('.modal-body').css('opacity', '');
 
-                                                           // alert('Data Berhasil Disimpan rere');
+                                                                  //  $("#thankyouModal").modal('show')
+
+                                                            alert('Data Berhasil Disimpan');
                                                            //echo "<span class='label label-info'>Your feedback has been submitted with above details!</span>";
 
                                                             $('#ModalAdd').modal('hide');
 			                                            }   
+                                                     
                                                       }
                                                 });
                       });

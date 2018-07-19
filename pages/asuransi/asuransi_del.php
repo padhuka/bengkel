@@ -49,7 +49,7 @@
                                       //alert('asuransi/asuransi_del_save.php?id_asuransi='+id_asuransi);
                                       $("#tabele").load('asuransi/asuransi_load.php');
                                       alert('Data Berhasil Dihapus');
-                                      $('#ModalDelete').modal('hid_asuransie');
+                                      $('#ModalDelete').modal('hide');
                                 }
                             });
 

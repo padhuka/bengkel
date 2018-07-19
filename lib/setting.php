@@ -8,7 +8,7 @@
 
 	//WEB
 	$title="Gemilang - Cat & Body";
-	$kabupaten="Gemilang Semarang";
+	$kabupaten="Gemilang";
 	$titlefooter="Apikasi Cat & Body";
 
 ?>
