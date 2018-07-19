@@ -1,8 +1,8 @@
 			<?php
         		include_once '../../lib/config.php';
         	?>
-			<table id_asuransi="example1" class="table table-condensed table-bordered table-striped ">
-                <thead>
+			<table id_asuransi="example1" class="table table-condensed table-bordered table-striped table-hover">
+                <thead class="thead-light">
                 <tr>
                           <th>Kode Asuransi</th>
                   		    <th>Nama</th>
@@ -73,11 +73,19 @@
 			</script>
 
 <style type="text/css">
-
+ 
+  .table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 0px;
+  }
+  .thead-light{
+    background-color: lightgrey;
+  }
   .btn {
-
+    font-weight: bold;
     padding-bottom: 0px;
-    padding-top: 4px;
+    padding-top: 3px;
     padding-left: 4px;
     padding-right: 4px;
   }
