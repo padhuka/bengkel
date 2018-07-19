@@ -4,10 +4,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Data Asuransi
-        <small></small>
-      </h1>
+    <div class="title-header">
+    Data Asuransi
+    </div>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
@@ -47,5 +46,12 @@
                  $("#tabele").load('asuransi/asuransi_load.php');                 
             });            
         </script>
-
+<style type="text/css">
+  .title-header {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+  }
+</style>
         
