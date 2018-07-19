@@ -13,11 +13,10 @@
         $sqlcek = "SELECT * FROM t_asuransi WHERE id_asuransi='$id_asuransi' AND id_asuransi<>'$id_asuransihid'";
         $qrycek = mysql_query($sqlcek);
         $row = mysql_fetch_array($qrycek);
-        
         if ($row){
             echo 'y';
         }else{
-		        $sqltbemp = "UPDATE t_asuransi SET id_asuransi='$id_asuransi',nama='$nama',alamat='$alamat',no_telp='$no_telp',npwp='$npwp' WHERE id_asuransi='$id_asuransi'";		        
+		        $sqltbemp = "UPDATE t_asuransi SET id_asuransi='$id_asuransi',nama='$nama',alamat='$alamat',no_telp='$no_telp',npwp='$npwp' WHERE id_asuransi='$id_asuransi'";
         		mysql_query($sqltbemp);
            // echo 'n';
         }

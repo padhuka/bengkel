@@ -6,9 +6,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Data Asuransi</h4>                        
+                        <h4 class="modal-title" id="myModalLabel">Tambah Data Asuransi</h4>
                     </div>
-				     
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
 				            </div>
@@ -16,7 +15,6 @@
 				            <!-- form start -->
                     <div class="modal-body">
 				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="fupForm">
-				            
                         <div class="form-group">
                           <div class="col-sm-3">
                             <label for="masukkankode">Kode Asuransi</label>
@@ -29,7 +27,6 @@
                           <div class="col-sm-3">
                             <label for="masukkannama">Nama</label>
                           </div>
-				               
 				                  <div class="col-sm-8">
 				                    <input type="text" class="form-control" id="nama" name="nama" required>
 				                  </div>
@@ -58,10 +55,8 @@
                             <input type="text" class="form-control" id="npwp" name="npwp" required>
                           </div>
                         </div>
-                                                		                
 				                <div class="form-group">
                            <div class="modal-footer">
-				               
 				                  <div class="col-sm-8">
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Batal&nbsp;</button>
@@ -72,14 +67,12 @@
 				            </form>
 				          </div>
 				</div>
-	
 </div>
 <script type="text/javascript">
-	$(document).ready(function (){		
+	$(document).ready(function (){
 
                       $("#fupForm").on('submit', function(e){
                           e.preventDefault();
-                          
                             //alert(disposisine)                       ;
                            						$.ajax({
                                                   type: 'POST',
@@ -88,34 +81,27 @@
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
-                                                  success: function(data){                              
+                                                  success: function(data){
                                                         //alert('lolos');
                                                         var hsl=data.trim();
                                                         //alert(hsl);
                                                         //return false;
                                                         if (hsl=='y'){
-			                                                alert('Data Sudah ada');  
+			                                                alert('Data Sudah ada');
 			                                                return false;
 			                                                exit();
 			                                              }else{
-			                                            	
+
 			                                                $("#tabele").load('asuransi/asuransi_load.php');
                                                                       $('.modal-body').css('opacity', '');
 
-                                                                  //  $("#thankyouModal").modal('show')
-
                                                             alert('Data Berhasil Disimpan');
-                                                           //echo "<span class='label label-info'>Your feedback has been submitted with above details!</span>";
-
                                                             $('#ModalAdd').modal('hide');
-			                                            }   
-                                                     
+			                                            }
                                                       }
                                                 });
                       });
     });
-	
-					
 
 </script>
 

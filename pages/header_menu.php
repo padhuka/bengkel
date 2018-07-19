@@ -80,9 +80,9 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
 
     }
     .container {
-      width: 1300px;
+      width: 1250px;
     }
     .layout-boxed .wrapper {
-      max-width: 1300px;
+      max-width: 1250px;
     }
   </style>

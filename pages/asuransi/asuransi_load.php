@@ -1,7 +1,7 @@
 <?php
             include_once '../../lib/config.php';
           ?>
-      <table id_asuransi="example1" class="table table-condensed table-bordered table-striped table-hover">
+      <table id_asuransi="asuransi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode Asuransi</th>
@@ -26,7 +26,6 @@
                           <td ><?php echo $catat['no_telp'];?></td>
                           <td ><?php echo $catat['npwp'];?></td>
                           <td >
-                                        <!--<button type="button" class="btn btn btn-default btn-circle" id_asuransi="<?php //echo $catat['id_asuransi']; ?>"><span class="fa fa-print"></span></button>-->
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_asuransi']; ?>" onclick="open_modal(ideditas='<?php echo $catat['id_asuransi']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_asuransi']; ?>" onclick="open_del(iddelas='<?php echo $catat['id_asuransi']; ?>');"><span>Hapus</span></button>
 
@@ -36,7 +35,7 @@
                 </tfoot>
               </table>
               <script>
-            $('#example1').DataTable();
+            $('#asuransi').DataTable();
             $(".open_add").click(function (e){
                                 //var m = $(this).attr("id_asuransi");
                     $.ajax({
@@ -48,7 +47,7 @@
                       }
                     });
             });
-           function open_del(){      
+           function open_del(){
                                 $.ajax({
                                     url: "asuransi/asuransi_del.php?id_asuransi="+iddelas,
                                     type: "GET",
@@ -71,7 +70,6 @@
       </script>
 
 <style type="text/css">
- 
   .table {
     border-spacing: 0;
     border-collapse: collapse;
@@ -87,5 +85,4 @@
     padding-left: 4px;
     padding-right: 4px;
   }
- 
 </style>
