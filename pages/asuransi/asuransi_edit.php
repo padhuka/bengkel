@@ -10,47 +10,57 @@
   ?>  
     
 <div class="modal-dialog">
-			<div class="col-md-8">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hid_asuransiden="true">&times;</span></button>
                         <h4 class="modal-title" id_asuransi="myModalLabel">Edit Data Asuransi</h4>                   
                     </div>
 
-				          <div class="box box-info">
+				       
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
 				            </div>
 				             /.box-header -->
 				            <!-- form start -->
+                     <div class="modal-body">
 				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="fupForm">
-				              <div class="box-body">
+				             
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-4 control-label">Id Asuransi</label>
+                          <div class="col-sm-3">
+                          <label for="masukkankode">Kode Asuransi</label>
+                        </div>
                           <div class="col-sm-8">
                             <input type="text" class="form-control" id="id_asuransi" name="id_asuransi" value="<?php echo $emp['id_asuransi'];?>" required>
                           </div>
                         </div>
 				                <div class="form-group">
-				                  <label for="inputEmail3" class="col-sm-4 control-label">Nama</label>
+                            <div class="col-sm-3">
+				                  <label for="inputEmail3" >Nama</label>
+                        </div>
 				                  <div class="col-sm-8">
 				                    <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $emp['nama'];?>" required>
 				                  </div>
 				                </div>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-4 control-label">Alamat</label>
+                            <div class="col-sm-3">
+                          <label for="inputEmail3">Alamat</label>
+                        </div>
                           <div class="col-sm-8">
                             <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $emp['alamat'];?>" required>
                           </div>
                         </div>
 				                <div class="form-group">
-				                  <label for="inputEmail3" class="col-sm-4 control-label">Telp</label>
+                            <div class="col-sm-3">
+				                  <label for="inputEmail3" >Telp</label>
+                        </div>
 				                  <div class="col-sm-8">
 				                    <input type="text" class="form-control" id="no_telp" name="no_telp"  value="<?php echo $emp['no_telp'];?>" required>
 				                  </div>
 				                </div>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-4 control-label">NPWP</label>
+                            <div class="col-sm-3">
+                          <label for="inputEmail3" >NPWP</label>
+                        </div>
                           <div class="col-sm-8">
                             <input type="text" class="form-control" id="npwp" name="npwp" value="<?php echo $emp['npwp'];?>" required>
                           </div>
@@ -58,20 +68,21 @@
                         
                         		                
 				                <div class="form-group">
-				                  <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                                  <div class="modal-footer">
 				                  <div class="col-sm-8">
 				                  	<input type="hidden" name="id_asuransihid" id="id_asuransihid" value="<?php echo $emp['id_asuransi'];?>">				                  	
                             <input type="hidden" name="namahid" id="namahid" value="<?php echo $emp['nama'];?>">
 				                  	<button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hid_asuransiden="true">&nbsp;Batal&nbsp;</button>
 				                  </div>
+                                </div>
 				                </div>
 
-				              </div>
+				       
 				            </form>
-				          </div>
+			         </div>
 				</div>
-			</div>
+
 </div>
 <script type="text/javascript">
 	$(document).ready(function (){
@@ -108,3 +119,21 @@
 					
 
 </script>
+<style type="text/css">
+  .modal-footer {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .modal-title {
+    font-style: italic;
+    background-color: lightcoral;
+    text-align: center;
+    font-weight: bold;
+  }
+  .modal-dialog {
+    margin-bottom: 0px;
+    border: 3px;
+  }
+</style>

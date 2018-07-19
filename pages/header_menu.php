@@ -12,7 +12,7 @@
             <div class="column" style="height: 50px;width: 100px";> <img src="../file/logo.png" style="width: 100px;height: 50px"> </div> 
           </td>
         <td>
-            <div class="column" style="height: 50px;width: 250px" align="left" ;> <b><?php echo $titlemenu;?> </b> 
+            <div class="column" style="height: 50px;width: 250px" align="left" ;> <b><?php //echo $titlemenu;?> </b> 
               <div class="row" style="height: 50px;width: 200px" align="center">
               <span style="font-size:15px; text-align: center;"><?php echo $kabupaten;?></span>  
             </div>
