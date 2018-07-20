@@ -21,7 +21,7 @@
                           <label for="masukkankode">Kode Asuransi</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="id_asuransi" name="id_asuransi" value="<?php echo $emp['id_asuransi'];?>" required>
+                            <input type="text" class="form-control" id="id_asuransi" name="id_asuransi" value="<?php echo $emp['id_asuransi'];?>" readonly>
                           </div>
                         </div>
 				                <div class="form-group">
