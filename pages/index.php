@@ -15,7 +15,7 @@
                         case 'warna' : include_once 'warna/warna_tab.php'; break;
                         case 'group' : include_once 'group/group_tab.php'; break;
                         case 'panel' : include_once 'panel/panel_tab.php'; break;
-                        // case 'backup' : include_once 'database/backup.php'; break;
+                        case 'tipe' : include_once 'tipe/tipe_tab.php'; break;
                         // case 'restore' : include_once 'database/restore.php'; break;
                         // case 'backupfile' : include_once 'database/backupfile.php'; break;
                         // //LAPORAN
@@ -23,8 +23,6 @@
                         // case 'lapsuratkeluar' : include_once 'laporan/lapsuratkeluar_tab.php'; break;
                         // case 'lapsuratkeputusan' : include_once 'laporan/lapsuratkeputusan_tab.php'; break;
                         // case 'laparsip' : include_once 'laporan/laparsip_tab.php'; break; 
-                        
-                   
                 }
         ?>
 
