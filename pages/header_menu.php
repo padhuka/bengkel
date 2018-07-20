@@ -49,11 +49,11 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
               <li class="header"><a href="?p=asuransi">Asuransi</a></li>   
               <li class="header"><a href="?p=supplier">Supplier</a></li>
               <li class="header"><a href="?p=satuan">Satuan</a></li>
-             <!--  <li class="header"><a href="?p=part">Part</a></li>   
-              <li class="header"><a href="?p=panel">Panel</a></li>   
+           <!--    <li class="header"><a href="?p=part">Part</a></li>   
+              <li class="header"><a href="?p=panel">Panel</a></li>   --> 
               <li class="header"><a href="?p=group">Group Kendaraan</a></li>   
-              <li class="header"><a href="?p=tipe">Tipe Kendaraan</a></li>    -->
-              <li class="header"><a href="?p=warna">Warna Kendaraan</a></li>   
+<!--               <li class="header"><a href="?p=tipe">Tipe Kendaraan</a></li>   
+ -->              <li class="header"><a href="?p=warna">Warna Kendaraan</a></li>   
             <!--   <li class="header"><a href="?p=user">User</a></li>   
               <li class="header"><a href="?p=company">Company</a></li> 
               <li class="header"><a href="?p=backup">Backup Database</a></li>

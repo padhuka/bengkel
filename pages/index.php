@@ -13,7 +13,7 @@
                         case 'supplier' : include_once 'supplier/supplier_tab.php'; break;
                         case 'satuan' : include_once 'satuan/satuan_tab.php'; break;
                         case 'warna' : include_once 'warna/warna_tab.php'; break;
-                        // case 'admin' : include_once 'admin/admin_tab.php'; break;
+                        case 'group' : include_once 'group/group_tab.php'; break;
                         // case 'backup' : include_once 'database/backup.php'; break;
                         // case 'restore' : include_once 'database/restore.php'; break;
                         // case 'backupfile' : include_once 'database/backupfile.php'; break;
