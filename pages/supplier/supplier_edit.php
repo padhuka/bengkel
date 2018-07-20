@@ -37,7 +37,8 @@
                           <label for="alamatsupplier">Alamat</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $emp['alamat'];?>" required>
+                            <textarea input type="text" class="form-control" id="alamat" name="alamat" required> <?php echo $emp['alamat'];?></textarea>
+                          
                           </div>
                         </div>
 				                <div class="form-group">
