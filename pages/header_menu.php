@@ -86,3 +86,18 @@ Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
       max-width: 1250px;
     }
   </style>
+ <style type="text/css">
+    
+ .dropdown-menu {
+    margin: 0;
+    list-style: none;
+    white-space: nowrap;
+    border: 1px solid lightgrey;
+    padding: 5px;
+    background-color: #ecf0f5;
+    font-family: sans-serif;
+ }
+
+
+
+ </style>
