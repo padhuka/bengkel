@@ -14,7 +14,7 @@
          
           <li style="display: block;margin:0;padding:0;float: left;"><a href="index.php" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Home <i class="fa fa-home"></i></button></a></li>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
-          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kartu" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kartu Pelanggan <i class="fa fa-envelope-open-o"></i></button></a></li>
+          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kartu" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kartu Pelanggan <i class="fa fa-user-plus"></i></button></a></li>
           <?php } ?>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=estimasi" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Estimasi <i class="fa fa-file-text"></i></button></a></li>
@@ -23,7 +23,13 @@
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=pkb" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">PKB <i class="fa fa-file-text"></i></button></a></li>
           <?php }?>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
-          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kasir" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kasir <i class="fa fa-list-alt"></i></button></a></li>
+          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=panel" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Panel <i class="fa fa-window-restore"></i></button></a></li>
+          <?php }?>
+            <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
+          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=part" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Part <i class="fa fa-wrench"></i></button></a></li>
+          <?php }?>
+                  <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
+          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kasir" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kasir <i class="fa fa-usd"></i></button></a></li>
           <?php }?>
           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Laporan <i class="fa fa-gears dropdown-toggle"></i></button> </a>
