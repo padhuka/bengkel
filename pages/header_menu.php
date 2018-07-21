@@ -10,12 +10,8 @@
       <a class="navbar-brand" href="index.php"> GEMILANG BODY REPAIR
         </a>
       <div class="navbar-custom-menu" style="padding: 0 0 0 0;margin: 0 auto;">
-        <ul class="nav navbar-nav" style="list-style: none;padding: 0;margin: 0 auto;font-size: 0.7em;">
-          <!-- Messages: style can be found in dropdown.less
-Home | Kartu Pelanggan | Estimasi | PKB | Kasir | Master
-          -->
-
-          <!-- Notifications: style can be found in dropdown.less -->
+        <ul class="nav navbar-nav" style="list-style: none;padding: 0;margin: 0 auto;font-size: 1px;margin-top: 8px;">
+         
           <li style="display: block;margin:0;padding:0;float: left;"><a href="index.php" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Home <i class="fa fa-home"></i></button></a></li>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kartu" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kartu Pelanggan <i class="fa fa-envelope-open-o"></i></button></a></li>
