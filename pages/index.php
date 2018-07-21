@@ -16,6 +16,7 @@
                         case 'group' : include_once 'group/group_tab.php'; break;
                         case 'panel' : include_once 'panel/panel_tab.php'; break;
                         case 'tipe' : include_once 'tipe/tipe_tab.php'; break;
+                        case 'part' : include_once 'part/part_tab.php'; break;
                         // case 'restore' : include_once 'database/restore.php'; break;
                         // case 'backupfile' : include_once 'database/backupfile.php'; break;
                         // //LAPORAN
