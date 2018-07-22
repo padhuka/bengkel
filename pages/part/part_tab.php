@@ -52,4 +52,7 @@
     font-weight: bold;
     font-family: monospace;
   }
+  .modal-title {
+    text-align: center;
+  }
 </style>

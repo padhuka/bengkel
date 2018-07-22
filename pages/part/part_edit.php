@@ -38,8 +38,11 @@
                           </div>
                           <div class="col-sm-7">
                             <input type="text" class="form-control" id="satuan" name="satuan" value="<?php echo $emp['fk_satuan'];?>"  readonly>
+                            <input type="hidden" class="form-control" id="satuannm" name="satuannm" readonly>
+
                           </div>
-                        <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal">Pilih</button>
+                                                  <button type="button" class="btn btn-primary btn-md" onclick="satuane();">Pilih</button>
+
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -73,7 +76,7 @@
                             <input type="text" class="form-control" id="ppn" name="ppn" value="<?php echo $emp['ppn'];?>" required>
                           </div>
                         </div>
-                      
+
                         <div class="form-group">
                             <div class="col-sm-3">
                           <label for="stock" >Stock</label>
@@ -89,8 +92,11 @@
                           </div>
                           <div class="col-sm-7">
                             <input type="text" class="form-control" id="supplier" name="supplier" value="<?php echo $emp['fk_supplier'];?>"  readonly>
+                            <!-- <input type="hidden" class="form-control" id="supplier" name="supplier" readonly> -->
+                            <input type="hidden" class="form-control" id="suppliernm" name="supplier" readonly>
                           </div>
-                        <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal">Pilih</button>
+                                                  <button type="button" class="btn btn-primary btn-md" onclick="suppliere();">Pilih</button>
+
                         </div>
 
 				                <div class="form-group">
@@ -109,6 +115,8 @@
 				</div>
 
 </div>
+<?php include_once 'part_supplier_tab.php';?>
+<?php include_once 'part_satuan_tab.php';?>
 <script type="text/javascript">
 	$(document).ready(function (){
 
@@ -138,6 +146,13 @@
                                                 });
                       });
     });
+function satuane(){
+    $("#ModalSatuan").modal('show',{backdrop: 'true'});
+  }
+
+  function suppliere(){
+    $("#ModalSupplier").modal('show',{backdrop: 'true'});
+  }
 </script>
 <style type="text/css">
   .modal-footer {
