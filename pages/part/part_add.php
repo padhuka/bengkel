@@ -36,9 +36,10 @@
                             <label for="satuan">Satuan</label>
                           </div>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="satuan" name="satuan" readonly>
+                            <input type="hidden" class="form-control" id="satuan" name="satuan" readonly>
+                            <input type="text" class="form-control" id="satuannm" name="satuannm" readonly>
                           </div>
-                        <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal">Pilih</button>
+                        <button type="button" class="btn btn-primary btn-md" onclick="satuane();">Pilih</button>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -85,9 +86,10 @@
                             <label for="supplier">Supplier</label>
                           </div>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="supplier" name="supplier" readonly>
+                            <input type="hidden" class="form-control" id="supplier" name="supplier" readonly>
+                            <input type="text" class="form-control" id="suppliernm" name="supplier" readonly>
                           </div>
-                        <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal">Pilih</button>
+                        <button type="button" class="btn btn-primary btn-md" onclick="suppliere();">Pilih</button>
                         </div>
 				                <div class="form-group">
                            <div class="modal-footer">
@@ -102,6 +104,9 @@
 				          </div>
 				</div>
 </div>
+<?php include_once 'part_supplier_tab.php';?>
+<?php include_once 'part_satuan_tab.php';?>
+
 <script type="text/javascript">
 	$(document).ready(function (){
 
@@ -137,23 +142,11 @@
                       });
     });
 
-</script>
+  function satuane(){   
+    $("#ModalSatuan").modal('show',{backdrop: 'true'});   
+  }
 
-<style type="text/css">
-  .modal-footer {
-    padding-top: 10px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+  function suppliere(){  
+    $("#ModalSupplier").modal('show',{backdrop: 'true'});   
   }
-  .modal-title {
-    font-style: italic;
-    background-color: lightcoral;
-    text-align: center;
-    font-weight: bold;
-  }
-  .modal-dialog {
-    margin-bottom: 0px;
-    border: 3px;
-  }
-</style>
+</script>
