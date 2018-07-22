@@ -6,6 +6,7 @@
 
         $nama = trim($_POST['nama']);
         $namahiden= trim($_POST['namakendaraan']);
+        $group = trim($_POST['group']);
 
         $sqlcek = "SELECT * FROM t_tipe_kendaraan WHERE id_tipe_kendaraan='$id_tipe_kendaraan' AND id_tipe_kendaraan<>'$id_tipehiden'";
         $qrycek = mysql_query($sqlcek);
@@ -14,7 +15,7 @@
         if ($row){
             echo 'y';
         }else{
-                $sqltbemp = "UPDATE t_tipe_kendaraan SET nama='$nama' WHERE id_tipe_kendaraan='$id_tipe_kendaraan'";
+                $sqltbemp = "UPDATE t_tipe_kendaraan SET nama='$nama',fk_group_kendaraan='$group' WHERE id_tipe_kendaraan='$id_tipe_kendaraan'";
                 mysql_query($sqltbemp);
            // echo '
      }
