@@ -57,6 +57,9 @@
     font-weight: bold;
     font-family: monospace;
   }
+  .modal-content {
+    height: 556px;
+  }
   .row {
     margin-left: 0px;
     margin-right: 0px;

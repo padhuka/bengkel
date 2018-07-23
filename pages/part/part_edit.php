@@ -93,7 +93,7 @@
                           <div class="col-sm-7">
                             <input type="text" class="form-control" id="supplier" name="supplier" value="<?php echo $emp['fk_supplier'];?>"  readonly>
                             <!-- <input type="hidden" class="form-control" id="supplier" name="supplier" readonly> -->
-                            <input type="hidden" class="form-control" id="suppliernm" name="supplier" readonly>
+                            <input type="hidden" class="form-control" id="suppliernm" name="suppliernm" readonly>
                           </div>
                                                   <button type="button" class="btn btn-primary btn-md" onclick="suppliere();">Pilih</button>
 
@@ -160,6 +160,9 @@ function satuane(){
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
+  }
+  .modal-content {
+    height: 575px;
   }
   .modal-title {
     font-style: italic;
