@@ -1,8 +1,4 @@
-           <?php
-            //include_once '../../lib/config.php';
-          ?>
-
-      <div id="ModalGroup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div id="ModalGroup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">          
       <div class="col-md-14">
                 <div class="modal-content">
@@ -11,7 +7,7 @@
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Group Kendaraan</h4>                        
                     </div>
 
-                  <div class="box box-info" style="border-top-color:#dd4b39; margin-bottom: 10px;">
+                  <div class="box">
               <table id="group1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -49,14 +45,7 @@
                               $("#group").val(x);
                               $("#groupnm").val(y);
                               $("#ModalGroup").modal('hide');
-                              /*$.ajax({
-                              url: "suratmasuk/suratmasuk_add.php",
-                              type: "GET",
-                                success: function (ajaxData){
-                                  $("#ModalAdd").html(ajaxData);
-                                  $("#ModalAdd").modal('show',{backdrop: 'true'});
-                                }
-                              });*/
+                           
                       }; 
               </script>
 
@@ -69,6 +58,9 @@
     text-align: center;
     font-weight: bold;
     font-family: monospace;
+  }
+  .modal-content {
+    height: 556px;
   }
   .row {
     margin-left: 0px;

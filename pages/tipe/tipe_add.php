@@ -57,6 +57,7 @@
 </div>
 <?php include_once 'tipe_group_tab.php';?>
 <script type="text/javascript">
+  
   function groupe(){  
     $("#ModalGroup").modal('show',{backdrop: 'true'});   
   }
