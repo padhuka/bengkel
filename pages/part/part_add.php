@@ -87,7 +87,7 @@
                           </div>
                           <div class="col-sm-7">
                             <input type="hidden" class="form-control" id="supplier" name="supplier" readonly>
-                            <input type="text" class="form-control" id="suppliernm" name="supplier" readonly>
+                            <input type="text" class="form-control" id="suppliernm" name="suppliernm" readonly>
                           </div>
                         <button type="button" class="btn btn-primary btn-md" onclick="suppliere();">Pilih</button>
                         </div>
@@ -118,6 +118,9 @@
     background-color: lightcoral;
     text-align: center;
     font-weight: bold;
+  }
+  .modal-content {
+    height: 565px;
   }
   .modal-dialog {
     margin-bottom: 0px;

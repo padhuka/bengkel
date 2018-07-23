@@ -1,9 +1,9 @@
-      <div id="ModalSatuan" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div id="ModalSatuan" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-satuan="true">
       <div class="modal-dialog">
       <div class="col-md-14">
                 <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-satuan="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Satuan</h4>
                     </div>
 
