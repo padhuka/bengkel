@@ -36,10 +36,12 @@
                             <label for="namatipe">Group Kendaraan</label>
                           </div>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="group" name="group" readonly>
+                            <input type="hidden" class="form-control" id="group" name="group" readonly>
+                            <input type="text" class="form-control" id="groupnm" name="groupnm" readonly>
                           </div>
-                        <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal">Pilih</button>
+                        <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="groupe();">Pilih</button>
                         </div>
+                        
                         <div class="form-group">
                            <div class="modal-footer">
                           <div class="col-sm-8">
@@ -53,7 +55,11 @@
                   </div>
         </div>
 </div>
+<?php include_once 'tipe_group_tab.php';?>
 <script type="text/javascript">
+  function groupe(){  
+    $("#ModalGroup").modal('show',{backdrop: 'true'});   
+  }
   $(document).ready(function (){
 
                       $("#formTipe").on('submit', function(e){

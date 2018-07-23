@@ -6,7 +6,9 @@
                 <tr>
                           <th>Kode Tipe Kendaraan</th>
                           <th>Nama</th>
+                           <th>Group Kendaraan</th>
                           <th><button type="button" class="btn btn btn-default btn-circle open_add"><span>Tambah</span></button></th>
+                         
                 </tr>
                 </thead>
                 <tbody>
@@ -19,6 +21,7 @@
                         <tr>
                           <td ><?php echo $catat['id_tipe_kendaraan'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
+                          <td ><?php echo $catat['fk_group_kendaraan'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_tipe_kendaraan']; ?>" onclick="open_modal(idedittipe='<?php echo $catat['id_tipe_kendaraan']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_tipe_kendaraan']; ?>" onclick="open_del(iddeltipe='<?php echo $catat['id_tipe_kendaraan']; ?>');"><span>Hapus</span></button>
