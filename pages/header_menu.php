@@ -14,7 +14,7 @@
          
           <li style="display: block;margin:0;padding:0;float: left;"><a href="index.php" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Home <i class="fa fa-home"></i></button></a></li>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
-          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kartu" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kartu Pelanggan <i class="fa fa-user-plus"></i></button></a></li>
+          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=inventory" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kartu Pelanggan <i class="fa fa-user-plus"></i></button></a></li>
           <?php } ?>
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=estimasi" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Estimasi <i class="fa fa-file-text"></i></button></a></li>
@@ -48,6 +48,7 @@
            <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Master <i class="fa fa-gears dropdown-toggle"></i></button> </a>
             <ul class="dropdown-menu">
+              <li class="header"><a href="?p=customer">Customer</a></li> 
               <li class="header"><a href="?p=asuransi">Asuransi</a></li>   
               <li class="header"><a href="?p=supplier">Supplier</a></li>
               <li class="header"><a href="?p=satuan">Satuan</a></li>
