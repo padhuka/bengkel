@@ -2,110 +2,104 @@
    <?php
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
-    $id_part = $_GET['id_part'];
-    $sqlemp = "SELECT * FROM t_part WHERE id_part='$id_part'";
+    include_once 'inventory_warna_tab.php';
+    include_once 'inventory_tipe_tab.php';
+    include_once 'inventory_customer_tab.php';
+    $no_chasis = $_GET['no_chasis'];
+    $sqlemp = "SELECT * FROM t_inventory_bengkel WHERE no_chasis='$no_chasis'";
     $resemp = mysql_query( $sqlemp );
     $emp = mysql_fetch_array( $resemp );
   ?>
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hid_partden="true">&times;</span></button>
-                        <h4 class="modal-title" id_part="myModalLabel">Edit Data Part</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hno_chasisden="true">&times;</span></button>
+                        <h4 class="modal-title" no_chasis="myModalLabel">Edit Data Inventory</h4>
                     </div>
 
                      <div class="modal-body">
-				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formPart">
+				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formInventory">
                         <div class="form-group">
                           <div class="col-sm-3">
-                          <label for="kodepart">Kode Part</label>
+                          <label for="nochasis">No Chasis</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="id_part" name="id_part" value="<?php echo $emp['id_part'];?>" readonly>
+                            <input type="text" class="form-control" id="no_chasis" name="no_chasis" value="<?php echo $emp['no_chasis'];?>" readonly>
                           </div>
                         </div>
 				                <div class="form-group">
                             <div class="col-sm-3">
-				                  <label for="namapanel" >Nama</label>
+				                  <label for="nomesin" >No Mesin</label>
                         </div>
 				                  <div class="col-sm-8">
-				                    <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $emp['nama'];?>" required>
+				                    <input type="text" class="form-control" id="no_mesin" name="no_mesin" value="<?php echo $emp['no_mesin'];?>" required>
 				                  </div>
 				                </div>
+                          <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="nopolisi" >No Polisi</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="no_polisi" name="no_polisi" value="<?php echo $emp['no_polisi'];?>" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="namastnk">Nama STNK</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="namastnk" name="namastnk"  value="<?php echo $emp['nama_stnk'];?>" required>
+                          </div>
+                        </div>
+                         <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="alamatstnk">Alamat STNK</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="alamatstnk" name="alamatstnk"  value="<?php echo $emp['alamat_stnk'];?>" required>
+                          </div>
+                        </div>
                             <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="satuan">Satuan</label>
+                            <label for="tipe">Tipe Kendaraan</label>
                           </div>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="satuan" name="satuan" value="<?php echo $emp['fk_satuan'];?>"  readonly>
-                            <input type="hidden" class="form-control" id="satuannm" name="satuannm" readonly>
+                            <input type="text" class="form-control" id="tipe" name="tipe" value="<?php echo $emp['fk_tipe_kendaraan'];?>"  readonly>
+                            <input type="hidden" class="form-control" id="tipenm" name="tipenm" readonly>
+                          </div>
+                                                  <button type="button" class="btn btn-primary btn-md" onclick="selecttipe();">Pilih</button>
 
-                          </div>
-                                                  <button type="button" class="btn btn-primary btn-md" onclick="satuane();">Pilih</button>
-
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                          <label for="hargapokokpanel">Harga Beli</label>
-                        </div>
-                          <div class="col-sm-8">
-                            <input type="text" class="form-control" id="hargabeli" name="hargabeli"  value="<?php echo $emp['harga_beli'];?>" required>
-                          </div>
-                        </div>
-				                <div class="form-group">
-                            <div class="col-sm-3">
-				                  <label for="hargajual" >Harga Jual</label>
-                        </div>
-				                  <div class="col-sm-8">
-				                    <input type="text" class="form-control" id="hargajual" name="hargajual"  value="<?php echo $emp['harga_jual'];?>" required>
-				                  </div>
-				                </div>
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                          <label for="diskonpanel" >Diskon</label>
-                        </div>
-                          <div class="col-sm-8">
-                            <input type="text" class="form-control" id="diskon" name="diskon" value="<?php echo $emp['diskon'];?>" required>
-                          </div>
-                        </div>
-                           <div class="form-group">
-                            <div class="col-sm-3">
-                          <label for="ppnpanel" >PPN</label>
-                        </div>
-                          <div class="col-sm-8">
-                            <input type="text" class="form-control" id="ppn" name="ppn" value="<?php echo $emp['ppn'];?>" required>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                          <label for="stock" >Stock</label>
-                        </div>
-                          <div class="col-sm-8">
-                            <input type="text" class="form-control" id="stock" name="stock" value="<?php echo $emp['stock'];?>" required>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
+                             <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="supplier">Supplier</label>
+                            <label for="warna">Warna Kendaraan</label>
                           </div>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="supplier" name="supplier" value="<?php echo $emp['fk_supplier'];?>"  readonly>
-                            <!-- <input type="hidden" class="form-control" id="supplier" name="supplier" readonly> -->
-                            <input type="hidden" class="form-control" id="suppliernm" name="suppliernm" readonly>
+                            <input type="text" class="form-control" id="warna" name="warna" value="<?php echo $emp['fk_warna_kendaraan'];?>"  readonly>
+                            <input type="hidden" class="form-control" id="warnanm" name="warnanm" readonly>
                           </div>
-                                                  <button type="button" class="btn btn-primary btn-md" onclick="suppliere();">Pilih</button>
+                                                  <button type="button" class="btn btn-primary btn-md" onclick="selectwarna();">Pilih</button>
+
+                        </div>
+
+                             <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="customer">Customer</label>
+                          </div>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control" id="customer" name="customer" value="<?php echo $emp['fk_customer'];?>"  readonly>
+                            <input type="hidden" class="form-control" id="customernm" name="customernm" readonly>
+                          </div>
+                                                  <button type="button" class="btn btn-primary btn-md" onclick="selectcustomer();">Pilih</button>
 
                         </div>
 
 				                <div class="form-group">
                                   <div class="modal-footer">
 				                  <div class="col-sm-8">
-				                  	<input type="hidden" name="id_parthid" id="id_parthid" value="<?php echo $emp['id_part'];?>">
-                            <input type="hidden" name="namahid" id="namahid" value="<?php echo $emp['nama'];?>">
+				                  	<input type="hidden" name="no_chasishid" id="no_chasishid" value="<?php echo $emp['no_chasis'];?>">
 				                  	<button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hid_partden="true">&nbsp;Batal&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hno_chasisden="true">&nbsp;Batal&nbsp;</button>
 				                  </div>
                                 </div>
 				                </div>
@@ -115,16 +109,14 @@
 				</div>
 
 </div>
-<?php include_once 'part_supplier_tab.php';?>
-<?php include_once 'part_satuan_tab.php';?>
 <script type="text/javascript">
 	$(document).ready(function (){
 
-                      $("#formPart").on('submit', function(e){
+                      $("#formInventory").on('submit', function(e){
                           e.preventDefault();
                            						$.ajax({
                                                   type: 'POST',
-                                                  url: 'part/part_edit_save.php',
+                                                  url: 'inventory/inventory_edit_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
@@ -132,13 +124,13 @@
                                                   success: function(data){
                                                         //alert('lolos');
                                                         var hsl=data.trim();
-                                                       // alert(hsl);
+                                                        alert(hsl);
                                                         if (hsl=='y'){
 			                                                alert('Data Sudah ada');
 			                                                return false;
 			                                                exit();
 			                                            }else{
-			                                                $("#tablepart").load('part/part_load.php');
+			                                                $("#tableinventory").load('inventory/inventory_load.php');
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalEdit').modal('hide');
 			                                            }
@@ -146,13 +138,18 @@
                                                 });
                       });
     });
-function satuane(){
-    $("#ModalSatuan").modal('show',{backdrop: 'true'});
+
+
+  function selecttipe(){
+    $("#ModalTipe").modal('show',{backdrop: 'true'});   
+  }
+  function selectwarna(){  
+    $("#ModalWarna").modal('show',{backdrop: 'true'});   
+  }
+   function selectcustomer(){  
+    $("#ModalCustomer").modal('show',{backdrop: 'true'});   
   }
 
-  function suppliere(){
-    $("#ModalSupplier").modal('show',{backdrop: 'true'});
-  }
 </script>
 <style type="text/css">
   .modal-footer {

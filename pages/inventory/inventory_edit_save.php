@@ -1,27 +1,25 @@
 <?php
         include_once '../../lib/config.php';
 		 //$ip = ; // Ambil IP Address dari User
-    	$id_part = trim($_POST['id_part']);
-        $id_parthid = trim($_POST['id_parthid']);
-		$nama = trim($_POST['nama']);
-        $satuan = trim($_POST['satuan']);
-        $namahid = trim($_POST['namahid']);  
-        $harga_pokok = trim($_POST['hargabeli']);
-        $harga_jual = trim($_POST['hargajual']); 
-        $diskon = trim($_POST['diskon']); 
-        $ppn = trim($_POST['ppn']); 
-        $stock = trim($_POST['stock']);
-        $supplier = trim($_POST['supplier']);
-		 #cek id_partsurat
-        //$sqlcek = "SELECT * FROM t_part WHERE (id_part='$id_part' AND id_part<>'$id_parthid') OR (nama='$nama' AND nama<>'$namahid')";
-        $sqlcek = "SELECT * FROM t_part WHERE id_part='$id_part' AND id_part<>'$id_parthid'";
+        $nochasis = trim($_POST['no_chasis']);
+        $no_chasishid = trim($_POST['no_chasishid']);
+        $nomesin = trim($_POST['no_mesin']);
+        $nopolisi= trim($_POST['no_polisi']);
+        $tipekendaraan = trim($_POST['tipe']);
+        $warnakendaraan= trim($_POST['warna']);
+        $customer = trim($_POST['customer']);
+        $namastnk = trim($_POST['namastnk']);
+        $alamatstnk = trim($_POST['alamatstnk']);
+		 #cek no_chasissurat
+        //$sqlcek = "SELECT * FROM t_inventory_bengkel WHERE (no_chasis='$no_chasis' AND no_chasis<>'$no_chasishid') OR (nama='$nama' AND nama<>'$namahid')";
+        $sqlcek = "SELECT * FROM t_inventory_bengkel WHERE no_chasis='$nochasis' AND no_chasis<>'$no_chasishid'";
         $qrycek = mysql_query($sqlcek);
         $row = mysql_fetch_array($qrycek);
         if ($row){
             echo 'y';
         }else{
-		        $sqltbemp = "UPDATE t_part SET id_part='$id_part',nama='$nama',fk_satuan='$satuan',harga_beli='$harga_pokok',harga_jual='$harga_jual',diskon='$diskon', ppn='$ppn',stock='$stock',fk_supplier='$supplier' WHERE id_part='$id_part'";
+		        $sqltbemp = "UPDATE t_inventory_bengkel SET no_chasis='$nochasis',no_mesin='$nomesin',no_polisi='$nopolisi',fk_tipe_kendaraan='$tipekendaraan',fk_warna_kendaraan='$warnakendaraan',fk_customer='$customer', nama_stnk='$namastnk',alamat_stnk='$alamatstnk' WHERE no_chasis='$nochasis'";
         		mysql_query($sqltbemp);
-           // echo 'n';
+          // echo 'n';
         }
 ?>

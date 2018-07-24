@@ -1,6 +1,10 @@
 <!-- general form elements disabled -->
    <?php
     include_once '../../lib/config.php';
+    include_once 'inventory_warna_tab.php';
+    include_once 'inventory_tipe_tab.php';
+    include_once 'inventory_customer_tab.php';
+
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
@@ -60,8 +64,8 @@
                             <label for="tipekendaraan">Tipe Kendaraan</label>
                           </div>
                           <div class="col-sm-7">
-                            <input type="hidden" class="form-control" id="tipekendaraan" name="tipekendaraan" readonly>
-                            <input type="text" class="form-control" id="nmkendaraan" name="nmkendaraan" readonly>
+                            <input type="hidden" class="form-control" id="tipe" name="tipe" readonly>
+                            <input type="text" class="form-control" id="tipenm" name="tipenm" readonly>
                           </div>
                         <button type="button" class="btn btn-primary btn-md" onclick="selecttipe();">Pilih</button>
                         </div>
@@ -101,9 +105,6 @@
 				          </div>
 				</div>
 </div>
-<?php include_once 'inventory_tipe_tab.php';?>
-<?php include_once 'inventory_warna_tab.php';?>
-<?php //include_once 'inventory_customer_tab.php';?>
 
 <style type="text/css">
   .modal-footer {
@@ -163,7 +164,7 @@
     });
 
   function selecttipe(){
-    $("#ModalTipeKendaraan").modal('show',{backdrop: 'true'});   
+    $("#ModalTipe").modal('show',{backdrop: 'true'});   
   }
   function selectwarna(){  
     $("#ModalWarna").modal('show',{backdrop: 'true'});   

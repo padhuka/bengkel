@@ -27,7 +27,7 @@
                           <td ><?php echo $catat['id_warna_kendaraan'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
                           <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilih('<?php echo $catat['id_warna_kendaraan'];?>','<?php echo $catat['nama'];?>');">Pilih</button>
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilihwarna('<?php echo $catat['id_warna_kendaraan'];?>','<?php echo $catat['nama'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
@@ -41,9 +41,9 @@
               </div>
               <script type="text/javascript">
                 $('#warna1').DataTable();
-                function pilih(x,y){
-                              $("#warna").val(x);
-                              $("#warnanm").val(y);
+                function pilihwarna(c,d){
+                              $("#warna").val(c);
+                              $("#warnanm").val(d);
                               $("#ModalWarna").modal('hide');
                       };
               </script>
