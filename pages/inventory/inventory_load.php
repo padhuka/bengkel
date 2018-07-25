@@ -5,6 +5,7 @@
       
                 <thead class="thead-light">
                 <tr>
+                          <th>Customer</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
                           <th>No Polisi</th>
@@ -12,7 +13,7 @@
                           <th>Alamat STNK</th>
                           <th>Tipe Kendaraan</th>
                           <th>Warna Kendaraan</th>
-                          <th>Customer</th>
+                         
                          
                           <th><button type="button" class="btn btn btn-default btn-circle open_add"><span>Tambah</span></button></th>
                 </tr>
@@ -20,19 +21,25 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_inventory_bengkel ORDER BY no_chasis ASC";
+                                    $sqlcatat = "SELECT i.no_chasis,i.no_mesin,i.no_polisi,i.nama_stnk,i.alamat_stnk,t.nama AS nama_tipe,w.nama AS nama_warna, c.nama AS nama_customer FROM t_inventory_bengkel i LEFT JOIN t_customer c 
+                  ON i.fk_customer=c.id_customer LEFT JOIN t_tipe_kendaraan t
+                  ON i.fk_tipe_kendaraan=t.id_tipe_kendaraan LEFT JOIN t_warna_kendaraan w
+                  ON i.fk_warna_kendaraan=w.id_warna_kendaraan";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
+
+
                         <tr>
+                          <td ><?php echo $catat['nama_customer'];?></td>
                           <td ><?php echo $catat['no_chasis'];?></td>
                           <td ><?php echo $catat['no_mesin'];?></td>
                           <td ><?php echo $catat['no_polisi'];?></td>
                           <td ><?php echo $catat['nama_stnk'];?></td>
                           <td ><?php echo $catat['alamat_stnk'];?></td>
-                          <td ><?php echo $catat['fk_tipe_kendaraan'];?></td>
-                          <td ><?php echo $catat['fk_warna_kendaraan'];?></td>
-                          <td ><?php echo $catat['fk_customer'];?></td>                        
+                          <td ><?php echo $catat['nama_tipe'];?></td>
+                          <td ><?php echo $catat['nama_warna'];?></td>
+                                                
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_chasis']; ?>" onclick="open_modal(ideditas='<?php echo $catat['no_chasis']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_chasis']; ?>" onclick="open_del(iddelas='<?php echo $catat['no_chasis']; ?>');"><span>Hapus</span></button>
