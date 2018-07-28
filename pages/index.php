@@ -16,9 +16,13 @@
                         case 'group' : include_once 'group/group_tab.php'; break;
                         case 'panel' : include_once 'panel/panel_tab.php'; break;
                         case 'tipe' : include_once 'tipe/tipe_tab.php'; break;
+<<<<<<< HEAD
                         case 'part' : include_once 'part/part_tab.php'; break;
                         case 'inventory' : include_once 'inventory/inventory_tab.php'; break;
                         case 'customer' : include_once 'customer/customer_tab.php'; break;
+=======
+                        case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
+>>>>>>> m_estimasi
                         // case 'restore' : include_once 'database/restore.php'; break;
                         // case 'backupfile' : include_once 'database/backupfile.php'; break;
                         // //LAPORAN
