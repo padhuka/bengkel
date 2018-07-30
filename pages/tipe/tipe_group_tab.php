@@ -3,12 +3,12 @@
       <div class="col-md-14">
                 <div class="modal-content">
                     <div class="modal-header">
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Group Kendaraan</h4>                        
+                         
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Group Kendaraan <button type="button" class="close" aria-label="Close" onclick="$('#ModalGroup').modal('hide');"><span>&times;</span></button></h4>                        
                     </div>
 
                   <div class="box">
-              <table id="group1" class="table table-condensed table-bordered table-striped table-hover">
+                <table id="group1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode Group</th>

@@ -48,7 +48,7 @@
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAdd").html(ajaxData);
-                        $("#ModalAdd").modal('show',{backdrop: 'true'});
+                        $("#ModalAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
             });
@@ -58,7 +58,7 @@
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalDelete").html(ajaxData);
-                                        $("#ModalDelete").modal('show',{backdrop: 'true'});
+                                        $("#ModalDelete").modal({backdrop: 'static',keyboard: false});
                                     }
                                 });
             };
@@ -68,7 +68,7 @@
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEdit").html(ajaxData);
-                                      $("#ModalEdit").modal('show',{backdrop: 'true'});
+                                      $("#ModalEdit").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };

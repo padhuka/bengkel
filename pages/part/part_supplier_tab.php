@@ -3,8 +3,7 @@
       <div class="col-md-14">
                 <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Supplier</h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Supplier <button type="button" class="close" aria-label="Close" onclick="$('#ModalSupplier').modal('hide');"><span>&times;</span></button></h4>
                     </div>
 
                   <div class="box">

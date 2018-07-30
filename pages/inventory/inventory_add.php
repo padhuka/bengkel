@@ -164,12 +164,12 @@
     });
 
   function selecttipe(){
-    $("#ModalTipe").modal('show',{backdrop: 'true'});   
+    $("#ModalTipe").modal({backdrop: 'static',keyboard: false});   
   }
   function selectwarna(){  
-    $("#ModalWarna").modal('show',{backdrop: 'true'});   
+    $("#ModalWarna").modal({backdrop: 'static',keyboard: false});   
   }
    function selectcustomer(){  
-    $("#ModalCustomer").modal('show',{backdrop: 'true'});   
+    $("#ModalCustomer").modal({backdrop: 'static',keyboard: false});   
   }
 </script>

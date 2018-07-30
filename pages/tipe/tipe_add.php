@@ -59,7 +59,7 @@
 <script type="text/javascript">
   
   function groupe(){  
-    $("#ModalGroup").modal('show',{backdrop: 'true'});   
+    $("#ModalGroup").modal({backdrop: 'static',keyboard: false});   
   }
   $(document).ready(function (){
 

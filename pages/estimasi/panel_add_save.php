@@ -20,15 +20,16 @@
             $sqles= "SELECT * FROM t_estimasi WHERE id_estimasi = '$idestimasi'";
             $hpes= mysql_fetch_array(mysql_query($sqles));
 
-            $totgrospanel=$hpes['total_gross_harga_panel']+$hpanel['totjualpanel'];
-            $totdiskonpanel=$hpes['total_diskon_rupiah_panel']+$hpanel['totdiskonpanel'];
-            $totnettopanel=$hpes['total_netto_harga_panel']+$hpanel['totestimasipanel'];
+            $totgrospanel=$hpanel['totjualpanel'];
+            $totdiskonpanel=$hpanel['totdiskonpanel'];
+            $totnettopanel=$hpanel['totestimasipanel'];
 
-            $totgros=$hpanel['totjualpanel']+$hpes['total_gross_harga_panel'];
-            $totdiskon=$hpanel['totdiskonpanel']+$hpes['total_diskon_rupiah_panel'];
-            $totnetto=$hpanel['totestimasipanel']+$hpes['total_netto_harga_panel'];
+            $totgros=$hargajual+$hpes['total_gross_harga_panel'];
+            $totdiskon=$hargadiskon+$hpes['total_diskon_rupiah_panel'];
+            $totnetto=$total+$hpes['total_netto_harga_panel'];
 
-            $updateestimasi = "UPDATE t_estimasi SET total_gross_harga_panel='$totgrospanel,total_diskon_rupiah_panel='$totdiskonpanel', total_netto_harga_panel='$totnettopanel',total_gross_harga_jasa='$totgros', total_diskon_rupiah_jasa='$totdiskon',total_netto_harga_jasa='$totnetto' WHERE id_estimasi='$idestimasi'";
+            $updateestimasi = "UPDATE t_estimasi SET total_gross_harga_panel='$totgrospanel',total_diskon_rupiah_panel='$totdiskonpanel', total_netto_harga_panel='$totnettopanel',total_gross_harga_jasa='$totgros', total_diskon_rupiah_jasa='$totdiskon',total_netto_harga_jasa='$totnetto' WHERE id_estimasi='$idestimasi'";
             mysql_query($updateestimasi);
+            //echo $updateestimasi;
 
 ?>
