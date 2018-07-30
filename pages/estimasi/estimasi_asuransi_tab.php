@@ -1,12 +1,13 @@
-            <div id="ModalAsuransi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">          
-      <div class="col-md-11">
-                <div class="modal-content" style="border-radius:10px">
-                    <div class="modal-header" style="padding: 8px;border-top-style: 5px">                        
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Info Kendaraan</h4>                        
+     <div id="ModalAsuransi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
+      <div class="col-md-14">
+                <div class="modal-content">
+                    <div class="modal-header">
+                         
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Asuransi <button type="button" class="close" aria-label="Close" onclick="$('#ModalAsuransi').modal('hide');"><span>&times;</span></button></h4>                        
                     </div>
-              <div class="box">
-              <table id="tableasuransi" class="table table-condensed table-bordered table-striped table-hover">
+
+                  <div class="box">
+                <table id="tableAsuransi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode Asuransi</th>
@@ -14,10 +15,10 @@
                           <th>Alamat</th>
                           <th>No Telp</th>
                           <th>NPWP</th>
-                          <th><button type="button" class="btn btn btn-default btn-circle open_add"><span>Tambah</span></button></th>
+                          <th></th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody>  
                 <?php
                                     $j=1;
                                     $sqlcatat = "SELECT * FROM t_asuransi ORDER BY id_asuransi ASC";
@@ -25,13 +26,13 @@
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['id_asuransi'];?></td>
-                          <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo $catat['alamat'];?></td>
-                          <td ><?php echo $catat['no_telp'];?></td>
-                          <td ><?php echo $catat['npwp'];?></td>
-                          <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilih('<?php echo $catat['no_chasis'];?>','<?php echo $catat['no_mesin'];?>','<?php echo $catat['no_polisi'];?>','<?php echo $swrn['id_warna_kendaraan'];?>','<?php echo $swrn['nama'];?>','<?php echo $catat['fk_customer'];?>');">Pilih</button>
+                          <td><?php echo $catat['id_asuransi'];?></td>
+                          <td><?php echo $catat['nama'];?></td>
+                          <td><?php echo $catat['alamat'];?></td>
+                          <td><?php echo $catat['no_telp'];?></td>
+                          <td><?php echo $catat['npwp'];?></td>
+                          <td>
+                                     <button type="button" class="btn btn btn-default btn-circle" onclick="pilihAsuransi('<?php echo $catat['id_asuransi'];?>','<?php echo $catat['nama'];?>');">Pilih</button>
                           </td>
                         </tr>
                     <?php }?>                        
@@ -43,15 +44,41 @@
               </div>
               </div>
               <script type="text/javascript">
-                $('#tableasuransi').DataTable();
-                function pilih(a,b,c,d,e,f){
-                              $("#chasis").val(a);
-                              $("#mesin").val(b);
-                              $("#polisi").val(c);
-                              $("#warna").val(d);
-                              $("#warnanm").val(e);
-                              $("#customer").val(f);
-                              $("#ModalAsuransi").modal('hide');
-                            
-                      }; 
+                $('#tableAsuransi').DataTable();
+                 function pilihAsuransi(a,b){
+                              $("#asuransi").val(a);
+                              $("#asuransinm").val(b);
+                              $("#ModalAsuransi").modal('hide');  
+                 }
+
+               //function selectAsuransi(a,b){
+                //alert('ook');
+                             //$("#asuransi").val(a);
+                              //$("#asuransinm").val(b);
+                              //$("#ModalAsuransi").modal('hide');
+              //}              
               </script>
+
+  <style type="text/css">
+  .modal-header {
+    padding-top: 15px;padding-bottom: 15px;
+  }
+  .title-header {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+  }
+  .modal-content {
+    height: 556px;
+  }
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top:10px;
+  }
+  .modal-title {
+    padding-top: 5px;padding-bottom: 5px;
+  }
+</style>
+
