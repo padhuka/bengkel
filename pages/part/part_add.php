@@ -164,11 +164,11 @@
     });
 
   function satuane(){
-    $("#ModalSatuan").modal('show',{backdrop: 'true'});   
+    $("#ModalSatuan").modal({backdrop: 'static',keyboard: false});   
 
   }
 
   function suppliere(){  
-    $("#ModalSupplier").modal('show',{backdrop: 'true'});   
+    $("#ModalSupplier").modal({backdrop: 'static',keyboard: false});   
   }
 </script>

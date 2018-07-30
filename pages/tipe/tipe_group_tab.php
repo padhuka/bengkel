@@ -4,7 +4,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                          
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Group Kendaraan <button type="button" class="close" aria-label="Close" onclick="$('#ModalGroup').modal('hide');"><span aria-hidden="true">&times;</span></button></h4>                        
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Group Kendaraan <button type="button" class="close" aria-label="Close" onclick="$('#ModalGroup').modal('hide');"><span>&times;</span></button></h4>                        
                     </div>
 
                   <div class="box">
