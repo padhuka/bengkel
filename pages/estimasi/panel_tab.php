@@ -3,8 +3,8 @@
   <?php $idestimasi=$_GET['idestimasine'];?>
   <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Data Estimasi Panel</h4></h4>
+                    <div class="modal-header">                        
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Estimasi Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalAddPanelx').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
                     <!--<div class="box-header with-border">
                       <h3 class="box-title">Horizontal Form</h3>

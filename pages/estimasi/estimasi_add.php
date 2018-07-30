@@ -9,8 +9,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Data Estimasi</h4></h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tambah Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalAdd').modal('close');"><span>&times;</span></button></h4>  
                     </div>
                     <!--<div class="box-header with-border">
                       <h3 class="box-title">Horizontal Form</h3>
@@ -81,7 +80,7 @@
                           </div>
                             <div class="col-sm-8">
                                 <input type="hidden" class="form-control" id="asuransi" name="asuransi"> 
-                                <input type="text" class="form-control" id="asuransinm" name="asuransinm"> 
+                                <input type="text" class="form-control" id="asuransinm" name="asuransinm" readonly> 
                               </div>
                         </div>
                         <div class="form-group">
@@ -98,7 +97,7 @@
                            <div class="modal-footer">
                           <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Batal&nbsp;</button>
+                                   <button type="button" class="btn btn-primary" onclick="$('#ModalAdd').modal('hide');">&nbsp;Batal&nbsp;</button>
                           </div>
                         </div>
                         </div>

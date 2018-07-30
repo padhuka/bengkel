@@ -14,8 +14,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Edit Estimasi Panel</h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalEditPanel').modal('hide');"><span>&times;</span></button></h4> 
                     </div>
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
@@ -30,10 +29,9 @@
                             <label for="namapanel">Nama</label>
                           </div>
 				                  <div class="col-sm-6">
-                            <input type="text" class="form-control" id="panel" name="panel" value="<?php echo $hslpan['id'];?>" required>
-				                    <input type="text" class="form-control" id="panelnm" name="panelnm" value="<?php echo $hnm['nama'];?>" readonly required>
-                            <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpanel();">Pilih</button>
-				                  </div>
+                            <input type="hidden" class="form-control" id="panel" name="panel" value="<?php echo $hslpan['id'];?>" required>
+				                    <input type="text" class="form-control" id="panelnm" name="panelnm" value="<?php echo $hnm['nama'];?>" readonly required>                            
+				                  </div><button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpanele();">Pilih</button>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -41,7 +39,7 @@
                         </div>
                           <div class="col-sm-8">
                          <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
-                         <input type="text" class="form-control" id="hargapokoklm" name="hargapokoklm" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="hidden" class="form-control" id="hargapokoklm" name="hargapokoklm" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
                           </div>
                         </div>
 				                <div class="form-group">
@@ -49,9 +47,9 @@
 				                  <label for="hargajualpanel">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" id="diskone" name="diskone" value="<?php echo $hslpan['diskon_panel'];?>" required onchange="kaliedit();">%
-                            <input type="text" class="form-control" id="hargadiskonlm" name="hargadiskonlm" value="<?php echo $hslpan['harga_diskon_panel'];?>" required readonly>
-				                  </div>
+				                    <input type="text" class="form-control" id="diskone" name="diskone" value="<?php echo $hslpan['diskon_panel'];?>" required onchange="kaliedit();">
+                            <input type="hidden" class="form-control" id="hargadiskonlm" name="hargadiskonlm" value="<?php echo $hslpan['harga_diskon_panel'];?>" required readonly>
+				                  </div>%
 				                </div>
                         
                         <div class="form-group">
@@ -60,16 +58,16 @@
                         </div>
                           <div class="col-sm-8">
                             <input type="text" class="form-control" id="hargatotale" name="hargatotale" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
-                            <input type="text" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
+                            <input type="hidden" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
                           </div>
                         </div>
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
-                            <input type="text" class="form-control" id="id" name="id" value="<?php echo $id?>" required>
-                            <input type="text" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
+                            <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id?>" required>
+                            <input type="hidden" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Batal&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" onclick="$('#ModalEditPanel').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
                         </div>
 				                </div>
@@ -78,10 +76,11 @@
 				          </div>
 				</div>
 </div>
-<?php include_once 'panel_pilih.php';?>
+<?php include_once 'panel_pilih_edit.php';?>
 <script type="text/javascript">
-  function pilihpanel(){ 
-    $("#ModalPilihPanel").modal('show',{backdrop: 'true'});   
+  function pilihpanele(){ 
+    $("#ModalPilihPanelEdit").modal({backdrop: 'static', keyboard:false});   
+    //alert('milih');
   }
   function kaliedit(){
     

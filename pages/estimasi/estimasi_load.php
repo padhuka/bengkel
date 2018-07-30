@@ -68,7 +68,7 @@
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEdit").html(ajaxData);
-                                      $("#ModalEdit").modal('show',{backdrop: 'true'});
+                                      $("#ModalEdit").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };
