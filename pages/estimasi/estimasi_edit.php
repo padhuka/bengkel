@@ -67,15 +67,21 @@
                             <label for="namaestimasi">Kategori</label>
                           </div>
                             <div class="col-sm-8">
-                                <select id="kategori" name="kategori">
-                                  <?php
-                                    $sqlas = "SELECT * FROM t_asuransi ORDER BY nama ASC";
-                                      $qas = mysql_query( $sqlas );
-                                      while($has = mysql_fetch_array($qas)){
-                                  ?>
-                                  <option value="<?php echo $has['id_asuransi'];?>"><?php echo $has['nama'];?></option>
-                                  <?php }?>
-                                </select>                           
+                                <select id="kategori" name="kategori">                                 
+                                  <option value="Pribadi" onclick="$('#buttonAsuransi').hide();$('#showAsuransi').hide();">Pribadi</option>
+                                  <option value="Asuransi" onclick="$('#buttonAsuransi').show();$('#showAsuransi').show();">Asuransi</option>
+                                </select>      
+                                <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="selectAsuransi();" id="buttonAsuransi">Pilih Asuransi</button>
+                                                         
+                              </div>
+                        </div>
+                        <div class="form-group" id="showAsuransi">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Nama Asuransi</label>
+                          </div>
+                            <div class="col-sm-8">
+                                <input type="hidden" class="form-control" id="asuransi" name="asuransi"> 
+                                <input type="text" class="form-control" id="asuransinm" name="asuransinm" readonly> 
                               </div>
                         </div>
                         <div class="form-group">
@@ -112,17 +118,29 @@
         </div>
 </div>
 <?php include_once 'estimasi_chasis_tab.php';?>
+<?php include_once 'estimasi_asuransi_tab.php';?>
 <script type="text/javascript">
-            $(document).ready(function (){
+  $('#buttonAsuransi').hide();
+  $('#showAsuransi').hide();
+            /*$(document).ready(function (){
                  $("#tablepanel").load('estimasi/panel_load.php');
                  $("#tablepart").load('estimasi/part_load.php');
-            });
+            });*/
+  function selectAsuransi(){ 
+    $("#ModalAsuransi").modal({backdrop: 'static',keyboard:false});   
+  }
   function chasise(){ 
-    $("#ModalChasis").modal('show',{backdrop: 'true'});   
+    $("#ModalChasis").modal({backdrop: 'static',keyboard:false});   
   }
   $(document).ready(function (){
 
                       $("#formestimasi").on('submit', function(e){
+                          var chs= $("#chasis").val();
+                          var km=  $("#kmmasuk").val();
+                          if (chs==''){
+                            alert('Data ada yang belum diisi');
+                            return false;
+                          }
                           e.preventDefault();
                             //alert(disposisine)                       ;
                                       $.ajax({
@@ -145,7 +163,7 @@
                                                                 type: "GET",
                                                                   success: function (ajaxData){
                                                                     $("#ModalEstimasiDet").html(ajaxData);
-                                                                    $("#ModalEstimasiDet").modal('show',{backdrop: 'true'});
+                                                                    $("#ModalEstimasiDet").modal({backdrop: 'static', keyboard:false});
                                                                   }
                                                                 }); 
 

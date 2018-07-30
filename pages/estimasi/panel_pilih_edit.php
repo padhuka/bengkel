@@ -1,14 +1,14 @@
 
-    <div id="ModalPilihPanel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
+    <div id="ModalPilihPanelEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
       <div class="col-md-14">
                 <div class="modal-content">
                     <div class="modal-header">
                          
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalPilihPanel').modal('hide');"><span>&times;</span></button></h4>                        
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalPilihPanelEdit').modal('hide');"><span>&times;</span></button></h4>                        
                     </div>
 
                   <div class="box">
-                <table id="panelestimasi" class="table table-condensed table-bordered table-striped table-hover">
+                <table id="panelestimasie" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode Panel</th>
@@ -38,7 +38,7 @@
                           <td><?php echo $catat['diskon'];?></td>
                           <td><?php echo $catat['ppn'];?></td>
                           <td>
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilihpanele('<?php echo $catat['id_panel'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['harga_jual'];?>','<?php echo $hartot;?>','<?php echo $catat['diskon'];?>');">Pilih</button>
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilihpaneledit('<?php echo $catat['id_panel'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['harga_jual'];?>','<?php echo $hartot;?>','<?php echo $catat['diskon'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
@@ -51,14 +51,14 @@
               </div>
               </div>              
               <script type="text/javascript">
-                $('#panelestimasi').DataTable();
-                function pilihpanele(a,b,c,d,e){
+                $('#panelestimasie').DataTable();
+                function pilihpaneledit(a,b,c,d,e){
                               $("#panel").val(a);
                               $("#panelnm").val(b);
                               $("#hargapokok").val(c);
                               $("#hargatotal").val(d);                              
                               $("#diskon").val(e);                              
-                              $("#ModalPilihPanel").modal('hide');
+                              $("#ModalPilihPanelEdit").modal('hide');
                               /*$.ajax({
                               url: "suratmasuk/suratmasuk_add.php",
                               type: "GET",

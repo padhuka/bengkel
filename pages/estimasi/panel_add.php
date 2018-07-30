@@ -6,8 +6,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Estimasi Panel</h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tambah Estimasi Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalAddPanel').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
@@ -24,8 +23,7 @@
 				                  <div class="col-sm-6">
                             <input type="hidden" class="form-control" id="panel" name="panel" required>
 				                    <input type="text" class="form-control" id="panelnm" name="panelnm" readonly required>
-                            <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpanel();">Pilih</button>
-				                  </div>
+				                  </div><button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpanel();">Pilih</button>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -40,8 +38,8 @@
 				                  <label for="hargajualpanel">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" id="diskon" name="diskon" required onchange="kali();">%
-				                  </div>
+				                    <input type="text" class="form-control" id="diskon" name="diskon" required onchange="kali();">
+				                  </div>%
 				                </div>
                         
                         <div class="form-group">
@@ -55,9 +53,9 @@
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
-                            <input type="text" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
+                            <input type="hidden" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Batal&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" onclick="$('#ModalAddPanel').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
                         </div>
 				                </div>
@@ -69,7 +67,7 @@
 <?php include_once 'panel_pilih.php';?>
 <script type="text/javascript">
   function pilihpanel(){ 
-    $("#ModalPilihPanel").modal('show',{backdrop: 'true'});   
+    $("#ModalPilihPanel").modal({backdrop: 'static', keyboard:false});   
   }
   function kali(){
     var hasil= $("#hargapokok").val()-($("#diskon").val()*$("#hargapokok").val()/100);

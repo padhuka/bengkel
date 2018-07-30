@@ -14,8 +14,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hid_panelden="true">&times;</span></button>
-                        <h4 class="modal-title" fk_panel="myModalLabel">Hapus Data Panel</h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Hapus Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalDeletePanel').modal('hide');"><span>&times;</span></button></h4> 
                     </div>
                         <div class="panel-body">
 
@@ -26,7 +25,7 @@
                                         <div class="form-group">
                                             <input type="hidden" id="fk_panel" name="fk_panel" value="<?php echo $id;?>">
                                             <button type="button" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">&nbsp;&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hid_panelden="true">&nbsp;Batal&nbsp;</button>
+                                            <button type="button" class="btn btn-primary" onclick="$('#ModalDeletePanel').modal('hide');" >&nbsp;Batal&nbsp;</button>
                                         </div>
                                     </form>
                                 </div>

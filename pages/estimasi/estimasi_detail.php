@@ -13,7 +13,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Data Estimasi</h4></h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEstimasiDet').modal('hide');"><span>&times;</span></button></h4>   
                     </div>
                     
                     <div class="modal-body">
@@ -62,6 +62,15 @@
                           <div class="col-sm-3">
                             <label for="namaestimasi">Kategori</label>
                           </div>
+                          <div class="col-sm-7">
+                            <label>:<?php echo $hes['kategori'];?></label>
+                          </div>
+                        </div>
+                        <?php if ($hes['kategori']=='Asuransi'){?>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Asuransi</label>
+                          </div>
                             <div class="col-sm-8">
                                   <?php
                                     $sqlas = "SELECT * FROM t_asuransi where id_asuransi='$hes[fk_asuransi]'";
@@ -71,6 +80,7 @@
                                   <label>:<?php echo $has['nama'];?></label>                        
                               </div>
                         </div>
+                        <?php }?>
                         <div class="form-group">
                           <div class="col-sm-3">
                             <label for="namaestimasi">No Polisi</label>

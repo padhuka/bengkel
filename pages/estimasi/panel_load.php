@@ -31,7 +31,7 @@
                                     </td>
                         </tr>
                     <?php }?>
-                    <tr><td colspan="5"><button type="button" class="btn btn-primary" onclick="keluar($(this).hide());">&nbsp;Close&nbsp;</button></td></td></tr>
+                   
                 </tfoot>
               </table>
               <script>
@@ -43,7 +43,7 @@
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAddPanel").html(ajaxData);
-                        $("#ModalAddPanel").modal('show',{backdrop: 'true'});
+                        $("#ModalAddPanel").modal({backdrop: 'static', keyboard:false});
                       }
                     });
               }
@@ -53,7 +53,7 @@
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalDeletePanel").html(ajaxData);
-                                        $("#ModalDeletePanel").modal('show',{backdrop: 'true'});
+                                        $("#ModalDeletePanel").modal({backdrop: 'static', keyboard:false});
                                     }
                                 });
             };
@@ -63,7 +63,7 @@
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEditPanel").html(ajaxData);
-                                      $("#ModalEditPanel").modal('show',{backdrop: 'true'});
+                                      $("#ModalEditPanel").modal({backdrop: 'static', keyboard:false});
                                   }
                               });
             };
