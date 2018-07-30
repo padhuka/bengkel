@@ -4,13 +4,15 @@
     include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
+    $idestimasi= $_GET['idestimasi'];
+    $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
+    $catat= mysql_fetch_array(mysql_query($sqlpan));
     
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Data Estimasi</h4></h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
                     <!--<div class="box-header with-border">
                       <h3 class="box-title">Horizontal Form</h3>
@@ -24,7 +26,7 @@
                             <label for="kodeestimasi">Tgl Masuk</label>
                           </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="tgl" name="tgl" value="<?php echo tampilTanggal($harinow);?>" readonly>
+                            <input type="text" class="form-control" id="tgl" name="tgl" value="<?php echo date('d-m-Y' , strtotime($catat['tgl']));?>" readonly>
                           </div>
                         </div>
                         
@@ -98,7 +100,7 @@
                            <div class="modal-footer">
                           <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Batal&nbsp;</button>
+                                   <button type="button" class="btn btn-primary" onclick="$('#ModalEdit').modal('hide');">&nbsp;Batal&nbsp;</button>
                           </div>
                         </div>
                         </div>
@@ -155,7 +157,7 @@
                                                         $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
-                                                            $('#ModalAdd').modal('hide'); 
+                                                            $('#ModalEdit').modal('hide'); 
                                                             var hsl=data.trim();       
 
                                                              $.ajax({
