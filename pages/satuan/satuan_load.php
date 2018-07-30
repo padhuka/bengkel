@@ -6,7 +6,7 @@
                 <tr>
                           <th>Kode Satuan</th>
                           <th>Nama</th>
-                          <th><button type="button" class="btn btn btn-default btn-circle open_add"><span>Tambah</span></button></th>
+                          <th><button type="button" class="btn btn btn-default btn-circle open_add" ><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,13 +31,12 @@
               <script>
              $('#satuan1').DataTable();
             $(".open_add").click(function (e){
-                                //var m = $(this).attr("id_satuan");
                     $.ajax({
                     url: "satuan/satuan_add.php",
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAdd").html(ajaxData);
-                        $("#ModalAdd").modal('show',{backdrop: 'true'});
+                        $("#ModalAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
             });

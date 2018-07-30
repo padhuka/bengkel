@@ -40,7 +40,7 @@
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAdd").html(ajaxData);
-                        $("#ModalAdd").modal('show',{backdrop: 'true'});
+                        $("#ModalAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
             });
