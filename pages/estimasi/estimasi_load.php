@@ -29,8 +29,8 @@
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['km_masuk'];?></td>
                           <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(ideditestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(iddelestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Hapus</span></button>
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Hapus</span></button>
 
                                     </td>
                         </tr>
@@ -46,14 +46,14 @@
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAdd").html(ajaxData);
-                        $("#ModalAdd").modal('show',{backdrop: 'true'});
+                        $("#ModalAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
               }
               
-           function open_del(){
+           function open_del(x){
                                 $.ajax({
-                                    url: "estimasi/estimasi_del.php?id_estimasi="+iddelestimasi,
+                                    url: "estimasi/estimasi_del.php?idestimasi="+x,
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalDelete").html(ajaxData);
@@ -61,9 +61,9 @@
                                     }
                                 });
             };
-            function open_modal(){
+            function open_modal(y){
                               $.ajax({
-                                  url: "estimasi/estimasi_edit.php?id_estimasi="+ideditestimasi,
+                                  url: "estimasi/estimasi_edit.php?idestimasi="+y,
 
                                   type: "GET",
                                   success: function (ajaxData){

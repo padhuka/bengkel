@@ -31,6 +31,7 @@
                                     </td>
                         </tr>
                     <?php }?>
+                    <tr><td colspan="5"><button type="button" class="btn btn-primary" onclick="keluar($(this).hide());">&nbsp;Close&nbsp;</button></td></td></tr>
                 </tfoot>
               </table>
               <script>
@@ -58,7 +59,7 @@
             };
             function open_modalpanel(z){
                               $.ajax({
-                                  url: "estimasi/estimasi_edit.php?idestimasi=<?php echo $idestimasi;?>&id="+z,
+                                  url: "estimasi/panel_edit.php?idestimasi=<?php echo $idestimasi;?>&id="+z,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEditPanel").html(ajaxData);

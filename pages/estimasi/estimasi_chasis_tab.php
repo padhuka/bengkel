@@ -38,10 +38,12 @@
                           <td ><?php echo $swrn['nama'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" onclick="pilih('<?php echo $catat['no_chasis'];?>','<?php echo $catat['no_mesin'];?>','<?php echo $catat['no_polisi'];?>','<?php echo $swrn['id_warna_kendaraan'];?>','<?php echo $swrn['nama'];?>','<?php echo $catat['fk_customer'];?>');">Pilih</button>
-
                                     </td>
+                          <td>
+
                         </tr>
                     <?php }?>
+                        <tr><td colspan="5"><button type="button" class="btn btn-primary" onclick="$('#ModalChasis').modal('hide');">&nbsp;Close&nbsp;</button></td></td></tr>
                 </tfoot>
               </table>
               </div>

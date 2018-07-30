@@ -32,5 +32,5 @@
                 </tfoot>
               </table>
               <script>
-            $('#estimasi2').DataTable();
+            $('#estimasixx').DataTable();
         </script>

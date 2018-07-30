@@ -113,22 +113,16 @@
 </div>
 <?php include_once 'estimasi_chasis_tab.php';?>
 <script type="text/javascript">
-            /*$(document).ready(function (){
+            $(document).ready(function (){
                  $("#tablepanel").load('estimasi/panel_load.php');
                  $("#tablepart").load('estimasi/part_load.php');
-            });*/
+            });
   function chasise(){ 
-    $("#ModalChasis").modal({backdrop: 'static',keyboard:false});   
+    $("#ModalChasis").modal('show',{backdrop: 'true'});   
   }
   $(document).ready(function (){
 
                       $("#formestimasi").on('submit', function(e){
-                          var chs= $("#chasis").val();
-                          var km=  $("#kmmasuk").val();
-                          if (chs==''){
-                            alert('Data ada yang belum diisi');
-                            return false;
-                          }
                           e.preventDefault();
                             //alert(disposisine)                       ;
                                       $.ajax({
@@ -151,7 +145,7 @@
                                                                 type: "GET",
                                                                   success: function (ajaxData){
                                                                     $("#ModalEstimasiDet").html(ajaxData);
-                                                                    $("#ModalEstimasiDet").modal({backdrop: 'static', keyboard:false});
+                                                                    $("#ModalEstimasiDet").modal('show',{backdrop: 'true'});
                                                                   }
                                                                 }); 
 

@@ -4,11 +4,12 @@
     $idestimasi=$_GET['idestimasi'];
     $id=$_GET['id'];
 
-    $sqlpan= "SELECT * FROM t_estimasi_panel_detail WHERE id='id'";
+    $sqlpan= "SELECT * FROM t_estimasi_panel_detail WHERE id='$id'";
     $hslpan= mysql_fetch_array(mysql_query($sqlpan));
 
-    $snm = "SELECT * FROM t_panel WHERE id_panel='$id'";
+    $snm = "SELECT * FROM t_panel WHERE id_panel='$hslpan[fk_panel]'";
     $hnm = mysql_fetch_array(mysql_query($snm));
+
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
@@ -22,7 +23,7 @@
 				             /.box-header -->
 				            <!-- form start -->
                     <div class="modal-body">
-				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formPanel">
+				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formPanelEdit">
                        
 				                <div class="form-group">
                           <div class="col-sm-3">
@@ -39,7 +40,8 @@
                           <label for="hargapokokpanel">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokok" name="hargapokok" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="text" class="form-control" id="hargapokoklm" name="hargapokoklm" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
                           </div>
                         </div>
 				                <div class="form-group">
@@ -47,7 +49,8 @@
 				                  <label for="hargajualpanel">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" id="diskon" name="diskon" value="<?php echo $hslpan['diskon_panel'];?>" required onchange="kali();">%
+				                    <input type="text" class="form-control" id="diskone" name="diskone" value="<?php echo $hslpan['diskon_panel'];?>" required onchange="kaliedit();">%
+                            <input type="text" class="form-control" id="hargadiskonlm" name="hargadiskonlm" value="<?php echo $hslpan['harga_diskon_panel'];?>" required readonly>
 				                  </div>
 				                </div>
                         
@@ -56,7 +59,8 @@
                           <label for="ppn">Harga Total</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="hargatotal" name="hargatotal" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
+                            <input type="text" class="form-control" id="hargatotale" name="hargatotale" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
+                            <input type="text" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
                           </div>
                         </div>
 				                <div class="form-group">
@@ -79,14 +83,16 @@
   function pilihpanel(){ 
     $("#ModalPilihPanel").modal('show',{backdrop: 'true'});   
   }
-  function kali(){
-    var hasil= $("#hargapokok").val()-($("#diskon").val()*$("#hargapokok").val()/100);
-    $("#hargatotal").val(hasil);
+  function kaliedit(){
+    
+    var hasile= $("#hargapokoke").val()-($("#diskone").val()*$("#hargapokoke").val()/100);
+    //alert($("#diskone").val());
+    $("#hargatotale").val(hasile);
     //alert(hasil);
   }
 	$(document).ready(function (){
 
-                      $("#formPanel").on('submit', function(e){
+                      $("#formPanelEdit").on('submit', function(e){
                           e.preventDefault();
                             //alert(disposisine)                       ;
                            						$.ajax({
@@ -97,12 +103,14 @@
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){  
+                                                      //var hsl = data.trim();
+                                                      //alert(hsl);
 			                                                $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
-                                                                      $('.modal-body').css('opacity', '');
+                                                      $('.modal-body').css('opacity', '');
 
-                                                            alert('Data Berhasil Disimpan');
-                                                            $('#ModalEditPanel').modal('hide');
-                                                            $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php?idestimasi=<?php echo $idestimasi;?>');
+                                                      alert('Data Berhasil Disimpan');
+                                                      $('#ModalEditPanel').modal('hide');
+                                                      $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php?idestimasi=<?php echo $idestimasi;?>');
 			                                            }
                                                       
                                                 });

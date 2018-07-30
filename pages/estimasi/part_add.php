@@ -7,7 +7,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Estimasi Panel</h4>
+                        <h4 class="modal-title" id="myModalLabel">Tambah Estimasi Part</h4>
                     </div>
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
@@ -15,21 +15,21 @@
 				             /.box-header -->
 				            <!-- form start -->
                     <div class="modal-body">
-				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formPanel">
+				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formpart">
                        
 				                <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="namapanel">Nama</label>
+                            <label for="namapart">Nama</label>
                           </div>
 				                  <div class="col-sm-6">
-                            <input type="hidden" class="form-control" id="panel" name="panel" required>
-				                    <input type="text" class="form-control" id="panelnm" name="panelnm" readonly required>
-                            <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpanel();">Pilih</button>
+                            <input type="hidden" class="form-control" id="part" name="part" required>
+				                    <input type="text" class="form-control" id="partnm" name="partnm" readonly required>
+                            <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpart();">Pilih</button>
 				                  </div>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
-                          <label for="hargapokokpanel">Harga</label>
+                          <label for="hargapokokpart">Harga</label>
                         </div>
                           <div class="col-sm-8">
                          <input type="text" class="form-control" id="hargapokok" name="hargapokok" readonly required>
@@ -37,13 +37,20 @@
                         </div>
 				                <div class="form-group">
                             <div class="col-sm-3">
-				                  <label for="hargajualpanel">Diskon</label>
+				                  <label for="hargajualpart">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
 				                    <input type="text" class="form-control" id="diskon" name="diskon" required onchange="kali();">%
 				                  </div>
 				                </div>
-                        
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="ppn">Qty</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="qty" name="qty" required readonly>
+                          </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-3">
                           <label for="ppn">Harga Total</label>
@@ -66,36 +73,34 @@
 				          </div>
 				</div>
 </div>
-<?php include_once 'panel_pilih.php';?>
+<?php include_once 'part_pilih.php';?>
 <script type="text/javascript">
-  function pilihpanel(){ 
-    $("#ModalPilihPanel").modal('show',{backdrop: 'true'});   
+  function pilihpart(){ 
+    $("#ModalPilihPart").modal('show',{backdrop: 'true'});   
   }
   function kali(){
-    var hasil= $("#hargapokok").val()-($("#diskon").val()*$("#hargapokok").val()/100);
+    var hasil= ($("#hargapokok").val()-($("#diskon").val()*$("#hargapokok").val()/100))*$("#qty").val();
     $("#hargatotal").val(hasil);
     //alert(hasil);
   }
 	$(document).ready(function (){
-                      $("#formPanel").on('submit', function(e){
+
+                      $("#formpart").on('submit', function(e){
                           e.preventDefault();
                             //alert(disposisine)                       ;
                            						$.ajax({
                                                   type: 'POST',
-                                                  url: 'estimasi/panel_add_save.php',
+                                                  url: 'estimasi/part_add_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){  
-                                                      //var hsl=data.trim();
-                                                      //alert(hsl);
-                                                      //alert('estimasi/estimasi_detail_tab.php?idestimasi=<?php //echo $idestimasi;?>');
-			                                                $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+			                                                $("#estimasipart").load('estimasi/part_load.php?idestimasi=<?php echo $idestimasi;?>');
                                                                       $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
-                                                            $('#ModalAddPanel').modal('hide');
+                                                            $('#ModalAddPart').modal('hide');
                                                             $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php?idestimasi=<?php echo $idestimasi;?>');
 			                                            }
                                                       
