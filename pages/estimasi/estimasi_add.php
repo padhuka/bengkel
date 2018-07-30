@@ -80,7 +80,7 @@
                             <label for="namaestimasi">Nama Asuransi</label>
                           </div>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="asuransi" name="asuransi"> 
+                                <input type="hidden" class="form-control" id="asuransi" name="asuransi"> 
                                 <input type="text" class="form-control" id="asuransinm" name="asuransinm"> 
                               </div>
                         </div>
