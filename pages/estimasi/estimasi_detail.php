@@ -85,7 +85,7 @@
                 <div class="form-group">
                            <div class="modal-footer">
                                 <div class="col-sm-8">
-                                    <button type="button" class="btn btn-primary" name="part" onclick="parte();">&nbsp;Part&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" name="part" onclick="parte('<?php echo $idestimasi[0];?>');">&nbsp;Part&nbsp;</button>
                                     <button type="button" class="btn btn-primary" name="panel" onclick="panele('<?php echo $idestimasi[0];?>');">Panel</button>
                                 </div>
                             </div>
@@ -110,12 +110,13 @@
             });
 
             function panele(x){
+
               $.ajax({
                     url: "estimasi/panel_tab.php?idestimasine="+x,
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAddPanelx").html(ajaxData);
-                        $("#ModalAddPanelx").modal('show',{backdrop: 'true'});
+                        $("#ModalAddPanelx").modal({backdrop: 'static',keyboard: false});
                       }
                     });
               }
