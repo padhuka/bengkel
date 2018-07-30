@@ -17,7 +17,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi ORDER BY id_estimasi ASC";
+                                    $sqlcatat = "SELECT * FROM t_estimasi WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_estimasi ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
@@ -30,7 +30,7 @@
                           <td ><?php echo $catat['km_masuk'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Hapus</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button>
 
                                     </td>
                         </tr>
@@ -57,7 +57,7 @@
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalDelete").html(ajaxData);
-                                        $("#ModalDelete").modal('show',{backdrop: 'true'});
+                                        $("#ModalDelete").modal({backdrop: 'static',keyboard: false});
                                     }
                                 });
             };
