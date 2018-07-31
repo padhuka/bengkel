@@ -5,6 +5,7 @@
       <table id="estimasi1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>Kode Estimasi</th>
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
@@ -17,12 +18,13 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_estimasi ASC";
+                                    $sqlcatat = "SELECT * FROM t_estimasi WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_estimasi DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));//substr($catat['tgl'],0,10);?></td>
+                          <td ><?php echo ($catat['id_estimasi']);?></td>
+                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
