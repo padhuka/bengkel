@@ -20,6 +20,10 @@
                         case 'inventory' : include_once 'inventory/inventory_tab.php'; break;
                         case 'customer' : include_once 'customer/customer_tab.php'; break;
                         case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
+                        case 'part' : include_once 'part/part_tab.php'; break;
+                        case 'inventory' : include_once 'inventory/inventory_tab.php'; break;
+                        case 'customer' : include_once 'customer/customer_tab.php'; break;
+                        case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
                         // case 'restore' : include_once 'database/restore.php'; break;
                         // case 'backupfile' : include_once 'database/backupfile.php'; break;
                         // //LAPORAN
