@@ -46,7 +46,7 @@
                           <label for="hargajualpart">Qty</label>
                         </div>
                           <div class="col-sm-3">
-                            <input type="text" class="form-control" id="qty" name="qty" required>
+                            <input type="text" class="form-control" id="qty" name="qty" required onchange="kali();">
                           </div>
                         </div>
                         <div class="form-group">
