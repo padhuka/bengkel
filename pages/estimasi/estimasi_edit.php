@@ -9,7 +9,7 @@
     $catat= mysql_fetch_array(mysql_query($sqlpan));
 
     $sqlcatat = "SELECT * FROM t_inventory_bengkel A, t_warna_kendaraan B  WHERE A.no_chasis='$catat[fk_no_chasis]' AND A.fk_warna_kendaraan=B.id_warna_kendaraan";  
-    //$sqlcatat;  
+    
     $swrn= mysql_fetch_array(mysql_query($sqlcatat));
     $wrne=$swrn['nama'];
     $kdwrne=$swrn['fk_warna_kendaraan'];
@@ -21,7 +21,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>  
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4><?php echo $sqlpan;  ?>  
                     </div>
                     <!--<div class="box-header with-border">
                       <h3 class="box-title">Horizontal Form</h3>
@@ -29,7 +29,7 @@
                      /.box-header -->
                     <!-- form start -->
                     <div class="modal-body">
-                    <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formestimasi">
+                    <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formestimasie">
                         <div class="form-group">
                           <div class="col-sm-3">
                             <label for="kodeestimasi">Tgl Masuk</label>
@@ -160,7 +160,7 @@
   }
   $(document).ready(function (){
 
-                      $("#formestimasi").on('submit', function(e){
+                      $("#formestimasie").on('submit', function(e){
                           var chs= $("#chasise").val();
                           var km=  $("#kmmasuke").val();
                           if (chs==''){

@@ -6,9 +6,8 @@
                 <thead class="thead-light">
                 <tr>
                           <th>Nama</th>
-                          <th>Harga</th>                          
+                          <th>Harga</th>
                           <th>Diskon</th>
-                          <th>Qty</th>
                           <th>Harga</th>                          
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_addpart(idestimasi='<?php echo $idestimasi;?>');"><span>Tambah</span></button></th>
                 </tr>
@@ -23,7 +22,6 @@
                         <tr>
                           <td ><?php echo $catat['fk_part'];?></td>
                           <td ><?php echo $catat['harga_jual_part'];?></td>
-                          <td ><?php echo $catat['qty_part'];?></td>
                           <td ><?php echo $catat['harga_diskon_part'];?></td>
                           <td ><?php echo $catat['harga_total_estimasi_part'];?></td>
                           <td >
@@ -33,6 +31,7 @@
                                     </td>
                         </tr>
                     <?php }?>
+                   
                 </tfoot>
               </table>
               <script>
@@ -44,7 +43,7 @@
                     type: "GET",
                       success: function (ajaxData){
                         $("#ModalAddPart").html(ajaxData);
-                        $("#ModalAddPart").modal('show',{backdrop: 'true'});
+                        $("#ModalAddPart").modal({backdrop: 'static', keyboard:false});
                       }
                     });
               }
@@ -54,17 +53,17 @@
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalDeletePart").html(ajaxData);
-                                        $("#ModalDeletePart").modal('show',{backdrop: 'true'});
+                                        $("#ModalDeletePart").modal({backdrop: 'static', keyboard:false});
                                     }
                                 });
             };
             function open_modalpart(z){
                               $.ajax({
-                                  url: "estimasi/estimasi_edit.php?idestimasi=<?php echo $idestimasi;?>&id="+z,
+                                  url: "estimasi/part_edit.php?idestimasi=<?php echo $idestimasi;?>&id="+z,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEditPart").html(ajaxData);
-                                      $("#ModalEditPart").modal('show',{backdrop: 'true'});
+                                      $("#ModalEditPart").modal({backdrop: 'static', keyboard:false});
                                   }
                               });
             };

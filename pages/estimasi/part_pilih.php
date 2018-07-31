@@ -1,18 +1,14 @@
-           <?php
-            include_once '../../lib/config.php';
-          ?>
 
-      <div id="ModalPilihPart" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">          
-      <div class="col-md-11">
-                <div class="modal-content" style="border-radius:10px">
-                    <div class="modal-header" style="padding: 8px;border-top-style: 5px">
-                        
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data part</h4>                        
+    <div id="ModalPilihPart" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
+      <div class="col-md-14">
+                <div class="modal-content">
+                    <div class="modal-header">
+                         
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data part <button type="button" class="close" aria-label="Close" onclick="$('#ModalPilihPart').modal('hide');"><span>&times;</span></button></h4>                        
                     </div>
 
-                  <div class="box box-info" style="border-top-color:#dd4b39; margin-bottom: 10px;">
-              <table id="partestimasi" class="table table-condensed table-bordered table-striped table-hover">
+                  <div class="box">
+                <table id="partestimasi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode part</th>
@@ -57,12 +53,13 @@
               <script type="text/javascript">
                 $('#partestimasi').DataTable();
                 function pilihparte(a,b,c,d,e){
+                  //alert(c);
                               $("#part").val(a);
                               $("#partnm").val(b);
-                              $("#hargapokok").val(c);
-                              $("#hargatotal").val(d);                              
-                              $("#diskon").val(e);
-                              $("#qty").val('1');           
+                              $("#hargapokokp").val(c);
+                              $("#hargatotalp").val(d);                              
+                              $("#diskonp").val(e);
+                              $("#qty").val('1');
                               $("#ModalPilihPart").modal('hide');
                               /*$.ajax({
                               url: "suratmasuk/suratmasuk_add.php",
@@ -74,15 +71,27 @@
                               });*/
                       }; 
               </script>
+<style type="text/css">
+  .modal-header {
+    padding-top: 15px;padding-bottom: 15px;
+  }
+  .title-header {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+  }
+  .modal-content {
+    height: 556px;
+  }
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top:10px;
+  }
+  .modal-title {
+    padding-top: 5px;padding-bottom: 5px;
+  }
+</style>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
-  <!-- Google Font 
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
-        <!-- jQuery 3 -->

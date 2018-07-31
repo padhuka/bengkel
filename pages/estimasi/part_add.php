@@ -6,8 +6,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Estimasi Part</h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tambah Estimasi Part <button type="button" class="close" aria-label="Close" onclick="$('#ModalAddPart').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
@@ -24,15 +23,14 @@
 				                  <div class="col-sm-6">
                             <input type="hidden" class="form-control" id="part" name="part" required>
 				                    <input type="text" class="form-control" id="partnm" name="partnm" readonly required>
-                            <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpart();">Pilih</button>
-				                  </div>
+				                  </div><button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpart();">Pilih</button>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
                           <label for="hargapokokpart">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokok" name="hargapokok" readonly required>
+                         <input type="text" class="form-control" id="hargapokokp" name="hargapokokp" readonly required>
                           </div>
                         </div>
 				                <div class="form-group">
@@ -40,15 +38,15 @@
 				                  <label for="hargajualpart">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" id="diskon" name="diskon" required onchange="kali();">%
-				                  </div>
+				                    <input type="text" class="form-control" id="diskonp" name="diskonp" required onchange="kali();">
+				                  </div>%
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
-                          <label for="ppn">Qty</label>
+                          <label for="hargajualpart">Qty</label>
                         </div>
-                          <div class="col-sm-8">
-                            <input type="text" class="form-control" id="qty" name="qty" required readonly>
+                          <div class="col-sm-3">
+                            <input type="text" class="form-control" id="qty" name="qty" required>
                           </div>
                         </div>
                         <div class="form-group">
@@ -56,15 +54,15 @@
                           <label for="ppn">Harga Total</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="hargatotal" name="hargatotal" required readonly>
+                            <input type="text" class="form-control" id="hargatotalp" name="hargatotalp" required readonly>
                           </div>
                         </div>
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
-                            <input type="text" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
+                            <input type="hidden" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Batal&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" onclick="$('#ModalAddPart').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
                         </div>
 				                </div>
@@ -76,15 +74,14 @@
 <?php include_once 'part_pilih.php';?>
 <script type="text/javascript">
   function pilihpart(){ 
-    $("#ModalPilihPart").modal('show',{backdrop: 'true'});   
+    $("#ModalPilihPart").modal({backdrop: 'static', keyboard:false});   
   }
   function kali(){
-    var hasil= ($("#hargapokok").val()-($("#diskon").val()*$("#hargapokok").val()/100))*$("#qty").val();
-    $("#hargatotal").val(hasil);
+    var hasil= ($("#hargapokoke").val()-($("#diskone").val()*$("#hargapokoke").val()/100))*$("#qty").val();
+    $("#hargatotale").val(hasil);
     //alert(hasil);
   }
 	$(document).ready(function (){
-
                       $("#formpart").on('submit', function(e){
                           e.preventDefault();
                             //alert(disposisine)                       ;
@@ -96,6 +93,9 @@
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){  
+                                                      var hsl=data.trim();
+                                                      alert(hsl);
+                                                      //alert('estimasi/estimasi_detail_tab.php?idestimasi=<?php //echo $idestimasi;?>');
 			                                                $("#estimasipart").load('estimasi/part_load.php?idestimasi=<?php echo $idestimasi;?>');
                                                                       $('.modal-body').css('opacity', '');
 
