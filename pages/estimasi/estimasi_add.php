@@ -1,15 +1,15 @@
 <!-- general form elements disabled -->
    <?php
 
-   include_once '../../lib/sess.php';
+    include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
+    
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Tambah Data Estimasi </h4>  
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tambah Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalAdd').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
                     <!--<div class="box-header with-border">
                       <h3 class="box-title">Horizontal Form</h3>
@@ -91,21 +91,12 @@
                             <input type="text" class="form-control" id="kmmasuk" name="kmmasuk" required>
                           </div>
                         </div> 
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">Mark</label>
-                          </div>
-                          <div class="col-sm-3">
-                            <label class="checkbox-inline"><input type="checkbox" id="cek" name="cek" onclick="cekb();">Mark</label>
-                            <input type="text" class="form-control" id="mark" name="mark" readonly>
-                          </div>
-                          
-                        </div> 
+                         
                           <input type="hidden" class="form-control" id="uname" name="uname" value="<?php echo $sesuname;?>" readonly>
                           <input type="hidden" class="form-control" id="customer" name="customer" readonly>                        
                         <div class="form-group">
                            <div class="modal-footer">
-                          <div class="but">
+                          <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
                                    <button type="button" class="btn btn-primary" onclick="$('#ModalAdd').modal('hide');">&nbsp;Batal&nbsp;</button>
                           </div>
@@ -136,16 +127,13 @@
                  $("#tablepart").load('estimasi/part_load.php');
             });*/
 
-  function cekb(){
-    if(cek.checked==true){$('#mark').val('1');}else{$('#mark').val('0');}
-  }
+  
   function selectAsuransi(){ 
-    $("#ModalAsuransi").modal({backdrop:'static',keyboard:false});   
+    $("#ModalAsuransi").modal({backdrop: 'static',keyboard:false});   
   }
   function chasise(){ 
-    $("#ModalChasis").modal({backdrop:'static',keyboard:false});   
+    $("#ModalChasis").modal({backdrop: 'static',keyboard:false});   
   }
-
   $(document).ready(function (){
 
                       $("#formestimasi").on('submit', function(e){
@@ -193,9 +181,6 @@
 </script>
 
 <style type="text/css">
-  .modal-open .modal {
-    overflow-y:hidden; 
-  }
   .modal-footer {
     padding-top: 10px;
     padding-bottom: 0px;
@@ -208,15 +193,8 @@
     text-align: center;
     font-weight: bold;
   }
-    .modal-content {
-    height: 650px;
-  }
-   .but {
-    text-align: center;
-  }
   .modal-dialog {
     margin-bottom: 0px;
     border: 3px;
-    width: 750px;
   }
 </style>

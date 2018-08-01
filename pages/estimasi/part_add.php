@@ -57,6 +57,15 @@
                             <input type="text" class="form-control" id="hargatotalp" name="hargatotalp" required readonly>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Mark</label>
+                          </div>
+                          <div class="col-sm-3">
+                            <label class="checkbox-inline"><input type="checkbox" id="cekp" name="cekp" onclick="cekbp();">Mark</label>
+                            <input type="hidden" class="form-control" id="markp" name="markp" readonly>
+                          </div>
+                        </div>
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
@@ -80,6 +89,9 @@
     var hasil= ($("#hargapokokp").val()-($("#diskonp").val()*$("#hargapokokp").val()/100))*$("#qty").val();
     $("#hargatotalp").val(hasil);
     //alert(hasil);
+  }
+  function cekbp(){
+    if(cekp.checked==true){$('#markp').val('1');}else{$('#markp').val('0');}
   }
 	$(document).ready(function (){
                       $("#formpart").on('submit', function(e){

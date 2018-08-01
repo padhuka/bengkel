@@ -12,8 +12,9 @@
         $hargadiskonlm= trim($_POST['hargadiskonlmep']);
         $total= trim($_POST['hargatotalep']);
         $totallm= trim($_POST['hargatotallmep']);
+        $mark= trim($_POST['markep']);
 
-         $updatepart = "UPDATE t_estimasi_part_detail SET fk_part='$id_part',harga_jual_part='$hargajual', harga_diskon_part='$hargadiskon',harga_total_estimasi_part='$total',diskon_part='$diskon' WHERE id='$id'";
+         $updatepart = "UPDATE t_estimasi_part_detail SET fk_part='$id_part',harga_jual_part='$hargajual', harga_diskon_part='$hargadiskon',harga_total_estimasi_part='$total',diskon_part='$diskon',mark_part='$mark' WHERE id='$id'";
             mysql_query($updatepart);
 
 

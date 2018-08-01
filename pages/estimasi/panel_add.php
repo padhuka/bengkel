@@ -50,6 +50,15 @@
                             <input type="text" class="form-control" id="hargatotal" name="hargatotal" required readonly>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Mark</label>
+                          </div>
+                          <div class="col-sm-3">
+                            <label class="checkbox-inline"><input type="checkbox" id="cek" name="cek" onclick="cekb();">Mark</label>
+                            <input type="hidden" class="form-control" id="mark" name="mark" readonly>
+                          </div>
+                        </div>
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
@@ -66,8 +75,12 @@
 </div>
 <?php include_once 'panel_pilih.php';?>
 <script type="text/javascript">
+  $('#mark').val('0')
   function pilihpanel(){ 
     $("#ModalPilihPanel").modal({backdrop: 'static', keyboard:false});   
+  }
+  function cekb(){
+    if(cek.checked==true){$('#mark').val('1');}else{$('#mark').val('0');}
   }
   function kali(){
     var hasil= $("#hargapokok").val()-($("#diskon").val()*$("#hargapokok").val()/100);

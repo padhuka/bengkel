@@ -9,8 +9,9 @@
         $qty= trim($_POST['qty']);
         $hargadiskon= ($diskon*$hargajual)/100;
         $total= trim($_POST['hargatotalp']);
+        $markp= trim($_POST['markp']);
       
-		    $sqltbemp = "INSERT INTO t_estimasi_part_detail (fk_estimasi,fk_part,harga_jual_part,diskon_part,harga_diskon_part,harga_total_estimasi_part,qty_part) VALUES ('$idestimasi','$id_part','$hargajual','$diskon','$hargadiskon','$total','$qty')";
+		    $sqltbemp = "INSERT INTO t_estimasi_part_detail (fk_estimasi,fk_part,harga_jual_part,diskon_part,harga_diskon_part,harga_total_estimasi_part,qty_part,mark_part) VALUES ('$idestimasi','$id_part','$hargajual','$diskon','$hargadiskon','$total','$qty','$markp')";
             mysql_query($sqltbemp);
             //echo $sqltbemp;
             //echo 'n';

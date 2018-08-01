@@ -61,6 +61,16 @@
                             <input type="hidden" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Mark</label>
+                          </div>
+                          <?php if ($hslpan['mark_panel']==1){$ck='checked';}else{$ck='';}?>
+                          <div class="col-sm-3">
+                            <label class="checkbox-inline"><input type="checkbox" id="ceke" name="ceke" onclick="cekbe();" <?php echo $ck; ?> >Mark</label>
+                            <input type="hidden" class="form-control" id="marke" name="marke" readonly>
+                          </div>
+                        </div>
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
@@ -81,6 +91,9 @@
   function pilihpanele(){ 
     $("#ModalPilihPanelEdit").modal({backdrop: 'static', keyboard:false});   
     //alert('milih');
+  }
+  function cekbe(){
+    if(ceke.checked==true){$('#marke').val('1');}else{$('#marke').val('0');}
   }
   function kaliedit(){
     

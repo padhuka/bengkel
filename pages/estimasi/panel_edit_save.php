@@ -12,8 +12,9 @@
         $hargadiskonlm= trim($_POST['hargadiskonlme']);
         $total= trim($_POST['hargatotale']);
         $totallm= trim($_POST['hargatotallme']);
+        $mark= trim($_POST['marke']);
 
-          $updatepanel = "UPDATE t_estimasi_panel_detail SET fk_panel='$id_panel',harga_jual_panel='$hargajual', harga_diskon_panel='$hargadiskon',harga_total_estimasi_panel='$total',diskon_panel='$diskon' WHERE id='$id'";
+          $updatepanel = "UPDATE t_estimasi_panel_detail SET fk_panel='$id_panel',harga_jual_panel='$hargajual', harga_diskon_panel='$hargadiskon',harga_total_estimasi_panel='$total',diskon_panel='$diskon', mark_panel='$marke' WHERE id='$id'";
             mysql_query($updatepanel);
 
             $sqlpanel= "SELECT sum(harga_jual_panel) AS totjualpanel,sum(harga_diskon_panel) AS totdiskonpanel, sum(harga_total_estimasi_panel) AS totestimasipanel FROM t_estimasi_panel_detail WHERE fk_estimasi = '$idestimasi'";

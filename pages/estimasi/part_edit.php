@@ -69,6 +69,16 @@
                           </div>
                         </div>
                         <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Mark</label>
+                          </div>
+                          <?php if ($hslpan['mark_part']==1){$ck='checked';}else{$ck='';}?>
+                          <div class="col-sm-3">
+                            <label class="checkbox-inline"><input type="checkbox" id="cekep" name="cekep" onclick="cekbep();" <?php echo $ck; ?> >Mark</label>
+                            <input type="hidden" class="form-control" id="markep" name="markep" readonly>
+                          </div>
+                        </div>
+                        <div class="form-group">
                            <div class="modal-footer">
                           <div class="col-sm-8">
                             <input type="hidden" class="form-control" id="idep" name="idep" value="<?php echo $id?>" required>
@@ -88,6 +98,9 @@
   function pilihpartep(){ 
     $("#ModalPilihPartEdit").modal({backdrop: 'static', keyboard:false});   
     //alert('milih');
+  }
+   function cekbep(){
+    if(cekep.checked==true){$('#markep').val('1');}else{$('#markep').val('0');}
   }
   function kaliep(){
      var hasil= ($("#hargapokokep").val()-($("#diskonep").val()*$("#hargapokokep").val()/100))*$("#qtye").val();
