@@ -20,8 +20,7 @@
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>  
+                    <div class="modal-header"> 
 
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>
                     </div>
