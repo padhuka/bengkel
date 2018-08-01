@@ -2,7 +2,7 @@
             include_once '../../lib/config.php';
       ?>
 
-        <table id="estimasixx" class="table table-condensed table-bordered table-striped table-hover">
+        <table id="estimasixx2" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Item</th>
