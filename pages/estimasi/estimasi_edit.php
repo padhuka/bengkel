@@ -20,8 +20,7 @@
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>  
+                    <div class="modal-header"> 
 
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>
                     </div>
@@ -80,7 +79,7 @@
                             <label for="namaestimasi">Kategori</label>
                           </div>
                             <div class="col-sm-8">
-                                <select id="kategorie" name="kategorie" onchange="selectKategori();">
+                                <select id="kategorie" name="kategorie" onchange="selectKategorie();">
                                   <option value="<?php echo $catat['kategori'];?>"><?php echo $catat['kategori'];?></option>
                                   <option value="Pribadi">Pribadi</option>
                                   <option value="Asuransi">Asuransi</option>
@@ -106,7 +105,7 @@
                             <input type="text" class="form-control" id="kmmasuke" name="kmmasuke" required value="<?php echo $catat['km_masuk'];?>">
                           </div>
                         </div> 
-                          <input type="hidden" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi;?>" readonly>
+                          <input type="hidden" class="form-control" id="idestimasie" name="idestimasie" value="<?php echo $idestimasi;?>" readonly>
                           <input type="hidden" class="form-control" id="unamee" name="unamee" value="<?php echo $sesuname;?>" readonly>
                           <input type="hidden" class="form-control" id="customere" name="customere" readonly value="<?php echo $catat['fk_customer'];?>">                        
                         <div class="form-group">
@@ -135,9 +134,9 @@
 <?php include_once 'estimasi_chasis_edit_tab.php';?>
 <?php include_once 'estimasi_asuransi_edit_tab.php';?>
 <script type="text/javascript">
-  selectKategori();
+  selectKategorie();
 
-  function selectKategori(){
+  function selectKategorie(){
     var infor = $('#kategorie').val();
     if (infor=='Asuransi') {
       $('#buttonAsuransie').show();$('#showAsuransie').show();

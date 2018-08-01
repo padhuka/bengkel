@@ -3,7 +3,7 @@
         include_once '../../lib/fungsi.php';
 		 //$ip = ; // Ambil IP Address dari User
 		$id_part = trim($_POST['part']);
-        $idestimasi = trim($_POST['idestimasi']);
+        $idestimasi = trim($_POST['idestimasip']);
         $diskon = trim($_POST['diskonp']);
         $hargajual= trim($_POST['hargapokokp']);
         $qty= trim($_POST['qty']);

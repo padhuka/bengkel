@@ -29,9 +29,9 @@
                             <label for="namapanel">Nama</label>
                           </div>
 				                  <div class="col-sm-6">
-                            <input type="hidden" class="form-control" id="panel" name="panel" value="<?php echo $hslpan['id'];?>" required>
-				                    <input type="text" class="form-control" id="panelnm" name="panelnm" value="<?php echo $hnm['nama'];?>" readonly required>                            
-				                  </div><button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpanele();">Pilih</button>
+                            <input type="hidden" class="form-control" id="panele" name="panele" value="<?php echo $hslpan['id'];?>" required>
+				                    <input type="text" class="form-control" id="panelnme" name="panelnme" value="<?php echo $hnm['nama'];?>" readonly required>                            
+				                  </div><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="pilihpanele();">Pilih</button>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -39,7 +39,7 @@
                         </div>
                           <div class="col-sm-8">
                          <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
-                         <input type="hidden" class="form-control" id="hargapokoklm" name="hargapokoklm" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="hidden" class="form-control" id="hargapokoklme" name="hargapokoklme" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
                           </div>
                         </div>
 				                <div class="form-group">
@@ -48,7 +48,7 @@
                         </div>
 				                  <div class="col-sm-3">
 				                    <input type="text" class="form-control" id="diskone" name="diskone" value="<?php echo $hslpan['diskon_panel'];?>" required onchange="kaliedit();">
-                            <input type="hidden" class="form-control" id="hargadiskonlm" name="hargadiskonlm" value="<?php echo $hslpan['harga_diskon_panel'];?>" required readonly>
+                            <input type="hidden" class="form-control" id="hargadiskonlme" name="hargadiskonlme" value="<?php echo $hslpan['harga_diskon_panel'];?>" required readonly>
 				                  </div>%
 				                </div>
                         
@@ -64,8 +64,8 @@
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
-                            <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id?>" required>
-                            <input type="hidden" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
+                            <input type="hidden" class="form-control" id="ide" name="ide" value="<?php echo $id?>" required>
+                            <input type="hidden" class="form-control" id="idestimasie" name="idestimasie" value="<?php echo $idestimasi?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
                                     <button type="button" class="btn btn-primary" onclick="$('#ModalEditPanel').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
