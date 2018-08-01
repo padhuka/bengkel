@@ -38,7 +38,7 @@
 				                  <label for="hargajualpart">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" id="diskonp" name="diskonp" required onchange="kali();">
+				                    <input type="text" class="form-control" id="diskonp" name="diskonp" required onchange="kalip();">
 				                  </div>%
 				                </div>
                         <div class="form-group">
@@ -46,7 +46,7 @@
                           <label for="hargajualpart">Qty</label>
                         </div>
                           <div class="col-sm-3">
-                            <input type="text" class="form-control" id="qty" name="qty" required onchange="kali();">
+                            <input type="text" class="form-control" id="qty" name="qty" required onchange="kalip();">
                           </div>
                         </div>
                         <div class="form-group">
@@ -60,7 +60,7 @@
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
-                            <input type="hidden" class="form-control" id="idestimasi" name="idestimasi" value="<?php echo $idestimasi?>" required>
+                            <input type="hidden" class="form-control" id="idestimasip" name="idestimasip" value="<?php echo $idestimasi?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
                                     <button type="button" class="btn btn-primary" onclick="$('#ModalAddPart').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
@@ -76,9 +76,9 @@
   function pilihpart(){ 
     $("#ModalPilihPart").modal({backdrop: 'static', keyboard:false});   
   }
-  function kali(){
-    var hasil= ($("#hargapokoke").val()-($("#diskone").val()*$("#hargapokoke").val()/100))*$("#qty").val();
-    $("#hargatotale").val(hasil);
+  function kalip(){
+    var hasil= ($("#hargapokokp").val()-($("#diskonp").val()*$("#hargapokokp").val()/100))*$("#qty").val();
+    $("#hargatotalp").val(hasil);
     //alert(hasil);
   }
 	$(document).ready(function (){
@@ -93,8 +93,8 @@
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){  
-                                                      var hsl=data.trim();
-                                                      alert(hsl);
+                                                      //var hsl=data.trim();
+                                                      //alert(hsl);
                                                       //alert('estimasi/estimasi_detail_tab.php?idestimasi=<?php //echo $idestimasi;?>');
 			                                                $("#estimasipart").load('estimasi/part_load.php?idestimasi=<?php echo $idestimasi;?>');
                                                                       $('.modal-body').css('opacity', '');

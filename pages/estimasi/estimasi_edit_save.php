@@ -2,7 +2,7 @@
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
          //$ip = ; // Ambil IP Address dari User
-        $idestimasi = trim($_POST['idestimasi']);
+        $idestimasi = trim($_POST['idestimasie']);
         $chasis = trim($_POST['chasise']);
         $mesin = trim($_POST['mesine']);
         $polisi = trim($_POST['polisie']);
