@@ -14,7 +14,7 @@
                           <th>Nama</th>
                           <th>Alamat</th>
                           <th>No Telp</th>
-                          <th>NPWP</th>
+               
                           <th></th>
                 </tr>
                 </thead>
@@ -30,7 +30,7 @@
                           <td><?php echo $catat['nama'];?></td>
                           <td><?php echo $catat['alamat'];?></td>
                           <td><?php echo $catat['no_telp'];?></td>
-                          <td><?php echo $catat['npwp'];?></td>
+                       
                           <td>
                                      <button type="button" class="btn btn btn-default btn-circle" onclick="pilihAsuransi('<?php echo $catat['id_asuransi'];?>','<?php echo $catat['nama'];?>');">Pilih</button>
                           </td>

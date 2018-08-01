@@ -4,10 +4,13 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+include_once '../lib/setting.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login BPN</title>
+    <title>Login <?php echo $title;?> </title>
        <!--  <meta charset="utf-8">
         <link href="login/css/style.css" rel='stylesheet' type='text/css' />
         <meta name="viewport" content="width=device-width, initial-scale=1"> -->
