@@ -1,17 +1,17 @@
 
-    <div id="ModalPilihPanelEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
+    <div id="ModalPilihPartEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
       <div class="col-md-14">
                 <div class="modal-content">
                     <div class="modal-header">
                          
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalPilihPanelEdit').modal('hide');"><span>&times;</span></button></h4>                        
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Part <button type="button" class="close" aria-label="Close" onclick="$('#ModalPilihPartEdit').modal('hide');"><span>&times;</span></button></h4>                        
                     </div>
 
                   <div class="box">
-                <table id="panelestimasie" class="table table-condensed table-bordered table-striped table-hover">
+                <table id="partestimasip" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>Kode Panel</th>
+                          <th>Kode part</th>
                           <th>Nama</th>
                           <th>Harga Pokok</th>
                           <th>Harga Jual</th>
@@ -23,7 +23,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_panel ORDER BY id_panel ASC";
+                                    $sqlcatat = "SELECT * FROM t_part ORDER BY id_part ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                       $diskon= ($catat['diskon']/100)*$catat['harga_jual'];
@@ -31,14 +31,14 @@
                                       $hartot= $catat['harga_jual']-$diskon;
                                 ?>
                         <tr>
-                          <td><?php echo $catat['id_panel'];?></td>
+                          <td><?php echo $catat['id_part'];?></td>
                           <td><?php echo $catat['nama'];?></td>
-                          <td><?php echo $catat['harga_pokok'];?></td>
+                          <td><?php echo $catat['harga_beli'];?></td>
                           <td><?php echo $catat['harga_jual'];?></td>
                           <td><?php echo $catat['diskon'];?></td>
                           <td><?php echo $catat['ppn'];?></td>
                           <td>
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilihpaneledit('<?php echo $catat['id_panel'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['harga_jual'];?>','<?php echo $hartot;?>','<?php echo $catat['diskon'];?>');">Pilih</button>
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="pilihpartepx('<?php echo $catat['id_part'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['harga_jual'];?>','<?php echo $hartot;?>','<?php echo $catat['diskon'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
@@ -51,14 +51,16 @@
               </div>
               </div>              
               <script type="text/javascript">
-                $('#panelestimasie').DataTable();
-                function pilihpaneledit(a,b,c,d,e){
-                              $("#panele").val(a);
-                              $("#panelnme").val(b);
-                              $("#hargapokoke").val(c);
-                              $("#hargatotale").val(d);                              
-                              $("#diskone").val(e);                              
-                              $("#ModalPilihPanelEdit").modal('hide');
+                $('#partestimasip').DataTable();
+
+                function pilihpartepx(a,b,c,d,e){
+                              $("#parte").val(a);
+                              $("#partnme").val(b);
+                              $("#hargapokokep").val(c);
+                              $("#hargatotalep").val(d);                              
+                              $("#diskonep").val(e);
+                              $("#qtye").val('1');
+                              $("#ModalPilihPartEdit").modal('hide');
                               /*$.ajax({
                               url: "suratmasuk/suratmasuk_add.php",
                               type: "GET",

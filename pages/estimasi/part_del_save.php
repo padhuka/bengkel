@@ -4,7 +4,7 @@
         $idestimasi = $_GET['idestimasi'];
         $id = $_GET['id'];
         //UPDATE t_estimasi
-        $sqlpart= "SELECT sum(harga_jual_part*qty_part) AS totjualpart,sum(harga_diskon_part*qty_part) AS totdiskonpart, sum(harga_total_estimasi_part) AS totestimasipart FROM t_estimasi_part_detail WHERE id='$id'";
+        $sqlpart= "SELECT sum(harga_jual_part) AS totjualpart,sum(harga_diskon_part) AS totdiskonpart, sum(harga_total_estimasi_part) AS totestimasipart FROM t_estimasi_part_detail WHERE id='$id'";
             $hpart= mysql_fetch_array(mysql_query($sqlpart));
             //jml part
             $sqles= "SELECT * FROM t_estimasi WHERE id_estimasi = '$idestimasi'";

@@ -3,7 +3,7 @@
         include_once '../../lib/fungsi.php';
 		 //$ip = ; // Ambil IP Address dari User
 		$id_part = trim($_POST['part']);
-        $idestimasi = trim($_POST['idestimasi']);
+        $idestimasi = trim($_POST['idestimasip']);
         $diskon = trim($_POST['diskonp']);
         $hargajual= trim($_POST['hargapokokp']);
         $qty= trim($_POST['qty']);
@@ -12,7 +12,7 @@
       
 		    $sqltbemp = "INSERT INTO t_estimasi_part_detail (fk_estimasi,fk_part,harga_jual_part,diskon_part,harga_diskon_part,harga_total_estimasi_part,qty_part) VALUES ('$idestimasi','$id_part','$hargajual','$diskon','$hargadiskon','$total','$qty')";
             mysql_query($sqltbemp);
-            echo $sqltbemp;
+            //echo $sqltbemp;
             //echo 'n';
             //jml part
             $sqlpart= "SELECT sum(harga_jual_part*qty_part) AS totjualpart,sum(harga_diskon_part*qty_part) AS totdiskonpart, sum(harga_total_estimasi_part) AS totestimasipart FROM t_estimasi_part_detail WHERE fk_estimasi = '$idestimasi'";

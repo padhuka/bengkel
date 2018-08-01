@@ -23,7 +23,8 @@
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo ($catat['id_estimasi']);?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo ($catat['id_estimasi']);?></span></button></td>
+                       
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
@@ -66,7 +67,6 @@
             function open_modal(y){
                               $.ajax({
                                   url: "estimasi/estimasi_edit.php?idestimasi="+y,
-
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalEdit").html(ajaxData);
@@ -74,6 +74,18 @@
                                   }
                               });
             };
+              
+            function open_est(z){
+                              $.ajax({
+                                  url: "estimasi/estimasi_show.php?idestimasi="+z,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalShow").html(ajaxData);
+                                      $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+            
       </script>
 
 <style type="text/css">

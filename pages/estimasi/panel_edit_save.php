@@ -2,16 +2,16 @@
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
 		 //$ip = ; // Ambil IP Address dari User
-		$id = trim($_POST['id']);
-        $id_panel = trim($_POST['panel']);
-        $idestimasi = trim($_POST['idestimasi']);
+		$id = trim($_POST['ide']);
+        $id_panel = trim($_POST['panele']);
+        $idestimasi = trim($_POST['idestimasie']);
         $diskon = trim($_POST['diskone']);
         $hargajual= trim($_POST['hargapokoke']);
-        $hargajuallm= trim($_POST['hargapokoklm']);
+        $hargajuallm= trim($_POST['hargapokoklme']);
         $hargadiskon= ($diskon*$hargajual)/100;
-        $hargadiskonlm= trim($_POST['hargadiskonlm']);
+        $hargadiskonlm= trim($_POST['hargadiskonlme']);
         $total= trim($_POST['hargatotale']);
-        $totallm= trim($_POST['hargatotallm']);
+        $totallm= trim($_POST['hargatotallme']);
 
             $sqlpanel= "SELECT sum(harga_jual_panel) AS totjualpanel,sum(harga_diskon_panel) AS totdiskonpanel, sum(harga_total_estimasi_panel) AS totestimasipanel FROM t_estimasi_panel_detail WHERE fk_estimasi='$idestimasi'";
             $hpanel= mysql_fetch_array(mysql_query($sqlpanel));
