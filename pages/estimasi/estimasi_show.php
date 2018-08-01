@@ -72,7 +72,7 @@
                           <th>Disc</th> <td><?php echo $catat['total_diskon_rupiah_part'];?></td>
                           <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_part'];?></td>
                         </tr>
-                        <tr> 
+                        <tr class="total"> 
                           <th>Total Gross</th><td><?php echo $catat['total_gross_harga_jasa'];?></td>
                           <th>Total Diskon</th> <td><?php echo $catat['total_diskon_rupiah_jasa'];?></td>
                           <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_jasa'];?></td>
@@ -84,10 +84,51 @@
                       <?php }?>
                            </div>
                       </div>
-                   
+                        <div class="form-group">
+                     <div class="modal-footer">
+                     <div class="but">
+                                    <button type="button" class="btn btn-primary" name="part" onclick="partshow('<?php echo $idestimasi;?>');">&nbsp;Part&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" name="panel" onclick="panelshow('<?php echo $idestimasi;?>');">Panel</button>
+                     </div>
+                     </div>
+                     </div>
+                       <div class="form-group">
+                      <div class="modal-footer">
+                      <div class="but">
+                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalShow').modal('hide');">Close</button>
+                     </div>
+                     </div>
+                     </div>
                </div>
            </div>
-           </div>              
+           </div>      
+           <div id="ModalPanelShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+           <div id="ModalPartShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<script type="text/javascript">
+  
+            function partshow(y){
+              $.ajax({
+                    url: "estimasi/part_show_tab.php?idestimasine="+y,
+                    type: "GET",
+                      success: function (ajaxData){
+                        $("#ModalPartShow").html(ajaxData);
+                        $("#ModalPartShow").modal({backdrop: 'static', keyboard:false});
+                      }
+                    });
+              }
+              function panelshow(z){
+              $.ajax({
+                    url: "estimasi/panel_show_tab.php?idestimasine="+z,
+                    type: "GET",
+                      success: function (ajaxData){
+                        $("#ModalPanelShow").html(ajaxData);
+                        $("#ModalPanelShow").modal({backdrop: 'static', keyboard:false});
+                      }
+                    });
+              }
+
+  
+</script>        
 
 <style type="text/css">
   .modal-footer {
@@ -101,6 +142,12 @@
     background-color: lightcoral;
     text-align: center;
     font-weight: bold;
+  }
+  .total {
+  font-weight: bold;border-top:   inset;
+  }
+    .but {
+    text-align: center;
   }
   .modal-title-detail {
     font-style: italic;
