@@ -91,6 +91,16 @@
                             <input type="text" class="form-control" id="kmmasuk" name="kmmasuk" required>
                           </div>
                         </div> 
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Mark</label>
+                          </div>
+                          <div class="col-sm-3">
+                            <label class="checkbox-inline"><input type="checkbox" id="cek" name="cek" onclick="cekb();">Mark</label>
+                            <input type="text" class="form-control" id="mark" name="mark" readonly>
+                          </div>
+                          
+                        </div> 
                           <input type="hidden" class="form-control" id="uname" name="uname" value="<?php echo $sesuname;?>" readonly>
                           <input type="hidden" class="form-control" id="customer" name="customer" readonly>                        
                         <div class="form-group">
@@ -125,6 +135,10 @@
                  $("#tablepanel").load('estimasi/panel_load.php');
                  $("#tablepart").load('estimasi/part_load.php');
             });*/
+
+  function cekb(){
+    if(cek.checked==true){$('#mark').val('1');}else{$('#mark').val('0');}
+  }
   function selectAsuransi(){ 
     $("#ModalAsuransi").modal({backdrop: 'static',keyboard:false});   
   }

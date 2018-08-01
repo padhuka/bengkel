@@ -12,7 +12,8 @@
         $uname = trim($_POST['uname']);
         $kategori = trim($_POST['kategori']);
         $customer = trim($_POST['customer']);
-        $asuransi = trim($_POST['asuransi']);
+        $asuransi = trim($_POST['asuransi']);        
+        $mark= trim($_POST['mark']);
         //message_back($id_estimasi);
         //$kodeawal = 'est_'.$hrini.'_';
         $kodeawal = 'est_';
@@ -39,7 +40,7 @@
         $kodebaru = $kodeawal.$kodeakhir;         
 
         
-            $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi')";
+            $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,mark) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$mark')";
             mysql_query($sqltbemp);
             echo $kodebaru.'-'.$warnanm;
         

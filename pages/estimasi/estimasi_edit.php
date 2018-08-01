@@ -105,6 +105,17 @@
                             <input type="text" class="form-control" id="kmmasuke" name="kmmasuke" required value="<?php echo $catat['km_masuk'];?>">
                           </div>
                         </div> 
+                        <?php $cheke= $catat['mark'];?>
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Mark</label>
+                          </div>
+                          <div class="col-sm-3">
+                            <label class="checkbox-inline"><input type="checkbox" id="cek" name="cek" onclick="cekb();" <?php echo $cheke;?> >Mark</label>
+                            <input type="text" class="form-control" id="mark" name="mark" readonly>
+                          </div>
+                          
+                        </div>
                           <input type="hidden" class="form-control" id="idestimasie" name="idestimasie" value="<?php echo $idestimasi;?>" readonly>
                           <input type="hidden" class="form-control" id="unamee" name="unamee" value="<?php echo $sesuname;?>" readonly>
                           <input type="hidden" class="form-control" id="customere" name="customere" readonly value="<?php echo $catat['fk_customer'];?>">                        
