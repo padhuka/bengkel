@@ -24,7 +24,6 @@
                                 ?>
                     <div class="modal-body">
                       <div class="modal-title-detail">ESTIMASI PKB</div>
-
                       <div class="row">
                        <div class="col-sm-6">
                        <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
@@ -52,24 +51,26 @@
                         </th>
                        </td>
                                </table>
-
-
-                             <?php }?>
-                             </div>
+                         </div>
 
                       </div>
                        <div class="modal-title-detail">NILAI ESTIMASI </div>
-
                       <div class="row">
                        <div class="col-sm-12">
                        <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
                        <td>
                          <th class="col-sm-6">
-                        <tr> <th>Nilai Jasa</th><td >Jasa</td> <td >Jasa</td></tr>
-                        <tr> <th>Nilai Part</th><td >Part</td> <td >Part</td></tr>
+                        <tr> <th>Nilai Panel</th> <td><?php echo $catat['total_gross_harga_panel'];?></td> <th>Disc</th><td ><?php echo $catat['total_diskon_rupiah_panel'];?></td>
+                          <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_panel'];?></td>
+                        </tr>
+                        
+                        <tr> <th>Nilai Part</th><td><?php echo $catat['total_gross_harga_part'];?></td><th>Disc</th> <td ><?php echo $catat['total_diskon_rupiah_part'];?></td>
+                           <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_part'];?></td>
+                        </tr>
                         </th>
                        </td>
                       </table>
+                      <?php }?>
                            </div>
                       </div>
                    
