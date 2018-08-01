@@ -1,4 +1,5 @@
-     <div id="ModalChasis" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
+     <div id="ModalChasis" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
       <div class="col-md-14">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -76,7 +77,7 @@
     font-family: monospace;
   }
   .modal-content {
-    height: 556px;
+    height: 650px;
   }
   .row {
     margin-left: 0px;

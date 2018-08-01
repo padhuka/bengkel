@@ -17,84 +17,33 @@
                     </div>
                     
                     <div class="modal-body">
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="kodeestimasi">Tgl Masuk</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo tampilTanggal(substr($hes['tgl'],0,10));?></label>
-                          </div>
-                        </div>
-                        
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">No Chasis</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo $hes['fk_no_chasis'];?></label>
-                          </div>                          
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">No Mesin</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo $hes['fk_no_mesin'];?></label>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">No Polisi</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo $hes['fk_no_polisi'];?></label>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">Warna</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo $idestimasi[1];?></label>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">Kategori</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo $hes['kategori'];?></label>
-                          </div>
-                        </div>
-                        <?php if ($hes['kategori']=='Asuransi'){?>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">Asuransi</label>
-                          </div>
-                            <div class="col-sm-8">
-                                  <?php
-                                    $sqlas = "SELECT * FROM t_asuransi where id_asuransi='$hes[fk_asuransi]'";
-                                      $qas = mysql_query( $sqlas );
-                                      $has = mysql_fetch_array($qas);
-                                  ?>                                  
-                                  <label>:<?php echo $has['nama'];?></label>                        
-                              </div>
-                        </div>
-                        <?php }?>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">No Polisi</label>
-                          </div>
-                          <div class="col-sm-7">
-                            <label>:<?php echo $hes['km_masuk'];?></label>
-                          </div>
-                        </div>                          
+
+                   <div class="row">
+                     <div class="col-sm-12">
+                        <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
+                          <td>
+                         <th class="col-sm-6">
+                        <tr> <th>Tgl Masuk</th> <td ><?php echo tampilTanggal(substr($hes['tgl'],0,10));?></td></tr>
+                        <tr> <th>No Chasis</th> <td ><?php echo $hes['fk_no_chasis'];?></td></tr>
+                        <tr> <th>No Mesin</th>  <td ><?php echo $hes['fk_no_mesin'];?></td></tr>
+                        <tr> <th>No Polisi</th> <td ><?php echo $hes['fk_no_polisi'];?></td></tr>
+                        <tr> <th>No Warna</th>   <td ><?php echo $idestimasi[1];?></td> </tr>
+                        <tr> <th>kategori</th>   <td ><?php echo $hes['kategori'];?></td> </tr>
+                        <tr> <th>Asuransi</th>   <td ><?php echo $hes['fk_no_polisi'];?></td> </tr>
+                          <tr> <th>KM Masuk</th>   <td ><?php echo $hes['km_masuk'];?></td> </tr>
+                        </th>
+                       </td>
+                        </table>
+
+                     </div>
+                   </div>
+                    <hr>
                                            
                   </div>                  
                 <div id="tableestimasidetail"></div>                
                 <div class="form-group">
                            <div class="modal-footer">
-                                <div class="col-sm-8">
+                                <div class="but">
                                     <button type="button" class="btn btn-primary" name="part" onclick="parte('<?php echo $idestimasi[0];?>');">&nbsp;Part&nbsp;</button>
                                     <button type="button" class="btn btn-primary" name="panel" onclick="panele('<?php echo $idestimasi[0];?>');">Panel</button>
                                 </div>
@@ -102,7 +51,7 @@
                 </div> 
                 <div class="form-group">
                            <div class="modal-footer">
-                                <div class="col-sm-8">
+                                <div class="but">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">&nbsp;Simpan&nbsp;</button>
                                 </div>
                             </div>
@@ -156,8 +105,15 @@
     text-align: center;
     font-weight: bold;
   }
+  .modal-content {
+    height: 600px;
+  }
+  .but {
+    text-align: center;
+  }
   .modal-dialog {
     margin-bottom: 0px;
     border: 3px;
+    width: 750px;
   }
 </style>
