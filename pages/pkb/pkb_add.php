@@ -11,7 +11,7 @@
 <div class="modal-dialog">
            <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tamba Data PKB <button type="button" class="close" aria-label="Close" onclick="$('#MoadalAdd').modal('hide');"><span>&times;</span></button></h4>                    
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tamba Data PKB <button type="button" class="close" aria-label="Close" onclick="$('#ModalAdd').modal('hide');"><span>&times;</span></button></h4>                    
                     </div>
                     <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formpkb">
                   <?php
