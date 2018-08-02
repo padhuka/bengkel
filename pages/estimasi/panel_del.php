@@ -47,7 +47,7 @@
                                 type: 'GET',
                                 success: function (response){
                                       //alert('panel/panel_del_save.php?id_panel='+id_panel);
-                                     $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+                                     $("#tablepanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
                                      $('.modal-body').css('opacity', '');
                                       alert('Data Berhasil Dihapus');
                                       $('#ModalDeletePanel').modal('hide');
