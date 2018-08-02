@@ -2,7 +2,7 @@
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
-      <table id="tablepkb" class="table table-condensed table-bordered table-striped table-hover">
+      <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode PKB</th>
@@ -25,7 +25,7 @@
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_est(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
                        
-                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
+                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
@@ -41,7 +41,7 @@
                 </tfoot>
               </table>
               <script>
-            $('#tablepkb').DataTable();
+            $('#tablepkb1').DataTable();
            
            function open_add(){
               $.ajax({
@@ -54,27 +54,7 @@
                     });
               }
               
-           function open_del(x){
-                                $.ajax({
-                                    url: "pkb/pkb_del.php?idpkb="+x,
-                                    type: "GET",
-                                    success: function (ajaxData){
-                                        $("#ModalDelete").html(ajaxData);
-                                        $("#ModalDelete").modal({backdrop: 'static',keyboard: false});
-                                    }
-                                });
-            };
-            function open_modal(y){
-                              $.ajax({
-                                  url: "pkb/pkb_edit.php?idpkb="+y,
-                                  type: "GET",
-                                  success: function (ajaxData){
-                                      $("#ModalEdit").html(ajaxData);
-                                      $("#ModalEdit").modal({backdrop: 'static',keyboard: false});
-                                  }
-                              });
-            };
-              
+                         
             function open_est(z){
                               $.ajax({
                                   url: "pkb/pkb_show.php?idpkb="+z,

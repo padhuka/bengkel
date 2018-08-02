@@ -1,5 +1,6 @@
       <?php
             include_once '../../lib/config.php';
+            include_once '../../lib/fungsi.php';
       ?>
       <table id="example1" class="table table-condensed table-bordered table-striped table-hover">
       
@@ -24,7 +25,7 @@
                         <tr>
                           <td ><?php echo $catat['id_panel'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo $catat['harga_pokok'];?></td>
+                          <td ><?php echo rupiah2($catat['harga_pokok']);?></td>
                           <td ><?php echo $catat['harga_jual'];?></td>
                           <td ><?php echo $catat['diskon'];?></td>
                           <td ><?php echo $catat['ppn'];?></td>

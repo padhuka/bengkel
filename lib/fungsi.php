@@ -116,6 +116,13 @@ function rupiah( $nilai )
     return $nilai2;
 }
 
+function rupiah2( $nilai )
+{
+    $nilai1 = number_format( $nilai, 0, ",", "." );
+    $nilai2 = $nilai1;
+    return $nilai2;
+}
+
 //pesan kmdian kembali keurl tujuan
 function url_back($url) {
     echo "<SCRIPT>self.location.href='$url'</SCRIPT>";

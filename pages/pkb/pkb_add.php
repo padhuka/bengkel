@@ -118,13 +118,13 @@
                             //alert(disposisine)                       ;
                                       $.ajax({
                                                   type: 'POST',
-                                                  url: 'pkb/estimasi_add_save.php',
+                                                  url: 'pkb/pkb_add_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){
-                                                        $("#tableestimasi").load('estimasi/estimasi_load.php');
+                                                        $("#tablepkb").load('pkb/pkb_load.php');
                                                         $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
