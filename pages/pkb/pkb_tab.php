@@ -4,12 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="title-header">
-    Data Estimasi
+    Data PKB
     </div>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Data Estimasi</li>
+        <li class="active">Data PKB</li>
       </ol>
     </section>
 
@@ -23,7 +23,7 @@
             </div>
              /.box-header -->
             <div class="box-body">
-              <div id="tableestimasi">
+              <div id="tablepkb">
               </div>
             </div>
             <!-- /.box-body -->
@@ -40,11 +40,11 @@
         <div id="ModalShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
          <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
          <div id="ModalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-         <div id="ModalEstimasiDet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+         <div id="ModalPkbDet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
         <script type="text/javascript">
             $(document).ready(function (){
-                 $("#tableestimasi").load('estimasi/estimasi_load.php');
+                 $("#tablepkb").load('pkb/pkb_load.php');
             });
         </script>
 
