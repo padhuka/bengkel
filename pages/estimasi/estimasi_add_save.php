@@ -17,7 +17,7 @@
         //$kodeawal = 'est_'.$hrini.'_';
         $hrn2= date('dmy' , strtotime($hrini));
   //EST.BR.020818.000001
-        $kodeawal = 'EST.BR.'.$hrn2.'.';
+        $kodeawal = 'EST_BR.'.$hrn2.'.';
         $sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal%' ORDER BY id_estimasi DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
@@ -27,7 +27,7 @@
             # GENERATE
             $kode = $jur['id_estimasi'];
             $pecah = explode('.',$kode);
-            $nilbaru = $pecah[3] + 1;
+            $nilbaru = $pecah[2] + 1;
             $panj = strlen($nilbaru);
             //message_back($panj);
             switch($panj){
