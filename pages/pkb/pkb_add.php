@@ -3,7 +3,7 @@
    // include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
-    $idestimasi= 'EST_BR.020818.000001';
+    //$idestimasi= 'EST_BR.020818.000001';
  //   $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
  //  $catat= mysql_fetch_array(mysql_query($sqlpan));
   
@@ -14,15 +14,7 @@
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Tamba Data PKB <button type="button" class="close" aria-label="Close" onclick="$('#ModalAdd').modal('hide');"><span>&times;</span></button></h4>                    
                     </div>
                     <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formpkb">
-                  <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi e 
-                                                  left join t_customer c
-                                                  on e.fk_customer=c.id_customer
-                                                  where e.id_estimasi='$idestimasi'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
+                 
                     <div class="modal-body">
                       
                       <div class="modal-title-detail">DATA ESTIMASI</div>
@@ -30,7 +22,7 @@
                        <div class="col-sm-6">
                        <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
                        <td>
-                         <th class="col-sm-6">
+                         <th class="col-sm-8">
                         <tr> <th>No Estimasi</th> <td ><input type="text" class="form-control" name="idestimasi" id="idestimasi" readonly><button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="estimasie();">Pilih</button></td></tr>
                         <tr> <th>Tgl Masuk</th> <td ><label id="tgl"></label></td></tr>
                         <tr> <th>No Chasis</th>  <td ><label id="chasis"></label></td></tr>
@@ -82,7 +74,6 @@
                         </th>
                        </td>
                       </table>
-                      <?php }?>
                            </div>
                       </div>
                        
@@ -130,16 +121,9 @@
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide'); 
                                                             var hsl=data.trim();       
+                                                            alert(hsl);
 
-                                                             $.ajax({
-                                                                url: "estimasi/estimasi_detail.php?idestimasi="+hsl,
-                                                                type: "GET",
-                                                                  success: function (ajaxData){
-                                                                    $("#ModalEstimasiDet").html(ajaxData);
-                                                                    $("#ModalEstimasiDet").modal({backdrop: 'static', keyboard:false});
-                                                                  }
-                                                                }); 
-
+                                                             
                                                   }
                                                       
                                                 });
