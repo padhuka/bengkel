@@ -25,14 +25,8 @@
                         case 'customer' : include_once 'customer/customer_tab.php'; break;
                         case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
                         case 'pkb' : include_once 'pkb/pkb_tab.php'; break;
-                        // case 'restore' : include_once 'database/restore.php'; break;
-                        // case 'backupfile' : include_once 'database/backupfile.php'; break;
-                        // //LAPORAN
-                        // case 'lapsuratmasuk' : include_once 'laporan/lapsuratmasuk_tab.php'; break;
-                        // case 'lapsuratkeluar' : include_once 'laporan/lapsuratkeluar_tab.php'; break;
-                        // case 'lapsuratkeputusan' : include_once 'laporan/lapsuratkeputusan_tab.php'; break;
-                        // case 'laparsip' : include_once 'laporan/laparsip_tab.php'; break; 
-                }
+                        case 'kwitansior' : include_once 'kwitansior/kwitansior_tab.php'; break;
+                        }
         ?>
 
 <?php include_once 'footer.php';?>
