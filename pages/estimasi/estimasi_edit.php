@@ -207,6 +207,9 @@
 </script>
 
 <style type="text/css">
+  .modal-open .modal {
+    overflow-y: hidden;
+  }
   .modal-footer {
     padding-top: 10px;
     padding-bottom: 0px;
