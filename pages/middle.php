@@ -79,13 +79,13 @@
 
                   <td onclick="location='#'">
                       <div>
-                          <div class="kanan"><img style="height:20px" src="../file/panahkanan.png"></div>
+                          <div class="kanan"><img style="height:20px;padding-right: 15px" src="../file/panahkanan.png"></div>
               Biaya Servis
             </div>
           </td>
                   <td style="height:55px" onclick="location='#'">
                       <div>
-                          <div class="kanan"><img style="height:20px" src="../file/panahkanan.png"></div>
+                          <div class="kanan"><img style="height:20px;padding-right: 15px" src="../file/panahkanan.png"></div>
                   Cetak Kwitansi
             </div>
           </td>
