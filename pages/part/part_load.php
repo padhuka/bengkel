@@ -47,7 +47,15 @@
                 </tfoot>
               </table>
               <script>
-             $('#part1').DataTable();
+             $('#part1').DataTable({
+              "language": {
+                      "search": "Cari",
+                      "lengthMenu": "Lihat _MENU_ baris per halaman",
+                      "zeroRecords": "Maaf, Tidak di temukan - data",
+                      "info": "Terlihat halaman _PAGE_ of _PAGES_",
+                      "infoEmpty": "Tidak ada data di database"
+                  }
+             });
             $(".open_add").click(function (e){
                                 //var m = $(this).attr("id_part");
                     $.ajax({

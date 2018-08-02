@@ -28,20 +28,23 @@
             <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=part" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Part <i class="fa fa-wrench"></i></button></a></li>
           <?php }?>
-                  <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
-          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=kasir" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Kasir <i class="fa fa-usd"></i></button></a></li>
-          <?php }?>
+         <?php if ($seskdlvl=='Admin'){?>
+           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
+            <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Finance <i class="fa fa-usd dropdown-toggle"></i></button> </a>
+            <ul class="dropdown-menu">
+              <li class="header"><a href="?p=kwitansi">Kwitansi</a></li> 
+              <li class="header"><a href="?p=kwitansior">Kwitansi OR</a></li>   
+              <li class="header"><a href="?p=kwitansior">Gate Pass</a></li> 
+                          </ul>
+          </li><?php } ?>
           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Laporan <i class="fa fa-gears dropdown-toggle"></i></button> </a>
             <ul class="dropdown-menu">
               <?php if ($seskdlvl=='SuratMasuk' || $seskdlvl=='Admin'){?>
-              <li class="header"><a href="?p=lapsuratmasuk">Lap. Surat Masuk</a></li><?php }?>
+              <li class="header"><a href="?p=lapsuratmasuk">Lap. PKB</a></li><?php }?>
               <?php if ($seskdlvl=='SuratKeluar' || $seskdlvl=='Admin'){?>
-              <li class="header"><a href="?p=lapsuratkeluar">Lap. Surat Keluar</a></li><?php }?>
-              <?php if ($seskdlvl=='SuratKeputusan' || $seskdlvl=='Admin'){?>
-              <li class="header"><a href="?p=lapsuratkeputusan">Lap. Surat Keputusan</a></li><?php }?>
-              <?php if ($seskdlvl=='Arsip' || $seskdlvl=='Admin'){?>
-              <li class="header"><a href="?p=laparsip">Lap. Arsip</a></li><?php }?>
+              <li class="header"><a href="?p=lapsuratkeluar">Lap. PKB Batal</a></li><?php }?>
+              
             </ul>
           </li>
           <?php if ($seskdlvl=='Admin'){?>
