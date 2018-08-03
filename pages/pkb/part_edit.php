@@ -4,17 +4,17 @@
     $idpkb=$_GET['idpkb'];
     $id=$_GET['id'];
 
-    $sqlpan= "SELECT * FROM t_pkb_panel_detail WHERE id='$id'";
+    $sqlpan= "SELECT * FROM t_pkb_part_detail WHERE id='$id'";
     $hslpan= mysql_fetch_array(mysql_query($sqlpan));
 
-    $snm = "SELECT * FROM t_panel WHERE id_panel='$hslpan[fk_panel]'";
+    $snm = "SELECT * FROM t_part WHERE id_part='$hslpan[fk_part]'";
     $hnm = mysql_fetch_array(mysql_query($snm));
 
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalEditPanel').modal('hide');"><span>&times;</span></button></h4> 
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit Data Part <button type="button" class="close" aria-label="Close" onclick="$('#ModalEditPart').modal('hide');"><span>&times;</span></button></h4> 
                     </div>
 				            <!--<div class="box-header with-border">
 				              <h3 class="box-title">Horizontal Form</h3>
@@ -22,53 +22,61 @@
 				             /.box-header -->
 				            <!-- form start -->
                     <div class="modal-body">
-				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formPanelEdit">
+				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formpartEdit">
                        
 				                <div class="form-group">
                           <div class="col-sm-3">
-                            <label for="namapanel">Nama</label>
+                            <label for="namapart">Nama</label>
                           </div>
 				                  <div class="col-sm-6">
-                            <input type="hidden" class="form-control" id="panele" name="panele" value="<?php echo $hslpan['fk_panel'];?>" required>
-				                    <input type="text" class="form-control" id="panelnme" name="panelnme" value="<?php echo $hnm['nama'];?>" readonly required>                            
+                            <input type="hidden" class="form-control" id="partep" name="partep" value="<?php echo $hslpan['fk_part'];?>" required>
+				                    <input type="text" class="form-control" id="partnmep" name="partnmep" value="<?php echo $hnm['nama'];?>" readonly required>                            
 				                  </div>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
-                          <label for="hargapokokpanel">Harga</label>
+                          <label for="hargapokokpart">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
-                         <input type="hidden" class="form-control" id="hargapokoklme" name="hargapokoklme" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="text" class="form-control" id="hargapokokep" name="hargapokokep" value="<?php echo $hslpan['harga_jual_part'];?>" readonly required>
+                         <input type="hidden" class="form-control" id="hargapokoklmep" name="hargapokoklmep" value="<?php echo $hslpan['harga_jual_part'];?>" readonly required>
                           </div>
                         </div>
 				                <div class="form-group">
                             <div class="col-sm-3">
-				                  <label for="hargajualpanel">Diskon</label>
+				                  <label for="hargajualpart">Diskon</label>
                         </div>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" id="diskone" name="diskone" value="<?php echo $hslpan['diskon_panel'];?>" required onchange="kaliedit();">
-                            <input type="hidden" class="form-control" id="hargadiskonlme" name="hargadiskonlme" value="<?php echo $hslpan['harga_diskon_panel'];?>" required readonly>
+				                    <input type="text" class="form-control" id="diskonep" name="diskonep" value="<?php echo $hslpan['diskon_part'];?>" required onchange="kaliedite();">
+                            <input type="hidden" class="form-control" id="hargadiskonlmep" name="hargadiskonlmep" value="<?php echo $hslpan['harga_diskon_part'];?>" required readonly>
 				                  </div>%
 				                </div>
-                        
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="hargajualpart">Qty</label>
+                        </div>
+                          <div class="col-sm-3">
+                            <input type="text" class="form-control" id="qty" name="qty" value="<?php echo $hslpan['qty_part'];?>" required onchange="kaliedite();">
+                            <input type="hidden" class="form-control" id="qtylm" name="qtylm" value="<?php echo $hslpan['qty_part'];?>" required readonly>
+                          </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-3">
                           <label for="ppn">Harga Total</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="hargatotale" name="hargatotale" value="<?php echo $hslpan['harga_total_pkb_panel'];?>" required readonly>
-                            <input type="hidden" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_pkb_panel'];?>" required readonly>
+                            <input type="text" class="form-control" id="hargatotalep" name="hargatotalep" value="<?php echo $hslpan['harga_total_pkb_part'];?>" required readonly>
+                            <input type="hidden" class="form-control" id="hargatotallmep" name="hargatotallmep" value="<?php echo $hslpan['harga_total_pkb_part'];?>" required readonly>
                           </div>
                         </div>
                         
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
-                            <input type="hidden" class="form-control" id="ide" name="ide" value="<?php echo $id?>" required>
-                            <input type="hidden" class="form-control" id="idpkbe" name="idpkbe" value="<?php echo $idpkb?>" required>
+                            <input type="hidden" class="form-control" id="idep" name="idep" value="<?php echo $id?>" required>
+                            <input type="hidden" class="form-control" id="idpkbep" name="idpkbep" value="<?php echo $idpkb?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                    <button type="button" class="btn btn-primary" onclick="$('#ModalEditPanel').modal('hide');">&nbsp;Batal&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" onclick="$('#ModalEditPart').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
                         </div>
 				                </div>
@@ -78,35 +86,34 @@
 				</div>
 </div>
 <script type="text/javascript">
-  
-  
-  function kaliedit(){
+ 
+  function kaliedite(){
     
-    var hasile= $("#hargapokoke").val()-($("#diskone").val()*$("#hargapokoke").val()/100);
+    var hasile= ($("#hargapokokep").val()-($("#diskonep").val()*$("#hargapokokep").val()/100))*$("#qty").val();
     //alert($("#diskone").val());
-    $("#hargatotale").val(hasile);
+    $("#hargatotalep").val(hasile);
     //alert(hasil);
   }
 	$(document).ready(function (){
 
-                      $("#formPanelEdit").on('submit', function(e){
+                      $("#formpartEdit").on('submit', function(e){
                           e.preventDefault();
                             //alert(disposisine)                       ;
                            						$.ajax({
                                                   type: 'POST',
-                                                  url: 'pkb/panel_edit_save.php',
+                                                  url: 'pkb/part_edit_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){  
-                                                      //var hsl = data.trim();
-                                                      //alert(hsl);
-			                                                $("#pkbpanel").load('pkb/panel_load.php?idpkb=<?php echo $idpkb;?>');
+                                                      var hsl = data.trim();
+                                                      alert(hsl);
+			                                                $("#pkbpart").load('pkb/part_load.php?idpkb=<?php echo $idpkb;?>');
                                                       $('.modal-body').css('opacity', '');
 
                                                       alert('Data Berhasil Disimpan');
-                                                      $('#ModalEditPanel').modal('hide');
+                                                      $('#ModalEditPart').modal('hide');
                                                       //$("#tablepkbdetail").load('pkb/pkb_detail_tab.php?idpkb=<?php echo $idpkb;?>');
                                                       $("#loaddetail").load('pkb/pkb_edit_detail_load.php?idpkb=<?php echo $idpkb;?>');
 			                                            }

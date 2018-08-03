@@ -76,7 +76,7 @@
            </div>
            </div>      
            <div id="ModalAddPanelPkb" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-           <div id="ModalPartShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+           <div id="ModalAddPartPkb" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <script type="text/javascript">
             $(document).ready(function (){
@@ -89,6 +89,17 @@
                       success: function (ajaxData){
                         $("#ModalAddPanelPkb").html(ajaxData);
                         $("#ModalAddPanelPkb").modal({backdrop: 'static',keyboard: false});
+                      }
+                    });
+              }
+
+              function partpkb(x){
+              $.ajax({
+                    url: "pkb/part_tab.php?idpkb="+x,
+                    type: "GET",
+                      success: function (ajaxData){
+                        $("#ModalAddPartPkb").html(ajaxData);
+                        $("#ModalAddPartPkb").modal({backdrop: 'static',keyboard: false});
                       }
                     });
               }
