@@ -29,7 +29,7 @@
                             <label for="namapanel">Nama</label>
                           </div>
 				                  <div class="col-sm-6">
-                            <input type="text" class="form-control" id="panele" name="panele" value="<?php echo $hslpan['fk_panel'];?>" required>
+                            <input type="hidden" class="form-control" id="panele" name="panele" value="<?php echo $hslpan['fk_panel'];?>" required>
 				                    <input type="text" class="form-control" id="panelnme" name="panelnme" value="<?php echo $hnm['nama'];?>" readonly required>                            
 				                  </div>
 				                </div>
@@ -109,7 +109,8 @@
 
                                                       alert('Data Berhasil Disimpan');
                                                       $('#ModalEditPanel').modal('hide');
-                                                      $("#tablepkbdetail").load('pkb/pkb_detail_tab.php?idpkb=<?php echo $idpkb;?>');
+                                                      //$("#tablepkbdetail").load('pkb/pkb_detail_tab.php?idpkb=<?php echo $idpkb;?>');
+                                                      $("#loaddetail").load('pkb/pkb_edit_detail_load.php?idpkb=<?php echo $idpkb;?>');
 			                                            }
                                                       
                                                 });
