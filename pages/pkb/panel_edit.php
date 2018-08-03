@@ -109,7 +109,8 @@
 
                                                       alert('Data Berhasil Disimpan');
                                                       $('#ModalEditPanel').modal('hide');
-                                                      $("#tablepkbdetail").load('pkb/pkb_detail_tab.php?idpkb=<?php echo $idpkb;?>');
+                                                      //$("#tablepkbdetail").load('pkb/pkb_detail_tab.php?idpkb=<?php echo $idpkb;?>');
+                                                      $("#loaddetail").load('pkb/pkb_edit_detail_load.php?idpkb=<?php echo $idpkb;?>');
 			                                            }
                                                       
                                                 });
