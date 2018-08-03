@@ -26,6 +26,7 @@
                         case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
                         case 'pkb' : include_once 'pkb/pkb_tab.php'; break;
                         case 'kwitansior' : include_once 'kwitansior/kwitansior_tab.php'; break;
+                        case 'pkbbukatutup' : include_once 'pkbstatus/pkb_tab.php'; break;
                         }
         ?>
 

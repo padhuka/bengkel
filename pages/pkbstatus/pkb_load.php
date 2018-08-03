@@ -1,0 +1,102 @@
+      <?php
+            include_once '../../lib/config.php';
+            include_once '../../lib/fungsi.php';
+      ?>
+      <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
+                <thead class="thead-light">
+                <tr>
+                          <th>Kode PKB</th>
+                          <th>Tgl Masuk</th>
+                          <th>No Chasis</th>
+                          <th>No Mesin</th>
+                          <th>Warna</th>
+                          <th>NoPol</th>
+                          <th>KM Masuk</th>
+                          <th>Status PKB</th>
+                          <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                                    $j=1;
+                                    $sqlcatat = "SELECT * FROM t_pkb WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_pkb DESC";
+                                    $rescatat = mysql_query( $sqlcatat );
+                                    while($catat = mysql_fetch_array( $rescatat )){
+                                ?>
+                        <tr>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
+                       
+                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
+                          <td ><?php echo $catat['fk_no_chasis'];?></td>
+                          <td ><?php echo $catat['fk_no_mesin'];?></td>
+                          <td ><?php echo $catat['fk_no_chasis'];?></td>
+                          <td ><?php echo $catat['fk_no_polisi'];?></td>
+                          <td ><?php echo $catat['km_masuk'];?></td>
+                          <td ><?php echo $catat['status_pkb'];?></td>
+                          <td >
+                                        <?php if($catat['status_pkb']=='Buka'){ ?>
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_tutup(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Tutup</span></button>
+                                        <?php }else{?>
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_buka(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Buka</span></button>
+                                        <?php }?>
+                                    </td>
+                        </tr>
+                    <?php }?>
+                </tfoot>
+              </table>
+              <script>
+            $('#tablepkb1').DataTable();
+           
+              
+           function open_tutup(x){
+                                $.ajax({
+                                    url: "pkbstatus/pkb_tutup.php?idpkb="+x,
+                                    type: "GET",
+                                    success: function (ajaxData){
+                                        $("#ModalTutup").html(ajaxData);
+                                        $("#ModalTutup").modal({backdrop: 'static',keyboard: false});
+                                    }
+                                });
+            };
+            function open_buka(x){
+                                $.ajax({
+                                    url: "pkbstatus/pkb_buka.php?idpkb="+x,
+                                    type: "GET",
+                                    success: function (ajaxData){
+                                        $("#ModalBuka").html(ajaxData);
+                                        $("#ModalBuka").modal({backdrop: 'static',keyboard: false});
+                                    }
+                                });
+            };
+              
+                 
+            function open_pkb(z){
+                              $.ajax({
+                                  url: "pkb/pkb_show.php?idpkb="+z,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalShow").html(ajaxData);
+                                      $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+            
+      </script>
+
+<style type="text/css">
+  .table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 0px;
+  }
+  .thead-light{
+    background-color: lightgrey;
+  }
+  .btn {
+    font-weight: bold;
+    padding-bottom: 0px;
+    padding-top: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+</style>
