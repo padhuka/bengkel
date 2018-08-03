@@ -1,23 +1,31 @@
-<!-- Content Wrapper. Contains page content -->
-<?php
-      include_once '../lib/config.php';
-?>
+
+  <!-- Left side column. contains the logo and sidebar -->
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1 align="center">
-        Flow Chart Aplikasi
-        <!--<small>Aplikasi Penggajian Karyawan .:: Rumah Sakit Islam Banyubening Boyolali ::.</small>-->
-      </h1>
+    <div class="title-header">
+    Flow Chart
+    </div>
       <ol class="breadcrumb">
-        <li><a href="../#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Flow Chart Aplikasi</li>
       </ol>
     </section>
+
+    <!-- Main content -->
     <section class="content">
       <div class="row">
-     
-        <tr>
+        <div class="col-xs-12">
+          <div class="box">
+            <!--<div class="box-header">
+              <h3 class="box-title"></h3>
+            </div>
+             /.box-header -->
+            <div class="box-body" style="padding: 100px">
+              
+              <tr>
     <td width="20"></td>
     <td valign="top">
       <table id="flowchart" align="center">
@@ -77,12 +85,7 @@
             </div>
           </td>
 
-                  <td onclick="location='#'">
-                      <div>
-                          <div class="kanan"><img style="height:20px;padding-right: 15px" src="../file/panahkanan.png"></div>
-              Biaya Servis
-            </div>
-          </td>
+            
                   <td style="height:55px" onclick="location='#'">
                       <div>
                           <div class="kanan"><img style="height:20px;padding-right: 15px" src="../file/panahkanan.png"></div>
@@ -102,17 +105,38 @@
     </td>
     <td width="20"></td>
   </tr>
-      
+
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
       </div>
-    </section>
- 
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <style type="text/css">
-    
-#flowchart td:not(:empty){
+       
+<style type="text/css">
+  .btn {
+    font-weight: bold;
+    padding-bottom: 0px;
+    padding-top: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .title-header {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+  }
+  .modal-title {
+    text-align: center;
+  }
+  #flowchart td:not(:empty){
   font-size:12px;
   letter-spacing:1px;
   border:inset;
@@ -171,4 +195,4 @@
   height:0px;
   left:-56px;
 }
-  </style>
+</style>

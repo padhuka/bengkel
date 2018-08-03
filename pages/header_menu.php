@@ -19,9 +19,16 @@
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=estimasi" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Estimasi <i class="fa fa-file-text"></i></button></a></li>
           <?php }?>
-          <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
-          <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=pkb" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">PKB <i class="fa fa-file-text"></i></button></a></li>
-          <?php }?>
+          <?php if ($seskdlvl=='Admin'){?>
+           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
+            <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">PKB <i class="fa fa-file-text dropdown-toggle"></i></button> </a>
+            <ul class="dropdown-menu">
+              <li class="header"><a href="?p=pkb">PKB</a></li> 
+              <li class="header"><a href="?p=pkbbukatutup">Buka/Tutup PKB</a></li>   
+               
+                          </ul>
+          </li><?php } ?>
+
           <?php if ($seskdlvl=='Umum' || $seskdlvl=='Admin'){?>
           <li style="display: block;margin:0;padding:0;float: left;"><a href="?p=panel" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Panel <i class="fa fa-window-restore"></i></button></a></li>
           <?php }?>
@@ -34,6 +41,7 @@
             <ul class="dropdown-menu">
               <li class="header"><a href="?p=kwitansi">Kwitansi</a></li> 
               <li class="header"><a href="?p=kwitansior">Kwitansi OR</a></li>   
+               <li class="header"><a href="?p=kwitansior">Cash/Bank</a></li> 
               <li class="header"><a href="?p=kwitansior">Gate Pass</a></li> 
                           </ul>
           </li><?php } ?>
