@@ -23,7 +23,7 @@
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_est(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
@@ -53,9 +53,30 @@
                       }
                     });
               }
+
+                        
+           function open_del(x){
+                                $.ajax({
+                                    url: "pkb/pkb_del.php?idpkb="+x,
+                                    type: "GET",
+                                    success: function (ajaxData){
+                                        $("#ModalDelete").html(ajaxData);
+                                        $("#ModalDelete").modal({backdrop: 'static',keyboard: false});
+                                    }
+                                });
+            };
               
-                         
-            function open_est(z){
+            function open_modal(y){
+                              $.ajax({
+                                  url: "pkb/pkb_edit_detail.php?idpkb="+y,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalEdit").html(ajaxData);
+                                      $("#ModalEdit").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };         
+            function open_pkb(z){
                               $.ajax({
                                   url: "pkb/pkb_show.php?idpkb="+z,
                                   type: "GET",

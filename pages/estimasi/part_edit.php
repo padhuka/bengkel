@@ -29,7 +29,7 @@
                             <label for="namapart">Nama</label>
                           </div>
                           <div class="col-sm-6">
-                            <input type="hidden" class="form-control" id="parte" name="parte" value="<?php echo $hslpan['id'];?>" required>
+                            <input type="hidden" class="form-control" id="parte" name="parte" value="<?php echo $hslpan['fk_part'];?>" required>
                             <input type="text" class="form-control" id="partnme" name="partnme" value="<?php echo $hnm['nama'];?>" readonly required>                            
                           </div><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="pilihpartep();">Pilih</button>
                         </div>
