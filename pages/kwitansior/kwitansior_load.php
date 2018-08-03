@@ -30,8 +30,9 @@
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_kwitansior(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span><?php echo ($catat['no_kwitansi_or']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi_or']));?></td>
-                          <td ><?php echo $catat['id_estimasi'];?></td>
-                          <td ><?php echo $catat['fk_no_polisi'];?></td>
+<!--                           <td ><?php echo $catat['id_estimasi'];?></td> --> 
+                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo ($catat['id_estimasi']);?></span></button></td>
+                     <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
@@ -68,9 +69,9 @@
               }
               
                          
-            function open_kwitansior(z){
+            function open_est(z){
                               $.ajax({
-                                  url: "kwitansior/kwitansior_show.php?idkwitansior="+z,
+                                  url: "estimasi/estimasi_show.php?idestimasi="+z,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
