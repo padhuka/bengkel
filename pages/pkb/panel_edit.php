@@ -1,10 +1,10 @@
 <!-- general form elements disabled -->
    <?php
     include_once '../../lib/config.php';
-    $idestimasi=$_GET['idestimasi'];
+    $idpkb=$_GET['idpkb'];
     $id=$_GET['id'];
 
-    $sqlpan= "SELECT * FROM t_estimasi_panel_detail WHERE id='$id'";
+    $sqlpan= "SELECT * FROM t_pkb_panel_detail WHERE id='$id'";
     $hslpan= mysql_fetch_array(mysql_query($sqlpan));
 
     $snm = "SELECT * FROM t_panel WHERE id_panel='$hslpan[fk_panel]'";
@@ -29,9 +29,9 @@
                             <label for="namapanel">Nama</label>
                           </div>
 				                  <div class="col-sm-6">
-                            <input type="hidden" class="form-control" id="panele" name="panele" value="<?php echo $hslpan['fk_panel'];?>" required>
+                            <input type="text" class="form-control" id="panele" name="panele" value="<?php echo $hslpan['fk_panel'];?>" required>
 				                    <input type="text" class="form-control" id="panelnme" name="panelnme" value="<?php echo $hnm['nama'];?>" readonly required>                            
-				                  </div><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="pilihpanele();">Pilih</button>
+				                  </div>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -57,25 +57,16 @@
                           <label for="ppn">Harga Total</label>
                         </div>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="hargatotale" name="hargatotale" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
-                            <input type="hidden" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_estimasi_panel'];?>" required readonly>
+                            <input type="text" class="form-control" id="hargatotale" name="hargatotale" value="<?php echo $hslpan['harga_total_pkb_panel'];?>" required readonly>
+                            <input type="hidden" class="form-control" id="hargatotallm" name="hargatotallm" value="<?php echo $hslpan['harga_total_pkb_panel'];?>" required readonly>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <div class="col-sm-3">
-                            <label for="namaestimasi">Mark</label>
-                          </div>
-                          <?php if ($hslpan['mark_panel']==1){$ck='checked';}else{$ck='';}?>
-                          <div class="col-sm-3">
-                            <label class="checkbox-inline"><input type="checkbox" id="ceke" name="ceke" onclick="cekbe();" <?php echo $ck; ?> >Mark</label>
-                            <input type="hidden" class="form-control" id="marke" name="marke" readonly>
-                          </div>
-                        </div>
+                        
 				                <div class="form-group">
                            <div class="modal-footer">
 				                  <div class="col-sm-8">
                             <input type="hidden" class="form-control" id="ide" name="ide" value="<?php echo $id?>" required>
-                            <input type="hidden" class="form-control" id="idestimasie" name="idestimasie" value="<?php echo $idestimasi?>" required>
+                            <input type="hidden" class="form-control" id="idpkbe" name="idpkbe" value="<?php echo $idpkb?>" required>
 				                    <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
                                     <button type="button" class="btn btn-primary" onclick="$('#ModalEditPanel').modal('hide');">&nbsp;Batal&nbsp;</button>
 				                  </div>
@@ -86,12 +77,8 @@
 				          </div>
 				</div>
 </div>
-<?php include_once 'panel_pilih_edit.php';?>
 <script type="text/javascript">
-  function pilihpanele(){ 
-    $("#ModalPilihPanelEdit").modal({backdrop: 'static', keyboard:false});   
-    //alert('milih');
-  }
+  
   function cekbe(){
     if(ceke.checked==true){$('#marke').val('1');}else{$('#marke').val('0');}
   }
@@ -109,7 +96,7 @@
                             //alert(disposisine)                       ;
                            						$.ajax({
                                                   type: 'POST',
-                                                  url: 'estimasi/panel_edit_save.php',
+                                                  url: 'pkb/panel_edit_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
@@ -117,12 +104,12 @@
                                                   success: function(data){  
                                                       //var hsl = data.trim();
                                                       //alert(hsl);
-			                                                $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+			                                                $("#pkbpanel").load('pkb/panel_load.php?idpkb=<?php echo $idpkb;?>');
                                                       $('.modal-body').css('opacity', '');
 
                                                       alert('Data Berhasil Disimpan');
                                                       $('#ModalEditPanel').modal('hide');
-                                                      $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php?idestimasi=<?php echo $idestimasi;?>');
+                                                      $("#tablepkbdetail").load('pkb/pkb_detail_tab.php?idpkb=<?php echo $idpkb;?>');
 			                                            }
                                                       
                                                 });

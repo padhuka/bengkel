@@ -11,16 +11,13 @@
 <div class="modal-dialog">
            <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data PKB <button type="button" class="close" aria-label="Close" onclick="$('#ModalShow').modal('hide');"><span>&times;</span></button></h4>                    
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Edit PKB <button type="button" class="close" aria-label="Close" onclick="$('#ModalEdit').modal('hide');"><span>&times;</span></button></h4>                    
                     </div>
                   <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_pkb e 
-                                                  left join t_customer c
-                                                  on e.fk_customer=c.id_customer
-                                                  where e.id_pkb='$idpkb'";
+                                    $sqlcatat = "SELECT * FROM t_pkb e left join t_customer c on e.fk_customer=c.id_customer where e.id_pkb='$idpkb'";
                                     $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $catat = mysql_fetch_array( $rescatat );
                                 ?>
                     <div class="modal-body">
                       <div class="modal-title-detail">Data PKB</div>
@@ -55,74 +52,43 @@
 
                       </div>
 
-                       <div class="modal-title-detail">Nilai PKB</div>
-                      <div class="row">
-                       <div class="col-sm-12">
-                       <table id="pkbshow" class="table table-condensed table-bordered table-striped table-hover">
-                       <td >
-                         <th class="col-sm-2">
-                        <tr> 
-                            <th>Nilai Panel</th><td><?php echo $catat['total_gross_harga_panel'];?></td> 
-                            <th>Disc</th><td ><?php echo $catat['total_diskon_rupiah_panel'];?></td>
-                            <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_panel'];?></td>
-                        </tr>
-                        
-                        <tr> 
-                          <th>Nilai Part</th><td><?php echo $catat['total_gross_harga_part'];?></td>
-                          <th>Disc</th> <td><?php echo $catat['total_diskon_rupiah_part'];?></td>
-                          <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_part'];?></td>
-                        </tr>
-                        <tr class="total"> 
-                          <th>Total Gross</th><td><?php echo $catat['total_gross_harga_jasa'];?></td>
-                          <th>Total Diskon</th> <td><?php echo $catat['total_diskon_rupiah_jasa'];?></td>
-                          <th>Total Netto</th> <td><?php echo $catat['total_netto_harga_jasa'];?></td>
-                        </tr>
-
-                        </th>
-                       </td>
-                      </table>
-                      <?php }?>
-                           </div>
+                      <div class="modal-title-detail">Nilai PKB</div>
+                      <div class="row" id="loaddetail">
+                       
                       </div>
+
                         <div class="form-group">
                      <div class="modal-footer">
                      <div class="but">
-                                    <button type="button" class="btn btn-primary" name="part" onclick="partshow('<?php echo $idpkb;?>');">&nbsp;Part&nbsp;</button>
-                                    <button type="button" class="btn btn-primary" name="panel" onclick="panelshow('<?php echo $idpkb;?>');">Panel</button>
+                                    <button type="button" class="btn btn-primary" name="part" onclick="partpkb('<?php echo $idpkb;?>');">&nbsp;Part&nbsp;</button>
+                                    <button type="button" class="btn btn-primary" name="panel" onclick="panelpkb('<?php echo $idpkb;?>');">Panel</button>
                      </div>
                      </div>
                      </div>
                        <div class="form-group">
                       <div class="modal-footer">
                       <div class="but">
-                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalShow').modal('hide');">Close</button>
+                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalEdit').modal('hide');">Close</button>
                      </div>
                      </div>
                      </div>
                </div>
            </div>
            </div>      
-           <div id="ModalPanelShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+           <div id="ModalAddPanelPkb" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
            <div id="ModalPartShow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
 <script type="text/javascript">
-  
-            function partshow(y){
+            $(document).ready(function (){
+                 $("#loaddetail").load('pkb/pkb_edit_detail_load.php?idpkb=<?php echo $idpkb;?>');
+            });
+            function panelpkb(x){
               $.ajax({
-                    url: "pkb/part_show_tab.php?idpkbne="+y,
+                    url: "pkb/panel_tab.php?idpkb="+x,
                     type: "GET",
                       success: function (ajaxData){
-                        $("#ModalPartShow").html(ajaxData);
-                        $("#ModalPartShow").modal({backdrop: 'static', keyboard:false});
-                      }
-                    });
-              }
-              function panelshow(z){
-              $.ajax({
-                    url: "pkb/panel_show_tab.php?idpkbne="+z,
-                    type: "GET",
-                      success: function (ajaxData){
-                        $("#ModalPanelShow").html(ajaxData);
-                        $("#ModalPanelShow").modal({backdrop: 'static', keyboard:false});
+                        $("#ModalAddPanelPkb").html(ajaxData);
+                        $("#ModalAddPanelPkb").modal({backdrop: 'static',keyboard: false});
                       }
                     });
               }
