@@ -8,7 +8,7 @@
                     </div>
 
                   <div class="box">
-                <table id="estimasipkb" class="table table-condensed table-bordered table-striped table-hover">
+                <table id="estimasikwitansior" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>Kode Estimasi</th>
@@ -23,14 +23,14 @@
                 <?php
                                     $j=1;
                                    // $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi e 
-                                                  left join t_customer c
-                                                  on e.fk_customer=c.id_customer
-                                                  where e.id_estimasi='$idestimasi'";
-                                    $rescatat = mysql_query( $sqlcatat );
+                                    // $sqlcatat = "SELECT * FROM t_estimasi e 
+                                    //               left join t_customer c
+                                    //               on e.fk_customer=c.id_customer
+                                    //               where e.id_estimasi='$idestimasi'";
+                                    // $rescatat = mysql_query( $sqlcatat );
 
-                                   // $sqlcatat = "SELECT * FROM t_estimasi e LEFT JOIN t_customer c ON e.fk_customer=c.id_customer WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY e.id_estimasi DESC";
-                                   // $rescatat = mysql_query( $sqlcatat );
+                                   $sqlcatat = "SELECT * FROM t_estimasi e LEFT JOIN t_customer c ON e.fk_customer=c.id_customer WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY e.id_estimasi DESC";
+                                   $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
@@ -44,7 +44,7 @@
                        
                           <td >
                                        
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectEstimasi('<?php echo date('d-m-Y' , strtotime($catat['tgl']));?>','<?php echo $catat['fk_no_chasis'];?>','<?php echo $catat['fk_no_mesin'];?>','<?php echo $catat['fk_no_polisi'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['kategori'];?>','<?php echo $catat['km_masuk'];?>','<?php echo $catat['fk_asuransi'];?>','<?php echo $catat['no_telp'];?>','<?php echo $catat['total_gross_harga_panel'];?>','<?php echo $catat['total_diskon_rupiah_panel'];?>','<?php echo $catat['total_netto_harga_panel'];?>','<?php echo $catat['total_gross_harga_part'];?>','<?php echo $catat['total_diskon_rupiah_part'];?>','<?php echo $catat['total_netto_harga_part'];?>','<?php echo $catat['total_gross_harga_jasa'];?>','<?php echo $catat['total_diskon_rupiah_jasa'];?>','<?php echo $catat['total_netto_harga_jasa'];?>');">Pilih</button>
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectEstimasi('<?php echo $catat['fk_no_chasis'];?>','<?php echo $catat['fk_no_mesin'];?>','<?php echo $catat['fk_no_polisi'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['kategori'];?>','<?php echo $catat['fk_asuransi'];?>','<?php echo $catat['total_gross_harga_panel'];?>','<?php echo $catat['total_diskon_rupiah_panel'];?>','<?php echo $catat['total_netto_harga_panel'];?>','<?php echo $catat['total_gross_harga_part'];?>','<?php echo $catat['total_diskon_rupiah_part'];?>','<?php echo $catat['total_netto_harga_part'];?>','<?php echo $catat['total_gross_harga_jasa'];?>','<?php echo $catat['total_diskon_rupiah_jasa'];?>','<?php echo $catat['total_netto_harga_jasa'];?>','<?php echo $catat['id_estimasi'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
@@ -52,18 +52,15 @@
                 </tfoot>
               </table>
               <script type="text/javascript">
-                $('#estimasipkb').DataTable();
+                $('#estimasikwitansior').DataTable();
 
-               function selectEstimasi(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r){
-                              $("#tgl").html(a);
+               function selectEstimasi(b,c,d,e,f,h,j,k,l,m,n,o,p,q,r,s){
                               $("#chasis").html(b);
                               $("#mesin").html(c);
                               $("#polisi").html(d);
                               $("#nama").html(e);
                               $("#kategori").html(f);                              
-                              $("#kmmasuk").html(g);
                               $("#asuransi").html(h);
-                              $("#telp").html(i);
                               //--
                               $("#grosspanel").html(j);
                               $("#diskonpanel").html(k);
@@ -77,6 +74,7 @@
                               $("#diskontotal").html(q);
                               $("#nettototal").html(r);
 
+                              $("#idestimasi").val(s);
                               $("#ModalEstimasi").modal('hide');
                               
                       }; 

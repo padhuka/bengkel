@@ -21,7 +21,7 @@
                                     $j=1;
                                     $sqlcatat = "SELECT k.no_kwitansi_or, k.tgl_kwitansi_or,e.id_estimasi,e.fk_no_polisi,e.fk_no_chasis,e.fk_no_mesin,c.nama,k.nilai_kwitansi from t_kwitansi_or k LEFT JOIN t_estimasi e
                                       ON k.fk_estimasi=e.id_estimasi LEFT JOIN t_customer c 
-                                      ON e.fk_user=c.id_customer
+                                      ON e.fk_customer=c.id_customer
                                       ";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
@@ -30,14 +30,15 @@
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_kwitansior(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span><?php echo ($catat['no_kwitansi_or']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi_or']));?></td>
-                          <td ><?php echo $catat['id_estimasi'];?></td>
-                          <td ><?php echo $catat['fk_no_polisi'];?></td>
+<!--                           <td ><?php echo $catat['id_estimasi'];?></td> --> 
+                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo ($catat['id_estimasi']);?></span></button></td>
+                     <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo $catat['nilai_kwitansi'];?></td>
                           <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_modal(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Edit</span></button>
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_modal(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_del(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Batal</span></button>
 
                                     </td>
@@ -68,9 +69,9 @@
               }
               
                          
-            function open_kwitansior(z){
+            function open_est(z){
                               $.ajax({
-                                  url: "kwitansior/kwitansior_show.php?idkwitansior="+z,
+                                  url: "estimasi/estimasi_show.php?idestimasi="+z,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);

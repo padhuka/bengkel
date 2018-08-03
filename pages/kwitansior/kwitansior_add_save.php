@@ -1,22 +1,22 @@
 <?php
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
-         //$ip = ; // Ambil IP Address dari User
-        //$id_estimasi = trim($_POST['id_estimasi']);
+
         $idestimasi = trim($_POST['idestimasi']);
-        //message_back($id_estimasi);
-        //$kodeawal = 'est_'.$hrini.'_';
+        $nilaikwitansi = trim($_POST['nilaikwitansi']);
+        $diskonor = trim($_POST['diskonor']);
+        $keterangan = trim($_POST['keterangan']);
+
         $hrn2= date('dmy' , strtotime($hrini));
-  //EST.BR.020818.000001
-        $kodeawal = 'PKB_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal%' ORDER BY id_estimasi DESC";
+        $kodeawal = 'OR_BR.'.$hrn2.'.';
+        $sqljur = "SELECT * FROM t_kwitansi_or WHERE no_kwitansi_or LIKE '$kodeawal%' ORDER BY no_kwitansi_or DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
-        if (empty($jur['id_estimasi'])){
+        if (empty($jur['no_kwitansi_or'])){
             $kodeakhir = '000001';
         }else{
             # GENERATE
-            $kode = $jur['id_estimasi'];
+            $kode = $jur['no_kwitansi_or'];
             $pecah = explode('.',$kode);
             $nilbaru = $pecah[2] + 1;
             $panj = strlen($nilbaru);
@@ -34,9 +34,15 @@
         
         $kodebaru = $kodeawal.$kodeakhir;     
 
+        //echo $idestimasi;
+            // $sqlest = "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
+            // $hest= mysql_fetch_array(mysql_query($sqlest));
+
         
-            $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi')";
+        $sqltbemp = "INSERT INTO t_kwitansi_or (no_kwitansi_or,fk_estimasi,nilai_kwitansi,diskon_or,keterangan) VALUES ('$kodebaru','$idestimasi','$nilaikwitansi','$diskonor','$keterangan')";
+
             mysql_query($sqltbemp);
-            echo $kodebaru.'-'.$warnanm;
+            echo $sqltbemp;
+        //    echo $kodebaru.'-'.$warnanm;
         
 ?>
