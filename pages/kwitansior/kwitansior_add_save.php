@@ -42,7 +42,7 @@
         $sqltbemp = "INSERT INTO t_kwitansi_or (no_kwitansi_or,fk_estimasi,nilai_kwitansi,diskon_or,keterangan) VALUES ('$kodebaru','$idestimasi','$nilaikwitansi','$diskonor','$keterangan')";
 
             mysql_query($sqltbemp);
-            echo $sqltbemp;
+           // echo $sqltbemp;
         //    echo $kodebaru.'-'.$warnanm;
         
 ?>
