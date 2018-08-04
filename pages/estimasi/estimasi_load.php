@@ -5,13 +5,15 @@
       <table id="estimasi1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>Kode Estimasi</th>
+                          <th>No Estimasi</th>
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
                           <th>Warna</th>
-                          <th>NoPol</th>
-                          <th>KM Masuk</th>
+                          <th>No Polisi</th>
+                          <th>Total Estimasi</th>
+
+                     
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
@@ -30,7 +32,7 @@
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['km_masuk'];?></td>
+                           <td ><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button>

@@ -5,20 +5,21 @@
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>Kode PKB</th>
-                          <th>Tgl Masuk</th>
+                          <th>No PKB</th>
+                          <th>Tgl PKB</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
-                          <th>Warna</th>
-                          <th>NoPol</th>
-                          <th>KM Masuk</th>
+                          <th>No Polisi</th>
+                          <th>Nama Customer</th>
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_pkb WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_pkb DESC";
+                                    $sqlcatat = "SELECT p.*,c.nama FROM t_pkb p
+                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
+                                    WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_pkb DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
@@ -28,9 +29,9 @@
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
+                          
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['km_masuk'];?></td>
+                          <td ><?php echo $catat['nama'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
