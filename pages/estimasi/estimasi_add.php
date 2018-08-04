@@ -91,6 +91,19 @@
                             <input type="text" class="form-control" id="kmmasuk" name="kmmasuk" required>
                           </div>
                         </div> 
+                        <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="namaestimasi">Tgl Estimasi Selesai</label>
+                          </div>
+                          <div class="col-sm-8">
+                            <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="tglselesai" name="tglselesai" required value="<?php echo $harinow;?>">
+                          </div>
+                          </div>
+                        </div> 
                          
                           <input type="hidden" class="form-control" id="uname" name="uname" value="<?php echo $sesuname;?>" readonly>
                           <input type="hidden" class="form-control" id="customer" name="customer" readonly>                        
@@ -127,7 +140,10 @@
                  $("#tablepart").load('estimasi/part_load.php');
             });*/
 
-  
+  $('#tglselesai').datepicker({       
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+      });
   function selectAsuransi(){ 
     $("#ModalAsuransi").modal({backdrop: 'static',keyboard:false});   
   }
