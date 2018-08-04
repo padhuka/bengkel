@@ -34,6 +34,7 @@
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="cetak_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
@@ -90,6 +91,17 @@
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
                                       $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+
+            function cetak_est(q){
+                              $.ajax({
+                                  url: "estimasi/estimasi_print.php?idestimasi="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalEstPrint").html(ajaxData);
+                                      $("#ModalEstPrint").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };
