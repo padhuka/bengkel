@@ -38,7 +38,7 @@
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo $catat['nilai_kwitansi'];?></td>
+                          <td ><?php echo rupiah2($catat['nilai_kwitansi']);?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_modal(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_del(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Batal</span></button>
