@@ -33,9 +33,9 @@
                                 ?>
                         <tr>
                           <td ><?php echo $catat['fk_part'];?></td>
-                          <td ><?php echo $catat['harga_jual_part'];?></td>
-                          <td ><?php echo $catat['harga_diskon_part'];?></td>
-                          <td ><?php echo $catat['harga_total_pkb_part'];?></td>
+                          <td ><?php echo rupiah2($catat['harga_jual_part']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_diskon_part']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_total_pkb_part']);?></td>
                           
                         </tr>
                     <?php }?>

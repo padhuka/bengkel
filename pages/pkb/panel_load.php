@@ -1,5 +1,6 @@
       <?php
             include_once '../../lib/config.php';
+            include_once '../../lib/fungsi.php';
             $idpkb=$_GET['idpkb'];
       ?>
       <table id="pkbpanel" class="table table-condensed table-bordered table-striped table-hover">
@@ -21,9 +22,9 @@
                                 ?>
                         <tr>
                           <td ><?php echo $catat['fk_panel'];?></td>
-                          <td ><?php echo $catat['harga_jual_panel'];?></td>
-                          <td ><?php echo $catat['harga_diskon_panel'];?></td>
-                          <td ><?php echo $catat['harga_total_pkb_panel'];?></td>
+                          <td ><?php echo rupiah2($catat['harga_jual_panel']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_diskon_panel']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_total_pkb_panel']);?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id'];?>" onclick="open_modalpanel(id='<?php echo $catat['id'];?>');"><span>Edit</span></button>
 

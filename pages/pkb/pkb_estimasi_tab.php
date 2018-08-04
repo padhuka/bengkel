@@ -1,3 +1,8 @@
+  <?php
+  
+    include_once '../../lib/fungsi.php';
+
+   ?>
      <div id="ModalEstimasi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
      <div class="modal-dialog">
       <div class="col-md-14">
@@ -31,7 +36,7 @@
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td >
-                            <button type="button" class="btn btn btn-default btn-circle" onclick="selectEstimasi('<?php echo date('d-m-Y' , strtotime($catat['tgl']));?>','<?php echo $catat['fk_no_chasis'];?>','<?php echo $catat['fk_no_mesin'];?>','<?php echo $catat['fk_no_polisi'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['kategori'];?>','<?php echo $catat['km_masuk'];?>','<?php echo $catat['fk_asuransi'];?>','<?php echo $catat['no_telp'];?>','<?php echo $catat['total_gross_harga_panel'];?>','<?php echo $catat['total_diskon_rupiah_panel'];?>','<?php echo $catat['total_netto_harga_panel'];?>','<?php echo $catat['total_gross_harga_part'];?>','<?php echo $catat['total_diskon_rupiah_part'];?>','<?php echo $catat['total_netto_harga_part'];?>','<?php echo $catat['total_gross_harga_jasa'];?>','<?php echo $catat['total_diskon_rupiah_jasa'];?>','<?php echo $catat['total_netto_harga_jasa'];?>','<?php echo $catat['id_estimasi'];?>');">Pilih</button>
+                            <button type="button" class="btn btn btn-default btn-circle" onclick="selectEstimasi('<?php echo date('d-m-Y' , strtotime($catat['tgl']));?>','<?php echo $catat['fk_no_chasis'];?>','<?php echo $catat['fk_no_mesin'];?>','<?php echo $catat['fk_no_polisi'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['kategori'];?>','<?php echo $catat['km_masuk'];?>','<?php echo $catat['fk_asuransi'];?>','<?php echo $catat['no_telp'];?>','<?php echo rupiah2($catat['total_gross_harga_panel']);?>','<?php echo rupiah2($catat['total_diskon_rupiah_panel']);?>','<?php echo rupiah2($catat['total_netto_harga_panel']);?>','<?php echo rupiah2($catat['total_gross_harga_part']);?>','<?php echo rupiah2($catat['total_diskon_rupiah_part']);?>','<?php echo rupiah2($catat['total_netto_harga_part']);?>','<?php echo rupiah2($catat['total_gross_harga_jasa']);?>','<?php echo rupiah2($catat['total_diskon_rupiah_jasa']);?>','<?php echo rupiah2($catat['total_netto_harga_jasa']);?>','<?php echo $catat['id_estimasi'];?>');">Pilih</button>
                           </td>
                         </tr>
                     <?php }?>
