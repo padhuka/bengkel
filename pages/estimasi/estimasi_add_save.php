@@ -48,6 +48,5 @@
         
             $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,tgl_estimasi_selesai) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$tglselesai')";
             mysql_query($sqltbemp);
-            echo $kodebaru.'-'.$warnanm;
-        
+            echo $kodebaru.'-'.$warnanm;        
 ?>

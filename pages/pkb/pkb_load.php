@@ -35,6 +35,7 @@
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="cetak_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
@@ -84,6 +85,16 @@
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
                                       $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+             function cetak_pkb(q){
+                              $.ajax({
+                                  url: "pkb/pkb_print.php?idpkb="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalPkbPrint").html(ajaxData);
+                                      $("#ModalPkbPrint").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };
