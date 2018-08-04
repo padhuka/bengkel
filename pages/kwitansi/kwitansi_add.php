@@ -112,7 +112,7 @@
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){
-                                                        alert(data);
+                                                        //alert(data);
                                                         $("#kwitansi").load('kwitansi/kwitansi_load.php');
                                                         $('.modal-body').css('opacity', '');
 

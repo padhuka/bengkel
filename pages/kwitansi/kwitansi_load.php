@@ -12,16 +12,19 @@
                           <th>No Chasis</th>
                           <th>Nama Customer</th>
                           <th>Total</th>
+                          <th>PPN</th>
+                           <th>Total Bayar</th>
+                         
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,c.nama,k.total_kwitansi,k.tgl_batal FROM t_kwitansi k 
+                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k 
                                       INNER JOIN t_pkb p ON k.fk_pkb=p.id_pkb 
                                       INNER JOIN t_customer c ON p.fk_customer=c.id_customer
-                                      AND k.tgl_batal='0000:00:00 00:00:00'";
+                                      WHERE k.tgl_batal='0000:00:00 00:00:00'";
 
 
                                     $rescatat = mysql_query( $sqlcatat );
@@ -32,12 +35,14 @@
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi']));?></td>
 <!--                           <td ><?php echo $catat['id_pkb'];?></td> --> 
-                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idestimasi='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
+                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
                    
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo $catat['total_kwitansi'];?></td>
+                          <td ><?php echo $catat['total_ppn_kwitansi'];?></td>
+                          <td ><?php echo $catat['total_payment'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_modal(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>
@@ -82,7 +87,7 @@
                          
             function open_pkb(z){
                               $.ajax({
-                                  url: "estimasi/estimasi_show.php?idestimasi="+z,
+                                  url: "pkb/pkb_show.php?idpkb="+z,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);

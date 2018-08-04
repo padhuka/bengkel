@@ -1,8 +1,8 @@
 <?php
     include_once '../../lib/config.php';
     //include_once '../../lib/fungsi.php';
-    $id = $_GET['idkwitansior'];
-    $sqlemp = "SELECT * FROM t_kwitansi_or WHERE no_kwitansi_or='$id'";
+    $id = $_GET['idkwitansi'];
+    $sqlemp = "SELECT * FROM t_kwitansi WHERE no_kwitansi='$id'";
     $resemp = mysql_query( $sqlemp );
     $emp = mysql_fetch_array( $resemp );
 
@@ -11,13 +11,13 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Batal Kwitansi OR <button type="button" class="close" aria-label="Close" onclick="$('#ModalDelete').modal('hide');"><span>&times;</span></button></h4> 
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Batal Kwitansi <button type="button" class="close" aria-label="Close" onclick="$('#ModalDelete').modal('hide');"><span>&times;</span></button></h4> 
                     </div>
                         <div class="panel-body">
 
                             <div class="row">
                                 <div class="col-lg-12">
-                                   <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formkwitansior">
+                                   <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formkwitansi">
                                         <div class="alert alert-danger">Apakah anda yakin ingin membatalkan No Kwitansi ( <?php echo $id;?>) ?</div>
                                     <div class="form-group">
                                       <div class="col-sm-4">
@@ -58,12 +58,12 @@
                         $(".save_submit").click(function (e){
                            var keteranganbatal = $('#keteranganbatal').val();
                            $.ajax({
-                                url: 'kwitansior/kwitansior_del_save.php?idkwitansior=<?php echo $id;?>&keteranganbatal='+keteranganbatal,
+                                url: 'kwitansi/kwitansi_del_save.php?idkwitansi=<?php echo $id;?>&keteranganbatal='+keteranganbatal,
                                 type: 'GET',
                                 success: function (response){
                                   //alert($)
                                       //alert('panel/panel_del_save.php?id_panel='+id_panel);
-                                     $("#kwitansior").load('kwitansior/kwitansior_load.php');
+                                     $("#kwitansi").load('kwitansi/kwitansi_load.php');
                                      $('.modal-body').css('opacity', '');
                                       alert('Data Berhasil Dibatalkan');
                                       $('#ModalDelete').modal('hide');
