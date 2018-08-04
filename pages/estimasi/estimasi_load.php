@@ -5,7 +5,7 @@
       <table id="estimasi1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>Kode Estimasi</th>
+                          <th>No Estimasi</th>
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
