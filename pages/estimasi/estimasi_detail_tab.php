@@ -1,5 +1,6 @@
 		      <?php
             include_once '../../lib/config.php';
+            include_once '../../lib/fungsi.php';
       ?>
 
         <table id="estimasixx2" class="table table-condensed table-bordered table-striped table-hover">
@@ -19,15 +20,15 @@
                 ?>              
                         <tr>
                           <td>Part</td>
-                          <td><?php echo $hest['total_gross_harga_part'];?></td>
-                          <td><?php echo $hest['total_diskon_rupiah_part'];?></td>
-                          <td><?php echo $hest['total_netto_harga_part'];?></td>
+                          <td><?php echo rupiah2($hest['total_gross_harga_part']);?></td>
+                          <td><?php echo rupiah2($hest['total_diskon_rupiah_part']);?></td>
+                          <td><?php echo rupiah2($hest['total_netto_harga_part']);?></td>
                         </tr>
                         <tr>
                           <td>Panel</td>
-                          <td><?php echo $hest['total_gross_harga_panel'];?></td>
-                          <td><?php echo $hest['total_diskon_rupiah_panel'];?></td>
-                          <td><?php echo $hest['total_netto_harga_panel'];?></td>
+                          <td><?php echo rupiah2($hest['total_gross_harga_panel']);?></td>
+                          <td><?php echo rupiah2($hest['total_diskon_rupiah_panel']);?></td>
+                          <td><?php echo rupiah2($hest['total_netto_harga_panel']);?></td>
                         </tr>                    	
                 </tfoot>
               </table>

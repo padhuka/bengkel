@@ -26,8 +26,8 @@
                           <td ><?php echo $catat['id_panel'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['harga_pokok']);?></td>
-                          <td ><?php echo $catat['harga_jual'];?></td>
-                          <td ><?php echo $catat['diskon'];?></td>
+                          <td ><?php echo rupiah2($catat['harga_jual']);?></td>
+                          <td ><?php echo $catat['diskon'];?>%</td>
                           <td ><?php echo $catat['ppn'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_panel']; ?>" onclick="open_modal(ideditas='<?php echo $catat['id_panel']; ?>');"><span>Edit</span></button>

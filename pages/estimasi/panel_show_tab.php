@@ -34,9 +34,9 @@
                                 ?>
                         <tr>
                           <td ><?php echo $catat['fk_panel'];?></td>
-                          <td ><?php echo $catat['harga_jual_panel'];?></td>
-                          <td ><?php echo $catat['harga_diskon_panel'];?></td>
-                          <td ><?php echo $catat['harga_total_estimasi_panel'];?></td>
+                          <td ><?php echo rupiah2($catat['harga_jual_panel']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_diskon_panel']);?></td>
+                          <td ><?php echo rupiah2($catat['harga_total_estimasi_panel']);?></td>
                           
                         </tr>
                     <?php }?>
