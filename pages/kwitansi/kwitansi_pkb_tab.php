@@ -1,3 +1,6 @@
+    <?php
+    include_once '../../lib/fungsi.php';
+   ?>
      <div id="ModalPkb" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
      <div class="modal-dialog">
       <div class="col-md-14">
@@ -43,15 +46,15 @@
                                         '<?php echo $catat['nama'];?>',
                                         '<?php echo $catat['kategori'];?>',
                                         '<?php echo $catat['fk_asuransi'];?>',
-                                        '<?php echo $catat['total_gross_harga_panel'];?>',
-                                        '<?php echo $catat['total_diskon_rupiah_panel'];?>',
-                                        '<?php echo $catat['total_netto_harga_panel'];?>',
-                                        '<?php echo $catat['total_gross_harga_part'];?>',
-                                        '<?php echo $catat['total_diskon_rupiah_part'];?>',
-                                        '<?php echo $catat['total_netto_harga_part'];?>',
-                                        '<?php echo $catat['total_gross_harga_jasa'];?>',
-                                        '<?php echo $catat['total_diskon_rupiah_jasa'];?>',
-                                        '<?php echo $catat['total_netto_harga_jasa'];?>',
+                                        '<?php echo rupiah2($catat['total_gross_harga_panel']);?>',
+                                        '<?php echo rupiah2($catat['total_diskon_rupiah_panel']);?>',
+                                        '<?php echo rupiah2($catat['total_netto_harga_panel']);?>',
+                                        '<?php echo rupiah2($catat['total_gross_harga_part']);?>',
+                                        '<?php echo rupiah2($catat['total_diskon_rupiah_part']);?>',
+                                        '<?php echo rupiah2($catat['total_netto_harga_part']);?>',
+                                        '<?php echo rupiah2($catat['total_gross_harga_jasa']);?>',
+                                        '<?php echo rupiah2($catat['total_diskon_rupiah_jasa']);?>',
+                                        '<?php echo rupiah2($catat['total_netto_harga_jasa']);?>',
                                          '<?php echo $catat['id_pkb'];?>'
                                         );">Pilih</button>
 
@@ -64,24 +67,24 @@
                 $('#pkbwitansi').DataTable();
 
                function selectPKB(b,c,d,e,f,h,j,k,l,m,n,o,p,q,r,s){
-                              $("#chasis").val(b);
-                              $("#mesin").val(c);
-                              $("#polisi").val(d);
-                              $("#nama").val(e);
-                              $("#kategori").val(f);                              
-                              $("#asuransi").val(h);
+                              $("#chasis").html(b);
+                              $("#mesin").html(c);
+                              $("#polisi").html(d);
+                              $("#nama").html(e);
+                              $("#kategori").html(f);                              
+                              $("#asuransi").html(h);
                               //--
-                              $("#grosspanel").val(j);
-                              $("#diskonpanel").val(k);
-                              $("#nettopanel").val(l);
+                              $("#grosspanel").html(j);
+                              $("#diskonpanel").html(k);
+                              $("#nettopanel").html(l);
                               //--
-                              $("#grosspart").val(m);
-                              $("#diskonpart").val(n);
-                              $("#nettopart").val(o);
+                              $("#grosspart").html(m);
+                              $("#diskonpart").html(n);
+                              $("#nettopart").html(o);
                               //---
-                              $("#grosstotal").val(p);
-                              $("#diskontotal").val(q);
-                              $("#nettototal").val(r);
+                              $("#grosstotal").html(p);
+                              $("#diskontotal").html(q);
+                              $("#nettototal").html(r);
 
                               $("#idpkb").val(s);
                               $("#ModalPkb").modal('hide');

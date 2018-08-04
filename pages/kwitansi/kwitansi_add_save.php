@@ -3,26 +3,7 @@
         include_once '../../lib/fungsi.php';
 
         $idpkb = trim($_POST['idpkb']);
-        $chasis = trim($_POST['chasis']);
-        $mesin = trim($_POST['mesin']);
-       // $polisi = trim($_POST['polisi']);
-        $nama = trim($_POST['nama']);  
-        $kategori = trim($_POST['kategori']); 
-        $asuransi = trim($_POST['asuransi']);
-        $grosspanel = trim($_POST['grosspanel']);
-        $diskonpanel = trim($_POST['diskonpanel']);
-        $nettopanel = trim($_POST['nettopanel']);
-        $grosspart = trim($_POST['grosspart']);
-        $diskonpart = trim($_POST['diskonpart']);
-        $nettopart = trim($_POST['nettopart']);
-        $grosstotal = trim($_POST['grosstotal']);
-        $diskontotal = trim($_POST['diskontotal']);
-        $nettototal = trim($_POST['nettototal']);
-
-        $ppn = $nettototal*10/100;
-        $payment = $nettototal+$ppn;
-
-
+     
         $hrn2= date('dmy' , strtotime($hrini));
         $kodeawal = 'SI_BR.'.$hrn2.'.';
         $sqljur = "SELECT * FROM t_kwitansi WHERE no_kwitansi LIKE '$kodeawal%' ORDER BY no_kwitansi DESC";
@@ -50,15 +31,26 @@
         
         $kodebaru = $kodeawal.$kodeakhir;     
 
-        //echo $idpkb;
-            // $sqlest = "SELECT * FROM t_estimasi WHERE id_estimasi='$idpkb'";
-            // $hest= mysql_fetch_array(mysql_query($sqlest));
+         $sqlest = "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
+         $hsl= mysql_fetch_array(mysql_query($sqlest));
+
+            $grosspanel = $hsl['total_gross_harga_panel'];
+            $diskonpanel = $hsl['total_diskon_rupiah_panel'];
+            $nettopanel = $hsl['total_netto_harga_panel'];
+            $grosspart = $hsl['total_gross_harga_part'];
+            $diskonpart = $hsl['total_diskon_rupiah_part'];
+            $nettopart = $hsl['total_netto_harga_part'];
+            $grosstotal = $hsl['total_gross_harga_jasa'];
+            $diskontotal = $hsl['total_diskon_rupiah_jasa'];
+            $nettototal = $hsl['total_netto_harga_jasa'];
+
+            $ppn = $nettototal*10/100;
+            $payment = $nettototal+$ppn;
 
         
         $sqltbemp = "INSERT INTO t_kwitansi (no_kwitansi,fk_pkb,total_gross_panel,total_gross_part,total_diskon_panel,total_diskon_part,total_netto_panel,total_netto_part,total_ppn_kwitansi,total_kwitansi,total_payment) VALUES ('$kodebaru','$idpkb','$grosspanel','$grosspart','$diskonpanel','$diskonpart','$nettopanel','$nettopart',$ppn,'$nettototal',$payment)";
 
             mysql_query($sqltbemp);
-           // echo $sqltbemp;
-        //    echo $kodebaru.'-'.$warnanm;
+         
         
 ?>

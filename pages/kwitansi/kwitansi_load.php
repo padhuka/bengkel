@@ -40,9 +40,9 @@
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo $catat['total_kwitansi'];?></td>
-                          <td ><?php echo $catat['total_ppn_kwitansi'];?></td>
-                          <td ><?php echo $catat['total_payment'];?></td>
+                          <td ><?php echo rupiah2($catat['total_kwitansi']);?></td>
+                          <td ><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td>
+                          <td ><?php echo rupiah2($catat['total_payment']);?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_modal(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>

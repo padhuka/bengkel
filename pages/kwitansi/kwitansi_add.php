@@ -1,9 +1,7 @@
 <!-- general form elements disabled -->
    <?php
-   // include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
- 
    ?>
 <div class="modal-dialog">
            <div class="modal-content">
@@ -14,15 +12,15 @@
                  
                     <div class="modal-body">
                       
-                      <div class="modal-title-detail">DATA PKB</div>
+                      <div class="modal-title-detail">DATA ESTIMASI</div>
                       <div class="row">
                        <div class="col-sm-6">
                        <table id="pkbshow" class="table table-condensed table-bordered table-striped table-hover">
                        <td>
                          <th class="col-sm-8">
                         <tr> <th>No PKB</th> <td><input type="text" class="form-control" name="idpkb" id="idpkb" readonly> <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="kwitansi();">Pilih</button></td></tr>
-                        <tr> <th>No Chasis</th>  <td ><input type="text" class="form-control" name="chasis" id="chasis" readonly></td></tr>
-                        <tr> <th>No Mesin</th> <td ><input type="text" class="form-control" name="mesin" id="mesin" readonly></td></tr>
+                        <tr> <th>No Chasis</th>  <td ><label id="chasis"></label></td></tr>
+                        <tr> <th>No Mesin</th> <td ><label id="mesin"></label></td></tr>
                         
                         </th>
                        </td>
@@ -33,9 +31,9 @@
                           <td>
                          <th class="col-sm-6">
 
-                        <tr> <th>Kategori </th> <td><input type="text" class="form-control" name="kategori" id="kategori" readonly></td></tr>
-                        <tr> <th>Asuransi</th>  <td ><input type="text" class="form-control" name="asuransi" id="asuransi" readonly></td></tr>
-                        <tr> <th>Nama Customer</th> <td ><input type="text" class="form-control" name="nama" id="nama" readonly></td></tr>
+                        <tr> <th>Kategori </th> <td ><label id="kategori"></label></td></tr>
+                        <tr> <th>Asuransi</th>  <td ><label id="asuransi"></label></td></tr>
+                        <tr> <th>Nama Customer</th> <td ><label id="nama"></label></td></tr>
                         </th>
                        </td>
                                </table>
@@ -43,27 +41,27 @@
 
                       </div>
 
-                       <div class="modal-title-detail">NILAI PKB</div>
+                       <div class="modal-title-detail">NILAI OR </div>
                       <div class="row">
                        <div class="col-sm-12">
                        <table id="kwitansiform" class="table table-condensed table-bordered table-striped table-hover">
                        <td >
                          <th class="col-sm-2">
                         <tr> 
-                            <th>Nilai Panel</th><td><input type="text" class="form-control" name="grosspanel" id="grosspanel" readonly></td> 
-                            <th>Disc Panel</th><td ><input type="text" class="form-control" name="diskonpanel" id="diskonpanel" readonly></td>
-                            <th>Total Netto</th> <td><input type="text" class="form-control" name="nettopanel" id="nettopanel" readonly></td>
+                            <th>Nilai Panel</th><td><label id="grosspanel"></label></td> 
+                            <th>Disc Panel</th><td ><label id="diskonpanel"></label></td>
+                            <th>Total Netto</th> <td><label id="nettopanel"></label></td>
                         </tr>
                         
                         <tr> 
-                          <th>Nilai Part</th><td><input type="text" class="form-control" name="grosspart" id="grosspart" readonly></td>
-                          <th>Disc Part</th> <td><input type="text" class="form-control" name="diskonpart" id="diskonpart" readonly></td>
-                          <th>Total Netto</th> <td><input type="text" class="form-control" name="nettopart" id="nettopart" readonly></td>
+                          <th>Nilai Part</th><td><label id="grosspart"></label></td>
+                          <th>Disc Part</th> <td><label id="diskonpart"></label></td>
+                          <th>Total Netto</th> <td><label id="nettopart"></label></td>
                         </tr>
                         <tr class="total"> 
-                          <th>Total Gross</th><td><input type="text" class="form-control" name="grosstotal" id="grosstotal" readonly></td>
-                          <th>Total Diskon</th> <td><input type="text" class="form-control" name="diskontotal" id="diskontotal" readonly></td>
-                          <th>Total Netto</th> <td><input type="text" class="form-control" name="nettototal" id="nettototal" readonly></td>
+                          <th>Total Gross</th><td><label id="grosstotal"></label></td>
+                          <th>Total Diskon</th> <td><label id="diskontotal"></label></td>
+                          <th>Total Netto</th> <td><label id="nettototal"></label></td>
                         </tr>
 
                         </th>
@@ -72,7 +70,13 @@
                 
                            </div>
                       </div>
-                   
+                  
+                      <div class="row">
+                       <div class="col-sm-12">
+                        
+                       
+                      </div>
+                    </div>
                        <div class="form-group">
                         <div class="modal-footer">
                       <div class="but">
@@ -85,10 +89,7 @@
              </form>
            </div>
            </div>      
-           <?php include_once 'kwitansi_pkb_tab.php';
-
-           // echo $kategori;
-           ?>
+           <?php include_once 'kwitansi_pkb_tab.php';?>
 
             <script type="text/javascript">
               function kwitansi(){ 
@@ -104,6 +105,7 @@
                             return false;
                           }
                           e.preventDefault();
+                            //alert(disposisine)                       ;
                                       $.ajax({
                                                   type: 'POST',
                                                   url: 'kwitansi/kwitansi_add_save.php',
@@ -112,14 +114,13 @@
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){
-                                                        //alert(data);
                                                         $("#kwitansi").load('kwitansi/kwitansi_load.php');
                                                         $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide'); 
                                                             var hsl=data.trim();       
-                                                           // alert(hsl);
+                                                            alert(hsl);
 
                                                              
                                                   }
