@@ -5,13 +5,12 @@
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>Kode PKB</th>
+                          <th>No PKB</th>
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
-                          <th>Warna</th>
-                          <th>NoPol</th>
-                          <th>KM Masuk</th>
+                          <th>No Polisi</th>
+                          <th>Nama Customer</th>
                           <th>Status PKB</th>
                           <th></th>
                 </tr>
@@ -19,7 +18,10 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_pkb WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_pkb DESC";
+                                    $sqlcatat = "SELECT p.*,c.nama FROM t_pkb p
+                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
+                                    WHERE tgl_batal='0000-00-00 00:00:00' 
+                                    ORDER BY id_pkb DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
@@ -29,9 +31,8 @@
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['km_masuk'];?></td>
+                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo $catat['status_pkb'];?></td>
                           <td >
                                         <?php if($catat['status_pkb']=='Buka'){ ?>
@@ -45,7 +46,15 @@
                 </tfoot>
               </table>
               <script>
-            $('#tablepkb1').DataTable();
+            $('#tablepkb1').DataTable({
+              "language": {
+                      "search": "Cari",
+                      "lengthMenu": "Lihat _MENU_ baris per halaman",
+                      "zeroRecords": "Maaf, Tidak di temukan - data",
+                      "info": "Terlihat halaman _PAGE_ of _PAGES_",
+                      "infoEmpty": "Tidak ada data di database"
+                  }
+            });
            
               
            function open_tutup(x){

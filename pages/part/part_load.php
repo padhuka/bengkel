@@ -14,7 +14,7 @@
                           <th>PPN</th>
                           <th>Stock</th>
                           <th>Supplier</th>
-                          <th>Tgl Masuk</th>
+                         
 
                           <th><button type="button" class="btn btn btn-default btn-circle open_add"><span>Tambah</span></button></th>
                 </tr>
@@ -36,7 +36,7 @@
                           <td ><?php echo $catat['ppn'];?></td>
                           <td ><?php echo $catat['stock'];?></td>
                           <td ><?php echo $catat['fk_supplier'];?></td>
-                          <td ><?php echo $catat['tgl_masuk'];?></td>
+                     
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_part']; ?>" onclick="open_modal(ideditas='<?php echo $catat['id_part']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_part']; ?>" onclick="open_del(iddelas='<?php echo $catat['id_part']; ?>');"><span>Hapus</span></button>
