@@ -40,7 +40,7 @@
                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['nilai_kwitansi']);?></td>
                           <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_modal(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Cetak</span></button>
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="cetak_or(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_del(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Batal</span></button>
 
                                     </td>
@@ -88,6 +88,16 @@
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
                                       $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+            function cetak_or(q){
+                              $.ajax({
+                                  url: "kwitansior/kwitansior_print.php?no_kwitansi_or="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalOrPrint").html(ajaxData);
+                                      $("#ModalOrPrint").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };
