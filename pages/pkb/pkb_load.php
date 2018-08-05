@@ -19,7 +19,8 @@
                                     $j=1;
                                     $sqlcatat = "SELECT p.*,c.nama FROM t_pkb p
                                     LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                    WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_pkb DESC";
+                                    WHERE tgl_batal='0000-00-00 00:00:00' AND status_pkb='Buka'
+                                    ORDER BY id_pkb DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
@@ -42,7 +43,15 @@
                 </tfoot>
               </table>
               <script>
-            $('#tablepkb1').DataTable();
+            $('#tablepkb1').DataTable({
+              "language": {
+                      "search": "Cari",
+                      "lengthMenu": "Lihat _MENU_ baris per halaman",
+                      "zeroRecords": "Maaf, Tidak di temukan - data",
+                      "info": "Terlihat halaman _PAGE_ of _PAGES_",
+                      "infoEmpty": "Tidak ada data di database"
+                  }
+            });
            
            function open_add(){
               $.ajax({
