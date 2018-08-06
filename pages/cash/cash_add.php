@@ -102,7 +102,6 @@
       });
 
   function selectKwi(){ 
-   
     $("#ModalCashKwitansi").modal({backdrop: 'static',keyboard:false});   
 
   }

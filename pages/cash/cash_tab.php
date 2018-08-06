@@ -37,8 +37,7 @@
     <!-- /.content -->
   </div>
         <div id="ModalPkbAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-      
-        
+       
          <div id="ModalCashPrint" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
         <script type="text/javascript">

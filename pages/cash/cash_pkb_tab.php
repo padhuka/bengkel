@@ -44,6 +44,11 @@
                     <?php }?>
                 </tfoot>
               </table>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div> 
               <script type="text/javascript">
                 $('#cashpkb').DataTable();
 
