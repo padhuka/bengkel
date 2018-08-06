@@ -24,14 +24,17 @@
                                     $catat = mysql_fetch_array( $rescatat );
 
                                 ?>
+                                <table width="100%">
+                                  <tr><td align="center" style="font-size: 20px; text-align: center;"><u>PKB BODY REPAIR</u></td></tr>
+                                  <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_pkb'];?></td></tr>
+                                </table>
                                 <hr width="60%" align="center">                                
                                 <table width="60%" align="center">
-                                   <tr><td align="left" style="font-size: 24px;" colspan="2">&nbsp;&nbsp;&nbsp;<?php echo $catat['id_pkb'];?></td><td width="10%">Foreman</td><td>: </td></tr>                               
-                                  </td></tr>
-                                  <tr><td align="left" width="10%">Status WO</td><td align="left" width="60%">: <?php echo $catat['nmasuransi'];?><td width="10%">Teknisi</td><td>: </td></tr>                                              
+                                  
+                                  <tr><td align="left" width="10%">Status WO</td><td align="left" width="60%">: <?php echo $catat['nmasuransi'];?><td width="10%">Foreman</td><td>: </td></tr>                                              
                                   </td></tr>
                                   <tr><td align="left" width="10%">No. Estimasi</td><td align="left">: <?php echo $catat['fk_estimasi'];?>                                    
-                                  </td><td width="10%">Foreman</td><td>: 00:00:00</td></tr>
+                                  </td><td width="10%">Teknisi</td><td></td></tr>
                                 </table>
                                 <hr width="60%" align="center">
                                 <table width="60%" align="center">
