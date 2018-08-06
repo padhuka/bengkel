@@ -19,8 +19,10 @@
         //$kodeawal = 'est_'.$hrini.'_';
         $hrn2= date('dmy' , strtotime($hrini));
   //EST.BR.020818.000001
+        $kodeawal2 = 'EST_BR.';
         $kodeawal = 'EST_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal%' ORDER BY id_estimasi DESC";
+        //$sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal%' ORDER BY id_estimasi DESC";
+        $sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal2%' ORDER BY id_estimasi DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['id_estimasi'])){
