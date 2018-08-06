@@ -71,10 +71,11 @@
                                                         $sqlcatatp = "SELECT * FROM t_pkb_panel_detail a LEFT JOIN t_panel p ON a.fk_panel=p.id_panel WHERE a.fk_pkb='$idpkb'";
                                                         $rescatatp = mysql_query( $sqlcatatp );
                                                         while($catatp = mysql_fetch_array( $rescatatp )){
+                                                          $markpanel= $catatp['mark_panel'];
                                                     ?>
                                             <tr>
                                               <td ><?php echo $j++;?></td>
-                                              <td ><?php echo $catatp['nama'];?></td>
+                                              <td ><?php echo $catatp['nama']; if ($markpanel=='1'){echo ' *';}?></td>
                                             </tr>
                                         <?php }
                                         echo "<tr><td colspan=2><br>Part :</td></tr>";
