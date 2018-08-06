@@ -24,7 +24,7 @@
                 <?php
                                    $j=1;
                                    $sqlcatat = "SELECT no_kwitansi as no_kwitansi,total_payment as nilai from t_kwitansi
-                                     UNION
+                                    UNION
                                     SELECT no_kwitansi_or as no_kwitansi ,nilai_kwitansi as nilai from t_kwitansi_or";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
@@ -38,7 +38,8 @@
                           <td >
                                        
                                         <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi(
-                                         '<?php echo $catat['no_kwitansi'];?>'
+                                         '<?php echo $catat['no_kwitansi'];?>',
+                                         '<?php echo $catat['nilai'];?>',
                                         );">Pilih</button>
 
                                     </td>
@@ -54,8 +55,9 @@
               <script type="text/javascript">
                 $('#cashkwitansi').DataTable();
 
-               function selectKwitansi(a){
+               function selectKwitansi(a,b){
                               $("#nokwitansi").val(a);
+                              $("#nilai").val(b);
                               $("#ModalCashKwitansi").modal('hide');
                               
                       }; 

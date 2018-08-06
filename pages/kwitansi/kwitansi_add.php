@@ -18,7 +18,7 @@
                        <table id="pkbshow" class="table table-condensed table-bordered table-striped table-hover">
                        <td>
                          <th class="col-sm-8">
-                        <tr> <th>No PKB</th> <td><input type="text" class="form-control" name="idpkb" id="idpkb" readonly> <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="kwitansi();">Pilih</button></td></tr>
+                        <tr> <th>No PKB</th> <td><input type="text" class="form-control" name="idpkb" id="idpkb" readonly> <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="kwitansi();">Pilih</button></td></tr>
                         <tr> <th>No Chasis</th>  <td ><label id="chasis"></label></td></tr>
                         <tr> <th>No Mesin</th> <td ><label id="mesin"></label></td></tr>
                         

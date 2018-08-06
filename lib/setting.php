@@ -4,7 +4,7 @@
 	$db="bodyrepairdb"; // nama database anda.
 	$passsw=""; // password untuk akses database anda
 	// baris dibawah ini jangan diedit
-	$host="localhost:3356";
+	$host="localhost";
 
 	//WEB
 	$title="Gemilang - Cat & Body";
