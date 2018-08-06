@@ -15,7 +15,14 @@
    ?>
    <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi e left join t_customer c on e.fk_customer=c.id_customer where e.id_estimasi='$idestimasi'";
+                                    $sqlcatat = "SELECT *,w.nama as warna,g.nama as nmgrup, t.nama as nmtipe, d.nama as nmasuransi, c.nama as nama, d.no_telp as telpasuransi, c.no_telp as no_telp FROM t_estimasi e 
+                                    left join t_customer c on e.fk_customer=c.id_customer 
+                                    left join t_asuransi d on e.fk_asuransi=d.id_asuransi 
+                                    left join t_inventory_bengkel b on e.fk_no_chasis=b.no_chasis
+                                    left join t_tipe_kendaraan t on b.fk_tipe_kendaraan=t.id_tipe_kendaraan
+                                    left join t_group_kendaraan g on t.fk_group_kendaraan=g.id_group_kendaraan
+                                    left join t_warna_kendaraan w on b.fk_warna_kendaraan=w.id_warna_kendaraan
+                                    where e.id_estimasi='$idestimasi'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
                                 ?>
@@ -24,11 +31,11 @@
                                   <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_estimasi'];?></td></tr>
                                 </table>
                                 <table width="60%" align="center">
-                                  <tr><td width="20%">Merk/Tipe/Tahun</td><td width="29%">: Honda/ BRIO E / 2015</td><td width="2%"></td><td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td></tr>
+                                  <tr><td width="20%">Merk/Tipe</td><td width="29%">: <?php echo $catat['nmgrup'].'/'.$catat['nmtipe'];?></td><td width="2%"></td><td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td></tr>
                                   <tr><td>No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td><td></td><td>No. Mesin</td><td>: <?php echo $catat['fk_no_mesin'];?></td></tr>
-                                  <tr><td>Pemilik</td><td>: <?php echo $catat['nama'];?></td><td></td><td>Warna</td><td>: MODER STEEL METALLIC</td></tr>
+                                  <tr><td>Pemilik</td><td>: <?php echo $catat['nama'];?></td><td></td><td>Warna</td><td>: <?php echo $catat['warna'];?></td></tr>
                                   <tr><td>No. Telephone</td><td>: <?php echo $catat['no_telp'];?></td><td></td><td>KM</td><td>: <?php echo $catat['km_masuk'];?></td></tr>
-                                  <tr><td>Asuransi</td><td>: <?php echo $catat['fk_asuransi'];?></td><td></td><td>No. Polis</td><td>:</td></tr>
+                                  <tr><td>Asuransi</td><td>: <?php echo $catat['nmasuransi'];?></td><td></td><td>No. Polis</td><td>:</td></tr>
                                   <tr><td></td><td></td><td></td><td>No. Claim</td><td>:</td></tr>
                                 </table>
 

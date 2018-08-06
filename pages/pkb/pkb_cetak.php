@@ -15,33 +15,40 @@
    ?>
    <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT *, d.nama as nmasuransi, c.nama as nama, d.no_telp as telpasuransi, c.no_telp as no_telp FROM t_pkb e 
+                                    $sqlcatat = "SELECT *,w.nama as warna,g.nama as nmgrup, t.nama as nmtipe, d.nama as nmasuransi, c.nama as nama, d.no_telp as telpasuransi, c.no_telp as no_telp FROM t_pkb e 
                                     left join t_customer c on e.fk_customer=c.id_customer 
                                     left join t_asuransi d on e.fk_asuransi=d.id_asuransi 
                                     left join t_estimasi f on e.fk_estimasi=f.id_estimasi
+                                    left join t_inventory_bengkel b on e.fk_no_chasis=b.no_chasis
+                                    left join t_tipe_kendaraan t on b.fk_tipe_kendaraan=t.id_tipe_kendaraan
+                                    left join t_group_kendaraan g on t.fk_group_kendaraan=g.id_group_kendaraan
+                                    left join t_warna_kendaraan w on b.fk_warna_kendaraan=w.id_warna_kendaraan
                                     where e.id_pkb='$idpkb'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
-
+                                    //echo $sqlcatat;
                                 ?>
+                                <table width="100%">
+                                  <tr><td align="center" style="font-size: 20px; text-align: center;"><u>PKB BODY REPAIR</u></td></tr>
+                                  <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_pkb'];?></td></tr>
+                                </table>
                                 <hr width="60%" align="center">                                
                                 <table width="60%" align="center">
-                                   <tr><td align="left" style="font-size: 24px;" colspan="2">&nbsp;&nbsp;&nbsp;<?php echo $catat['id_pkb'];?></td><td width="10%">Foreman</td><td>: </td></tr>                               
-                                  </td></tr>
-                                  <tr><td align="left" width="10%">Status WO</td><td align="left" width="60%">: <?php echo $catat['nmasuransi'];?><td width="10%">Teknisi</td><td>: </td></tr>                                              
+                                  
+                                  <tr><td align="left" width="10%">Status WO</td><td align="left" width="60%">: <?php echo $catat['nmasuransi'];?><td width="10%">Foreman</td><td>: </td></tr>                                              
                                   </td></tr>
                                   <tr><td align="left" width="10%">No. Estimasi</td><td align="left">: <?php echo $catat['fk_estimasi'];?>                                    
-                                  </td><td width="10%">Foreman</td><td>: 00:00:00</td></tr>
+                                  </td><td width="10%">Teknisi</td><td></td></tr>
                                 </table>
                                 <hr width="60%" align="center">
                                 <table width="60%" align="center">
                                   <tr>
-                                    <td width="20%">Merk/Tipe/Tahun</td><td width="29%">: Honda/ BRIO E / 2015</td><td width="2%"></td>
-                                    <td width="20%">No.Polisi</td><td width="29%">: <?php echo $catat['fk_no_polisi'];?></td>
+                                    <td>Merk/Tipe</td><td  width="45%">: <?php echo $catat['nmgrup'].'/'.$catat['nmtipe'];?></td><td></td>
+                                    <td align="left">No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td>
                                   </tr>
                                   <tr>
-                                    <td width="20%">Pemilik</td><td width="29%">: <?php echo $catat['nama'];?></td><td width="2%"></td>
-                                    <td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td>
+                                    <td>Pemilik</td><td>: <?php echo $catat['nama'];?></td><td></td>
+                                    <td>No.Rangka</td><td>: <?php echo $catat['fk_no_chasis'];?></td>
                                   </tr>
                                   <tr>
                                     <td>No.Telp</td><td>: <?php echo $catat['no_telp'];?></td><td></td>
@@ -49,7 +56,7 @@
                                   </tr>
                                   <tr>
                                     <td>Tgl/Jam Masuk<td>: <?php echo date('d-m-Y H:i:s' , strtotime($catat['tgl']));?></td><td></td>
-                                    <td>Warna</td><td>: MODER STEEL METALLIC</td>
+                                    <td>Warna</td><td>: <?php echo $catat['warna'];?></td>
                                   </tr>
                                   <tr>
                                     <td>Estimasi Selesai</td><td>: </td><td></td>
@@ -71,10 +78,11 @@
                                                         $sqlcatatp = "SELECT * FROM t_pkb_panel_detail a LEFT JOIN t_panel p ON a.fk_panel=p.id_panel WHERE a.fk_pkb='$idpkb'";
                                                         $rescatatp = mysql_query( $sqlcatatp );
                                                         while($catatp = mysql_fetch_array( $rescatatp )){
+                                                          $markpanel= $catatp['mark_panel'];
                                                     ?>
                                             <tr>
                                               <td ><?php echo $j++;?></td>
-                                              <td ><?php echo $catatp['nama'];?></td>
+                                              <td ><?php echo $catatp['nama']; if ($markpanel=='1'){echo ' *';}?></td>
                                             </tr>
                                         <?php }
                                         echo "<tr><td colspan=2><br>Part :</td></tr>";
