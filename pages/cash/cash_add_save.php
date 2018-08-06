@@ -5,6 +5,20 @@
         $tgltransaksi = trim($_POST['tgltransaksi']);
         $tipetransaksi = trim($_POST['tipetransaksi']); 
         $diterimadari = trim($_POST['diterima']);  
+        $idpkb = trim($_POST['idpkb']); 
+        $idkwitansi = trim($_POST['nokwitansi']); 
+       // echo $idpkb;
+       // echo $idkwitansi;
+
+            if (!empty($idpkb))  {
+                //echo $idpkb;
+                    $noref = $idpkb;
+            }
+            else {
+                 //echo $idkwitansi;
+                 $noref = $idkwitansi;
+            }
+        
         $total = trim($_POST['nilai']); 
         $keterangan = trim($_POST['keterangan']); 
         
@@ -37,7 +51,7 @@
         $kodebaru = $kodeawal.$kodeakhir;   
 
         
-            $sqltbemp = "INSERT INTO t_cash (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari',$total,'$keterangan')";
+            $sqltbemp = "INSERT INTO t_cash (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$noref','$total','$keterangan')";
             echo "$sqltbemp";
             mysql_query($sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        

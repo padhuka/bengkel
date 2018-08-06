@@ -27,14 +27,13 @@
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo ($catat['no_bukti']);?></span></button></td>
                        
-                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
+                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl_transaksi']));?></td>
                           <td ><?php echo $catat['tipe_transaksi'];?></td>
                           <td ><?php echo $catat['diterima_dari'];?></td>
                           <td ><?php echo $catat['no_ref'];?></td>
-                          <td ><?php echo $catat['fk_no_polisi'];?></td>
                           
                            <td ><?php echo rupiah2($catat['total']);?></td>
-                           <td ><?php echo $catat['Keterangan'];?></td>
+                           <td ><?php echo $catat['keterangan'];?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Edit</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
