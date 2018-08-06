@@ -28,7 +28,8 @@
                         case 'kwitansior' : include_once 'kwitansior/kwitansior_tab.php'; break;
                         case 'kwitansi' : include_once 'kwitansi/kwitansi_tab.php'; break;
                         case 'pkbbukatutup' : include_once 'pkbstatus/pkb_tab.php'; break;
-                        }
+                        case 'cash' : include_once 'cash/cash_tab.php'; break;
+                      }
         ?>
 
 <?php include_once 'footer.php';?>
