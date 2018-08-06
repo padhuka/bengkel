@@ -9,7 +9,7 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalCash" style="text-align: center;padding-right: 0px">Tambah Data Cash <button type="button" class="close" aria-label="Close" onclick="$('#ModalAdd').modal('hide');"><span>&times;</span></button></h4>  
+                        <h4 class="modal-title" id="myModalCash" style="text-align: center;padding-right: 0px">Tambah Data Cash <button type="button" class="close" aria-label="Close" onclick="$('#ModalPkbAdd').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
                   
                     <div class="modal-body">
@@ -34,44 +34,50 @@
                             <label for="tipetransaksi">Tipe Transaksi</label>
                           </div>
                             <div class="col-sm-8">
-                                <select id="tipetransaksi" name="tipetransaksi">        
-                                <option value="Pelunasan" onclick="$('#buttonPelunasan').show();$('#showPkb').hide();$('#nokwtansi').val('');">Pelunasan</option>                         
-                                  <option value="Titipan" onclick="$('#buttonTitipan').show();$('#showPelunasan').hide();$('#nopkb').val('');">Titipan</option>
-                                  
-                                </select>      
-                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPkb();" id="buttonTitipan">Pilih No PKB</button>
-                                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selecKwitansi();" id="buttonPelunasan">Pilih No Kwitansi</button>
+                                <select id="tipetransaksi" name="tipetransaksi"> 
+
+                              <option value="Pelunasan" onclick="$('#buttonPelunasan').show();$('#buttonTitipan').hide();$('#showPkb').hide();$('#showKwitansi').show();$('#nokwitansi').val('');">Pelunasan</option>                         
+                                <option value="Titipan" onclick="$('#buttonTitipan').show();$('#buttonPelunasan').hide();$('#showKwitansi').hide();$('#showPkb').show();$('#nopkb').val('');">Titipan</option>
+                                
+                                </select>  
+
+                                
+                               
+                               
                                                        
                               </div>
                         </div>
 
                         <div class="form-group" id="showPkb">
                           <div class="col-sm-3">
-                            <label for="namapkb">No PKB</label>
+                            <label for="namapkb">No Ref</label>
                           </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-7">
                                 <!-- <input type="hidden" class="form-control" id="nopkb" name="asuransi">  -->
-                                <input type="text" class="form-control" id="nopkb" name="nopkb" readonly> 
-                              </div>
+                                <input type="text" class="form-control" id="idpkb" name="idpkb" readonly> 
+                                </div>
+                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPkb();" id="buttonTitipan">Pilih PKB</button>
+                              
                         </div>
                     
                           <div class="form-group" id="showKwitansi">
                           <div class="col-sm-3">
-                            <label for="namapkb">No Kwitansi</label>
+                            <label for="nokwitansi">No Ref</label>
                           </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-6">
                                 <!-- <input type="hidden" class="form-control" id="nopkb" name="asuransi">  -->
                                 <input type="text" class="form-control" id="nokwitansi" name="nokwitansi" readonly> 
-                              </div>
+                                 </div>
+                                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal2" onclick="selectKwi();" id="buttonPelunasan">Pilih Kwitansi</button>
+                             
                         </div>
                          
-                          <input type="hidden" class="form-control" id="uname" name="uname" value="<?php echo $sesuname;?>" readonly>
-                          <input type="hidden" class="form-control" id="customer" name="customer" readonly>                        
+                                            
                         <div class="form-group">
                            <div class="modal-footer">
                           <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                   <button type="button" class="btn btn-primary" onclick="$('#ModalAdd').modal('hide');">&nbsp;Batal&nbsp;</button>
+                                   <button type="button" class="btn btn-primary" onclick="$('#ModalPkbAdd').modal('hide');">&nbsp;Batal&nbsp;</button>
                           </div>
                         </div>
                         </div>
@@ -80,8 +86,8 @@
               
         </div>
 </div>
-<?php //include_once 'estimasi_chasis_tab.php';?>
-<?php //include_once 'estimasi_asuransi_tab.php';?>
+<?php include_once 'cash_pkb_tab.php';?>
+<?php include_once 'cash_kwitansi_tab.php';?>
 
 <script type="text/javascript">
   $('#buttonTitipan').hide();
@@ -94,12 +100,20 @@
         format: 'yyyy-mm-dd',
         autoclose: true,
       });
+
+  function selectKwi(){ 
+   
+    $("#ModalCashKwitansi").modal({backdrop: 'static',keyboard:false});   
+
+  }
   function selectPkb(){ 
-    $("#ModalPkb").modal({backdrop: 'static',keyboard:false});   
+    $("#ModalCashPkb").modal({backdrop: 'static',keyboard:false});   
   }
-  function chasise(){ 
-    $("#ModalChasis").modal({backdrop: 'static',keyboard:false});   
-  }
+   
+  // function chasise(){ 
+  //   $("#ModalChasis").modal({backdrop: 'static',keyboard:false});   
+  // }
+
   $(document).ready(function (){
 
                       $("#formcash").on('submit', function(e){
@@ -123,7 +137,7 @@
                                                         $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
-                                                            $('#ModalAdd').modal('hide'); 
+                                                            $('#ModalPkbAdd').modal('hide'); 
                                                             var hsl=data.trim();       
 
                                                              $.ajax({

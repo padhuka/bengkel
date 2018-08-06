@@ -14,7 +14,7 @@
                           <th>Keterangan</th>
 
                      
-                          <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
+                          <th><button type="button" class="btn btn btn-default btn-circle" onclick="Pkb();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,13 +56,13 @@
                   }
             });
            
-           function open_add(){
+           function Pkb(){
               $.ajax({
                     url: "cash/cash_add.php",
                     type: "GET",
                       success: function (ajaxData){
-                        $("#ModalAdd").html(ajaxData);
-                        $("#ModalAdd").modal({backdrop: 'static',keyboard: false});
+                        $("#ModalPkbAdd").html(ajaxData);
+                        $("#ModalPkbAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
               }
