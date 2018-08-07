@@ -102,9 +102,7 @@
                 </tfoot>
               </table>
                                 </table>
-                                <hr width="60%" align="center"> 
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Keluhan Pelanggan :</td></tr></table><br>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Saran :</td></tr></table><br>
+                                
                                 <hr width="60%" align="center"> 
                                       
                                  <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
