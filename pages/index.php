@@ -22,6 +22,7 @@
                         case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
                         case 'part' : include_once 'part/part_tab.php'; break;
                         case 'inventory' : include_once 'inventory/inventory_tab.php'; break;
+                        case 'partnerbank' : include_once 'partnerbank/partnerbank_tab.php'; break;
                         case 'customer' : include_once 'customer/customer_tab.php'; break;
                         case 'estimasi' : include_once 'estimasi/estimasi_tab.php'; break;
                         case 'pkb' : include_once 'pkb/pkb_tab.php'; break;
@@ -29,6 +30,7 @@
                         case 'kwitansi' : include_once 'kwitansi/kwitansi_tab.php'; break;
                         case 'pkbbukatutup' : include_once 'pkbstatus/pkb_tab.php'; break;
                         case 'cash' : include_once 'cash/cash_tab.php'; break;
+                        case 'bank' : include_once 'bank/bank_tab.php'; break;
                       }
         ?>
 

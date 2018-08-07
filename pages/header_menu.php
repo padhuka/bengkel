@@ -63,6 +63,7 @@
               <li class="header"><a href="?p=customer">Customer</a></li> 
               <li class="header"><a href="?p=asuransi">Asuransi</a></li>   
               <li class="header"><a href="?p=supplier">Supplier</a></li>
+              <li class="header"><a href="?p=partnerbank">Partner Bank</a></li>
               <li class="header"><a href="?p=satuan">Satuan</a></li>
               <li class="header"><a href="?p=part">Part</a></li>
               <li class="header"><a href="?p=panel">Panel</a></li>   
