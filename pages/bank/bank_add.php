@@ -167,7 +167,7 @@
     $("#ModalBankPkb").modal({backdrop: 'static',keyboard:false});   
   }
   function selectPartner(){ 
-    $("#ModalBankP").modal({backdrop: 'static',keyboard:false});   
+    $("#ModalPartner").modal({backdrop: 'static',keyboard:false});   
   }
 
   $(document).ready(function (){
