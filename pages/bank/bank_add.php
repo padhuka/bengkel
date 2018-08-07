@@ -82,16 +82,7 @@
                             <input type="text" class="form-control" id="diterima" name="diterima" required>
                           </div>
                         </div>
-                          <div class="form-group">
-                            <div class="col-sm-3">
-                          <label for="total">Total</label>
-                        </div>
-                          <div class="col-sm-8">
-                            <input type="text" class="form-control" id="nilai" name="nilai" required>
-                          </div>
-                        </div>
-
-
+                        
                            <div class="form-group">
                           <div class="col-sm-3">
                             <label for="viabayar">Via Bayar</label>
@@ -108,6 +99,7 @@
 
                               </div>
                         </div>
+                        
                              <div class="form-group" id="showPartner">
                           <div class="col-sm-3">
                             <label for="partnerbank">Partner Bank</label>
@@ -120,6 +112,17 @@
                                   <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPartner();" id="buttonPartner">Pilih</button>
                              
                         </div>
+
+                          <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="total">Total</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="nilai" name="nilai" required>
+                          </div>
+                        </div>
+
+
 
 
                           <div class="form-group">
@@ -168,7 +171,7 @@
     $("#ModalBankPkb").modal({backdrop: 'static',keyboard:false});   
   }
   function selectPartner(){ 
-    $("#ModalPartner").modal({backdrop: 'static',keyboard:false});   
+    $("#ModalBankP").modal({backdrop: 'static',keyboard:false});   
   }
 
   $(document).ready(function (){

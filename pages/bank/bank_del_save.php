@@ -7,7 +7,7 @@
         //$keterangan_batal = trim($_POST['keteranganbatal']);
         echo $keterangan_batal;
         
-            $updatebatalcash = "UPDATE t_cash SET tgl_batal='$hrini',keterangan_batal='$keterangan_batal' WHERE no_bukti='$no_bukti'";
+            $updatebatalcash = "UPDATE t_bank SET tgl_batal='$hrini',keterangan_batal='$keterangan_batal' WHERE no_bukti='$no_bukti'";
              $query =  mysql_query($updatebatalcash);
               echo $query;
 ?>
