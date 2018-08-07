@@ -2,7 +2,7 @@
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
-      <table id="cash" class="table table-condensed table-bordered table-striped table-hover">
+      <table id="bank" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>No Bukti</th>
@@ -14,19 +14,19 @@
                           <th>Keterangan</th>
 
                      
-                          <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
+                          <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_addbank();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = " SELECT * FROM t_cash 
+                                    $sqlcatat = " SELECT * FROM t_bank 
                                     WHERE tgl_batal='0000:00:00 00:00:00' ORDER BY no_bukti DESC ";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo ($catat['no_bukti']);?></span></button></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_bank(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo ($catat['no_bukti']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tgl_transaksi']));?></td>
                           <td ><?php echo $catat['tipe_transaksi'];?></td>
@@ -45,7 +45,7 @@
                 </tfoot>
               </table>
               <script>
-            $('#cash').DataTable({
+            $('#bank').DataTable({
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
@@ -55,20 +55,20 @@
                   }
             });
            
-           function open_add(){
+           function open_addbank(){
               $.ajax({
-                    url: "cash/cash_add.php",
+                    url: "bank/bank_add.php",
                     type: "GET",
                       success: function (ajaxData){
-                        $("#ModalPkbAdd").html(ajaxData);
-                        $("#ModalPkbAdd").modal({backdrop: 'static',keyboard: false});
+                        $("#ModalAdd").html(ajaxData);
+                        $("#ModalAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
               }
               
            function open_del(x){
                                 $.ajax({
-                                    url: "cash/cash_del.php?nobukti="+x,
+                                    url: "bank/bank_del.php?nobukti="+x,
                                     type: "GET",
                                     success: function (ajaxData){
                                         $("#ModalBatal").html(ajaxData);
@@ -77,9 +77,9 @@
                                 });
             };
       
-            function open_cash(z){
+            function open_bank(z){
                               $.ajax({
-                                  url: "cash/cash_show.php?nobukti="+z,
+                                  url: "bank/bank_show.php?nobukti="+z,
                                   type: "GET",
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
@@ -88,16 +88,6 @@
                               });
             };
 
-            // function cetak_est(q){
-            //                   $.ajax({
-            //                       url: "cash/cash_print.php?nobukti="+q,
-            //                       type: "GET",
-            //                       success: function (ajaxData){
-            //                           $("#ModalEstPrint").html(ajaxData);
-            //                           $("#ModalEstPrint").modal({backdrop: 'static',keyboard: false});
-            //                       }
-            //                   });
-            // };
             
       </script>
 

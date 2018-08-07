@@ -1,15 +1,16 @@
+
   <!-- Left side column. contains the logo and sidebar -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="title-header">
-    Data Cash
+    Data Partner Bank
     </div>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Data Cash</li>
+        <li class="active">Data Partner Bank</li>
       </ol>
     </section>
 
@@ -23,7 +24,7 @@
             </div>
              /.box-header -->
             <div class="box-body">
-              <div id="tablecash">
+              <div id="tablepartnerbank">
               </div>
             </div>
             <!-- /.box-body -->
@@ -36,18 +37,14 @@
     </section>
     <!-- /.content -->
   </div>
-        <div id="ModalPkbAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-         <div id="ModalBatal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-       
-         <div id="ModalCashPrint" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
+        <div id="ModalAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+         <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+         <div id="ModalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
         <script type="text/javascript">
             $(document).ready(function (){
-                 $("#tablecash").load('cash/cash_load.php');
+                 $("#tablepartnerbank").load('partnerbank/partnerbank_load.php');
             });
         </script>
-
-
 <style type="text/css">
   .title-header {
     font-size: 20px;

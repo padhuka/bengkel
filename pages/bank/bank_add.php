@@ -1,7 +1,6 @@
 <!-- general form elements disabled -->
    <?php
-
-    include_once '../../lib/sess.php';
+   // include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
     
@@ -9,11 +8,11 @@
 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalCash" style="text-align: center;padding-right: 0px">Tambah Data Cash <button type="button" class="close" aria-label="Close" onclick="$('#ModalPkbAdd').modal('hide');"><span>&times;</span></button></h4>  
+                        <h4 class="modal-title" id="myModalBank" style="text-align: center;padding-right: 0px">Tambah Data bank <button type="button" class="close" aria-label="Close" onclick="$('#ModalAdd').modal('hide');"><span>&times;</span></button></h4>  
                     </div>
                   
                     <div class="modal-body">
-                    <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formcash">
+                    <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formbank">
                       
                         <div class="form-group">
                           <div class="col-sm-3">
@@ -71,6 +70,10 @@
                                   <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectKwi();" id="buttonPelunasan">Pilih</button>
                              
                         </div>
+
+
+
+
                            <div class="form-group">
                             <div class="col-sm-3">
                           <label for="diterima">DiTerima Dari/Diberikan Kepada</label>
@@ -87,6 +90,37 @@
                             <input type="text" class="form-control" id="nilai" name="nilai" required>
                           </div>
                         </div>
+
+
+                           <div class="form-group">
+                          <div class="col-sm-3">
+                            <label for="viabayar">Via Bayar</label>
+                          </div>
+                            <div class="col-sm-8">
+                                <select id="viabayar" name="viabayar"> 
+
+                              <option value="Transfer" onclick="$('#buttonPartner').hide();$('#showPartner').hide();">Transfer</option>                         
+                              <option value="Debit Card" onclick="$('#buttonPartner').show();$('#showPartner').show();">Debit Card</option>
+                              <option value="Credit Card" onclick="$('#buttonPartner').show();$('#showPartner').show();">Credit Card</option> 
+
+
+                                </select>  
+
+                              </div>
+                        </div>
+                             <div class="form-group" id="showPartner">
+                          <div class="col-sm-3">
+                            <label for="partnerbank">Partner Bank</label>
+                          </div>
+                            <div class="col-sm-7">
+                                <!-- <input type="hidden" class="form-control" id="nopkb" name="asuransi">  -->
+                                <input type="text" class="form-control" id="namapartner" name="namapartner" readonly> 
+                                 </div>
+                                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPartner();" id="buttonPartner">Pilih</button>
+                             
+                        </div>
+
+
                           <div class="form-group">
                             <div class="col-sm-3">
                           <label for="keterangan">Keterangan</label>
@@ -100,7 +134,7 @@
                            <div class="modal-footer">
                           <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button>
-                                   <button type="button" class="btn btn-primary" onclick="$('#ModalPkbAdd').modal('hide');">&nbsp;Batal&nbsp;</button>
+                                   <button type="button" class="btn btn-primary" onclick="$('#ModalAdd').modal('hide');">&nbsp;Batal&nbsp;</button>
                           </div>
                         </div>
                         </div>
@@ -109,14 +143,15 @@
               
         </div>
 </div>
-<?php include_once 'cash_pkb_tab.php';?>
-<?php include_once 'cash_kwitansi_tab.php';?>
+<?php include_once 'bank_pkb_tab.php';?>
+<?php include_once 'bank_kwitansi_tab.php';?>
+<?php include_once 'bank_partner_tab.php';?>
 
 <script type="text/javascript">
   $('#buttonTitipan').hide();
-  //$('#buttonPelunasan').hide();
   $('#showPkb').hide();
-  //$('#showKwitansi').hide();   
+  $('#buttonPartner').hide();
+  $('#showPartner').hide();
 
 
   $('#tgltransaksi').datepicker({       
@@ -125,16 +160,19 @@
       });
 
   function selectKwi(){ 
-    $("#ModalCashKwitansi").modal({backdrop: 'static',keyboard:false});   
+    $("#ModalBankKwitansi").modal({backdrop: 'static',keyboard:false});   
 
   }
   function selectPkb(){ 
-    $("#ModalCashPkb").modal({backdrop: 'static',keyboard:false});   
+    $("#ModalBankPkb").modal({backdrop: 'static',keyboard:false});   
+  }
+  function selectPartner(){ 
+    $("#ModalBankP").modal({backdrop: 'static',keyboard:false});   
   }
 
   $(document).ready(function (){
 
-                      $("#formcash").on('submit', function(e){
+                      $("#formbank").on('submit', function(e){
                           var chs= $("#chasis").val();
                           var km=  $("#kmmasuk").val();
                           if (chs==''){
@@ -145,21 +183,20 @@
                             //alert(disposisine)                       ;
                                       $.ajax({
                                                   type: 'POST',
-                                                  url: 'cash/cash_add_save.php',
+                                                  url: 'bank/bank_add_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){
-                                                        $("#tablecash").load('cash/cash_load.php');
+                                                        $("#tablebank").load('bank/bank_load.php');
                                                         $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
-                                                            $('#ModalPkbAdd').modal('hide'); 
+                                                            $('#ModalAdd').modal('hide'); 
                                                             var hsl=data.trim();       
                                                               alert(hsl);
-                                                             
-
+                                                           
                                                   }
                                                       
                                                 });
