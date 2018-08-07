@@ -44,7 +44,7 @@
                           <td ><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td>
                           <td ><?php echo rupiah2($catat['total_payment']);?></td>
                           <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_modal(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Cetak</span></button>
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="cetak_kw(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>
 
                                     </td>
@@ -92,6 +92,16 @@
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
                                       $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+            function cetak_kw(q){
+                              $.ajax({
+                                  url: "kwitansi/kwitansi_print.php?no_kwitansi="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalKwPrint").html(ajaxData);
+                                      $("#ModalKwPrint").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };
