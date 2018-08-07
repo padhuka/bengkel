@@ -54,7 +54,7 @@
 
         
             $sqltbemp = "INSERT INTO t_bank (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,via_bayar,fk_partner_bank,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$viabayar','$partnerbank','$noref','$total','$keterangan')";
-            echo "$sqltbemp";
+         //   echo "$sqltbemp";
             mysql_query($sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        
 ?>

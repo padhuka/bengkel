@@ -43,7 +43,7 @@
               <li class="header"><a href="?p=kwitansior">Kwitansi OR</a></li>   
                <li class="header"><a href="?p=cash">Cash</a></li> 
                <li class="header"><a href="?p=bank">Bank</a></li> 
-              <li class="header"><a href="?p=kwitansior">Gate Pass</a></li> 
+              <li class="header"><a href="?p=gatepass">Gate Pass</a></li> 
                           </ul>
           </li><?php } ?>
           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
