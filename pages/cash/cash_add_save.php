@@ -1,33 +1,38 @@
 <?php
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
-         //$ip = ; // Ambil IP Address dari User
-        //$id_estimasi = trim($_POST['id_estimasi']);
-        $chasis = trim($_POST['chasis']);
-        $mesin = trim($_POST['mesin']);
-        $polisi = trim($_POST['polisi']);
-        $warna = trim($_POST['warna']);
-        $warnanm = trim($_POST['warnanm']);
-        $kmmasuk = trim($_POST['kmmasuk']);
-        $uname = trim($_POST['uname']);
-        $kategori = trim($_POST['kategori']);
-        $customer = trim($_POST['customer']);
-        $asuransi = trim($_POST['asuransi']);
-        $tglselesai = trim($_POST['tglselesai']);
+      
+        $tgltransaksi = trim($_POST['tgltransaksi']);
+        $tipetransaksi = trim($_POST['tipetransaksi']); 
+        $diterimadari = trim($_POST['diterima']);  
+        $idpkb = trim($_POST['idpkb']); 
+        $idkwitansi = trim($_POST['nokwitansi']); 
+       // echo $idpkb;
+       // echo $idkwitansi;
+
+            if (!empty($idpkb))  {
+                //echo $idpkb;
+                    $noref = $idpkb;
+            }
+            else {
+                 //echo $idkwitansi;
+                 $noref = $idkwitansi;
+            }
         
-        //message_back($id_estimasi);
-        //$kodeawal = 'est_'.$hrini.'_';
+        $total = trim($_POST['nilai']); 
+        $keterangan = trim($_POST['keterangan']); 
+        
         $hrn2= date('dmy' , strtotime($hrini));
-  //EST.BR.020818.000001
-        $kodeawal = 'EST_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal%' ORDER BY id_estimasi DESC";
+        $kodeawal2 = 'KM_BR.';
+        $kodeawal = 'KM_BR.'.$hrn2.'.';
+        $sqljur = "SELECT * FROM t_cash WHERE no_bukti LIKE '$kodeawal2%' ORDER BY no_bukti DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
-        if (empty($jur['id_estimasi'])){
+        if (empty($jur['no_bukti'])){
             $kodeakhir = '000001';
         }else{
             # GENERATE
-            $kode = $jur['id_estimasi'];
+            $kode = $jur['no_bukti'];
             $pecah = explode('.',$kode);
             $nilbaru = $pecah[2] + 1;
             $panj = strlen($nilbaru);
@@ -43,10 +48,11 @@
             }
         }
         
-        $kodebaru = $kodeawal.$kodeakhir;     
+        $kodebaru = $kodeawal.$kodeakhir;   
 
         
-            $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,tgl_estimasi_selesai) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$tglselesai')";
+            $sqltbemp = "INSERT INTO t_cash (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$noref','$total','$keterangan')";
+            echo "$sqltbemp";
             mysql_query($sqltbemp);
-            echo $kodebaru.'-'.$warnanm;        
+            //echo $kodebaru.'-'.$warnanm;        
 ?>

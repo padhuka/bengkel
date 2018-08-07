@@ -34,7 +34,7 @@
                           <div class="col-sm-7">
                             <input type="text" class="form-control" id="chasis" name="chasis" readonly>
                           </div>
-                          <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="chasise();">Pilih</button>
+                          <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="chasise();">Pilih</button>
                         </div>
                         <div class="form-group">
                           <div class="col-sm-3">

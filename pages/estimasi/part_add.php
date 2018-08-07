@@ -23,7 +23,7 @@
 				                  <div class="col-sm-6">
                             <input type="hidden" class="form-control" id="part" name="part" required>
 				                    <input type="text" class="form-control" id="partnm" name="partnm" readonly required>
-				                  </div><button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="pilihpart();">Pilih</button>
+				                  </div><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="pilihpart();">Pilih</button>
 				                </div>
                         <div class="form-group">
                             <div class="col-sm-3">

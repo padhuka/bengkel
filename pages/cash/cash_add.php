@@ -56,7 +56,7 @@
                                 <!-- <input type="hidden" class="form-control" id="nopkb" name="asuransi">  -->
                                 <input type="text" class="form-control" id="idpkb" name="idpkb" readonly> 
                                 </div>
-                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPkb();" id="buttonTitipan">Pilih PKB</button>
+                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPkb();" id="buttonTitipan">Pilih</button>
                               
                         </div>
                     
@@ -64,14 +64,37 @@
                           <div class="col-sm-3">
                             <label for="nokwitansi">No Ref</label>
                           </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-7">
                                 <!-- <input type="hidden" class="form-control" id="nopkb" name="asuransi">  -->
                                 <input type="text" class="form-control" id="nokwitansi" name="nokwitansi" readonly> 
                                  </div>
-                                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal2" onclick="selectKwi();" id="buttonPelunasan">Pilih Kwitansi</button>
+                                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectKwi();" id="buttonPelunasan">Pilih</button>
                              
                         </div>
-                         
+                           <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="diterima">DiTerima Dari/Diberikan Kepada</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="diterima" name="diterima" required>
+                          </div>
+                        </div>
+                          <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="total">Total</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="nilai" name="nilai" required>
+                          </div>
+                        </div>
+                          <div class="form-group">
+                            <div class="col-sm-3">
+                          <label for="keterangan">Keterangan</label>
+                        </div>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="keterangan" name="keterangan" required>
+                          </div>
+                        </div>
                                             
                         <div class="form-group">
                            <div class="modal-footer">
@@ -108,10 +131,6 @@
   function selectPkb(){ 
     $("#ModalCashPkb").modal({backdrop: 'static',keyboard:false});   
   }
-   
-  // function chasise(){ 
-  //   $("#ModalChasis").modal({backdrop: 'static',keyboard:false});   
-  // }
 
   $(document).ready(function (){
 
@@ -126,27 +145,27 @@
                             //alert(disposisine)                       ;
                                       $.ajax({
                                                   type: 'POST',
-                                                  url: 'estimasi/estimasi_add_save.php',
+                                                  url: 'cash/cash_add_save.php',
                                                   data: new FormData(this),
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){
-                                                        $("#tableestimasi").load('estimasi/estimasi_load.php');
+                                                        $("#tablecash").load('cash/cash_load.php');
                                                         $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalPkbAdd').modal('hide'); 
                                                             var hsl=data.trim();       
-
-                                                             $.ajax({
-                                                                url: "estimasi/estimasi_detail.php?idestimasi="+hsl,
-                                                                type: "GET",
-                                                                  success: function (ajaxData){
-                                                                    $("#ModalEstimasiDet").html(ajaxData);
-                                                                    $("#ModalEstimasiDet").modal({backdrop: 'static', keyboard:false});
-                                                                  }
-                                                                }); 
+                                                              alert(hsl);
+                                                             // $.ajax({
+                                                             //    url: "cash/cash_detail.php?idcash="+hsl,
+                                                             //    type: "GET",
+                                                             //      success: function (ajaxData){
+                                                             //        $("#ModalcashDet").html(ajaxData);
+                                                             //        $("#ModalcashDet").modal({backdrop: 'static', keyboard:false});
+                                                             //      }
+                                                             //    }); 
 
                                                   }
                                                       
