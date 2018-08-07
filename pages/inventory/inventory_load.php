@@ -51,6 +51,7 @@
               </table>
               <script>
              $('#inventory1').DataTable({
+              "autoWidth": false,
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
@@ -108,4 +109,5 @@
     padding-left: 4px;
     padding-right: 4px;
   }
+
 </style>
