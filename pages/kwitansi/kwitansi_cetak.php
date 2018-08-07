@@ -8,32 +8,32 @@
    // include_once '../../lib/sess.php';
         include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
-    $no_kwitansi_or= $_GET['no_kwitansi_or'];
+    $no_kwitansi= $_GET['no_kwitansi'];
     //   $sqlpan= "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
  //  $catat= mysql_fetch_array(mysql_query($sqlpan));
   
    ?>
    <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT *,e.diskon_or AS diskonkw, c.alamat AS alamatcustomer,c.no_telp AS telpcustomer,c.nama AS nmcustomer,d.nama AS nmasuransi FROM t_kwitansi_or e
-                                    LEFT JOIN t_estimasi a ON e.fk_estimasi=a.id_estimasi
+                                    $sqlcatat = "SELECT *, c.alamat AS alamatcustomer,c.no_telp AS telpcustomer,c.nama AS nmcustomer,d.nama AS nmasuransi FROM t_kwitansi e
+                                    LEFT JOIN t_pkb a ON e.fk_pkb=a.id_pkb
                                     LEFT JOIN t_customer c ON a.fk_customer=c.id_customer 
                                     LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi 
-                                    WHERE e.no_kwitansi_or='$no_kwitansi_or'";
+                                    WHERE e.no_kwitansi='$no_kwitansi'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
-                                    $idestimasi=$catat['id_estimasi'];
-                                    $disckw=100-$catat['diskonkw'];
+                                    $idpkb=$catat['id_pkb'];
 
                                 ?>
                                <table width="100%">
-                                  <tr><td align="center" style="font-size: 20px; text-align: center;"><u>INVOICE</u></td></tr>                                  
+                                 <tr><td align="center" style="font-size: 20px; text-align: center;"><u>INVOICE</u></td></tr>                                  
+                                  <tr><td align="center" style="font-size: 20px; text-align: center;"><?php echo $no_kwitansi;?></td></tr> 
                                 </table>
                       
                                 <hr width="60%" align="center">
                                 <table width="60%" align="center">
                                   <tr>
-                                    <td width="20%">No Estimasi</td><td width="29%">: <?php echo $catat['id_estimasi'];?></td><td width="2%"></td>
+                                    <td width="20%">No PKB</td><td width="29%">: <?php echo $catat['id_pkb'];?></td><td width="2%"></td>
                                     <td width="20%">Kategori</td><td width="29%">: <?php echo $catat['kategori'];?></td>
                                   </tr>
                                   <tr>
@@ -66,9 +66,9 @@
                         <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatatp = "SELECT * FROM t_estimasi_panel_detail a 
+                                    $sqlcatatp = "SELECT * FROM t_pkb_panel_detail a 
                                     LEFT JOIN t_panel p ON a.fk_panel=p.id_panel
-                                    WHERE a.fk_estimasi ='$idestimasi'";
+                                    WHERE a.fk_pkb ='$idpkb'";
                                     $rescatatp = mysql_query( $sqlcatatp );
                                     while($catatp = mysql_fetch_array( $rescatatp )){
                                 ?>
@@ -77,14 +77,14 @@
                           <td><?php echo rupiah2($catatp['harga_jual_panel']);?></td>
                           <td>1</td>
                           <td><?php echo $catatp['diskon'];?></td>
-                          <td align="right"><?php echo rupiah2($catatp['harga_total_estimasi_panel']);?></td>
+                          <td align="right"><?php echo rupiah2($catatp['harga_total_pkb_panel']);?></td>
                         </tr>
                     <?php }?>
                   
                            <?php $j=$j;
-                                    $sqlcatat2 = "SELECT * FROM t_estimasi_part_detail a 
+                                    $sqlcatat2 = "SELECT * FROM t_pkb_part_detail a 
                                     LEFT JOIN t_part p ON a.fk_part=p.id_part 
-                                    WHERE a.fk_estimasi='$idestimasi'";
+                                    WHERE a.fk_pkb='$idpkb'";
                                     $rescatat2 = mysql_query( $sqlcatat2 );
                                     while($catat2 = mysql_fetch_array( $rescatat2 )){
                                 ?>
@@ -93,14 +93,12 @@
                           <td><?php echo rupiah2($catat2['harga_jual_part']);?></td>
                           <td><?php echo $catat2['qty_part'];?></td>
                           <td><?php echo $catat2['diskon'];?></td>
-                          <td align="right"><?php echo rupiah2($catat2['harga_total_estimasi_part']);?></td>
+                          <td align="right"><?php echo rupiah2($catat2['harga_total_pkb_part']);?></td>
                         </tr>
                     <?php }?>
-                        <tr><td colspan="4" align="right">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
-                        <tr><td colspan="4" align="right">PPN</td><td align="right"><?php echo rupiah2((10/100)*$catat['total_netto_harga_jasa']);?></td></tr>
-                        <tr><td colspan="4" align="right">Total Jasa</td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td></tr>
-                        <tr><td colspan="4" align="right">OR</td><td align="right"><?php echo rupiah2(($disckw/100)*$catat['nilai_kwitansi']);?></td></tr>
-                        <tr><td colspan="4" align="right"><strong>Grand Total</strong></td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']+($disckw/100)*$catat['nilai_kwitansi']);?></td></tr>
+                        <tr><td colspan="4" align="right">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_panel']+$catat['total_netto_part']);?></td></tr>
+                        <tr><td colspan="4" align="right">PPN</td><td align="right"><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td></tr>
+                        <tr><td colspan="4" align="right"><strong>Grand Total</strong></td><td align="right"><?php echo rupiah2($catat['total_payment']);?></td></tr>
                 </tfoot>
               </table>
                                 </table>
