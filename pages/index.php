@@ -31,6 +31,8 @@
                         case 'pkbbukatutup' : include_once 'pkbstatus/pkb_tab.php'; break;
                         case 'cash' : include_once 'cash/cash_tab.php'; break;
                         case 'bank' : include_once 'bank/bank_tab.php'; break;
+                        case 'gatepass' : include_once 'gatepass/gatepass_tab.php'; break;
+
                       }
         ?>
 

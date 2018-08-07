@@ -2,37 +2,21 @@
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
       
-        $tgltransaksi = trim($_POST['tgltransaksi']);
-        $tipetransaksi = trim($_POST['tipetransaksi']); 
-        $diterimadari = trim($_POST['diterima']);  
+        $tgl = trim($_POST['tgl']);
         $idpkb = trim($_POST['idpkb']); 
-        $idkwitansi = trim($_POST['nokwitansi']); 
-       // echo $idpkb;
-       // echo $idkwitansi;
-
-            if (!empty($idpkb))  {
-                //echo $idpkb;
-                    $noref = $idpkb;
-            }
-            else {
-                 //echo $idkwitansi;
-                 $noref = $idkwitansi;
-            }
-        
-        $total = trim($_POST['nilai']); 
-        $keterangan = trim($_POST['keterangan']); 
-        
+        $status = trim($_POST['status']); 
+     
         $hrn2= date('dmy' , strtotime($hrini));
-        $kodeawal2 = 'KM_BR.';
-        $kodeawal = 'KM_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_cash WHERE no_bukti LIKE '$kodeawal2%' ORDER BY no_bukti DESC";
+        $kodeawal2 = 'GP_BR.';
+        $kodeawal = 'GP_BR.'.$hrn2.'.';
+        $sqljur = "SELECT * FROM t_gate_pass WHERE no_gate_pass LIKE '$kodeawal2%' ORDER BY no_gate_pass DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
-        if (empty($jur['no_bukti'])){
+        if (empty($jur['no_gate_pass'])){
             $kodeakhir = '000001';
         }else{
             # GENERATE
-            $kode = $jur['no_bukti'];
+            $kode = $jur['no_gate_pass'];
             $pecah = explode('.',$kode);
             $nilbaru = $pecah[2] + 1;
             $panj = strlen($nilbaru);
@@ -51,7 +35,7 @@
         $kodebaru = $kodeawal.$kodeakhir;   
 
         
-            $sqltbemp = "INSERT INTO t_cash (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$noref','$total','$keterangan')";
+            $sqltbemp = "INSERT INTO t_gate_pass (no_gate_pass,tgl,fk_pkb,status) VALUES ('$kodebaru','$tgl','$idpkb','$status')";
            // echo "$sqltbemp";
             mysql_query($sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        

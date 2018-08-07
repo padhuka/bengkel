@@ -19,6 +19,8 @@
                  $noref = $idkwitansi;
             }
         
+        $viabayar = trim($_POST['viabayar']); 
+        $partnerbank = trim($_POST['id_partner_bank']); 
         $total = trim($_POST['nilai']); 
         $keterangan = trim($_POST['keterangan']); 
         
@@ -51,8 +53,8 @@
         $kodebaru = $kodeawal.$kodeakhir;   
 
         
-            $sqltbemp = "INSERT INTO t_bank (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$noref','$total','$keterangan')";
-            echo "$sqltbemp";
+            $sqltbemp = "INSERT INTO t_bank (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,via_bayar,fk_partner_bank,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$viabayar','$partnerbank','$noref','$total','$keterangan')";
+         //   echo "$sqltbemp";
             mysql_query($sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        
 ?>
