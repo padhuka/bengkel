@@ -35,9 +35,7 @@
                        
                           <td >
                                        
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectPartner(
-                                         '<?php echo $catat['id_partner_bank'];?>',
-                                         '<?php echo $catat['nama'];?>');">Pilih</button>
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectPartnerx('<?php echo $catat['id_partner_bank'];?>','<?php echo $catat['nama'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
@@ -52,9 +50,9 @@
               <script type="text/javascript">
                 $('#bankpartner').DataTable();
 
-               function selectPartner(x,y){
+               function selectPartnerx(x,y){
                               $("#id_partner_bank").val(x);
-                              $("#nama").val(z);
+                              $("#namapartner").val(y);
                               $("#ModalBankP").modal('hide');
                               
                       }; 

@@ -115,6 +115,7 @@
                             <div class="col-sm-7">
                                 <!-- <input type="hidden" class="form-control" id="nopkb" name="asuransi">  -->
                                 <input type="text" class="form-control" id="namapartner" name="namapartner" readonly> 
+                                <input type="hidden" class="form-control" id="id_partner_bank" name="id_partner_bank" readonly> 
                                  </div>
                                   <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectPartner();" id="buttonPartner">Pilih</button>
                              
