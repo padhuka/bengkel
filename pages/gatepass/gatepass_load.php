@@ -30,7 +30,7 @@
                           <td ><?php echo $catat['status'];?></td>
                          
                           <td >
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_gate_pass']; ?>" onclick="open_del(nogatepass='<?php echo $catat['no_gate_pass']; ?>');"><span>Batal</span></button>
+                                        
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_gate_pass']; ?>" onclick="cetak_est(nogatepass='<?php echo $catat['no_gate_pass']; ?>');"><span>Cetak</span></button>
 
                                     </td>
