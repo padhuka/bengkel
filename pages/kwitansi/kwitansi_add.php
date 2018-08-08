@@ -12,7 +12,7 @@
                  
                     <div class="modal-body">
                       
-                      <div class="modal-title-detail">DATA ESTIMASI</div>
+                      <div class="modal-title-detail">DATA PKB</div>
                       <div class="row">
                        <div class="col-sm-6">
                        <table id="pkbshow" class="table table-condensed table-bordered table-striped table-hover">
