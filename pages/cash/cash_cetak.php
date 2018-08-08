@@ -50,9 +50,9 @@
                                         </table>
                                       </td>
                                       <td>
-                                          <table width="60%" border="1"  align="center">
+                                          <table width="60%" border="0"  align="center">
                                             <tr>
-                                              <td align="center">Semarang, <?php echo date('d mm yy' , strtotime($catat['tgl_transaksi']));?></td>
+                                              <td align="center">Semarang, <?php echo tampilTanggal(substr($catat['tgl_transaksi'],0,10));?><br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td>
                                             </tr>
                                         </table>
                                       </td>
