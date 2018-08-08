@@ -35,7 +35,7 @@
                                     Srondol Kulon Semarang
                                     </td>
                                     <td width="50%" align="center">
-                                    <h1>GATE PASS FINAL</h1>
+                                    <h1>GATE PASS <?php echo strtoupper($catat['status']);?></h1>
                                     </td>
                                   </tr> 
                                 </table>

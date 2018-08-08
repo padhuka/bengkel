@@ -37,7 +37,7 @@
                            <td ><?php echo $catat['keterangan'];?></td>
                           <td >
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_est(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Cetak</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
@@ -88,16 +88,16 @@
                               });
             };
 
-            // function cetak_est(q){
-            //                   $.ajax({
-            //                       url: "cash/cash_print.php?nobukti="+q,
-            //                       type: "GET",
-            //                       success: function (ajaxData){
-            //                           $("#ModalEstPrint").html(ajaxData);
-            //                           $("#ModalEstPrint").modal({backdrop: 'static',keyboard: false});
-            //                       }
-            //                   });
-            // };
+            function cetak_cash(q){
+                              $.ajax({
+                                  url: "cash/cash_print.php?nobukti="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalCashPrint").html(ajaxData);
+                                      $("#ModalCashPrint").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
             
       </script>
 
