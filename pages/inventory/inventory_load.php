@@ -10,9 +10,8 @@
                           <th>No Mesin</th>
                           <th>No Polisi</th>
                           <th>Nama STNK</th>
-                          <th>Alamat STNK</th>
                           <th>Tipe Kendaraan</th>
-                          <th>Warna Kendaraan</th>
+                        
                          
                          
                           <th><button type="button" class="btn btn btn-default btn-circle open_add"><span>Tambah</span></button></th>
@@ -36,9 +35,8 @@
                           <td ><?php echo $catat['no_mesin'];?></td>
                           <td ><?php echo $catat['no_polisi'];?></td>
                           <td ><?php echo $catat['nama_stnk'];?></td>
-                          <td ><?php echo $catat['alamat_stnk'];?></td>
                           <td ><?php echo $catat['nama_tipe'];?></td>
-                          <td ><?php echo $catat['nama_warna'];?></td>
+                      
                                                 
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_chasis']; ?>" onclick="open_modal(ideditas='<?php echo $catat['no_chasis']; ?>');"><span>Edit</span></button>
@@ -51,7 +49,7 @@
               </table>
               <script>
              $('#inventory1').DataTable({
-              "autoWidth": false,
+             
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",

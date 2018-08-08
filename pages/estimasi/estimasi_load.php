@@ -20,9 +20,10 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY id_estimasi DESC";
+                                    $sqlcatat = "SELECT e.*,k.no_kwitansi_or FROM t_estimasi e LEFT JOIN t_kwitansi_or k ON e.id_estimasi=k.fk_estimasi WHERE e.tgl_batal='0000-00-00 00:00:00' ORDER BY e.id_estimasi DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
+
                                 ?>
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo ($catat['id_estimasi']);?></span></button></td>
@@ -35,7 +36,13 @@
                            <td ><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button>
+
+                                         <?php if ($catat['no_kwitansi_or'] =='') { ?>
+
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button> 
+
+                                         <?php }?>
+
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="cetak_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Cetak</span></button>
 
                                     </td>
