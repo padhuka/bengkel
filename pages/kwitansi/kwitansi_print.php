@@ -15,10 +15,11 @@
                     </div>
                   <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT *, c.alamat AS alamatcustomer,c.no_telp AS telpcustomer,c.nama AS nmcustomer,d.nama AS nmasuransi FROM t_kwitansi e
+                                    $sqlcatat = "SELECT *,kw.nilai_kwitansi as nilaior, c.alamat AS alamatcustomer,c.no_telp AS telpcustomer,c.nama AS nmcustomer,d.nama AS nmasuransi FROM t_kwitansi e
                                     LEFT JOIN t_pkb a ON e.fk_pkb=a.id_pkb
                                     LEFT JOIN t_customer c ON a.fk_customer=c.id_customer 
-                                    LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi 
+                                    LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi
+                                    LEFT JOIN t_kwitansi_or kw ON a.fk_estimasi=kw.fk_estimasi
                                     WHERE e.no_kwitansi='$no_kwitansi'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
@@ -96,7 +97,8 @@
                     <?php }?>
                         <tr><td colspan="4" align="right">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_panel']+$catat['total_netto_part']);?></td></tr>
                         <tr><td colspan="4" align="right">PPN</td><td align="right"><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td></tr>
-                        <tr><td colspan="4" align="right"><strong>Grand Total</strong></td><td align="right"><?php echo rupiah2($catat['total_payment']);?></td></tr>
+                        <tr><td colspan="4" align="right">OR</td><td align="right"><?php echo rupiah2($catat['nilaior']);?></td></tr>
+                        <tr><td colspan="4" align="right"><strong>Grand Total</strong></td><td align="right"><?php echo rupiah2($catat['total_payment']+$catat['nilaior']);?></td></tr>
                 </tfoot>
               </table>
                        <div class="form-group">

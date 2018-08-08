@@ -31,7 +31,7 @@
                          
                           <td >
                                         
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_gate_pass']; ?>" onclick="cetak_est(nogatepass='<?php echo $catat['no_gate_pass']; ?>');"><span>Cetak</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_gate_pass']; ?>" onclick="cetak_get(nogatepass='<?php echo $catat['no_gate_pass']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
@@ -81,18 +81,16 @@
                                   }
                               });
             };
-
-            // function cetak_est(q){
-            //                   $.ajax({
-            //                       url: "gatepass/gatepass_print.php?nogatepass="+q,
-            //                       type: "GET",
-            //                       success: function (ajaxData){
-            //                           $("#ModalEstPrint").html(ajaxData);
-            //                           $("#ModalEstPrint").modal({backdrop: 'static',keyboard: false});
-            //                       }
-            //                   });
-            // };
-            
+            function cetak_get(q){
+                              $.ajax({
+                                  url: "gatepass/gatepass_print.php?nogatepass="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalGatePrint").html(ajaxData);
+                                      $("#ModalGatePrint").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
       </script>
 
 <style type="text/css">
