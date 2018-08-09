@@ -122,6 +122,7 @@
                                                       //var hsl = data.trim();
                                                       //alert(hsl);
                                                       $("#estimasipart").load('estimasi/part_load.php?idestimasi=<?php echo $idestimasi;?>');
+                                                      $("#tableestimasi").load('estimasi/estimasi_load.php');
                                                       $('.modal-body').css('opacity', '');
 
                                                       alert('Data Berhasil Disimpan');
