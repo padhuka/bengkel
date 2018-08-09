@@ -95,23 +95,12 @@
                                                   cache: false,
                                                   processData:false,
                                                   success: function(data){
-                                                        //alert('lolos');
-                                                        var hsl=data.trim();
-                                                        //alert(hsl);
-                                                        //return false;
-                                                        if (hsl=='y'){
-			                                                alert('Data Sudah ada');
-			                                                return false;
-			                                                exit();
-			                                              }else{
-
 			                                                $("#tablecustomer").load('customer/customer_load.php');
                                                                       $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide');
 			                                            }
-                                                      }
                                                 });
                       });
     });
