@@ -60,7 +60,7 @@
                                 </table>
                                 <hr width="100%" align="center">  
 
-                                <table width="100%" align="center" border="1" cellspacing="0" cellpadding="0" style="font-size: 12px"><<thead class="thead-light">
+                                <table width="100%" align="center" border="1" cellspacing="0" cellpadding="0" style="font-size: 12px"><thead class="thead-light">
                         <tr><th>Item </th><th>Total</th></tr>
                         </thead>
                         <tbody>
