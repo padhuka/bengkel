@@ -45,6 +45,7 @@
                                               <td align="center">PEKERJAAN</td>
                                               <td align="center">TOTAL</td>
                                             </tr>
+                                            <tr><td colspan="3"><strong>PANEL</strong></td></tr>
                                                       
                                     <?php
                                                         $j=1;
@@ -57,8 +58,9 @@
                                               <td ><?php echo $catatp['nama'];?></td>
                                               <td align="right"><?php echo rupiah2($catatp['harga_total_estimasi_panel']);?></td>
                                             </tr>
-                                        <?php }
-                                               $j=$j;
+                                        <?php }?>
+                                        <tr><td colspan="3"><strong>PART</strong></td></tr>
+                                               <?php $j=$j;
                                                         $sqlcatat2 = "SELECT * FROM t_estimasi_part_detail a LEFT JOIN t_part p ON a.fk_part=p.id_part WHERE a.fk_estimasi='$idestimasi'";
                                                         $rescatat2 = mysql_query( $sqlcatat2 );
                                                         while($catat2 = mysql_fetch_array( $rescatat2 )){
@@ -70,7 +72,7 @@
                                             </tr>
                                         <?php }?>
                                 </table>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                             <tr><td colspan="2" align="center">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
                                             <tr><td colspan="2" align="center">PPN</td><td align="right"><?php echo rupiah2((10/100)*$catat['total_netto_harga_jasa']);?></td></tr>
                                             <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td></tr>
