@@ -25,13 +25,13 @@
                                     $idestimasi=$catat['id_estimasi'];
                                     $disckw=100-$catat['diskonkw'];
                                 ?>
-                               <table width="100%">
+                               <table width="100%" style="font-size: 12px">
                                   <tr><td align="center" style="font-size: 20px; text-align: center;"><u>INVOICE</u></td></tr>                                  
                                   <tr><td align="center" style="font-size: 20px; text-align: center;"><?php echo $no_kwitansi_or;?></td></tr> 
                                 </table>
                       
-                                <hr width="60%" align="center">
-                                <table width="60%" align="center">
+                                <hr width="100%" align="center">
+                                <table width="100%" align="center" style="font-size: 12px">
                                   <tr>
                                     <td width="20%">No Estimasi</td><td width="29%">: <?php echo $catat['id_estimasi'];?></td><td width="2%"></td>
                                     <td width="20%">Kategori</td><td width="29%">: <?php echo $catat['kategori'];?></td>
@@ -58,9 +58,9 @@
                                   </tr>
                                   
                                 </table>
-                                <hr width="60%" align="center">  
+                                <hr width="100%" align="center">  
 
-                                <table width="60%" align="center" border="1" cellspacing="0" cellpadding="0"><<thead class="thead-light">
+                                <table width="100%" align="center" border="1" cellspacing="0" cellpadding="0" style="font-size: 12px"><<thead class="thead-light">
                         <tr><th>Item </th><th>Total</th></tr>
                         </thead>
                         <tbody>
@@ -71,7 +71,7 @@
                         </tr>
               </tfoot>
             </table>
-              <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><<thead class="thead-light">
+              <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px"><thead class="thead-light">
                         
                         <tr><td align="right">Sub Total</td><td align="right">-</td></tr>  
                         <tr><td align="right">Own Risk</td><td align="right"><?php echo rupiah2($catat['nilaikw']);?></td></tr>
@@ -82,12 +82,12 @@
               </table>
                                 </table>
                                 
-                                <hr width="60%" align="center"> 
+                                <hr width="100%" align="center"> 
                                       
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                    <tr><td width="50%" align="center"></td><td width="50%" align="center"><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td></tr>
                                 </table>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                    <tr><td width="50%" align="center">Menyetujui<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
                                  </table><br>
                                

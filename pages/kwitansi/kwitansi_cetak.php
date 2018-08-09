@@ -26,13 +26,13 @@
                                     $idpkb=$catat['id_pkb'];
 
                                 ?>
-                               <table width="100%">
+                               <table width="100%" style="font-size: 12px">
                                  <tr><td align="center" style="font-size: 20px; text-align: center;"><u>INVOICE</u></td></tr>                                  
                                   <tr><td align="center" style="font-size: 20px; text-align: center;"><?php echo $no_kwitansi;?></td></tr> 
                                 </table>
                       
-                                <hr width="60%" align="center">
-                                <table width="60%" align="center">
+                                <hr width="100%" align="center">
+                                <table width="100%" align="center" style="font-size: 12px">
                                   <tr>
                                     <td width="20%">No PKB</td><td width="29%">: <?php echo $catat['id_pkb'];?></td><td width="2%"></td>
                                     <td width="20%">Kategori</td><td width="29%">: <?php echo $catat['kategori'];?></td>
@@ -59,9 +59,9 @@
                                   </tr>
                                   
                                 </table>
-                                <hr width="60%" align="center">  
+                                <hr width="100%" align="center">  
 
-                                <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><<thead class="thead-light">
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px"><thead class="thead-light">
                         <tr><th>Nama </th><th>Harga</th><th>Qty</th><th>Disc</th><th>Total</th></tr>
                         </thead>
                         <tbody>
@@ -105,12 +105,12 @@
               </table>
                                 </table>
                                 
-                                <hr width="60%" align="center"> 
+                                <hr width="100%" align="center"> 
                                       
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                    <tr><td width="50%" align="center"></td><td width="50%" align="center"><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td></tr>
                                 </table>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                    <tr><td width="50%" align="center">Menyetujui<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
                                  </table><br>
                                
