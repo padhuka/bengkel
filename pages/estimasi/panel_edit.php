@@ -118,6 +118,7 @@
                                                       //var hsl = data.trim();
                                                       //alert(hsl);
 			                                                $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+                                                      $("#tableestimasi").load('estimasi/estimasi_load.php');
                                                       $('.modal-body').css('opacity', '');
 
                                                       alert('Data Berhasil Disimpan');
