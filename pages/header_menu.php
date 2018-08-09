@@ -7,7 +7,7 @@
     <nav class="navbar fixed-top" style="margin-left: 0px">
       <!-- Sidebar toggle button-->
     <div class="container">
-      <a class="navbar-brand" href="index.php"> GEMILANG BODY REPAIR 
+      <a class="navbar-brand" href="index.php"> GEMILANG BODY & PAINT
         </a>
       <div class="navbar-custom-menu" style="padding: 0 0 0 0;margin: 0 auto;">
         <ul class="nav navbar-nav" style="list-style: none;padding: 0;margin: 0 auto;font-size: 1px;margin-top: 8px;">
@@ -100,11 +100,8 @@
     }
     .layout-boxed .wrapper {
       max-width: 1250px;
-    }
-  </style>
- <style type="text/css">
-    
- .dropdown-menu {
+    }  
+    .dropdown-menu {
     margin: 0;
     list-style: none;
     white-space: nowrap;
@@ -112,8 +109,10 @@
     padding: 5px;
     background-color: #ecf0f5;
     font-family: sans-serif;
- }
-
+   }
+   .skin-red-light .main-header .navbar {
+    background-color:#1585c3;
+   }
 
 
  </style>
