@@ -15,14 +15,14 @@
 				            <!-- form start -->
                     <div class="modal-body">
 				            <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formPanel">
-                        <!--<div class="form-group">
+                        <div class="form-group">
                           <div class="col-sm-3">
                             <label for="kodepanel">Kode Panel</label>
                           </div>
                           <div class="col-sm-8">
                             <input type="text" class="form-control" id="id_panel" name="id_panel" required>
                           </div>
-                        </div>-->
+                        </div>
 				                <div class="form-group">
                           <div class="col-sm-3">
                             <label for="namapanel">Nama</label>
