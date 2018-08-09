@@ -33,13 +33,13 @@
                        
                        
                           <td ><?php echo $catat['no_kwitansi'];?></td>
-                          <td ><?php echo $catat['nilai'];?></td>
+                          <td ><?php echo rupiah2($catat['nilai']);?></td>
                        
                           <td >
                                        
                                         <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi(
                                          '<?php echo $catat['no_kwitansi'];?>',
-                                         '<?php echo rupiah2($catat['nilai']);?>');">Pilih</button>
+                                         '<?php echo $catat['nilai'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
