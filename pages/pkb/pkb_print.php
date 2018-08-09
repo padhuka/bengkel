@@ -86,8 +86,8 @@
               </table>
                        <div class="form-group">
                       <div class="modal-footer">
-                      <div class="but"><a href="pkb/pkb_cetak.php?idpkb=<?php echo $idpkb;?>" target="blank"><button type="button" class="btn btn-primary" name="close" onclick="cetak();">Print</button></a>
-                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalPkbPrint').modal('hide');">Close</button>
+                      <div class="but"><a href="pkb/pkb_cetak.php?idpkb=<?php echo $idpkb;?>" target="blank"><button type="button" class="btn btn-primary" name="close">Print</button></a>
+                        <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalPkbPrint').modal('hide');">Close</button>
                      </div>
                      </div>
                      </div>

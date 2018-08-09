@@ -3,7 +3,7 @@
 <head>
   <title></title>
 </head>
-<body >
+<body onload="javascript:window.print()">
 <?php //onload="javascript:window.print()"
    // include_once '../../lib/sess.php';
     include_once '../../lib/config.php';
@@ -102,10 +102,10 @@
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"  style="font-size: 12px"><tr><td>Saran :</td></tr></table><br>
                                 <hr width="100%" align="center"> 
                                       
-                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                    <tr><td width="50%" align="center"></td><td width="50%" align="center"><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td></tr>
                                 </table>
-                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                    <tr><td width="50%" align="center">Menyetujui<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
                                  </table><br>
                                
