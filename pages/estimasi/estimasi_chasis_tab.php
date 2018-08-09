@@ -1,7 +1,7 @@
-     <div id="ModalChasis" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div id="ModalChasis" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
      <div class="modal-dialog">
       <div class="col-md-14">
-                <div class="modal-content">
+                <div class="modal-content" >
                     <div class="modal-header">
                          
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Inventory Kendaraan <button type="button" class="close" aria-label="Close" onclick="$('#ModalChasis').modal('hide');"><span>&times;</span></button></h4>                        
@@ -14,7 +14,7 @@
                           <th>No Chasis</th>
                           <th>No Mesin</th>
                           <th>No Polisi</th>
-                          <th>Nama Customer</th>
+                          <th>Customer</th>
                           <th></th>
                 </tr>
                 </thead>
@@ -71,6 +71,10 @@
               </script>
 
   <style type="text/css">
+  .modal-open .modal {
+    overflow-y: scroll;
+    overflow-x: scroll;
+  }
   .modal-header {
     padding-top: 15px;padding-bottom: 15px;
   }
@@ -81,7 +85,11 @@
     font-family: monospace;
   }
   .modal-content {
-    height: 650px;
+    height: auto;
+     width: auto;
+/*    height: 650px;
+*/   /* overflow-x: scroll;
+    overflow-y: scroll;*/
   }
   .row {
     margin-left: 0px;
@@ -89,6 +97,7 @@
     margin-top:10px;
   }
   .modal-title {
+    margin:0;
     padding-top: 5px;padding-bottom: 5px;
   }
 </style>

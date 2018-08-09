@@ -1,4 +1,8 @@
-
+  <?php
+            include_once '../../lib/fungsi.php';
+           
+      ?>
+    
     <div id="ModalPilihPart" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog">
       <div class="col-md-14">
                 <div class="modal-content">
@@ -11,12 +15,11 @@
                 <table id="partestimasi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                          <th>Kode part</th>
+                        
                           <th>Nama</th>
                           <th>Harga Pokok</th>
                           <th>Harga Jual</th>
-                          <th>Diskon</th>
-                          <th>PPN</th>
+                        
                           <th></th>
                 </tr>
                 </thead>
@@ -31,12 +34,11 @@
                                       $hartot= $catat['harga_jual']-$diskon;
                                 ?>
                         <tr>
-                          <td><?php echo $catat['id_part'];?></td>
+                        
                           <td><?php echo $catat['nama'];?></td>
-                          <td><?php echo $catat['harga_beli'];?></td>
-                          <td><?php echo $catat['harga_jual'];?></td>
-                          <td><?php echo $catat['diskon'];?></td>
-                          <td><?php echo $catat['ppn'];?></td>
+                          <td><?php echo rupiah2($catat['harga_beli']);?></td>
+                          <td><?php echo rupiah2($catat['harga_jual']);?></td>
+                     
                           <td>
                                         <button type="button" class="btn btn btn-default btn-circle" onclick="pilihparte('<?php echo $catat['id_part'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['harga_jual'];?>','<?php echo $hartot;?>','<?php echo $catat['diskon'];?>');">Pilih</button>
 
@@ -51,7 +53,15 @@
               </div>
               </div>              
               <script type="text/javascript">
-                $('#partestimasi').DataTable();
+                $('#partestimasi').DataTable({
+                   "language": {
+                      "search": "Cari",
+                      "lengthMenu": "Lihat _MENU_ baris per halaman",
+                      "zeroRecords": "Maaf, Tidak di temukan - data",
+                      "info": "Terlihat halaman _PAGE_ of _PAGES_",
+                      "infoEmpty": "Tidak ada data di database"
+                  }
+                });
                 function pilihparte(a,b,c,d,e){
                   //alert(c);
                               $("#part").val(a);

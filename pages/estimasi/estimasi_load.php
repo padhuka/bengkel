@@ -9,7 +9,6 @@
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
                           <th>No Mesin</th>
-                          <th>Warna</th>
                           <th>No Polisi</th>
                           <th>Total Estimasi</th>
 
@@ -31,7 +30,6 @@
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                            <td ><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>
                           <td >

@@ -197,9 +197,6 @@
 </script>
 
 <style type="text/css">
-  .modal-open .modal {
-    overflow-y: hidden;
-  }
   .modal-footer {
     padding-top: 10px;
     padding-bottom: 0px;
@@ -211,6 +208,10 @@
     background-color: lightcoral;
     text-align: center;
     font-weight: bold;
+  }
+  .modal-content {
+    /*height: auto;
+     width: 700px;*/
   }
   .modal-dialog {
     margin-bottom: 0px;
