@@ -62,13 +62,13 @@
 
    <style type="text/css">
   .hurufe {
-    font-size: 26px;
+    font-size: 14px;
     font-weight: bold;
     font-family: monospace;
     text-align: right;
   }
   .huruf2 {
-    font-size: 26px;
+    font-size: 14px;
     font-weight: bold;
     font-family: monospace;
   }
