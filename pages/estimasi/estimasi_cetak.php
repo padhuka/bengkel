@@ -30,7 +30,7 @@
                                   <tr><td align="center" style="font-size: 20px; text-align: center;"><u>ESTIMASI BODY REPAIR</u></td></tr>
                                   <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_estimasi'];?></td></tr>
                                 </table>
-                                <table width="60%" align="center">
+                                <table width="100%" align="center">
                                   <tr><td width="20%">Merk/Tipe</td><td width="29%">: <?php echo $catat['nmgrup'].'/'.$catat['nmtipe'];?></td><td width="2%"></td><td width="20%">No.Rangka</td><td width="29%">: <?php echo $catat['fk_no_chasis'];?></td></tr>
                                   <tr><td>No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td><td></td><td>No. Mesin</td><td>: <?php echo $catat['fk_no_mesin'];?></td></tr>
                                   <tr><td>Pemilik</td><td>: <?php echo $catat['nama'];?></td><td></td><td>Warna</td><td>: <?php echo $catat['warna'];?></td></tr>
@@ -39,7 +39,7 @@
                                   <tr><td></td><td></td><td></td><td>No. Claim</td><td>:</td></tr>
                                 </table>
 
-                                <table width="60%" align="center" border="1" cellspacing="0" cellpadding="0">
+                                <table width="100%" align="center" border="1" cellspacing="0" cellpadding="0">
                                             <tr>
                                               <td align="center" width="3%">NO.</td>
                                               <td align="center">PEKERJAAN</td>
@@ -77,14 +77,14 @@
                                 </table>
                                 <br>
 
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                    <tr><td align="center">GRAND TOTAL RP <?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td><td width="30%"></td></tr>
                                  </table>
                                 <br><br>
-                                <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                    <tr><td width="50%" align="center"></td><td width="50%" align="center"><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td></tr>
                                 </table>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                    <tr><td width="50%" align="center">Menyetujui<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
                                  </table><br>
                                  <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
