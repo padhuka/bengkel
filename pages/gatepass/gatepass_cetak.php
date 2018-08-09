@@ -27,9 +27,9 @@
                                     $idpkb=$catat['id_pkb'];
 
                                 ?>
-                                <table width="60%" align="center" border="0">
+                                <table width="100%" align="center" border="0">
                                   <tr>
-                                    <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
+                                    <td width="50%"><u style="font-size: 14px;"><strong>GEMILANG BODY & PAINT</strong><br>
                                     </u>
                                     Jl. Setia Budi No.152 <br>
                                     Srondol Kulon Semarang
@@ -40,7 +40,7 @@
                                   </tr> 
                                 </table>
 
-                               <table width="60%" align="center" border="0">
+                               <table width="100%" align="center" border="0" style="font-size: 12px">
                                   <tr>
                                     <td width="50%">
                                         <table border="1" cellpadding="0" cellspacing="0" width="70%">
@@ -52,7 +52,7 @@
                                         </table>
                                     </td>                                    
                                     <td width="50%">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="60%">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                           <tr><td></td></tr>
                                           <tr><td>CHECK IN</td><td>: <?php echo date('d-m-Y H:i:s' , strtotime($catat['tglin']));?></td></tr>
                                           <tr><td>CHECK OUT</td><td>: <?php echo date('d-m-Y H:i:s' , strtotime($catat['tglout']));?></td></tr>
@@ -64,8 +64,8 @@
                                 </table>
                                  
                       
-                                <hr width="60%" align="center">
-                                <table width="60%" align="center" border="0">
+                                <hr width="100%" align="center">
+                                <table width="100%" align="center" border="0" style="font-size: 12px">
                                   <tr>
                                     <td width="50%">
                                         <table border="1" cellpadding="0" cellspacing="0" width="70%">
@@ -84,7 +84,7 @@
                                         </table>
                                     </td>
                                     <td width="50%">
-                                        <table border="1" cellpadding="0" cellspacing="0" width="70%">
+                                        <table border="1" cellpadding="0" cellspacing="0" width="70%" style="font-size: 12px">
                                           <tr><td>CATATAN </td></tr>
                                           <tr><td><br><br><br><br><br><br></td></tr>
                                         </table>
@@ -92,7 +92,7 @@
                                   </tr> 
                                 </table>
                                 <br><br>
-                                <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 12px">
                                   <tr align="center"><td>Aproved by</td><td>Aproved by</td><td>Aproved by</td><td>Aproved by</td></tr>
                                   <tr><td></td><td></td><td></td><td><br><br><br><br></td></tr>
                                   <tr><td><hr width="80%"></td><td><hr width="80%"></td><td><hr width="80%"></td><td><hr width="80%"></td></tr>
