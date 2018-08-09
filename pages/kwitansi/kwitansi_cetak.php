@@ -65,6 +65,7 @@
                         <tr><th>Nama </th><th>Harga</th><th>Qty</th><th>Disc</th><th>Total</th></tr>
                         </thead>
                         <tbody>
+                          <tr><td colspan="2"><u>Panel</u> :</td></tr>
                 <?php
                                     $j=1;
                                     $sqlcatatp = "SELECT * FROM t_pkb_panel_detail a 
@@ -81,8 +82,8 @@
                           <td align="right"><?php echo rupiah2($catatp['harga_total_pkb_panel']);?></td>
                         </tr>
                     <?php }?>
-                  
-                           <?php $j=$j;
+                            <tr><td colspan="2"><u>Part</u> :</td></tr>
+                           <?php $j=1;
                                     $sqlcatat2 = "SELECT * FROM t_pkb_part_detail a 
                                     LEFT JOIN t_part p ON a.fk_part=p.id_part 
                                     WHERE a.fk_pkb='$idpkb'";
