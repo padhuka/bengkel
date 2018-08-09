@@ -1,6 +1,8 @@
   <?php
             include_once '../lib/config.php';
           ?>
+          <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+          <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <!-- Left side column. contains the logo and sidebar -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -27,11 +29,11 @@
             <div class="box-body">
               <div id="tablepanel">
                 <table width="100%" border="1">
-                    <tr align="center" style="font-weight: bold;">
+                    <tr align="center" style="font-weight: bold; font-size: 16px;">
                         <td>Report</td><td>Field</td><td></td>
                     </tr>
                     <tr>
-                        <td width="30%"> Cash</td><td>
+                        <td width="30%" >&nbsp;<label style="font-size: 16px;">Cash</label></td><td>
                               <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
                             <div class="input-group date">
                               <div class="input-group-addon">
@@ -45,7 +47,7 @@
                               </div>
                               <input type="text" class="form-control pull-right" id="tglcash2" name="tglcash2" required value="<?php echo $harinow;?>">
                             </div> </td></tr></table>
-                            </td><td><span onclick="eksporcash()"> Generate</span></strong></span></td>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span onclick="eksporcash()">Generate</span></strong></span></td>
                     </tr>
                 </table>
               </div>

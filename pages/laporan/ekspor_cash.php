@@ -41,8 +41,8 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                                     $tgl1=$_GET['tgl1'];
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
-                                    $sqlcatat = " SELECT * FROM t_cash 
-                                    WHERE tgl_batal='0000:00:00 00:00:00' ORDER BY no_bukti DESC ";
+                                    $sqlcatat = "SELECT * FROM t_cash 
+                                    WHERE tgl_batal='0000:00:00 00:00:00' AND substring(tgl_transaksi,1,10)>='$tgl1' AND  substring(tgl_transaksi,1,10)<='$tgl2' ORDER BY no_bukti DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
