@@ -16,12 +16,14 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_pkb_panel_detail WHERE fk_pkb='$idpkb' ORDER BY id ASC";
+                                    $sqlcatat = "SELECT ep.*, p.nama as nama FROM t_pkb_panel_detail ep 
+                                    LEFT JOIN t_panel p ON ep.fk_panel=p.id_panel
+                                    WHERE fk_pkb='$idpkb' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['fk_panel'];?></td>
+                          <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['harga_jual_panel']);?></td>
                           <td ><?php echo rupiah2($catat['harga_diskon_panel']);?></td>
                           <td ><?php echo rupiah2($catat['harga_total_pkb_panel']);?></td>
