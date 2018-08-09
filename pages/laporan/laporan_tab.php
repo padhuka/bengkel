@@ -47,7 +47,7 @@
                               </div>
                               <input type="text" class="form-control pull-right" id="tglpkb2" name="tglpkb2" required value="<?php echo $harinow;?>">
                             </div> </td></tr></table>
-                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span onclick="eksporpkb()">Generate</span></strong></span></td>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpkb()">Generate</span></strong></span></td>
                     </tr>
                     <tr>
                         <td width="30%" >&nbsp;<label style="font-size: 16px;">Pembayaran Cash</label></td><td>
@@ -64,7 +64,7 @@
                               </div>
                               <input type="text" class="form-control pull-right" id="tglcash2" name="tglcash2" required value="<?php echo $harinow;?>">
                             </div> </td></tr></table>
-                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span onclick="eksporcash()">Generate</span></strong></span></td>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporcash()">Generate</span></strong></span></td>
 
                             
                     </tr>
@@ -84,7 +84,7 @@
                               </div>
                               <input type="text" class="form-control pull-right" id="tglbank2" name="tglbank2" required value="<?php echo $harinow;?>">
                             </div> </td></tr></table>
-                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span onclick="eksporbank()">Generate</span></strong></span></td>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporbank()">Generate</span></strong></span></td>
                     </tr>
                 </table>
               </div>

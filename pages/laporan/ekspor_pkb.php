@@ -30,20 +30,32 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                                     $tgl1=$_GET['tgl1'];
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_cash 
-                                    WHERE tgl_batal='0000:00:00 00:00:00' AND substring(tgl_transaksi,1,10)>='$tgl1' AND  substring(tgl_transaksi,1,10)<='$tgl2' ORDER BY no_bukti DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
+                                    $sqlcatat = "SELECT p.*,c.nama,k.no_kwitansi FROM t_pkb p
+                                   LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
+                                   LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb
+                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.status_pkb='Buka' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
+                                   ORDER BY p.id_pkb DESC";
+                                   	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td><?php echo ($catat['no_bukti']);?></td>                       
-                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl_transaksi']));?></td>
-                          <td ><?php echo $catat['tipe_transaksi'];?></td>
-                          <td ><?php echo $catat['diterima_dari'];?></td>
-                          <td ><?php echo $catat['no_ref'];?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
+                       
+                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
+                          <td ><?php echo $catat['fk_no_chasis'];?></td>
+                          <td ><?php echo $catat['fk_no_mesin'];?></td>
                           
-                           <td ><?php echo rupiah2($catat['total']);?></td>
-                           <td ><?php echo $catat['keterangan'];?></td>
+                          <td ><?php echo $catat['fk_no_polisi'];?></td>
+                          <td ><?php echo $catat['nama'];?></td>
+                          <td >
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
+                                           <?php if ($catat['no_kwitansi'] =='') { ?>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
+
+                                         <?php }?>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="cetak_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Cetak</span></button>
+
+                                    </td>
                         </tr>
                     <?php }?>
                 </tfoot>
