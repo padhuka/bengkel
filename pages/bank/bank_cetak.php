@@ -27,7 +27,7 @@
                                     Srondol Kulon Semarang
                                     </td>
                                     <td width="50%" align="center">
-                                    <h2>No. Kwitansi : <?php echo $nobukti;?></h2>
+                                    No. Kwitansi : <?php echo $nobukti;?>
                                     </td>
                                   </tr> 
                                 </table>
