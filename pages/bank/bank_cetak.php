@@ -43,7 +43,7 @@
                                 <table width="100%" border="0"  align="center">
                                     <tr>
                                       <td>
-                                        <table width="50%" border="1"  align="left">
+                                        <table width="70%" border="1"  align="left">
                                             <tr>
                                               <td class="huruf2" align="center">Rp. <?php echo rupiah2($catat['total']);?></td>
                                             </tr>
@@ -68,7 +68,7 @@
     text-align: right;
   }
   .huruf2 {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     font-family: monospace;
   }
