@@ -32,16 +32,16 @@
                                   <tr><td align="center" style="font-size: 20px; text-align: center;"><u>PKB BODY REPAIR</u></td></tr>
                                   <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_pkb'];?></td></tr>
                                 </table>
-                                <hr width="60%" align="center">                                
-                                <table width="60%" align="center">
+                                <hr width="100%" align="center">                                
+                                <table width="100%" align="center">
                                   
-                                  <tr><td align="left" width="10%">Status WO</td><td align="left" width="60%">: <?php echo $catat['nmasuransi'];?><td width="10%">Foreman</td><td>: </td></tr>                                              
+                                  <tr><td align="left" width="10%">Status WO</td><td align="left" width="100%">: <?php echo $catat['nmasuransi'];?><td width="10%">Foreman</td><td>: </td></tr>                                              
                                   </td></tr>
                                   <tr><td align="left" width="10%">No. Estimasi</td><td align="left">: <?php echo $catat['fk_estimasi'];?>                                    
                                   </td><td width="10%">Teknisi</td><td></td></tr>
                                 </table>
-                                <hr width="60%" align="center">
-                                <table width="60%" align="center">
+                                <hr width="100%" align="center">
+                                <table width="100%" align="center">
                                   <tr>
                                     <td>Merk/Tipe</td><td  width="45%">: <?php echo $catat['nmgrup'].'/'.$catat['nmtipe'];?></td><td></td>
                                     <td align="left">No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td>
@@ -68,10 +68,10 @@
                                   </tr>
                                   
                                 </table>
-                                <hr width="60%" align="center">  
+                                <hr width="100%" align="center">  
 
-                                <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Job Descriptions :</td></tr></table><br>
-                                <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Job Descriptions :</td></tr></table><br>
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                   <tr><td colspan="2">Panel :</td></tr>
                                     <?php
                                                         $j=1;
@@ -97,15 +97,15 @@
                                             </tr>
                                         <?php }?>
                                 </table>
-                                <hr width="60%" align="center"> 
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Keluhan Pelanggan :</td></tr></table><br>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Saran :</td></tr></table><br>
-                                <hr width="60%" align="center"> 
+                                <hr width="100%" align="center"> 
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Keluhan Pelanggan :</td></tr></table><br>
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Saran :</td></tr></table><br>
+                                <hr width="100%" align="center"> 
                                       
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                    <tr><td width="50%" align="center"></td><td width="50%" align="center"><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td></tr>
                                 </table>
-                                 <table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                    <tr><td width="50%" align="center">Menyetujui<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td><td width="50%" align="center">Hormat Kami<br><br><br><br>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</td></tr>
                                  </table><br>
                                
