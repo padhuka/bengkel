@@ -60,7 +60,7 @@
                                             </tr>
                                         <?php }?>
                                         <tr><td colspan="3"><strong>PART</strong></td></tr>
-                                               <?php $j=$j;
+                                               <?php $j=1;
                                                         $sqlcatat2 = "SELECT * FROM t_estimasi_part_detail a LEFT JOIN t_part p ON a.fk_part=p.id_part WHERE a.fk_estimasi='$idestimasi'";
                                                         $rescatat2 = mysql_query( $sqlcatat2 );
                                                         while($catat2 = mysql_fetch_array( $rescatat2 )){
