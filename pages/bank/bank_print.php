@@ -7,12 +7,11 @@
     $sqlcatat = "SELECT * FROM t_bank WHERE no_bukti='$nobukti'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
-                                    echo $sqlcatat;
    ?>
 <div class="modal-dialog">
            <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">No. Kwitansi : <?php echo $nobukti;?><button type="button" class="close" aria-label="Close" onclick="$('#ModalCashPrint').modal('hide');"><span>&times;</span></button></h4>                    
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">No. Kwitansi : <?php echo $nobukti;?><button type="button" class="close" aria-label="Close" onclick="$('#ModalBankPrint').modal('hide');"><span>&times;</span></button></h4>                    
                     </div>
                   
                     <div class="modal-body">
@@ -76,7 +75,7 @@
                            <div class="modal-footer">
                           <div class="col-sm-8">
                            <a href="bank/bank_cetak.php?nobukti=<?php echo $nobukti;?>" target="blank"><button type="button" class="btn btn-primary" name="close" onclick="cetak();">Print</button></a>
-                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalCashPrint').modal('hide');">Close</button>
+                                    <button type="button" class="btn btn-primary" name="close" onclick="$('#ModalBankPrint').modal('hide');">Close</button>
                           </div>
                         </div>
                         </div>
