@@ -37,13 +37,15 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                 </thead>
                 <tbody>
                 <?php
+                                   //WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.status_pkb='' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
+                                   
                                     $tgl1=$_GET['tgl1'];
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
                                     $sqlcatat = "SELECT p.*,c.nama,k.no_kwitansi FROM t_pkb p
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
                                    LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb
-                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.status_pkb='Buka' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
+                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
                                    ORDER BY p.id_pkb DESC";
                                    	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
