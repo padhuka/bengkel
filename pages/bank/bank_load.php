@@ -37,7 +37,7 @@
                            <td ><?php echo $catat['keterangan'];?></td>
                           <td >
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_est(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Cetak</span></button>
+                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_bank(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
@@ -84,6 +84,18 @@
                                   success: function (ajaxData){
                                       $("#ModalShow").html(ajaxData);
                                       $("#ModalShow").modal({backdrop: 'static',keyboard: false});
+                                  }
+                              });
+            };
+
+
+             function cetak_bank(q){
+                              $.ajax({
+                                  url: "bank/bank_print.php?nobukti="+q,
+                                  type: "GET",
+                                  success: function (ajaxData){
+                                      $("#ModalBankPrint").html(ajaxData);
+                                      $("#ModalBankPrint").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
             };

@@ -37,9 +37,7 @@
                        
                           <td >
                                        
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi(
-                                         '<?php echo $catat['no_kwitansi'];?>',
-                                         '<?php echo $catat['nilai'];?>');">Pilih</button>
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi('<?php echo $catat['no_kwitansi'];?>','<?php echo $catat['nilai'];?>');">Pilih</button>
 
                                     </td>
                         </tr>
