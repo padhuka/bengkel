@@ -38,7 +38,7 @@
                           <label for="hargapokokpart">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokokep" name="hargapokokep" value="<?php echo $hslpan['harga_jual_part'];?>" readonly required>
+                         <input type="text" class="form-control" id="hargapokokep" name="hargapokokep" value="<?php echo $hslpan['harga_jual_part'];?>" required onchange="kaliep();">
                          <input type="hidden" class="form-control" id="hargapokoklmep" name="hargapokoklmep" value="<?php echo $hslpan['harga_jual_part'];?>" readonly required>
                           </div>
                         </div>

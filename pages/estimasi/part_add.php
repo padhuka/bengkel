@@ -30,7 +30,7 @@
                           <label for="hargapokokpart">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokokp" name="hargapokokp" readonly required>
+                         <input type="text" class="form-control" id="hargapokokp" name="hargapokokp" required  onchange="kalip();">
                           </div>
                         </div>
 				                <div class="form-group">

@@ -38,7 +38,7 @@
                           <label for="hargapokokpanel">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" required onchange="kaliedit();">
                          <input type="hidden" class="form-control" id="hargapokoklme" name="hargapokoklme" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
                           </div>
                         </div>
@@ -132,6 +132,7 @@
 </script>
 
 <style type="text/css">
+
   .modal-footer {
     padding-top: 10px;
     padding-bottom: 0px;

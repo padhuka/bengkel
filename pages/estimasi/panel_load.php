@@ -73,6 +73,11 @@
       </script>
 
 <style type="text/css">
+.modal-open .modal {
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+  }
   .table {
     border-spacing: 0;
     border-collapse: collapse;
