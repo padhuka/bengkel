@@ -33,7 +33,7 @@
                         <td>Report</td><td>Field</td><td></td>
                     </tr>
                     <tr>
-                        <td width="30%" >&nbsp;<label style="font-size: 16px;">Cash</label></td><td>
+                        <td width="30%" >&nbsp;<label style="font-size: 16px;">Pembayaran Cash</label></td><td>
                               <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
                             <div class="input-group date">
                               <div class="input-group-addon">
@@ -48,6 +48,22 @@
                               <input type="text" class="form-control pull-right" id="tglcash2" name="tglcash2" required value="<?php echo $harinow;?>">
                             </div> </td></tr></table>
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span onclick="eksporcash()">Generate</span></strong></span></td>
+
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Pembayaran Bank</label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglbank1" name="tglbank1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglbank2" name="tglbank2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span onclick="eksporbank()">Generate</span></strong></span></td>
                     </tr>
                 </table>
               </div>
@@ -63,18 +79,18 @@
     <!-- /.content -->
   </div>
   <script type="text/javascript">
-    $('#tglcash1').datepicker({       
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-      });
-    $('#tglcash2').datepicker({       
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-      });
+    $('#tglcash1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglcash2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglbank1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglbank2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     function eksporcash(){
       var x =$('#tglcash1').val(); var y= $('#tglcash2').val();
-      alert("laporan/ekspor_cash.php?tgl1="+x+"&tgl2="+y);
+      //alert("laporan/ekspor_cash.php?tgl1="+x+"&tgl2="+y);
       window.location = "laporan/ekspor_cash.php?tgl1="+x+"&tgl2="+y;
+    }
+    function eksporbank(){
+      var x =$('#tglbank1').val(); var y= $('#tglbank2').val();      
+      window.location = "laporan/ekspor_bank.php?tgl1="+x+"&tgl2="+y;
     }
     
   </script>
