@@ -47,14 +47,14 @@
                           </ul>
           </li><?php } ?>
           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
-            <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Laporan <i class="fa fa-gears dropdown-toggle"></i></button> </a>
-            <ul class="dropdown-menu">
+            <a href="?p=laporan" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Laporan <i class="fa fa-gears dropdown-toggle"></i></button> </a>
+            <!--<ul class="dropdown-menu">
               <?php if ($seskdlvl=='SuratMasuk' || $seskdlvl=='Admin'){?>
               <li class="header"><a href="?p=lapsuratmasuk">Lap. PKB</a></li><?php }?>
               <?php if ($seskdlvl=='SuratKeluar' || $seskdlvl=='Admin'){?>
               <li class="header"><a href="?p=lapsuratkeluar">Lap. PKB Batal</a></li><?php }?>
               
-            </ul>
+            </ul>-->
           </li>
           <?php if ($seskdlvl=='Admin'){?>
            <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
