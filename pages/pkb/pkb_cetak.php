@@ -81,8 +81,8 @@
                                                           $markpanel= $catatp['mark_panel'];
                                                     ?>
                                             <tr>
-                                              <td ><?php echo $j++;?></td>
-                                              <td ><?php echo $catatp['nama']; if ($markpanel=='1'){echo ' *';}?></td>
+                                              <td style="font-size: 12px"><?php echo $j++;?></td>
+                                              <td  style="font-size: 12px"><?php echo $catatp['nama']; if ($markpanel=='1'){echo ' *';}?></td>
                                             </tr>
                                         <?php }
                                         echo "<tr><td colspan=2><br>Part :</td></tr>";
@@ -92,8 +92,8 @@
                                                         while($catat2 = mysql_fetch_array( $rescatat2 )){
                                                     ?>
                                             <tr>
-                                              <td ><?php echo $j++;?></td>
-                                              <td ><?php echo $catat2['nama'];?></td>
+                                              <td  style="font-size: 12px"><?php echo $j++;?></td>
+                                              <td  style="font-size: 12px"><?php echo $catat2['nama'];?></td>
                                             </tr>
                                         <?php }?>
                                 </table>
