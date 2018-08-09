@@ -33,7 +33,7 @@
                                   <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_pkb'];?></td></tr>
                                 </table>
                                 <hr width="100%" align="center">                                
-                                <table width="100%" align="center">
+                                <table width="100%" align="center"  style="font-size: 12px">
                                   
                                   <tr><td align="left" width="10%">Status WO</td><td align="left" width="100%">: <?php echo $catat['nmasuransi'];?><td width="10%">Foreman</td><td>: </td></tr>                                              
                                   </td></tr>
@@ -41,7 +41,7 @@
                                   </td><td width="10%">Teknisi</td><td></td></tr>
                                 </table>
                                 <hr width="100%" align="center">
-                                <table width="100%" align="center">
+                                <table width="100%" align="center"  style="font-size: 12px">
                                   <tr>
                                     <td>Merk/Tipe</td><td  width="45%">: <?php echo $catat['nmgrup'].'/'.$catat['nmtipe'];?></td><td></td>
                                     <td align="left">No.Polisi</td><td>: <?php echo $catat['fk_no_polisi'];?></td>
@@ -70,8 +70,8 @@
                                 </table>
                                 <hr width="100%" align="center">  
 
-                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Job Descriptions :</td></tr></table><br>
-                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"  style="font-size: 12px"><tr><td>Job Descriptions :</td></tr></table><br>
+                                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"  style="font-size: 12px">
                                   <tr><td colspan="2">Panel :</td></tr>
                                     <?php
                                                         $j=1;
@@ -98,8 +98,8 @@
                                         <?php }?>
                                 </table>
                                 <hr width="100%" align="center"> 
-                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Keluhan Pelanggan :</td></tr></table><br>
-                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td>Saran :</td></tr></table><br>
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"  style="font-size: 12px"><tr><td>Keluhan Pelanggan :</td></tr></table><br>
+                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"  style="font-size: 12px"><tr><td>Saran :</td></tr></table><br>
                                 <hr width="100%" align="center"> 
                                       
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
