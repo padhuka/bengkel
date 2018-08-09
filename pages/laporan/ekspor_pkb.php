@@ -13,6 +13,17 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
+      <table width="100%" align="center" border="0">
+                                  <tr>
+                                    <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
+                                    </u>
+                                    Jl. Setia Budi No.152 <br>
+                                    Srondol Kulon Semarang
+                                    </td>                                   
+                                  </tr>                                   
+                                </table>
+                                    <span style="font-size: 20px;font-weight: bold;"><center>Laporan PKB</center></span>
+                                <br>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -22,7 +33,6 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                           <th>No Mesin</th>
                           <th>No Polisi</th>
                           <th>Nama Customer</th>
-                          <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,23 +49,13 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
-                       
+                          <td><?php echo ($catat['id_pkb']);?></td>                       
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          
+                          <td ><?php echo $catat['fk_no_mesin'];?></td>                          
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
-                          <td >
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
-                                           <?php if ($catat['no_kwitansi'] =='') { ?>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
-
-                                         <?php }?>
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="cetak_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Cetak</span></button>
-
-                                    </td>
+                          
                         </tr>
                     <?php }?>
                 </tfoot>

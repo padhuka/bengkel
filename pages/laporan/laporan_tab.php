@@ -104,6 +104,8 @@
     $('#tglcash2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglbank1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglbank2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglpkb1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglpkb2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     function eksporcash(){
       var x =$('#tglcash1').val(); var y= $('#tglcash2').val();
       //alert("laporan/ekspor_cash.php?tgl1="+x+"&tgl2="+y);
