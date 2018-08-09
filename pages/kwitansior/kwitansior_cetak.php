@@ -3,7 +3,7 @@
 <head>
   <title></title>
 </head>
-<body >
+<body onload="javascript:window.print()">
 <?php //onload="javascript:window.print()"
    // include_once '../../lib/sess.php';
         include_once '../../lib/config.php';
