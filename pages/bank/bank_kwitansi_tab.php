@@ -39,7 +39,7 @@
                                        
                                         <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi(
                                          '<?php echo $catat['no_kwitansi'];?>',
-                                         '<?php echo $catat['nilai'];?>');">Pilih</button>
+                                         '<?php echo rupiah2($catat['nilai']);?>');">Pilih</button>
 
                                     </td>
                         </tr>
