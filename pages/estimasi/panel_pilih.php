@@ -70,7 +70,7 @@
                               $("#hargatotal").val(d);                              
                               $("#diskon").val(e);                              
                               $("#ModalPilihPanel").modal('hide');
-                              $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php');
+                              //$("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php');
                               /*$.ajax({
                               url: "suratmasuk/suratmasuk_add.php",
                               type: "GET",
