@@ -50,7 +50,17 @@
               </div>
               </div>
               <script type="text/javascript">
-                $('#tableChasis').DataTable();
+                $('#tableChasis').DataTable({
+                  "pageLength": 5,
+                    "language": {
+                      "search": "Cari",
+                      "lengthMenu": "Lihat _MENU_ baris per halaman",
+                      "zeroRecords": "Maaf, Tidak di temukan - data",
+                      "info": "Terlihat halaman _PAGE_ of _PAGES_",
+                      "infoEmpty": "Tidak ada data di database"
+                  }
+
+                });
                function selectChasis(a,b,c,d,e,f){
                               $("#chasis").val(a);
                               $("#mesin").val(b);
@@ -72,8 +82,8 @@
 
   <style type="text/css">
   .modal-open .modal {
-    overflow-y: scroll;
-    overflow-x: scroll;
+    overflow-y: hidden;
+
   }
   .modal-header {
     padding-top: 15px;padding-bottom: 15px;
@@ -85,11 +95,8 @@
     font-family: monospace;
   }
   .modal-content {
-    height: auto;
-     width: auto;
-/*    height: 650px;
-*/   /* overflow-x: scroll;
-    overflow-y: scroll;*/
+     height: 650px;
+
   }
   .row {
     margin-left: 0px;
