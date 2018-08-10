@@ -93,6 +93,11 @@
         </script>
 
 <style type="text/css">
+.modal-open .modal {
+    overflow-y: scroll;
+   /* overflow-x: scroll;
+*/
+  }
   .modal-footer {
     padding-top: 10px;
     padding-bottom: 0px;

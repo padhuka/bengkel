@@ -102,13 +102,14 @@
                                                       //var hsl=data.trim();
                                                       //alert(hsl);
                                                       //alert('estimasi/estimasi_detail_tab.php?idestimasi=<?php //echo $idestimasi;?>');
-			                                                $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+			                                               // $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+                                                      
                                                       $("#tableestimasi").load('estimasi/estimasi_load.php');
                                                                       $('.modal-body').css('opacity', '');
 
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAddPanel').modal('hide');
-                                                            $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php?idestimasi=<?php echo $idestimasi;?>');
+                                                    $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php?idestimasi=<?php echo $idestimasi;?>');
 			                                            }
                                                       
                                                 });

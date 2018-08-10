@@ -68,6 +68,7 @@
                               $("#hargatotale").val(d);                              
                               $("#diskone").val(e);                              
                               $("#ModalPilihPanelEdit").modal('hide');
+                              // $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php');
                               /*$.ajax({
                               url: "suratmasuk/suratmasuk_add.php",
                               type: "GET",

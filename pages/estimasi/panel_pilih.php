@@ -53,6 +53,7 @@
               </div>              
               <script type="text/javascript">
                 $('#panelestimasi').DataTable({
+                  "pageLength": 5,
                     "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
@@ -60,6 +61,7 @@
                       "info": "Terlihat halaman _PAGE_ of _PAGES_",
                       "infoEmpty": "Tidak ada data di database"
                   }
+
                 });
                 function pilihpanele(a,b,c,d,e){
                               $("#panel").val(a);
@@ -68,6 +70,7 @@
                               $("#hargatotal").val(d);                              
                               $("#diskon").val(e);                              
                               $("#ModalPilihPanel").modal('hide');
+                              $("#tableestimasidetail").load('estimasi/estimasi_detail_tab.php');
                               /*$.ajax({
                               url: "suratmasuk/suratmasuk_add.php",
                               type: "GET",

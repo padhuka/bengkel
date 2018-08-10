@@ -38,7 +38,9 @@
                 </tfoot>
               </table>
               <script>
-            $('#estimasipanel').DataTable();
+            $('#estimasipanel').DataTable({
+              "pageLength": 5
+            });
           
            function open_addpanel(x){
               $.ajax({
@@ -74,9 +76,9 @@
 
 <style type="text/css">
 .modal-open .modal {
-    overflow-y: hidden;
-    overflow-x: hidden;
-
+    overflow-y: scroll;
+   /* overflow-x: scroll;
+*/
   }
   .table {
     border-spacing: 0;

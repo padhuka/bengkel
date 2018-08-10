@@ -60,7 +60,8 @@
                       "zeroRecords": "Maaf, Tidak di temukan - data",
                       "info": "Terlihat halaman _PAGE_ of _PAGES_",
                       "infoEmpty": "Tidak ada data di database"
-                  }
+                  },
+                   "pageLength": 50,
                 });
                 function pilihparte(a,b,c,d,e){
                   //alert(c);
