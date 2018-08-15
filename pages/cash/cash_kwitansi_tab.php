@@ -23,9 +23,13 @@
                 <tbody>
                 <?php
                                    $j=1;
-                                   $sqlcatat = "SELECT no_kwitansi as no_kwitansi,total_payment as nilai from t_kwitansi
-                                    UNION
-                                    SELECT no_kwitansi_or as no_kwitansi ,nilai_kwitansi as nilai from t_kwitansi_or";
+                                   $sqlcatat = "SELECT k.no_kwitansi as no_kwitansi,k.total_payment as nilai,c.no_ref,c.total as titip_cash ,b.total as titip_bank from t_kwitansi k
+                                    LEFT JOIN t_cash c ON k.fk_pkb=c.no_ref
+                                    LEFT JOIN t_bank b ON k.fk_pkb=b.no_ref
+                                       UNION
+                                    SELECT ko.no_kwitansi_or as no_kwitansi ,ko.nilai_kwitansi as nilai, s.no_ref,s.total as titip_cash,bk.total as titip_bank from t_kwitansi_or ko
+                                    LEFT JOIN t_cash s ON ko.fk_estimasi=s.no_ref
+                                    LEFT JOIN t_bank bk ON ko.fk_estimasi=bk.no_ref";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
@@ -33,7 +37,7 @@
                        
                        
                           <td ><?php echo $catat['no_kwitansi'];?></td>
-                          <td ><?php echo $catat['nilai'];?></td>
+                          <td ><?php echo ($catat['nilai']-($catat['titip_bank']+$catat['titip_cash']));?></td>
                        
                           <td >
                                        
