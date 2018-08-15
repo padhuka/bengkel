@@ -32,7 +32,7 @@
         
         $kodebaru = $kodeawal.$kodeakhir;     
 
-         $sqlest = "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
+         $sqlest = "SELECT * FROM t_pkb p LEFT JOIN t_kwitansi_or k  ON p.fk_estimasi=k.fk_estimasi WHERE id_pkb='$idpkb'";
          $hsl= mysql_fetch_array(mysql_query($sqlest));
 
             $grosspanel = $hsl['total_gross_harga_panel'];
@@ -44,9 +44,12 @@
             $grosstotal = $hsl['total_gross_harga_jasa'];
             $diskontotal = $hsl['total_diskon_rupiah_jasa'];
             $nettototal = $hsl['total_netto_harga_jasa'];
+            $nilaior = $hsl['nilai_kwitansi'];
+
+
 
             $ppn = $nettototal*10/100;
-            $payment = $nettototal+$ppn;
+            $payment = $nettototal+$ppn-$nilaior;
 
         
         $sqltbemp = "INSERT INTO t_kwitansi (no_kwitansi,fk_pkb,total_gross_panel,total_gross_part,total_diskon_panel,total_diskon_part,total_netto_panel,total_netto_part,total_ppn_kwitansi,total_kwitansi,total_payment) VALUES ('$kodebaru','$idpkb','$grosspanel','$grosspart','$diskonpanel','$diskonpart','$nettopanel','$nettopart',$ppn,'$nettototal',$payment)";

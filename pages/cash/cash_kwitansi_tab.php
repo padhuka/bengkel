@@ -43,7 +43,7 @@
                                        
                                         <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi(
                                          '<?php echo $catat['no_kwitansi'];?>',
-                                         '<?php echo $catat['nilai'];?>',
+                                         '<?php echo ($catat['nilai']-($catat['titip_bank']+$catat['titip_cash']));?>',
                                         );">Pilih</button>
 
                                     </td>
