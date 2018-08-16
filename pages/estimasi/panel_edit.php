@@ -117,7 +117,7 @@
                                                   success: function(data){  
                                                       //var hsl = data.trim();
                                                       //alert(hsl);
-			                                                $("#estimasipanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
+			                                                $("#tablepanel").load('estimasi/panel_load.php?idestimasi=<?php echo $idestimasi;?>');
                                                       $("#tableestimasi").load('estimasi/estimasi_load.php');
                                                       $('.modal-body').css('opacity', '');
 
