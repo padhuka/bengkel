@@ -24,17 +24,17 @@
                 <tbody>
                                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi e 
-                                    LEFT JOIN t_customer c ON e.fk_customer=c.id_customer 
-                                    WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' ORDER BY e.id_estimasi DESC";
+                                    $sqlcatat = "SELECT e.*,c.* FROM t_estimasi e 
+                                     LEFT JOIN t_customer c ON e.fk_customer=c.id_customer 
+                                     LEFT JOIN t_pkb p ON e.id_estimasi=p.fk_estimasi
+                                     WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' AND p.fk_estimasi IS NULL";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo $catat['id_estimasi'];?></span></button></td>
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_mesin'];?></td>
-                      
+                          <td ><?php echo $catat['fk_no_mesin'];?></td> 
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td >
                             <button type="button" class="btn btn btn-default btn-circle" onclick="selectEstimasi('<?php echo date('d-m-Y' , strtotime($catat['tgl']));?>','<?php echo $catat['fk_no_chasis'];?>','<?php echo $catat['fk_no_mesin'];?>','<?php echo $catat['fk_no_polisi'];?>','<?php echo $catat['nama'];?>','<?php echo $catat['kategori'];?>','<?php echo $catat['km_masuk'];?>','<?php echo $catat['fk_asuransi'];?>','<?php echo $catat['no_telp'];?>','<?php echo rupiah2($catat['total_gross_harga_panel']);?>','<?php echo rupiah2($catat['total_diskon_rupiah_panel']);?>','<?php echo rupiah2($catat['total_netto_harga_panel']);?>','<?php echo rupiah2($catat['total_gross_harga_part']);?>','<?php echo rupiah2($catat['total_diskon_rupiah_part']);?>','<?php echo rupiah2($catat['total_netto_harga_part']);?>','<?php echo rupiah2($catat['total_gross_harga_jasa']);?>','<?php echo rupiah2($catat['total_diskon_rupiah_jasa']);?>','<?php echo rupiah2($catat['total_netto_harga_jasa']);?>','<?php echo $catat['id_estimasi'];?>');">Pilih</button>
