@@ -1,28 +1,28 @@
 <?php
     include_once '../../lib/config.php';
     //include_once '../../lib/fungsi.php';
-    $id_asuransi = $_GET['id_asuransi'];
-    $sqlemp = "SELECT * FROM t_asuransi WHERE id_asuransi='$id_asuransi'";
+    $id = $_GET['idestimasi'];
+    $sqlemp = "SELECT * FROM t_estimasi WHERE id_estimasi='$id'";
     $resemp = mysql_query( $sqlemp );
     $emp = mysql_fetch_array( $resemp );
+
 ?>
 
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hid_asuransiden="true">&times;</span></button>
-                        <h4 class="modal-title" id_asuransi="myModalLabel">Hapus Data Asuransi</h4>
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Batal Data Panel <button type="button" class="close" aria-label="Close" onclick="$('#ModalDelete').modal('hide');"><span>&times;</span></button></h4> 
                     </div>
                         <div class="panel-body">
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form>
-                                    <div class="alert alert-danger">Apakah anda yakin ingin menghapus data ini ( <?php echo $emp['nama'];?>) ?</div>
+                                    <div class="alert alert-danger">Apakah anda yakin ingin approved data ini ( <?php echo $id;?>) ?</div>
                                         <div class="form-group">
-                                            <input type="hidden" id="id_asuransi" name="id_asuransi" value="<?php echo $id_asuransi;?>">
+                                            <input type="hidden" id="id" name="id" value="<?php echo $id;?>">
                                             <button type="button" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">&nbsp;&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hid_asuransiden="true">&nbsp;Batal&nbsp;</button>
+                                            <button type="button" class="btn btn-primary" onclick="$('#ModalDelete').modal('hide');" >&nbsp;Batal&nbsp;</button>
                                         </div>
                                     </form>
                                 </div>
@@ -37,16 +37,17 @@
                 <script type="text/javascript">
                   $(document).ready(function (){
                         $(".save_submit").click(function (e){
-                            var id_asuransi = $('#id_asuransi').val();
+
                            $.ajax({
-                                url: 'asuransi/asuransi_del_save.php?id_asuransi='+id_asuransi,
+                                url: 'estimasi/estimasi_approved_save.php?idestimasi=<?php echo $id;?>',
                                 type: 'GET',
                                 success: function (response){
-                                      //alert('asuransi/asuransi_del_save.php?id_asuransi='+id_asuransi);
-                                      $("#tabele").load('asuransi/asuransi_load.php');
+                                      //alert('panel/panel_del_save.php?id_panel='+id_panel);
+                                     $("#tableestimasi").load('estimasi/estimasi_load.php');
+                                     $('.modal-body').css('opacity', '');
                                       alert('Data Berhasil Dihapus');
-                                      $('#ModalDelete').modal('hide');
-                                }
+                                      $('#ModalApproved').modal('hide');
+                                  }
                             });
 
                     });

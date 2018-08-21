@@ -33,11 +33,13 @@
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                            <td ><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>
                           <td >
+                                        <?php if ($catat['approved']==0){?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_modal(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Edit</span></button>
-
+                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button> 
+                                        <?php } ?>
                                          <?php if ($catat['no_kwitansi_or'] =='') { ?>
-
-                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_del(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Batal</span></button> 
+                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_approved(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span>Approved</span></button>
+                                         
 
                                          <?php }?>
 
@@ -77,6 +79,16 @@
                                     success: function (ajaxData){
                                         $("#ModalDelete").html(ajaxData);
                                         $("#ModalDelete").modal({backdrop: 'static',keyboard: false});
+                                    }
+                                });
+            };
+            function open_approved(x){
+                                $.ajax({
+                                    url: "estimasi/estimasi_approved.php?idestimasi="+x,
+                                    type: "GET",
+                                    success: function (ajaxData){
+                                        $("#ModalApproved").html(ajaxData);
+                                        $("#ModalApproved").modal({backdrop: 'static',keyboard: false});
                                     }
                                 });
             };
