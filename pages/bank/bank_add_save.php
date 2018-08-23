@@ -7,15 +7,12 @@
         $diterimadari = trim($_POST['diterima']);  
         $idpkb = trim($_POST['idpkb']); 
         $idkwitansi = trim($_POST['nokwitansi']); 
-       // echo $idpkb;
-       // echo $idkwitansi;
+      
 
             if (!empty($idpkb))  {
-                //echo $idpkb;
                     $noref = $idpkb;
             }
             else {
-                 //echo $idkwitansi;
                  $noref = $idkwitansi;
             }
         
@@ -57,4 +54,12 @@
          //   echo "$sqltbemp";
             mysql_query($sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        
+
+        if ($tipetransaksi == 'Pelunasan') {
+            $getIdPkb = "SELECT fk_pkb FROM t_kwitansi where no_kwitansi='$noref'";
+            $result = mysql_fetch_array(mysql_query($getIdPkb));
+            $pkb = $result['fk_pkb'];
+            $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$pkb','2')";
+            mysql_query($updatestatus);  
+        }
 ?>

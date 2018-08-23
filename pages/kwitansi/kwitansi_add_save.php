@@ -56,5 +56,8 @@
 
             mysql_query($sqltbemp);
          
+
+        $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$idpkb','1')";
+        mysql_query($updatestatus);
         
 ?>
