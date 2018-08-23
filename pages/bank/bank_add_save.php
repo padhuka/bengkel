@@ -59,7 +59,7 @@
             $getIdPkb = "SELECT fk_pkb FROM t_kwitansi where no_kwitansi='$noref'";
             $result = mysql_fetch_array(mysql_query($getIdPkb));
             $pkb = $result['fk_pkb'];
-            $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$pkb','2')";
+            $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$pkb','LUNAS')";
             mysql_query($updatestatus);  
         }
 ?>

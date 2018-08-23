@@ -57,7 +57,7 @@
             mysql_query($sqltbemp);
          
 
-        $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$idpkb','1')";
+        $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$idpkb','CETAK KWITANSI')";
         mysql_query($updatestatus);
         
 ?>

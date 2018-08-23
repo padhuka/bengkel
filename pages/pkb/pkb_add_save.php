@@ -63,7 +63,12 @@
 
             }
 
-            $sqlstatus= "INSERT INTO t_status_pkb(fk_pkb) VALUES ('$kodebaru')";
-            mysql_query($sqlstatus);
+            if ($hest['fk_asuransi']){
+                $sqlstatus= "INSERT INTO t_status_pkb(fk_pkb,status) VALUES ('$kodebaru','LUNAS')";
+                mysql_query($sqlstatus);
+            }else{
+                $sqlstatus= "INSERT INTO t_status_pkb(fk_pkb) VALUES ('$kodebaru')";
+                mysql_query($sqlstatus);
+            }
         
 ?>
