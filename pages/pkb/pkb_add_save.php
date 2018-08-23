@@ -62,5 +62,8 @@
                 mysql_query($sqlpartpkb);
 
             }
+
+            $sqlstatus= "INSERT INTO t_status_pkb(fk_pkb) VALUES ('$kodebaru')";
+            mysql_query($sqlstatus);
         
 ?>

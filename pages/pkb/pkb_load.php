@@ -11,15 +11,17 @@
                           <th>No Mesin</th>
                           <th>No Polisi</th>
                           <th>Nama Customer</th>
+                          <th>Status PKB</th>
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT p.*,c.nama,k.no_kwitansi FROM t_pkb p
+                                    $sqlcatat = "SELECT p.*,s.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                   LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb
+                                   LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb                                   
+                                  LEFT JOIN t_status_pkb s ON p.id_pkb=s.fk_pkb
                                    WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.status_pkb='Buka'
                                    ORDER BY p.id_pkb DESC";
                                     $rescatat = mysql_query( $sqlcatat );
@@ -34,6 +36,8 @@
                           
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
+                          <td ><?php echo $catat['statuspkb'];?></td>
+
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
                                            <?php if ($catat['no_kwitansi'] =='') { ?>
