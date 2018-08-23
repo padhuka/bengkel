@@ -27,12 +27,14 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_pkb_part_detail WHERE fk_pkb='$idpkb' ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_pkb_part_detail  pk
+                                    LEFT JOIN t_part p ON pk.fk_part=p.id_part
+                                    WHERE fk_pkb='$idpkb' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['fk_part'];?></td>
+                          <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['harga_jual_part']);?></td>
                           <td ><?php echo rupiah2($catat['harga_diskon_part']);?></td>
                           <td ><?php echo rupiah2($catat['harga_total_pkb_part']);?></td>
