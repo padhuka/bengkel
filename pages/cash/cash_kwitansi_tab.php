@@ -23,10 +23,14 @@
                 <tbody>
                 <?php
                                    $j=1;
-                                   $sqlcatat = "SELECT k.no_kwitansi as no_kwitansi,k.total_payment as nilai,c.no_ref,c.total as titip_cash ,b.total as titip_bank from t_kwitansi k
-                                    LEFT JOIN t_cash c ON k.fk_pkb=c.no_ref
-                                    LEFT JOIN t_bank b ON k.fk_pkb=b.no_ref
-                                       UNION
+                                   $sqlcatat = "SELECT k.no_kwitansi as no_kwitansi,k.total_payment as nilai, cash.no_ref,cash.titip_cash,bank.titip_bank from t_kwitansi k
+                                    LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
+                                    FROM t_cash where tipe_transaksi='titipan'
+                                    GROUP BY no_ref)AS cash ON cash.no_ref=k.fk_pkb
+                                    LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
+                                    FROM t_bank where tipe_transaksi='titipan'
+                                    GROUP BY no_ref)AS bank ON bank.no_ref=k.fk_pkb
+                                    UNION
                                     SELECT ko.no_kwitansi_or as no_kwitansi ,ko.nilai_kwitansi as nilai, s.no_ref,s.total as titip_cash,bk.total as titip_bank from t_kwitansi_or ko
                                     LEFT JOIN t_cash s ON ko.fk_estimasi=s.no_ref
                                     LEFT JOIN t_bank bk ON ko.fk_estimasi=bk.no_ref";

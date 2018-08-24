@@ -25,14 +25,11 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                   // $j=1;
-                                    // $sqlcatat = "SELECT * FROM t_estimasi e 
-                                    //               left join t_customer c
-                                    //               on e.fk_customer=c.id_customer
-                                    //               where e.id_estimasi='$idestimasi'";
-                                    // $rescatat = mysql_query( $sqlcatat );
-
-                                   $sqlcatat = "SELECT * FROM t_estimasi e LEFT JOIN t_customer c ON e.fk_customer=c.id_customer WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY e.id_estimasi DESC";
+                             
+                                   $sqlcatat = "SELECT * FROM t_estimasi e 
+                                   LEFT JOIN t_customer c ON e.fk_customer=c.id_customer
+                                   LEFT JOIN t_kwitansi_or k ON k.fk_estimasi=e.id_estimasi
+                                   WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' AND kategori='Asuransi' AND k.fk_estimasi IS NULL ORDER BY e.id_estimasi DESC";
                                    $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
