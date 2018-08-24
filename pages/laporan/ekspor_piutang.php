@@ -13,12 +13,12 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
-      <table width="100%" align="center" border="0">
+      <<table width="100%" align="center" border="0">
                                   <tr>
-                                    <td width="50%"><u style="font-size: 20px;"><strong>PT. MH Medika</strong><br>
+                                    <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
                                     </u>
-                                      Jl. Sumbing Rt.03 Rw.09 Mojosongo<br>
-                                      Surakarta Tlp. 0271-9224110, 081229875951<br>
+                                    Jl. Setia Budi No.152 <br>
+                                    Srondol Kulon Semarang
                                     </td>                                   
                                   </tr>                                   
                                 </table>
