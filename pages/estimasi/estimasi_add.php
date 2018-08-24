@@ -70,7 +70,7 @@
                                   <option value="Pribadi" onclick="$('#buttonAsuransi').hide();$('#showAsuransi').hide();$('#asuransie').val('');$('#asuransinme').val('');">Pribadi</option>
                                   <option value="Asuransi" onclick="$('#buttonAsuransi').show();$('#showAsuransi').show();">Asuransi</option>
                                 </select>      
-                                <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="selectAsuransi();" id="buttonAsuransi">Pilih Asuransi</button>
+                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="selectAsuransi();" id="buttonAsuransi">Pilih Asuransi</button>
                                                          
                               </div>
                         </div>

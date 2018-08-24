@@ -120,7 +120,7 @@
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide'); 
                                                             var hsl=data.trim();       
-                                                            alert(hsl);
+                                                         //   alert(hsl);
 
                                                              
                                                   }
