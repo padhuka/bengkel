@@ -23,7 +23,7 @@
                        <table id="estimasishow" class="table table-condensed table-bordered table-striped table-hover">
                        <td>
                          <th class="col-sm-8">
-                        <tr> <th>No Estimasi</th> <td><input type="text" class="form-control" name="idestimasi" id="idestimasi" readonly> <button type="button" class="btn btn-primary btn-md data-toggle="modal" data-target="#myModal" onclick="kwitansior();">Pilih</button></td></tr>
+                        <tr> <th>No Estimasi</th> <td><input type="text" class="form-control" name="idestimasi" id="idestimasi" readonly> <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="kwitansior();">Pilih</button></td></tr>
                         <tr> <th>No Chasis</th>  <td ><label id="chasis"></label></td></tr>
                         <tr> <th>No Mesin</th> <td ><label id="mesin"></label></td></tr>
                         
@@ -147,7 +147,7 @@
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide'); 
                                                             var hsl=data.trim();       
-                                                            alert(hsl);
+                                                           // alert(hsl);
 
                                                              
                                                   }

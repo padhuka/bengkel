@@ -28,12 +28,14 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_estimasi_panel_detail WHERE fk_estimasi='$idestimasi' ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_estimasi_panel_detail pd
+                                    LEFT JOIN t_panel p ON p.id_panel=pd.fk_panel
+                                    WHERE fk_estimasi='$idestimasi' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['fk_panel'];?></td>
+                          <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['harga_jual_panel']);?></td>
                           <td ><?php echo rupiah2($catat['harga_diskon_panel']);?></td>
                           <td ><?php echo rupiah2($catat['harga_total_estimasi_panel']);?></td>
