@@ -38,7 +38,7 @@
                                         <?php if($catat['status_pkb']=='Buka'){ ?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_tutup(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Tutup</span></button>
                                         <?php }else{?>
-                                        <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_buka(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Buka</span></button>
+                                        
                                         <?php }?>
                                     </td>
                         </tr>
