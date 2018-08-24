@@ -18,12 +18,18 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT p.*,s.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
+                                    $sqlcatat = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
                                    LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb                                   
-                                  LEFT JOIN t_status_pkb s ON p.id_pkb=s.fk_pkb
-                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.status_pkb='Buka'
-                                   ORDER BY p.id_pkb DESC";
+                                   LEFT JOIN (SELECT id, fk_pkb, status
+                                      FROM t_status_pkb
+                                      WHERE id IN (
+                                      SELECT MAX(id)
+                                      FROM t_status_pkb
+                                      GROUP BY fk_pkb
+                                    ))AS state ON p.id_pkb=state.fk_pkb
+                                   WHERE p.tgl_batal='0000-00-00 00:00:00'
+                                   ORDER BY p.id_pkb";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
@@ -39,8 +45,9 @@
                           <td ><?php echo $catat['statuspkb'];?></td>
 
                           <td >
+                                    <?php if($catat['statuspkb']=='PROSES REPAIR'){?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
-                                           <?php if ($catat['no_kwitansi'] =='') { ?>
+                                          
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
 
                                          <?php }?>
@@ -72,7 +79,6 @@
                       }
                     });
               }
-
                         
            function open_del(x){
                                 $.ajax({
