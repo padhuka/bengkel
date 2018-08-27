@@ -13,7 +13,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
-      <<table width="100%" align="center" border="0">
+      <table width="100%" align="center" border="0">
                                   <tr>
                                     <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
                                     </u>
