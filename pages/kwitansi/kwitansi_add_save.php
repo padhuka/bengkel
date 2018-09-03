@@ -7,7 +7,8 @@
         $hrn2= date('dmy' , strtotime($hrini));
         $kodeawal2 = 'SI_BR.';
         $kodeawal = 'SI_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_kwitansi WHERE no_kwitansi LIKE '$kodeawal2%' ORDER BY no_kwitansi DESC";
+        //$sqljur = "SELECT * FROM t_kwitansi WHERE no_kwitansi LIKE '$kodeawal2%' ORDER BY no_kwitansi DESC";
+        $sqljur = "SELECT * FROM t_kwitansi ORDER BY tgl_kwitansi DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['no_kwitansi'])){
