@@ -25,9 +25,9 @@
                 <tbody>
                 <?php
                                    $j=1;
-                                   $sqlcatat = "   SELECT * FROM t_pkb e 
+                                   $sqlcatat = "SELECT * FROM t_pkb e 
                                    LEFT JOIN t_customer c ON e.fk_customer=c.id_customer
-                                   LEFT JOIN t_kwitansi k ON k.fk_pkb=e.id_pkb
+                                   LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON k.fk_pkb=e.id_pkb
                                    WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.status_pkb='Tutup' AND k.fk_pkb IS NULL ORDER BY e.id_pkb DESC";
                                    $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){

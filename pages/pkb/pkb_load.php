@@ -20,7 +20,7 @@
                                     $j=1;
                                     $sqlcatat = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                   LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb                                   
+                                   LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON p.id_pkb=k.fk_pkb   
                                    LEFT JOIN (SELECT id, fk_pkb, status
                                       FROM t_status_pkb
                                       WHERE id IN (

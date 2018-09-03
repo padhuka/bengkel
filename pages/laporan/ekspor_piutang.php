@@ -13,7 +13,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
-      <<table width="100%" align="center" border="0">
+      <table width="100%" align="center" border="0">
                                   <tr>
                                     <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
                                     </u>
@@ -50,7 +50,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                     FROM t_status_pkb s
                                     INNER JOIN t_pkb p ON s.fk_pkb=p.id_pkb
                                     INNER JOIN t_customer c ON p.fk_customer=c.id_customer
-                                    INNER JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb
+                                    INNER JOIN (SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') as k ON p.id_pkb=k.fk_pkb
                                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
                                     FROM t_cash where tipe_transaksi='titipan'
                                     GROUP BY no_ref)AS cash ON cash.no_ref=k.fk_pkb
