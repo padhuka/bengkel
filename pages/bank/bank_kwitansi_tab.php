@@ -23,17 +23,19 @@
                 <tbody>
                 <?php
                                    $j=1;
-                                   $sqlcatat = "  SELECT k.no_kwitansi as no_kwitansi,k.total_payment as nilai, cash.no_ref,cash.titip_cash,bank.titip_bank from t_kwitansi k
+                                   $sqlcatat = "  SELECT k.no_kwitansi as no_kwitansi,k.total_payment as nilai, cash.no_ref,cash.titip_cash,bank.titip_bank FROM t_kwitansi k
                                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
                                     FROM t_cash where tipe_transaksi='titipan'
                                     GROUP BY no_ref)AS cash ON cash.no_ref=k.fk_pkb
                                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
-                                    FROM t_bank where tipe_transaksi='titipan'
+                                    FROM t_bank where tipe_transaksi='titipan'  
                                     GROUP BY no_ref)AS bank ON bank.no_ref=k.fk_pkb
-                                    UNION
+                                    WHERE k.tgl_batal='0000-00-00 00:00:00'
+                                    UNION                             
                                     SELECT ko.no_kwitansi_or as no_kwitansi ,ko.nilai_kwitansi as nilai, s.no_ref,s.total as titip_cash,bk.total as titip_bank from t_kwitansi_or ko
                                     LEFT JOIN t_cash s ON ko.fk_estimasi=s.no_ref
-                                    LEFT JOIN t_bank bk ON ko.fk_estimasi=bk.no_ref";
+                                    LEFT JOIN t_bank bk ON ko.fk_estimasi=bk.no_ref
+                                    WHERE ko.tgl_batal='0000-00-00 00:00:00'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
