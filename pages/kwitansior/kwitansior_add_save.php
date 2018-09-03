@@ -10,7 +10,7 @@
         $hrn2= date('dmy' , strtotime($hrini));
         $kodeawal2 = 'OR_BR.';
         $kodeawal = 'OR_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_kwitansi_or WHERE no_kwitansi_or LIKE '$kodeawal2%' ORDER BY no_kwitansi_or DESC";
+        $sqljur = "SELECT * FROM t_kwitansi_or ORDER BY tgl_kwitansi_or DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['no_kwitansi_or'])){

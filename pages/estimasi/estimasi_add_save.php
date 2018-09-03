@@ -1,7 +1,7 @@
 <?php
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
-         //$ip = ; // Ambil IP Address dari User
+        //$ip = ; // Ambil IP Address dari User
         //$id_estimasi = trim($_POST['id_estimasi']);
         $chasis = trim($_POST['chasis']);
         $mesin = trim($_POST['mesin']);
@@ -14,17 +14,16 @@
         $customer = trim($_POST['customer']);
         $asuransi = trim($_POST['asuransi']);
         $tglselesai = trim($_POST['tglselesai']);
-        
         //message_back($id_estimasi);
         //$kodeawal = 'est_'.$hrini.'_';
         $hrn2= date('dmy' , strtotime($hrini));
   //EST.BR.020818.000001
         $kodeawal2 = 'EST_BR.';
         $kodeawal = 'EST_BR.'.$hrn2.'.';
-        //$sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal%' ORDER BY id_estimasi DESC";
-        $sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal2%' ORDER BY id_estimasi DESC";
-        $resultjur = mysql_query( $sqljur );
-        $jur = mysql_fetch_array( $resultjur );
+        //$sqljur = "SELECT * FROM t_estimasi WHERE id_estimasi LIKE '$kodeawal2%' ORDER BY id_estimasi DESC";
+        $sqljur = "SELECT * FROM t_estimasi ORDER BY tgl DESC";
+        $resultjur = mysql_query($sqljur);
+        $jur = mysql_fetch_array($resultjur);
         if (empty($jur['id_estimasi'])){
             $kodeakhir = '000001';
         }else{
@@ -46,9 +45,8 @@
         }
         
         $kodebaru = $kodeawal.$kodeakhir;     
-
         
-            $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,tgl_estimasi_selesai) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$tglselesai')";
+        $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,tgl_estimasi_selesai) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$tglselesai')";
             mysql_query($sqltbemp);
-            echo $kodebaru.'-'.$warnanm;        
+            echo $kodebaru.'-'.$warnanm;
 ?>

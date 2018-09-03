@@ -24,7 +24,7 @@
         $hrn2= date('dmy' , strtotime($hrini));
         $kodeawal2 = 'BM_BR.';
         $kodeawal = 'BM_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_bank WHERE no_bukti LIKE '$kodeawal2%' ORDER BY no_bukti DESC";
+        $sqljur = "SELECT * FROM t_bank ORDER BY tgl DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['no_bukti'])){
