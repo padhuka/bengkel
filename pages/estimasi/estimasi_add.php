@@ -174,7 +174,7 @@
 
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalAdd').modal('hide'); 
-                                                            var hsl=data.trim();       
+                                                            var hsl=data.trim();
 
                                                              $.ajax({
                                                                 url: "estimasi/estimasi_detail.php?idestimasi="+hsl,
