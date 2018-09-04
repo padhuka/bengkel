@@ -7,7 +7,6 @@
         $diterimadari = trim($_POST['diterima']);  
         $idpkb = trim($_POST['idpkb']); 
         $idkwitansi = trim($_POST['nokwitansi']); 
-      
 
             if (!empty($idpkb))  {
                     $noref = $idpkb;
