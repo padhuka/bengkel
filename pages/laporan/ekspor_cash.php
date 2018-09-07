@@ -53,7 +53,7 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                           <td ><?php echo $catat['diterima_dari'];?></td>
                           <td ><?php echo $catat['no_ref'];?></td>
                           
-                           <td ><?php echo rupiah2($catat['total']);?></td>
+                           <td ><?php echo $catat['total'];?></td>
                            <td ><?php echo $catat['keterangan'];?></td>
                         </tr>
                     <?php }?>
