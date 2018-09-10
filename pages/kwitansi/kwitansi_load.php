@@ -8,7 +8,7 @@
                           <th>No Kwitansi</th>
                           <th>Tanggal</th>
                           <th>No PKB</th>
-                              <th>No Mesin</th>
+                          <th>No Mesin</th>
                           <th>No Chasis</th>
                           <th>Nama Customer</th>
                           <th>Total</th>
@@ -45,7 +45,20 @@
                           <td ><?php echo rupiah2($catat['total_payment']);?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="cetak_kw(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Cetak</span></button>
+                                        <?php 
+                                            $sqlkwcash="SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
+                                            $hkwcash=mysql_fetch_array(mysql_query($sqlkwcash));
+                                            $lunas=$hkwcash['no_bukti'];
+
+                                           $sqllunas="SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
+                                           $hcekcash=mysql_fetch_array(mysql_query($sqllunas));
+                                           $ada=$hcekcash['no_bukti'];
+                                           if($ada){if($lunas){
+                                        ?>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>
+                                         <?php } }else{?>
+                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>
+                                        <?php  }?>
 
                                     </td>
                         </tr>
