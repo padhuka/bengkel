@@ -45,7 +45,12 @@
                           <td ><?php echo $catat['statuspkb'];?></td>
 
                           <td >
-                                    <?php if($catat['statuspkb']=='PROSES REPAIR'){?>
+                                    <?php 
+                                      $sqlkwcash2="SELECT no_kwitansi FROM t_kwitansi WHERE fk_pkb='$catat[id_pkb]' AND tgl_batal<>'0000-00-00 00:00:00'";
+                                            $hkwcash2=mysql_fetch_array(mysql_query($sqlkwcash2));
+                                            $lunas2=$hkwcash2['no_kwitansi'];
+                                    ?>
+                                    <?php if($catat['statuspkb']=='PROSES REPAIR' || $lunas2){?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
                                           
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
