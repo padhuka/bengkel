@@ -9,7 +9,7 @@
         $hrn2= date('dmy' , strtotime($hrini));
         $kodeawal2 = 'GP_BR.';
         $kodeawal = 'GP_BR.'.$hrn2.'.';
-        $sqljur = "SELECT * FROM t_gate_pass ORDER BY tgl DESC";
+        $sqljur = "SELECT * FROM t_gate_pass ORDER BY tgl_trx DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['no_gate_pass'])){

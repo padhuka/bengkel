@@ -100,8 +100,8 @@
                                                         $('.modal-body').css('opacity', '');
                                                             alert('Data Berhasil Disimpan');
                                                             $('#ModalGateAdd').modal('hide'); 
-                                                            var hsl=data.trim();       
-                                                              alert(hsl);
+                                                            //var hsl=data.trim();       
+                                                              //alert(hsl);
                                                              
 
                                                   }
