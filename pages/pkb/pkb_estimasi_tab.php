@@ -26,8 +26,8 @@
                                     $j=1;
                                     $sqlcatat = "SELECT e.*,c.* FROM t_estimasi e 
                                      LEFT JOIN t_customer c ON e.fk_customer=c.id_customer 
-                                     LEFT JOIN t_pkb p ON e.id_estimasi=p.fk_estimasi
-                                     WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' AND p.fk_estimasi IS NULL";
+                                     LEFT JOIN (SELECT * from t_pkb where tgl_batal='0000-00-00 00:00:00') as p ON e.id_estimasi=p.fk_estimasi
+                                     WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.approved='1' AND p.fk_estimasi IS NULL ";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
