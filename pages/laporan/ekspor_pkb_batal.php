@@ -3,7 +3,7 @@
 header("Content-type: application/vnd-ms-excel");
  
 // Mendefinisikan nama file ekspor "hasil-export.xls"
-header("Content-Disposition: attachment; filename=reportpkb.xls");
+header("Content-Disposition: attachment; filename=reportpkbbatal.xls");
  
 // Tambahkan table
 //include 'data.php';
@@ -22,7 +22,7 @@ header("Content-Disposition: attachment; filename=reportpkb.xls");
                                     </td>                                   
                                   </tr>                                   
                                 </table>
-                                    <span style="font-size: 20px;font-weight: bold;"><center>Laporan PKB</center></span>
+                                    <span style="font-size: 20px;font-weight: bold;"><center>Laporan PKB Batal</center></span>
                                 <br>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
@@ -48,7 +48,7 @@ header("Content-Disposition: attachment; filename=reportpkb.xls");
                                     $sqlcatat = "SELECT p.*,c.nama,k.no_kwitansi FROM t_pkb p
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
                                    LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb
-                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
+                                   WHERE p.tgl_batal<>'0000-00-00 00:00:00' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
                                    ORDER BY p.id_pkb DESC";
                                    	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){

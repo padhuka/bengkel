@@ -24,18 +24,22 @@ header("Content-Disposition: attachment; filename=reportpkb.xls");
                                 </table>
                                     <span style="font-size: 20px;font-weight: bold;"><center>Laporan PKB</center></span>
                                 <br>
-      <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
-                <thead class="thead-light">
+      <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover" style="text-transform: capitalize;">
+                <thead class="thead-light">                  
                 <tr>
                           <th>No</th>
-                          <th>No PKB</th>
-                          <th>Tgl PKB</th>
-                          <th>No Chasis</th>
-                          <th>No Mesin</th>
-                          <th>No Polisi</th>
-                          <th>Nama Customer</th>
-                          <th>No Estimasi</th>
-                          <th>Status</th>
+                          <th>Tgl Kwitansi</th>
+                          <th>No. Kwitansi</th>
+                          <th>No. PKB</th>
+                          <th>No. Polisi</th>
+                          <th>Jenis Kend</th>
+                          <th>Customer</th>
+                          <th>SA</th>
+                          <th>OR</th>
+                          <th>Retur OR</th>
+                          <th>Discount OR</th>
+                          <th>Tgl Pelunasan</th>
+                          <th>Kode Transaksi</th>
                 </tr>
                 </thead>
                 <tbody>
