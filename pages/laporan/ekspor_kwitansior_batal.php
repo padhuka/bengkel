@@ -3,7 +3,7 @@
 header("Content-type: application/vnd-ms-excel");
  
 // Mendefinisikan nama file ekspor "hasil-export.xls"
-header("Content-Disposition: attachment; filename=reportkwitansior.xls");
+header("Content-Disposition: attachment; filename=reportkwitansiorbatal.xls");
  
 // Tambahkan table
 //include 'data.php';
@@ -55,7 +55,7 @@ header("Content-Disposition: attachment; filename=reportkwitansior.xls");
                                       INNER JOIN t_pkb d ON e.id_estimasi=d.fk_estimasi
                                       INNER JOIN t_inventory_bengkel f ON e.fk_no_chasis=f.no_chasis
                                       INNER JOIN t_tipe_kendaraan g ON f.fk_tipe_kendaraan=g.id_tipe_kendaraan
-                                      WHERE k.tgl_batal='0000:00:00 00:00:00' AND substring(tgl_kwitansi_or,1,10)>='$tgl1' AND  substring(tgl_kwitansi_or,1,10)<='$tgl2' 
+                                      WHERE k.tgl_batal<>'0000:00:00 00:00:00' AND substring(tgl_kwitansi_or,1,10)>='$tgl1' AND  substring(tgl_kwitansi_or,1,10)<='$tgl2' 
                                     ORDER BY k.no_kwitansi_or DESC";
                                    	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){

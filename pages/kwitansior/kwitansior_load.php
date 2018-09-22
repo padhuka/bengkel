@@ -22,9 +22,7 @@
                                     $sqlcatat = "SELECT k.no_kwitansi_or, k.tgl_kwitansi_or,e.id_estimasi,e.fk_no_polisi,e.fk_no_chasis,e.fk_no_mesin,c.nama,k.nilai_kwitansi,k.tgl_batal from t_kwitansi_or k 
                                       INNER JOIN t_estimasi e ON k.fk_estimasi=e.id_estimasi 
                                       INNER JOIN t_customer c ON e.fk_customer=c.id_customer
-                                      AND k.tgl_batal='0000:00:00 00:00:00'";
-
-
+                                      WHERE k.tgl_batal='0000:00:00 00:00:00'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
