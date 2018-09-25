@@ -118,6 +118,23 @@
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporkworbatal()">Generate</span></strong></span></td>
                     </tr>
                     <tr>
+                        <td width="30%" >&nbsp;<label style="font-size: 16px;">GatePass</label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglgetpas1" name="tglgetpas1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglgetpas2" name="tglgetpas2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporgetpas()">Generate</span></strong></span></td>
+                    </tr>
+                    <tr>
                         <td width="30%" >&nbsp;<label style="font-size: 16px;">Piutang</label></td><td>
                               
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpiutang()">Generate</span></strong></span></td>
@@ -207,6 +224,8 @@
     $('#tglkwor2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglkwor1a').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglkwor2a').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglgetpas1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglgetpas2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpenj1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpenj2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
 
@@ -242,6 +261,12 @@
       window.location = "laporan/ekspor_kwitansior_batal.php?tgl1="+x+"&tgl2="+y;
     }
     //=====
+    function eksporgetpas(){
+      var x =$('#tglgetpas1').val(); var y= $('#tglgetpas2').val();      
+      window.location = "laporan/ekspor_getpas.php?tgl1="+x+"&tgl2="+y;
+    }
+    //=====
+
      function eksporpiutang(){
       var x =$('#tglpiutang1').val(); var y= $('#tglpiutang2').val();      
       window.location = "laporan/ekspor_piutang.php?tgl1="+x+"&tgl2="+y;
