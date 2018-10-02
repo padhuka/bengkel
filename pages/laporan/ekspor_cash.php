@@ -23,6 +23,7 @@ header("Content-Disposition: attachment; filename=reportcash.xls");
                                   </tr>                                   
                                 </table>
                                     <span style="font-size: 20px;font-weight: bold;"><center>Laporan Cash</center></span>
+                                     <span style="font-size: 20px;font-weight: bold;"><center> Per Tgl <?php echo date('d-m-Y' , strtotime($_GET['tgl1']));echo ' s/d '; echo date('d-m-Y' , strtotime($_GET['tgl2'])); ?></center></span>
                                 <br>
       <table id="cash" border="1">
                 <thead class="thead-light">
