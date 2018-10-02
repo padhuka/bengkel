@@ -23,7 +23,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                   </tr>                                   
                                 </table>
                                     <span style="font-size: 20px;font-weight: bold;"><center>Laporan Piutang</center></span>
-                                     <span style="font-size: 20px;font-weight: bold;"><center> Per Tgl <?php echo date('d-m-Y' , strtotime($_GET['tgl1']));echo ' s/d '; echo date('d-m-Y' , strtotime($_GET['tgl2'])); ?></center></span>
+                                    
                                 <br>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
@@ -45,7 +45,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                     $tgl1=$_GET['tgl1'];
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
-                                    $jml=0;
+                                   // $jml=0;
                                     $sqlcatat = "SELECT p.id_pkb AS idpkb,p.tgl AS tglpkb, p.kategori AS kat, a.nama AS nmasuransi, k.no_kwitansi AS nokw, k.tgl_kwitansi AS tglkw, c.nama AS nmcus,
                                     k.total_payment AS total_bayar, titip_cash ,titip_bank, k.total_payment-(ifnull(titip_cash,0)+ifnull(titip_bank,0)) as piutang
                                     FROM t_status_pkb s
@@ -66,7 +66,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                       ) AND status !='LUNAS'";
                                    	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){  
-                                    $jml=$jml+$catat['piutang'];                                  
+                                                              
                                 ?>
                         <tr>
                           <td><?php echo ($catat['idpkb']);?></td>     
@@ -80,7 +80,6 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                         </tr>
                     <?php }
                   ?>
-                  <tr><td colspan="7" align="right">Total</td><td><?php echo rupiah2($jml);?></td></tr>
                 </tfoot>
               </table>
               <table>
