@@ -23,6 +23,7 @@ header("Content-Disposition: attachment; filename=reportestimasi.xls");
                                   </tr>                                   
                                 </table>
                                     <span style="font-size: 20px;font-weight: bold;"><center>Laporan Estimasi</center></span>
+                                     <span style="font-size: 20px;font-weight: bold;"><center> Per Tgl <?php echo date('d-m-Y' , strtotime($_GET['tgl1']));echo ' s/d '; echo date('d-m-Y' , strtotime($_GET['tgl2'])); ?></center></span>
                                 <br>
 
       <table><tr><td>ESTIMASI</td></tr></table>    
@@ -45,6 +46,7 @@ header("Content-Disposition: attachment; filename=reportestimasi.xls");
                                     $tgl1=$_GET['tgl1'];
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
+                                           $jml=0;
                                     $sqlcatat = "SELECT * FROM t_estimasi p 
                                   LEFT JOIN t_kwitansi_or k ON p.id_estimasi=k.fk_estimasi
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer                                  
@@ -52,6 +54,7 @@ header("Content-Disposition: attachment; filename=reportestimasi.xls");
                                    ORDER BY p.id_estimasi DESC";                           
                                    	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
+                                              $jml=$jml+$catat['total_netto_harga_jasa'];  
                                 ?>
                         <tr>
                           <td><?php echo $j++;?></td>
@@ -64,7 +67,7 @@ header("Content-Disposition: attachment; filename=reportestimasi.xls");
                            <td ><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td>                          
                         </tr>
                     <?php }?>
-                
+                 <tr><td colspan="6" align="right">Total</td><td><?php echo rupiah2($jml);?></td></tr>
               </table>
 <br>
 <table><tr><td>ESTIMASI BATAL</td></tr></table>    
@@ -105,4 +108,5 @@ header("Content-Disposition: attachment; filename=reportestimasi.xls");
                           
                         </tr>
                     <?php }?>
+                    
               </table>

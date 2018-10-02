@@ -23,6 +23,7 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                   </tr>                                   
                                 </table>
                                     <span style="font-size: 20px;font-weight: bold;"><center>Laporan Piutang</center></span>
+                                     <span style="font-size: 20px;font-weight: bold;"><center> Per Tgl <?php echo date('d-m-Y' , strtotime($_GET['tgl1']));echo ' s/d '; echo date('d-m-Y' , strtotime($_GET['tgl2'])); ?></center></span>
                                 <br>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
@@ -75,11 +76,11 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                           <td ><?php echo $catat['nokw'];?></td>
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tglkw']));?></td>
                           <td ><?php echo $catat['nmcus'];?></td>
-                          <td ><?php echo $catat['piutang'];?></td>
+                          <td ><?php echo rupiah2($catat['piutang']);?></td>
                         </tr>
                     <?php }
                   ?>
-                  <tr><td colspan="7" align="right">Total</td><td><?php echo $jml;?></td></tr>
+                  <tr><td colspan="7" align="right">Total</td><td><?php echo rupiah2($jml);?></td></tr>
                 </tfoot>
               </table>
               <table>
