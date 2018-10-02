@@ -35,7 +35,6 @@ header("Content-Disposition: attachment; filename=reportgatepass.xls");
                           <th>Tgl PKB</th>
                           <th>Tgl GatePass</th>
                           <th>Tgl Pembayaran</th>
-                          <th>User</th>
                           <th>Status</th>
                           <th>Keterangan</th>
                 </tr>
@@ -48,23 +47,31 @@ header("Content-Disposition: attachment; filename=reportgatepass.xls");
                                     $tgl2=$_GET['tgl2'];
                                     
                                     $j=1;
-                                    $sqlcatat = "SELECT A.tgl AS tglget, B.tgl AS tglpkb,A.*,B.* FROM t_gate_pass A
-                                    LEFT JOIN t_pkb B ON A.fk_pkb=B.id_pkb
-                                    WHERE substring(A.tgl,1,10)>='$tgl1' AND substring(A.tgl,1,10)<='$tgl2' 
-                                    ORDER BY A.no_gate_pass DESC";
+                                    $sqlcatat = "SELECT C.no_kwitansi AS nokwitansi,D.tgl_transaksi AS lunascash,E.tgl_transaksi AS lunasbank, A.tgl AS tglget, B.tgl AS tglpkb,A.*,B.* FROM t_gate_pass A
+                                    LEFT JOIN t_pkb B ON A.fk_pkb=B.id_pkb 
+                                    LEFT JOIN t_kwitansi C ON  A.fk_pkb=C.fk_pkb
+                                    LEFT JOIN t_cash D ON C.no_kwitansi=D.no_ref AND D.tipe_transaksi='Pelunasan'
+                                    LEFT JOIN t_bank E  ON C.no_kwitansi=E.no_ref AND E.tipe_transaksi='Pelunasan'
+                                    WHERE substring(A.tgl,1,10)<='2018-10-02' ORDER BY A.no_gate_pass DESC 
+                                    ";
                                     //echo $sqlcatat;
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
+                                    if ($catat['lunascash']){
+                                      $tgle=$catat['lunascash'];
+                                    }
+                                    if ($catat['lunasbank']){
+                                      $tgle=$catat['lunasbank'];
+                                    }
                                 ?>
                         <tr>
                           <td ><?php echo $j++;?>.</td>
                           <td ><?php echo $catat['fk_pkb'];?></td>
                           <td ><?php echo $catat['no_gate_pass'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['tglpkb'];?></td>
-                          <td ><?php echo $catat['tglget'];?></td>   
-                          <td></td>                       
-                          <td></td>
+                          <td ><?php echo date('d-m-Y',strtotime($catat['tglpkb']));?></td>
+                          <td ><?php echo date('d-m-Y',strtotime($catat['tglget']));?></td>   
+                          <td><?php echo date('d-m-Y',strtotime($tgle));?></td></td>
                           <td ><?php echo $catat['status'];?></td> 
                           <td></td>
                         </tr>
