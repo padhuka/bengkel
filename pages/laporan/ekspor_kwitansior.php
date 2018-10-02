@@ -35,9 +35,7 @@ header("Content-Disposition: attachment; filename=reportkwitansior.xls");
                           <th>No. Polisi</th>
                           <th>Jenis Kend</th>
                           <th>Customer</th>
-                          <th>SA</th>
                           <th>OR</th>
-                          <th>Retur OR</th>
                           <th>Discount OR</th>
                           <th>Tgl Pelunasan</th>
                           <th>Kode Transaksi</th>
@@ -69,9 +67,7 @@ header("Content-Disposition: attachment; filename=reportkwitansior.xls");
                           <td><?php echo $catat['fk_no_polisi'];?></td>
                           <td><?php echo $catat['nmkendaraan'];?></td>
                           <td><?php echo $catat['nama'];?></td>
-                          <td></td>
                           <td><?php echo $catat['nilai_kwitansi'];?></td>
-                          <td></td>
                           <td><?php echo $catat['diskonor'];?></td>
                           <td></td>
                           <td></td>
