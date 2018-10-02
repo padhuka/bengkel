@@ -22,7 +22,7 @@ header("Content-Disposition: attachment; filename=reportpenjualan.xls");
                                     </td>                                   
                                   </tr>                                   
                                 </table>
-                                    <span style="font-size: 20px;font-weight: bold;"><center>Laporan PKB</center></span>
+                                    <span style="font-size: 20px;font-weight: bold;"><center>Laporan Penjualan </center></span>
                                      <span style="font-size: 20px;font-weight: bold;"><center> Per Tgl <?php echo date('d-m-Y' , strtotime($_GET['tgl1']));echo ' s/d '; echo date('d-m-Y' , strtotime($_GET['tgl2'])); ?></center></span>
                                 <br>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
