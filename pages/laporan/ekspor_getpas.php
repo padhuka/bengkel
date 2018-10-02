@@ -52,7 +52,7 @@ header("Content-Disposition: attachment; filename=reportgatepass.xls");
                                     LEFT JOIN t_kwitansi C ON  A.fk_pkb=C.fk_pkb
                                     LEFT JOIN t_cash D ON C.no_kwitansi=D.no_ref AND D.tipe_transaksi='Pelunasan'
                                     LEFT JOIN t_bank E  ON C.no_kwitansi=E.no_ref AND E.tipe_transaksi='Pelunasan'
-                                    WHERE substring(A.tgl,1,10)<='2018-10-02' ORDER BY A.no_gate_pass DESC 
+                                    WHERE substring(A.tgl,1,10)>='$tgl1' AND substring(A.tgl,1,10)<='$tgl2' ORDER BY A.no_gate_pass DESC  
                                     ";
                                     //echo $sqlcatat;
                                     $rescatat = mysql_query( $sqlcatat );
