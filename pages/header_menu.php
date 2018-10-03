@@ -70,6 +70,8 @@
               <li class="header"><a href="?p=group">Group Kendaraan</a></li>   
               <li class="header"><a href="?p=tipe">Tipe Kendaraan</a></li>   
               <li class="header"><a href="?p=warna">Warna Kendaraan</a></li>   
+              <li class="header">----------------------------------</li>
+              <li class="header"><a href="?p=backup">Backup Database</a></li>
             <!--   <li class="header"><a href="?p=user">User</a></li>   
               <li class="header"><a href="?p=company">Company</a></li> 
               <li class="header"><a href="?p=backup">Backup Database</a></li>
