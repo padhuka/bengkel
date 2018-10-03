@@ -93,7 +93,7 @@
       $d= date("d-m-Y-h-i-s");
       $file='../file/backup/bodyrepairdb-'.$d.'.sql';
       //panggil fungsi dengan memberi parameter untuk koneksi dan nama file untuk backup
-      $a = backup_tables("localhost:3356","root","","bodyrepairdb",$file);
+      $a = backup_tables("localhost","root","","bodyrepairdb",$file);
       //exit;
       ?>
             <p align="center"><a style="cursor:pointer" onclick="location.href='<?php echo $file?>'" title="Download">Download file database</a></p>
