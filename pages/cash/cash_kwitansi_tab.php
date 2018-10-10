@@ -23,14 +23,18 @@
                 <tbody>
                 <?php
                                    $j=1;
-                                   $sqlcatat = "SELECT k.no_kwitansi as no_kwitansi,k.total_payment as nilai, cash.no_ref,cash.titip_cash,bank.titip_bank FROM t_kwitansi k
+                                   $sqlcatat = "SELECT k.no_kwitansi as no_kwitansi,(total_payment-IFNULL(wo.nilai_kwitansi,0)) as nilai, cash.no_ref,cash.titip_cash,bank.titip_bank FROM t_kwitansi k
                                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
                                     FROM t_cash where tipe_transaksi='titipan'
                                     GROUP BY no_ref)AS cash ON cash.no_ref=k.fk_pkb
                                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
                                     FROM t_bank where tipe_transaksi='titipan'  
                                     GROUP BY no_ref)AS bank ON bank.no_ref=k.fk_pkb
-                                    WHERE k.tgl_batal='0000-00-00 00:00:00'
+                                      LEFT JOIN (SELECT pkb.id_pkb,pkb.fk_estimasi,es.nilai_kwitansi from t_pkb pkb
+                                      LEFT JOIN (SELECT fk_estimasi, nilai_kwitansi from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00')
+                                      es ON pkb.fk_estimasi=es.fk_estimasi
+                                      where pkb.tgl_batal ='0000-00-00 00:00:00') as WO on WO.id_pkb=k.fk_pkb            
+                                            WHERE k.tgl_batal='0000-00-00 00:00:00'
                                     UNION                             
                                     SELECT ko.no_kwitansi_or as no_kwitansi ,ko.nilai_kwitansi as nilai, s.no_ref,s.total as titip_cash,bk.total as titip_bank from t_kwitansi_or ko
                                     LEFT JOIN t_cash s ON ko.fk_estimasi=s.no_ref
