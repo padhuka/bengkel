@@ -19,7 +19,7 @@
                                     LEFT JOIN t_pkb a ON e.fk_pkb=a.id_pkb
                                     LEFT JOIN t_customer c ON a.fk_customer=c.id_customer 
                                     LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi
-                                    LEFT JOIN t_kwitansi_or kw ON a.fk_estimasi=kw.fk_estimasi
+                                    LEFT JOIN (select * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') kw ON a.fk_estimasi=kw.fk_estimasi
                                     WHERE e.no_kwitansi='$no_kwitansi'";
                                     $rescatat = mysql_query( $sqlcatat );
                                     $catat = mysql_fetch_array( $rescatat );
