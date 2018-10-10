@@ -101,7 +101,7 @@
                         <tr><td colspan="4" align="right">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_panel']+$catat['total_netto_part']);?></td></tr>
                         <tr><td colspan="4" align="right">PPN</td><td align="right"><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td></tr>
                         <tr><td colspan="4" align="right">OR</td><td align="right"><?php echo rupiah2($catat['nilaior']);?></td></tr>
-                        <tr><td colspan="4" align="right"><strong>Grand Total</strong></td><td align="right"><?php echo rupiah2($catat['total_payment']+$catat['nilaior']);?></td></tr>
+                        <tr><td colspan="4" align="right"><strong>Grand Total</strong></td><td align="right"><?php echo rupiah2($catat['total_payment']);?></td></tr>
                 </tfoot>
               </table>
                                 </table>
