@@ -37,7 +37,6 @@
                 <script type="text/javascript">
                   $(document).ready(function (){
                         $(".save_submit").click(function (e){
-
                            $.ajax({
                                 url: 'estimasi/estimasi_del_save.php?idestimasi=<?php echo $id;?>',
                                 type: 'GET',
@@ -45,7 +44,7 @@
                                       //alert('panel/panel_del_save.php?id_panel='+id_panel);
                                      $("#tableestimasi").load('estimasi/estimasi_load.php');
                                      $('.modal-body').css('opacity', '');
-                                      alert('Data Berhasil Dihapus');
+                                      alert('Estimasi Berhasil Di Batalkan');
                                       $('#ModalDelete').modal('hide');
                                   }
                             });
