@@ -38,7 +38,7 @@
                           <label for="hargapokokpanel">Harga</label>
                         </div>
                           <div class="col-sm-8">
-                         <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
+                         <input type="text" class="form-control" id="hargapokoke" name="hargapokoke" value="<?php echo $hslpan['harga_jual_panel'];?>" required onchange="hargarubah();">
                          <input type="hidden" class="form-control" id="hargapokoklme" name="hargapokoklme" value="<?php echo $hslpan['harga_jual_panel'];?>" readonly required>
                           </div>
                         </div>
@@ -83,10 +83,15 @@
   function kaliedit(){
     
     var hasile= $("#hargapokoke").val()-($("#diskone").val()*$("#hargapokoke").val()/100);
-    //alert($("#diskone").val());
     $("#hargatotale").val(hasile);
-    //alert(hasil);
   }
+
+ function hargarubah(){
+    
+    var hasile= $("#hargapokoke").val()-($("#diskone").val()*$("#hargapokoke").val()/100);
+    $("#hargatotale").val(hasile);
+  }
+
 	$(document).ready(function (){
 
                       $("#formPanelEdit").on('submit', function(e){
