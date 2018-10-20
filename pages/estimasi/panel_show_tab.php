@@ -33,9 +33,10 @@
                                     WHERE fk_estimasi='$idestimasi' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
+                                         $markpanel= $catat['mark_panel'];
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['nama'];?></td>
+                          <td ><?php echo $catat['nama'];if ($markpanel=='1'){echo ' *';}?></td>
                           <td ><?php echo rupiah2($catat['harga_jual_panel']);?></td>
                           <td ><?php echo rupiah2($catat['harga_diskon_panel']);?></td>
                           <td ><?php echo rupiah2($catat['harga_total_estimasi_panel']);?></td>
