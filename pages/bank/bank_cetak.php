@@ -36,7 +36,7 @@
                                 <br><br>
                                 <table width="100%" border="0"  align="center">
                                   <tr><td class="hurufe" width="30%">Terima Dari</td><td class="hurufe" width="2%">: </td><td class="huruf2"><?php echo $catat['diterima_dari'];?></td></tr>
-                                  <tr><td class="hurufe">Uang Sejumlah</td><td class="hurufe">: </td><td class="huruf2">## <?php echo Terbilang($catat['total']);?> rupiah ##</td></tr>
+                                  <tr><td class="hurufe">Uang Sejumlah</td><td class="hurufe">: </td><td class="huruf2">## <?php echo Terbilang(round($catat['total']));?> rupiah ##</td></tr>
                                   <tr><td  class="hurufe">Untuk Pembayaran</td><td class="hurufe">: </td><td class="huruf2"><?php echo $catat['keterangan'];?></td></tr>
                                 </table>
                                 <br>
@@ -45,7 +45,7 @@
                                       <td>
                                         <table width="70%" border="1"  align="left">
                                             <tr>
-                                              <td class="huruf2" align="center">Rp. <?php echo rupiah2($catat['total']);?></td>
+                                              <td class="huruf2" align="center">Rp. <?php echo rupiah($catat['total']);?></td>
                                             </tr>
                                         </table>
                                       </td>
