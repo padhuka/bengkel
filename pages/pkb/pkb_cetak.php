@@ -29,6 +29,10 @@
                                     //echo $sqlcatat;
                                 ?>
                                 <table width="100%">
+                                  <br>
+                                  <br>
+                                  <br>
+                                  <br>
                                   <tr><td align="center" style="font-size: 20px; text-align: center;"><u>PKB BODY REPAIR</u></td></tr>
                                   <tr><td align="center" style="font-size: 18px; text-align: center;"><?php echo $catat['id_pkb'];?></td></tr>
                                 </table>
