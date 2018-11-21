@@ -10,6 +10,7 @@
                           <th>No PKB</th>
                           <th>No Mesin</th>
                           <th>No Chasis</th>
+                          <th>No Polisi</th>
                           <th>Nama Customer</th>
                           <th>Total</th>
                           <th>PPN</th>
@@ -21,7 +22,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k 
+                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,p.fk_no_polisi,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k 
                                       INNER JOIN t_pkb p ON k.fk_pkb=p.id_pkb 
                                       INNER JOIN t_customer c ON p.fk_customer=c.id_customer
                                       WHERE k.tgl_batal='0000:00:00 00:00:00'";
@@ -39,6 +40,7 @@
                    
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
                           <td ><?php echo $catat['fk_no_mesin'];?></td>
+                          <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['total_kwitansi']);?></td>
                           <td ><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td>
