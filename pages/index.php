@@ -34,6 +34,7 @@
                         case 'gatepass' : include_once 'gatepass/gatepass_tab.php'; break;
                         case 'laporan' : include_once 'laporan/laporan_tab.php'; break;
                         case 'backup' : include_once 'backup/backup_tab.php'; break;
+                        case 'mcoa' : include_once 'mcoa/mcoa_tab.php'; break;
                       }
         ?>
 

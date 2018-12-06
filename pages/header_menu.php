@@ -50,7 +50,7 @@
            <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Accounting <i class="fa fa-usd dropdown-toggle"></i></button> </a>
             <ul class="dropdown-menu">
-              <li class="header"><a href="?p=#">Master COA</a></li> 
+              <li class="header"><a href="?p=mcoa">Master COA</a></li> 
               <li class="header"><a href="?p=#">Cash</a></li>  
               <li class="header"><a href="?p=#">Bank</a></li>   
                
