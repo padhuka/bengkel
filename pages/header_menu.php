@@ -7,7 +7,7 @@
     <nav class="navbar fixed-top" style="margin-left: 0px">
       <!-- Sidebar toggle button-->
     <div class="container">
-      <a class="navbar-brand" href="index.php"> GEMILANG BODY & PAINT
+      <a class="navbar-brand" href="index.php" style="color: #ccc">GEMILANG REPAIR
         </a>
       <div class="navbar-custom-menu" style="padding: 0 0 0 0;margin: 0 auto;">
         <ul class="nav navbar-nav" style="list-style: none;padding: 0;margin: 0 auto;font-size: 1px;margin-top: 8px;">
@@ -44,6 +44,16 @@
                <li class="header"><a href="?p=cash">Cash</a></li> 
                <li class="header"><a href="?p=bank">Bank</a></li> 
               <li class="header"><a href="?p=gatepass">Gate Pass</a></li> 
+                          </ul>
+          </li><?php } ?>
+            <?php if ($seskdlvl=='Admin'){?>
+           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
+            <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Accounting <i class="fa fa-usd dropdown-toggle"></i></button> </a>
+            <ul class="dropdown-menu">
+              <li class="header"><a href="?p=#">Master COA</a></li> 
+              <li class="header"><a href="?p=#">Cash</a></li>  
+              <li class="header"><a href="?p=#">Bank</a></li>   
+               
                           </ul>
           </li><?php } ?>
           <li class="dropdown" style="display: block;margin:0;padding:0;float: left;">
