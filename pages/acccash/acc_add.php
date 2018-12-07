@@ -16,7 +16,7 @@
                     </div>
 
                   <div class="box">
-                <table id="cashkwitansi" class="table table-condensed table-bordered table-striped table-hover">
+                <table id="acc" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                          <th>COA</th>
@@ -40,7 +40,7 @@
                          
                           <td >
                                        
-                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectKwitansi(
+                                        <button type="button" class="btn btn btn-default btn-circle" onclick="selectacc(
                                          '<?php echo $catat['coa'];?>',
                                          '<?php echo $catat['description'];?>',           
                                         );">Pilih</button>
@@ -55,9 +55,9 @@
               </div>
               </div>
               <script type="text/javascript">
-                $('#cashkwitansi').DataTable();
+                $('#acc').DataTable();
 
-               function selectKwitansi(a,b){
+               function selectacc(a,b){
                               $("#idacc").val(a);
                               $("#nmacc").html(b);
                               $("#ModalAccAdd").modal('hide');
