@@ -46,13 +46,13 @@
              <td width="35%"></td>
           </tr>
           <tr valign="middle">
-            <td width="15%">Account :</td>
+            <td width="15%">Reff Account :</td>
             <td width="35%">
               <table><tr><td><input type="text" class="form-control" id="idacc" name="idacc" readonly style="width: 95%"></td><td>
                                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" onclick="open_addacc();" id="buttonaddacc">Pilih</button></td></tr></table>
               </td>
            <td width="10%"></td>
-           <td width="15%">Account Name :</td>
+           <td width="15%">Reff Account Name :</td>
            <td width="35%"><label id="nmacc"></label></td>
           </tr>
           <tr valign="middle">
