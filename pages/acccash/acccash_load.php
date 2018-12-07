@@ -2,8 +2,15 @@
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
       ?>
-      <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formcash">
+      <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formcashacc">
         <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
+           <tr valign="middle">
+             <td width="15%">No Bukti :</td>
+             <td width="35%"><label id="nobukti"></label></td>
+             <td width="10%"></td>
+             <td width="15%"></td>
+             <td width="35%"></td>
+          </tr>
           <tr valign="middle">
             <td width="15%">Date :</td><td width="35%">
                             <div class="input-group date" style="width: 60%;">
@@ -15,7 +22,7 @@
                           </td>
            <td width="10%"></td>
            <td width="15%">Type of transaction :</td><td width="35%">
-                            <select>><option value="Debet">Debet</option><option value="Kredit">Kredit</option></select>
+                            <select id="transaction_type" name="transaction_type"><option value="D">Debet</option><option value="C">Kredit</option></select>
                           </td>
           </tr>
           <tr valign="middle">
@@ -28,13 +35,7 @@
            <td width="15%">Account Name :</td>
            <td width="35%"><label id="nmacccash"></label></td>
           </tr>
-          <tr valign="middle">
-             <td width="15%">Keterangan</td>
-             <td width="35%"><input type="text" name=""></td>
-             <td width="10%"></td>
-             <td width="15%"></td>
-             <td width="35%"></td>
-          </tr>
+         
         </table>
 <br>
         <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
@@ -57,10 +58,14 @@
           </tr>
           <tr valign="middle">
              <td width="15%">Nominal</td>
-             <td width="35%"><input type="text" name=""></td>
+             <td width="35%"><input type="text" name="nominal" id="nominal"></td>
              <td width="10%"></td>
+             <td width="15%"></td>
+             <td width="35%"></td>
+          </tr>
+           <tr valign="middle">
              <td width="15%">Keterangan</td>
-             <td width="35%"><input type="text" name=""></td>
+             <td width="75%" colspan="4"><input type="text" name="keterangan" id="keterangan" style="width: 95%"></td>
           </tr>
           <tr valign="middle">
             <td width="15%"></td>
@@ -85,24 +90,41 @@
       
                 <thead class="thead-light">
                 <tr>
-                          <th>COA</th>
-                          <th>Type Transaction</th>
-                          <th>Description</th>
-                          
+                          <th>No</th>
+                          <th>No Bukti</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Keterangan</th>
+                          <th>Total</th>
+                          <th>Status</th>
+                          <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_akun ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_acc_cash ORDER BY tr_date DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-                          <td ><?php echo $catat['coa'];?></td>
-                          <td ><?php echo $catat['transaction_type'];?></td>
-                           <td ><?php echo $catat['description'];?></td>
-                         
+                          <td><?php echo $j++;?></td>
+                          <td><?php echo $catat['no_bukti'];?></td>
+                          <td ><?php echo $catat['tr_date'];?></td>
+                          <td><?php echo $catat['transaction_type'];?></td>
+                          <td><?php echo $catat['description'];?></td>
+                          <td><?php echo $catat['amount'];?></td>
+                          <td><?php echo $catat['status'];?></td>
+                          <td>
+                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>"  onclick="ubahacc(
+                                         '<?php echo $catat['coa'];?>',
+                                         '<?php echo $catat['description'];?>',           
+                                        );"><span>Ubah</span></button>
+                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Approve</span></button>
+                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
+                                         
+
+                          </td>
                         </tr>
                     <?php }?>
                 </tfoot>
@@ -144,6 +166,41 @@
                     });
               }
            
+           $(document).ready(function (){
+
+                      $("#formcashacc").on('submit', function(e){
+                          var idacccash= $("#idacccash").val();
+                          var idacc= $("#idacc").val();
+                          var nominal= $("#nominal").val();
+                          var keterangan= $("#keterangan").val();
+
+                          if (idacccash=='' || idacc=='' || nominal=='' || keterangan==''){
+                            alert('Data ada yang belum diisi');
+                            return false;
+                          }
+                          e.preventDefault();
+                            //alert(disposisine)                       ;
+                                      $.ajax({
+                                                  type: 'POST',
+                                                  url: 'acccash/acccash_add_save.php',
+                                                  data: new FormData(this),
+                                                  contentType: false,
+                                                  cache: false,
+                                                  processData:false,
+                                                  success: function(data){                  
+                                                            //var hsl=data.trim();       
+                                                              //alert(hsl);              
+                                                            alert('Data Berhasil Disimpan');              
+                                                            $("#tableacccash").load('acccash/acccash_load.php');
+
+                                                  }
+                                                      
+                                                });
+
+                                      
+              
+                      });
+    });
       </script>
 
 <style type="text/css">
