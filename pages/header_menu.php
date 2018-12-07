@@ -51,8 +51,8 @@
             <a href="#" data-toggle="dropdown" style="width: 100%;padding: 0.5em;"><button class="btn btn-default" style="color:red;padding: 5px 10px;">Accounting <i class="fa fa-usd dropdown-toggle"></i></button> </a>
             <ul class="dropdown-menu">
               <li class="header"><a href="?p=mcoa">Master COA</a></li> 
-              <li class="header"><a href="?p=#">Cash</a></li>  
-              <li class="header"><a href="?p=#">Bank</a></li>   
+              <li class="header"><a href="?p=acccash">Cash</a></li>  
+              <li class="header"><a href="?p=accbank">Bank</a></li>   
                
                           </ul>
           </li><?php } ?>
