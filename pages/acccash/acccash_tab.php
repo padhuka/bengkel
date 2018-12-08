@@ -40,6 +40,8 @@
   </div>
   <div id="ModalCashAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   <div id="ModalAccAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+  <div id="ModalBatal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+  <div id="ModalApprove" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
                <script type="text/javascript">
             $(document).ready(function (){
                  $("#tableacccash").load('acccash/acccash_load.php');

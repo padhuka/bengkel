@@ -2,12 +2,12 @@
 		//$skrg = date('Y-m-d');
         include_once '../../lib/config.php';
         $no_bukti = $_GET['no_bukti'];
-        $keterangan_batal = $_GET['keteranganbatal'];
+        //$keterangan_batal = $_GET['keteranganbatal'];
         //$no_bukti_or = trim($_POST['idkwitansior']);
         //$keterangan_batal = trim($_POST['keteranganbatal']);
-        echo $keterangan_batal;
+        //echo $keterangan_batal;
         
-            $updatebatalcash = "UPDATE t_cash SET tgl_batal='$hrini',keterangan_batal='$keterangan_batal' WHERE no_bukti='$no_bukti'";
+            $updatebatalcash = "UPDATE t_acc_cash SET status='Approve' WHERE no_bukti='$no_bukti'";
              $query =  mysql_query($updatebatalcash);
               echo $query;
 ?>

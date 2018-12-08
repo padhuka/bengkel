@@ -122,7 +122,9 @@
                           <td><?php echo $catat['amount'];?></td>
                           <td><?php echo $catat['status'];?></td>
                           <td>
-                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>"  onclick="ubahacc(
+                            <?php if ($catat['status']<>'Batal'){?>
+                              <?php if ($catat['status']<>'Approve'){?>
+                            <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>"  onclick="ubahacc(
                                          '<?php echo $catat['no_bukti'];?>',
                                          '<?php echo $catat['tr_date'];?>',
                                          '<?php echo $catat['transaction_type'];?>',
@@ -133,9 +135,10 @@
                                          '<?php echo $catat['amount'];?>',
                                          '<?php echo $catat['descrip'];?>',
                                         );"><span>Ubah</span></button>
-                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Approve</span></button>
+                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_approve(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Approve</span></button>
+                           <?php } ?>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
-                                         
+                            <?php }?>
 
                           </td>
                         </tr>
@@ -186,17 +189,40 @@
                 //no_bukti,tr_date,transaction_type,fk_akun,nmakun,ref_akun,nmref,amount
                 $('#nbukti').show();
                 $('#nobukti').html(a);
-                //$('#transaction_type').val(b);
+                var akun= c;//$('#transaction_type').val(b);
                 $('#idacccash').val(d);
                 $('#nmacccash').html(e);
                 $('#idacc').val(f);
                 $('#nmacc').html(g);
                 $('#nominal').val(h);
                 $('#keterangan').val(i);
-
+                //alert(akun);
+                if (akun=='D'){
+                  var myobject = {
+                      D : 'Debet',
+                      C : 'Kredit'
+                  };
+                }
+                if (akun=='C'){
+                  var myobject = {
+                      C : 'Kredit',
+                      D : 'Debet',                     
+                  };
+                }
 
                   $('#saveadd').hide()
                   $('#saveedit').show();
+
+                  //var sel = document.getElementById("transaction_type");
+
+                  
+
+                  var select = document.getElementById("transaction_type");
+                  select.options.length = 0;
+                  for(index in myobject) {
+                      select.options[select.options.length] = new Option(myobject[index], index);
+                  }
+
               }
 
               function simpanubah(){
@@ -259,6 +285,26 @@
               
                       });
     });
+           function open_del(x){
+                                $.ajax({
+                                    url: "acccash/acccash_del.php?nobukti="+x,
+                                    type: "GET",
+                                    success: function (ajaxData){
+                                        $("#ModalBatal").html(ajaxData);
+                                        $("#ModalBatal").modal({backdrop: 'static',keyboard: false});
+                                    }
+                                });
+            };
+            function open_approve(x){
+                                $.ajax({
+                                    url: "acccash/acccash_approve.php?nobukti="+x,
+                                    type: "GET",
+                                    success: function (ajaxData){
+                                        $("#ModalApprove").html(ajaxData);
+                                        $("#ModalApprove").modal({backdrop: 'static',keyboard: false});
+                                    }
+                                });
+            };
       </script>
 
 <style type="text/css">
