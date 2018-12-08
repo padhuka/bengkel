@@ -4,7 +4,8 @@
       
         $fk_akun = trim($_POST['idacccash']);
         $ref_akun = trim($_POST['idacc']); 
-        $amount = trim($_POST['nominal']);  
+        $nominal = trim($_POST['nominal']);  
+        $amount= str_replace(".", "", $nominal);
         $description = trim($_POST['keterangan']); 
         $transaction_type=trim($_POST['transaction_type']);
         $tr_date = trim($_POST['datecash']);

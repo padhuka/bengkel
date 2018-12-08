@@ -1,6 +1,6 @@
       <?php
             include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
+            include_once '../../lib/fungsi.php';            
       ?>
       <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formcashacc">
         <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
@@ -58,7 +58,7 @@
           </tr>
           <tr valign="middle">
              <td width="15%">Nominal</td>
-             <td width="35%"><input type="text" name="nominal" id="nominal"></td>
+             <td width="35%"><input type="text" name="nominal" id="nominal" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);></td>
              <td width="10%"></td>
              <td width="15%"></td>
              <td width="35%"></td>
@@ -251,13 +251,14 @@
               }
            
            $(document).ready(function (){
+              
 
                       $("#formcashacc").on('submit', function(e){
                           var idacccash= $("#idacccash").val();
                           var idacc= $("#idacc").val();
                           var nominal= $("#nominal").val();
                           var keterangan= $("#keterangan").val();
-
+                          
                           if (idacccash=='' || idacc=='' || nominal=='' || keterangan==''){
                             alert('Data ada yang belum diisi');
                             return false;
@@ -324,3 +325,5 @@
     padding-right: 4px;
   }
 </style>
+
+<script type="text/javascript" src="../lib/ribuan.js"></script>

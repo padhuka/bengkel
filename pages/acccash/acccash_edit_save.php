@@ -5,7 +5,8 @@
         $no_bukti = trim($_GET['no_bukti']);
         $fk_akun = trim($_GET['fk_akun']);
         $ref_akun = trim($_GET['ref_akun']); 
-        $amount = trim($_GET['amount']);  
+        $nominal = trim($_POST['nominal']);  
+        $amount= str_replace(".", "", $nominal); 
         $description = trim($_GET['description']); 
         $transaction_type=trim($_GET['transaction_type']);
         $tr_date = trim($_GET['tr_date']);
