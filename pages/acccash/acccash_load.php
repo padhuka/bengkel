@@ -4,7 +4,7 @@
       ?>
       <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formcashacc">
         <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
-           <tr valign="middle">
+           <tr valign="middle" id="nbukti">
              <td width="15%">No Bukti :</td>
              <td width="35%"><label id="nobukti"></label></td>
              <td width="10%"></td>
@@ -75,7 +75,9 @@
            <td width="35%"></td>
           </tr>
           <tr valign="middle">
-            <td width="15%"><button type="submit" class="btn btn-primary save_submit" name="Submit" value="SIMPAN">Simpan</button></td>
+            <td width="15%"><button type="submit" class="btn btn-primary save_submit" name="Submit" id="saveadd" value="SIMPAN">Simpan</button>
+              <button type="button" class="btn btn-primary" onclick="simpanubah()" id="saveedit">Simpan</button>
+            </td>
             <td width="35%"></td>
            <td width="10%"></td>
            <td width="15%"></td>
@@ -103,8 +105,12 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_acc_cash ORDER BY tr_date DESC";
+                                    $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_cash A
+                                                LEFT JOIN t_akun B ON A.fk_akun=B.coa
+                                                LEFT JOIN t_akun C ON A.ref_akun=C.coa
+                                                ORDER BY A.tr_date DESC";
                                     $rescatat = mysql_query( $sqlcatat );
+                                    //echo $sqlcatat;
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
@@ -117,8 +123,15 @@
                           <td><?php echo $catat['status'];?></td>
                           <td>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>"  onclick="ubahacc(
-                                         '<?php echo $catat['coa'];?>',
-                                         '<?php echo $catat['description'];?>',           
+                                         '<?php echo $catat['no_bukti'];?>',
+                                         '<?php echo $catat['tr_date'];?>',
+                                         '<?php echo $catat['transaction_type'];?>',
+                                         '<?php echo $catat['fk_akun'];?>',  
+                                         '<?php echo $catat['nmakun'];?>', 
+                                         '<?php echo $catat['ref_akun'];?>',  
+                                         '<?php echo $catat['nmref'];?>',
+                                         '<?php echo $catat['amount'];?>',
+                                         '<?php echo $catat['descrip'];?>',
                                         );"><span>Ubah</span></button>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Approve</span></button>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
@@ -130,6 +143,9 @@
                 </tfoot>
               </table>
               <script>
+                $('#nbukti').hide();
+                $('#saveedit').hide();
+
              $('#example1').DataTable({
               "language": {
                       "search": "Cari",
@@ -164,6 +180,48 @@
                         $("#ModalAccAdd").modal({backdrop: 'static',keyboard: false});
                       }
                     });
+              }
+
+              function ubahacc(a,b,c,d,e,f,g,h,i){
+                //no_bukti,tr_date,transaction_type,fk_akun,nmakun,ref_akun,nmref,amount
+                $('#nbukti').show();
+                $('#nobukti').html(a);
+                //$('#transaction_type').val(b);
+                $('#idacccash').val(d);
+                $('#nmacccash').html(e);
+                $('#idacc').val(f);
+                $('#nmacc').html(g);
+                $('#nominal').val(h);
+                $('#keterangan').val(i);
+
+
+                  $('#saveadd').hide()
+                  $('#saveedit').show();
+              }
+
+              function simpanubah(){
+                  var nobkt = document.getElementById("nobukti").innerHTML;
+                  var fk_akun = $('#idacccash').val();
+                  var ref_akun = $('#idacc').val(); 
+                  var amount = $('#nominal').val();  
+                  var description = $('#keterangan').val(); 
+                  var transaction_type= $('#transaction_type').val();
+                  var tr_date = $('#datecash').val();
+                  //alert('acccash/acccash_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date);
+                   $.ajax({
+                                url: 'acccash/acccash_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date,
+                                type: 'GET',
+                                success: function (response){               
+                                  //var hsl=data.trim();       
+                                  //alert(hsl);              
+                                  alert('Data Berhasil Disimpan');  
+                                  $('#nbukti').hide();
+                                  $('#saveadd').show();
+                                  $('#saveedit').hide();            
+                                  $("#tableacccash").load('acccash/acccash_load.php');
+
+                                }
+                        });
               }
            
            $(document).ready(function (){
