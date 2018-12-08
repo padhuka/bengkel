@@ -22,7 +22,7 @@
                           </td>
            <td width="10%"></td>
            <td width="15%">Type of transaction :</td><td width="35%">
-                            <select id="transaction_type" name="transaction_type"><option value="D">Debet</option><option value="C">Kredit</option></select>
+                            <select id="transaction_type" name="transaction_type" onchange="reff();"><option value="D">Debet</option><option value="C">Kredit</option></select>
                           </td>
           </tr>
           <tr valign="middle">
@@ -38,7 +38,7 @@
          
         </table>
 <br>
-        <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
+        <table width="40%" class="table table-condensed table-bordered table-striped table-hover" id="reffacc">
           <tr valign="middle">
              <td width="15%"></td>
              <td width="35%"></td>
@@ -56,16 +56,18 @@
            <td width="15%">Reff Account Name :</td>
            <td width="35%"><label id="nmacc"></label></td>
           </tr>
+        </table>
+        <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
           <tr valign="middle">
              <td width="15%">Nominal</td>
-             <td width="35%"><input type="text" name="nominal" id="nominal" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);"></td>
+             <td width="35%"><input type="text" class="form-control" name="nominal" id="nominal" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);"></td>
              <td width="10%"></td>
              <td width="15%"></td>
              <td width="35%"></td>
           </tr>
            <tr valign="middle">
              <td width="15%">Keterangan</td>
-             <td width="75%" colspan="4"><input type="text" name="keterangan" id="keterangan" style="width: 95%"></td>
+             <td width="75%" colspan="4"><input type="text" class="form-control" name="keterangan" id="keterangan" style="width: 95%"></td>
           </tr>
           <tr valign="middle">
             <td width="15%"></td>
@@ -77,6 +79,7 @@
           <tr valign="middle">
             <td width="15%"><button type="submit" class="btn btn-primary save_submit" name="Submit" id="saveadd" value="SIMPAN">Simpan</button>
               <button type="button" class="btn btn-primary" onclick="simpanubah()" id="saveedit">Simpan</button>
+              <button type="button" class="btn btn-primary" onclick="batalubah()" id="canceledit">Batal Ubah</button>
             </td>
             <td width="35%"></td>
            <td width="10%"></td>
@@ -105,7 +108,10 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_bank A LEFT JOIN t_akun B ON A.fk_akun=B.coa LEFT JOIN t_akun C ON A.ref_akun=C.coa ORDER BY A.tr_date DESC";
+                                    $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_bank A
+                                                LEFT JOIN t_akun B ON A.fk_akun=B.coa
+                                                LEFT JOIN t_akun C ON A.ref_akun=C.coa
+                                                ORDER BY A.tr_date DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     //echo $sqlcatat;
                                     while($catat = mysql_fetch_array( $rescatat )){
@@ -113,14 +119,14 @@
                         <tr>
                           <td><?php echo $j++;?></td>
                           <td><?php echo $catat['no_bukti'];?></td>
-                          <td><?php echo $catat['tr_date'];?></td>
+                          <td ><?php echo $catat['tr_date'];?></td>
                           <td><?php echo $catat['transaction_type'];?></td>
                           <td><?php echo $catat['description'];?></td>
                           <td><?php echo $catat['amount'];?></td>
                           <td><?php echo $catat['status'];?></td>
                           <td>
                             <?php if ($catat['status']<>'Batal'){?>
-                            <?php if ($catat['status']<>'Approve'){?>
+                              <?php if ($catat['status']<>'Approve'){?>
                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>"  onclick="ubahacc(
                                          '<?php echo $catat['no_bukti'];?>',
                                          '<?php echo $catat['tr_date'];?>',
@@ -143,9 +149,38 @@
                 </tfoot>
               </table>
               <script>
+                //$('#nbukti').hide();
+                //$('#saveedit').hide();
+                reff();
+                bersih();
+              function bersih(){
                 $('#nbukti').hide();
                 $('#saveedit').hide();
+                $('#nobukti').html('');
+                $('#idaccbank').val('');
+                $('#nmaccbank').html('');
+                $('#idacc').val('');
+                $('#nmacc').html('');
+                $('#nominal').val('');
+                $('#keterangan').val('');
+                $('#saveadd').show();
+                $('#canceledit').hide();
+                $('#datebank').val('<?php echo $harinow;?>');
+              }
 
+              function reff(){
+                var refaccne= $('#transaction_type').val();
+                if (refaccne=='D'){
+                  $('#reffacc').hide();
+                }
+                if (refaccne=='C'){
+                  $('#reffacc').show();
+                }
+              }
+
+              function batalubah(){
+                  bersih();
+              }
              $('#example1').DataTable({
               "language": {
                       "search": "Cari",
@@ -182,8 +217,9 @@
                     });
               }
 
-              function ubahacc(a,b,c,d,e,f,g,h,i){
+              function ubahacc(a,b,c,d,e,f,g,h,i){                
                 //no_bukti,tr_date,transaction_type,fk_akun,nmakun,ref_akun,nmref,amount
+                $('#canceledit').show();
                 $('#nbukti').show();
                 $('#nobukti').html(a);
                 var akun= c;//$('#transaction_type').val(b);
@@ -191,7 +227,8 @@
                 $('#nmaccbank').html(e);
                 $('#idacc').val(f);
                 $('#nmacc').html(g);
-                $('#nominal').val(h);
+                var nom = tandaPemisahTitik(h)
+                $('#nominal').val(nom);
                 $('#keterangan').val(i);
                 //alert(akun);
                 if (akun=='D'){
@@ -206,7 +243,7 @@
                       D : 'Debet',                     
                   };
                 }
-
+                  
                   $('#saveadd').hide()
                   $('#saveedit').show();
 
@@ -219,6 +256,7 @@
                   for(index in myobject) {
                       select.options[select.options.length] = new Option(myobject[index], index);
                   }
+                  reff();
 
               }
 
@@ -230,7 +268,7 @@
                   var description = $('#keterangan').val(); 
                   var transaction_type= $('#transaction_type').val();
                   var tr_date = $('#datebank').val();
-                  alert('accbank/accbank_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date);
+                  //alert('accbank/accbank_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date);
                    $.ajax({
                                 url: 'accbank/accbank_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date,
                                 type: 'GET',
@@ -251,14 +289,21 @@
               
 
                       $("#formbankacc").on('submit', function(e){
+
                           var idaccbank= $("#idaccbank").val();
                           var idacc= $("#idacc").val();
                           var nominal= $("#nominal").val();
                           var keterangan= $("#keterangan").val();
-                          
-                          if (idaccbank=='' || idacc=='' || nominal=='' || keterangan==''){
-                            alert('Data ada yang belum diisi');
-                            return false;
+                          if ($("#transaction_type").val()=='D'){
+                            if (idaccbank=='' || nominal=='' || keterangan==''){
+                              alert('Data ada yang belum diisi');
+                              return false;
+                            }
+                          }else{
+                            if (idaccbank=='' || idacc=='' || nominal=='' || keterangan==''){
+                              alert('Data ada yang belum diisi');
+                              return false;
+                            }
                           }
                           e.preventDefault();
                             //alert(disposisine)                       ;
