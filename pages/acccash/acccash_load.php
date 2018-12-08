@@ -58,7 +58,7 @@
           </tr>
           <tr valign="middle">
              <td width="15%">Nominal</td>
-             <td width="35%"><input type="text" name="nominal" id="nominal" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);></td>
+             <td width="35%"><input type="text" name="nominal" id="nominal" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);"></td>
              <td width="10%"></td>
              <td width="15%"></td>
              <td width="35%"></td>
