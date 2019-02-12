@@ -196,6 +196,49 @@
                             </div> </td></tr></table>
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpenjualan()">Generate</span></strong></span></td>
                     </tr>
+                    <tr>
+
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Buku Besar </label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglbukebesar1" name="tglbukebesar1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglbukebesar2" name="tglbukebesar2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporbukubesar()">Generate</span></strong></span></td>
+                    </tr>
+                    <tr>
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Report Biaya </label></td><td>
+                              <table>
+                                  <tr><td>Tahun :</td><td><input type="text" class="form-control pull-right" id="tglbiaya" name="tglbiaya" required value="<?php echo substr($harinow,0,4);?>"></td></tr>
+                              </table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporbiaya()">Generate</span></strong></span></td>
+                    </tr>
+                    <tr>
+
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Laba Rugi </label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tgllabarugi1" name="tgllabarugi1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tgllabarugi2" name="tgllabarugi2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporlabarugi()">Generate</span></strong></span></td>
+                    </tr>
                 </table>
               </div>
             </div>
@@ -228,6 +271,10 @@
     $('#tglgetpas2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpenj1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpenj2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglbukebesar1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglbukebesar2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tgllabarugi1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tgllabarugi2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
 
     function eksporestimasi(){
       var x =$('#tglestimasi1').val(); var y= $('#tglestimasi2').val();      
@@ -275,7 +322,19 @@
       var x =$('#tglpenj1').val(); var y= $('#tglpenj2').val();      
       window.location = "laporan/ekspor_penjualan.php?tgl1="+x+"&tgl2="+y;
     }
-    
+
+    function eksporbukubesar(){
+      var x =$('#tglbukebesar1').val(); var y= $('#tglbukebesar2').val();      
+      window.location = "laporan/ekspor_bukubesar.php?tgl1="+x+"&tgl2="+y;
+    }
+     function eksporbiaya(){
+      var x =$('#tglbiaya').val();      
+      window.location = "laporan/ekspor_biaya.php?tgl1="+x;
+    }
+    function eksporlabarugi(){
+      var x =$('#tgllabarugi1').val(); var y= $('#tgllabarugi2').val();      
+      window.location = "laporan/ekspor_labarugi.php?tgl1="+x+"&tgl2="+y;
+    }
     
   </script>
   <style type="text/css">
