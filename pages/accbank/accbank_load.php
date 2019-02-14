@@ -122,7 +122,7 @@
                           <td ><?php echo $catat['tr_date'];?></td>
                           <td><?php echo $catat['transaction_type'];?></td>
                           <td><?php echo $catat['description'];?></td>
-                          <td><?php echo $catat['amount'];?></td>
+                          <td align="right"><?php echo rupiah2($catat['amount']);?></td>
                           <td><?php echo $catat['status'];?></td>
                           <td>
                             <?php if ($catat['status']<>'Batal'){?>
