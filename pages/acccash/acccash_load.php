@@ -316,7 +316,7 @@
                                                   processData:false,
                                                   success: function(data){                  
                                                             //var hsl=data.trim();       
-                                                              //alert(hsl);              
+                                                            //alert(hsl);              
                                                             alert('Data Berhasil Disimpan');              
                                                             $("#tableacccash").load('acccash/acccash_load.php');
 

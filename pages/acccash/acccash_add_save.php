@@ -24,7 +24,7 @@
             $kodeawal = 'KUK_ACCT.'.$hrn2.'.';
         }
         
-        $sqljur = "SELECT * FROM t_acc_cash ORDER BY tr_date DESC";
+        $sqljur = "SELECT * FROM t_acc_cash ORDER BY no_bukti DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['no_bukti'])){
@@ -51,7 +51,7 @@
 
         
             $sqltbemp = "INSERT INTO t_acc_cash (no_bukti, tr_date, transaction_type, fk_akun, via_bayar, ref_akun, amount, description, status, diterima_dari)VALUES ('$kodebaru', '$tr_date', '$transaction_type', '$fk_akun', '', '$ref_akun', '$amount', '$description', '', '')";
-            //echo "$sqltbemp";
+            //echo $sqltbemp;
             mysql_query($sqltbemp);
             //echo $kodebaru.'-'.$warnanm;    
 ?>
