@@ -5,6 +5,7 @@
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No PKB</th>
                           <th>Tgl PKB</th>
                           <th>No Chasis</th>
@@ -29,11 +30,12 @@
                                       GROUP BY fk_pkb
                                     ))AS state ON p.id_pkb=state.fk_pkb
                                    WHERE p.tgl_batal='0000-00-00 00:00:00'
-                                   ORDER BY p.id_pkb";
+                                   ORDER BY p.tgl DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
+                          <td><?php echo $j++;?></td>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
