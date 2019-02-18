@@ -5,6 +5,7 @@
       <table id="tablekwitansior" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No Kwitansi OR</th>
                           <th>Tanggal</th>
                           <th>No Estimasi</th>
@@ -26,7 +27,8 @@
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
-                        <tr>  
+                        <tr> 
+                        <td><?php echo $j++;?></td> 
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_kwitansior(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span><?php echo ($catat['no_kwitansi_or']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi_or']));?></td>
