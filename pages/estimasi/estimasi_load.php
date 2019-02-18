@@ -5,6 +5,7 @@
       <table id="estimasi1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No Estimasi</th>
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
@@ -22,12 +23,13 @@
                                     $sqlcatat = "SELECT e.*,k.no_kwitansi_or,p.id_pkb,p.tgl_batal as pkb_batal FROM t_estimasi e
                                     LEFT JOIN t_kwitansi_or k ON e.id_estimasi=k.fk_estimasi
                                     LEFT JOIN t_pkb p ON p.fk_estimasi=e.id_estimasi
-                                     WHERE e.tgl_batal='0000-00-00 00:00:00' ORDER BY e.id_estimasi DESC";
+                                    WHERE e.tgl_batal='0000-00-00 00:00:00' ORDER BY e.tgl DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
 
                                 ?>
                         <tr>
+                          <td><?php echo $j++;?></td>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo ($catat['id_estimasi']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tgl']));?></td>
