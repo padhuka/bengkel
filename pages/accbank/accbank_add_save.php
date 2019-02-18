@@ -24,7 +24,7 @@
             $kodeawal = 'KUK_ACCT.'.$hrn2.'.';
         }
         
-        $sqljur = "SELECT * FROM t_acc_bank ORDER BY no_bukti DESC";
+        $sqljur = "SELECT * FROM t_acc_bank ORDER BY urut DESC";
         $resultjur = mysql_query( $sqljur );
         $jur = mysql_fetch_array( $resultjur );
         if (empty($jur['no_bukti'])){
