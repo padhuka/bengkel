@@ -5,6 +5,7 @@
       <table id="cash" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No Bukti</th>
                           <th>Tgl</th>
                           <th>Tipe Transaksi</th>
@@ -21,11 +22,12 @@
                 <?php
                                     $j=1;
                                     $sqlcatat = " SELECT * FROM t_cash 
-                                    WHERE tgl_batal='0000:00:00 00:00:00' ORDER BY no_bukti DESC ";
+                                    WHERE tgl_batal='0000:00:00 00:00:00' ORDER BY tgl DESC ";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
+                          <td><?php echo $j++;?></td> 
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo ($catat['no_bukti']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y' , strtotime($catat['tgl_transaksi']));?></td>
