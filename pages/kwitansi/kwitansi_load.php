@@ -5,6 +5,7 @@
       <table id="tablekwitansi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No Kwitansi</th>
                           <th>Tanggal</th>
                           <th>No PKB</th>
@@ -25,13 +26,13 @@
                                     $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,p.fk_no_polisi,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k 
                                       INNER JOIN t_pkb p ON k.fk_pkb=p.id_pkb 
                                       INNER JOIN t_customer c ON p.fk_customer=c.id_customer
-                                      WHERE k.tgl_batal='0000:00:00 00:00:00'";
-
-
+                                      WHERE k.tgl_batal='0000:00:00 00:00:00'
+                                      ORDER BY k.tgl_kwitansi DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>  
+                          <td><?php echo $j++;?></td>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_kwitansi(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span><?php echo ($catat['no_kwitansi']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi']));?></td>
