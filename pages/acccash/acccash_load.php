@@ -111,7 +111,7 @@
                                     $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_cash A
                                                 LEFT JOIN t_akun B ON A.fk_akun=B.coa
                                                 LEFT JOIN t_akun C ON A.ref_akun=C.coa
-                                                ORDER BY A.tr_date DESC";
+                                                ORDER BY A.urut DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     //echo $sqlcatat;
                                     while($catat = mysql_fetch_array( $rescatat )){
@@ -182,6 +182,7 @@
                   bersih();
               }
              $('#example1').DataTable({
+              //"order": [[ 8, "asc" ]],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
