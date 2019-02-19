@@ -140,8 +140,10 @@
                                         );"><span>Ubah</span></button>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_approve(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Approve</span></button>
                            <?php } ?>
+                            <?php if ($catat['status']=='Approve'){
+                            }else{?>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
-                            <?php }?>
+                            <?php }}?>
 
                           </td>
                         </tr>
