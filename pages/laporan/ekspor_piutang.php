@@ -46,18 +46,25 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
                                    // $jml=0;
-                                    $sqlcatat = "SELECT p.id_pkb AS idpkb,p.tgl AS tglpkb, p.kategori AS kat, a.nama AS nmasuransi, k.no_kwitansi AS nokw, k.tgl_kwitansi AS tglkw, c.nama AS nmcus,
-                                    k.total_payment AS total_bayar, titip_cash ,titip_bank, k.total_payment-(ifnull(titip_cash,0)+ifnull(titip_bank,0)) as piutang
+                                    $sqlcatat = " SELECT p.id_pkb AS idpkb,p.tgl AS tglpkb, p.kategori AS kat, a.nama AS nmasuransi, k.no_kwitansi AS nokw, k.tgl_kwitansi AS tglkw, c.nama AS nmcus,
+                                    k.total_payment AS total_bayar, titip_cash ,titip_bank,or_cash, or_bank, k.total_payment-(ifnull(titip_cash,0)+ifnull(titip_bank,0)+ifnull(or_cash,0)+ifnull(or_bank,0)) as piutang
                                     FROM t_status_pkb s
                                     INNER JOIN t_pkb p ON s.fk_pkb=p.id_pkb
                                     INNER JOIN t_customer c ON p.fk_customer=c.id_customer
                                     INNER JOIN (SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') as k ON p.id_pkb=k.fk_pkb
-                                    LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
-                                    FROM t_cash where tipe_transaksi='titipan'
-                                    GROUP BY no_ref)AS cash ON cash.no_ref=k.fk_pkb
-                                    LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
-                                    FROM t_bank where tipe_transaksi='titipan'
-                                    GROUP BY no_ref)AS bank ON bank.no_ref=k.fk_pkb             
+                                    INNER JOIN (SELECT * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') as kor ON p.fk_estimasi=kor.fk_estimasi
+                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
+                                        FROM t_cash where tipe_transaksi='titipan'
+                                        GROUP BY no_ref) AS cash ON cash.no_ref=k.fk_pkb
+                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
+                                           FROM t_bank where tipe_transaksi='titipan'
+                                        GROUP BY no_ref)AS bank ON bank.no_ref=k.fk_pkb
+                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as or_cash
+                                        FROM t_cash where tipe_transaksi='Pelunasan'
+                                        GROUP BY no_ref) AS orcash ON orcash.no_ref=kor.no_kwitansi_or
+                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as or_bank
+                                           FROM t_bank where tipe_transaksi='Pelunasan'
+                                        GROUP BY no_ref)AS orbank ON orbank.no_ref=kor.no_kwitansi_or 
                                     LEFT JOIN t_asuransi a ON p.fk_asuransi=a.id_asuransi
                                       WHERE id IN (
                                         SELECT MAX(id)
