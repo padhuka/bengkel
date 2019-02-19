@@ -9,7 +9,6 @@
                           <th>No Kwitansi</th>
                           <th>Tanggal</th>
                           <th>No PKB</th>
-                          <th>No Mesin</th>
                           <th>No Chasis</th>
                           <th>No Polisi</th>
                           <th>Nama Customer</th>
@@ -40,7 +39,6 @@
                       <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
                    
                           <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_mesin'];?></td>
                           <td ><?php echo $catat['fk_no_polisi'];?></td>
                           <td ><?php echo $catat['nama'];?></td>
                           <td ><?php echo rupiah2($catat['total_kwitansi']);?></td>
