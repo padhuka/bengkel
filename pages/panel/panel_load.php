@@ -40,6 +40,9 @@
               </table>
               <script>
              $('#example1').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 6 }
+                ],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",

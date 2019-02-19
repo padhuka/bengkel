@@ -67,6 +67,9 @@
               </table>
               <script>
             $('#tablepkb1').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 8 }
+                ],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",

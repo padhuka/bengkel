@@ -41,6 +41,9 @@
               </table>
               <script>
             $('#gatepass').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 5}
+                ],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",

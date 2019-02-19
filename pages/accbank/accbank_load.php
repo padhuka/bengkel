@@ -184,6 +184,9 @@
                   bersih();
               }
              $('#example1').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 7 }
+                ],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",

@@ -5,6 +5,7 @@
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No PKB</th>
                           <th>Tgl Masuk</th>
                           <th>No Chasis</th>
@@ -26,6 +27,7 @@
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
+                          <td><?php echo $j++;?></td>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
                        
                           <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
@@ -47,6 +49,9 @@
               </table>
               <script>
             $('#tablepkb1').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 8 }
+                ],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",

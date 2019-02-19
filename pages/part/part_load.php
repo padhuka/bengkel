@@ -48,6 +48,9 @@
               </table>
               <script>
              $('#part1').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 9 }
+                ],
               "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
