@@ -12,6 +12,8 @@ header("Content-Disposition: attachment; filename=reportbank.xls");
 								      <?php
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
+            $tgle = date('d/m/Y');
+            $jame = date('H:i:s');
       ?>
       <table width="100%" align="center" border="0">
                                   <tr>

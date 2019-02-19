@@ -12,13 +12,19 @@ header("Content-Disposition: attachment; filename=reportestimasi.xls");
 								      <?php
             include_once '../../lib/config.php';
             include_once '../../lib/fungsi.php';
+      $tgle = date('d/m/Y');
+            $jame = date('H:i:s');
       ?>
-      <table widtd="100%" align="center" border="0">
+      <table width="100%" align="center" border="0">
                                   <tr>
-                                    <td widtd="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
+                                    <td width="50%"><u style="font-size: 20px;"><strong>GEMILANG BODY & PAINT</strong><br>
                                     </u>
                                     Jl. Setia Budi No.152 <br>
                                     Srondol Kulon Semarang
+                                    </td>
+                                    <td align="right">
+                                      Tanggal : <?php echo $tgle;?><br>
+                                      Jam : <?php echo $jame;?>
                                     </td>                                   
                                   </tr>                                   
                                 </table>
