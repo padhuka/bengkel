@@ -80,6 +80,9 @@
               </table>
               <script>
             $('#tablekwitansi').DataTable({
+              "columnDefs": [
+                  { "orderable": false, "targets": 11 }
+                ],
                "language": {
                       "search": "Cari",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
