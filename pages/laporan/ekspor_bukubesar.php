@@ -1,9 +1,9 @@
 <?php
 // Fungsi header dengan mengirimkan raw data excel
-header("Content-type: application/vnd-ms-excel");
+///header("Content-type: application/vnd-ms-excel");
  
 // Mendefinisikan nama file ekspor "hasil-export.xls"
-header("Content-Disposition: attachment; filename=reportbukubesar.xls");
+///header("Content-Disposition: attachment; filename=reportbukubesar.xls");
  
 // Tambahkan table
 //include 'data.php';
@@ -64,8 +64,8 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                 <tbody>
                         <?php
                           $sqlcatat = "SELECT A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek, B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb FROM t_akun A
-                                      LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2'
-                                      LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2'  
+                                      LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2' AND B.status<>'Batal'
+                                      LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2' AND C.status<>'Batal'  
                                       WHERE (B.no_bukti<>'' OR C.no_bukti<>'') AND A.coa='$catat2[kode]'
                                       ORDER BY kode";
                                       //echo $sqlcatat;
