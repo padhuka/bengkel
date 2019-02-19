@@ -5,6 +5,7 @@
       <table id="gatepass" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
+                          <th>No</th>
                           <th>No Gate Pass</th>
                           <th>Tgl</th>
                           <th>No PKB</th>
@@ -18,12 +19,12 @@
                 <?php
                                     $j=1;
                                     $sqlcatat = "SELECT * FROM t_gate_pass 
-                                    ORDER BY no_gate_pass DESC";
+                                    ORDER BY tgl_trx DESC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
-
+                          <td><?php echo $j++;?></td> 
                           <td ><?php echo $catat['no_gate_pass'];?></td>
                           <td ><?php echo $catat['tgl'];?></td>
                           <td ><?php echo $catat['fk_pkb'];?></td>
