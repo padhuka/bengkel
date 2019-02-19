@@ -79,7 +79,7 @@
               <script>
             $('#tablekwitansi').DataTable({
               "columnDefs": [
-                  { "orderable": false, "targets": 11 }
+                  { "orderable": false, "targets": 10 }
                 ],
                "language": {
                       "search": "Cari",
