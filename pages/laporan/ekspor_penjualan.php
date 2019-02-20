@@ -65,7 +65,7 @@ header("Content-Disposition: attachment; filename=reportpenjualan.xls");
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
                                     $jml=0;
-                                    $sqlcatat = " SELECT gt.no_gate_pass as nogate, k.tgl_kwitansi as tgl,k.no_kwitansi,k.fk_pkb as no_pkb,p.fk_no_polisi as no_polisi
+                                    $sqlcatat ="SELECT gt.no_gate_pass as nogate, k.tgl_kwitansi as tgl,k.no_kwitansi,k.fk_pkb as no_pkb,p.fk_no_polisi as no_polisi
                                       ,p.fk_no_chasis as no_chasis,t.nama as jenis_kendaraan,p.kategori as kategori, a.nama as asuransi,c.nama as customer,
                                       p.total_gross_harga_panel as gross_panel,
                                       p.total_diskon_rupiah_panel as discount_panel,
@@ -75,15 +75,14 @@ header("Content-Disposition: attachment; filename=reportpenjualan.xls");
                                       p.total_netto_harga_part as net_part,
                                       k.total_kwitansi as dpp,k.total_ppn_kwitansi as ppn,
                                       k.total_payment as jumlah 
-                                  
                                     from t_kwitansi k 
-                                    left join (select * from t_pkb where tgl_batal='0000-00-00 00:00:00') as p on k.fk_pkb=p.id_pkb 
-                                    left join t_customer c on p.fk_customer=c.id_customer
+                                    left join (select * from t_pkb where tgl_batal='0000-00-00 00:00:00') as p on k.fk_pkb=p.id_pkb left join t_customer c on p.fk_customer=c.id_customer
                                     left join t_inventory_bengkel i on p.fk_no_chasis=i.no_chasis
                                     left join t_tipe_kendaraan t on i.fk_tipe_kendaraan=t.id_tipe_kendaraan
                                     left join t_asuransi a on p.fk_asuransi=a.id_asuransi
                                     left join t_gate_pass gt on k.fk_pkb=gt.fk_pkb
-                                    where k.tgl_batal='0000-00-00 00:00:00' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2'";
+                                    where k.tgl_batal='0000-00-00 00:00:00' AND substring(tgl,1,10)>='$tgl1' AND 
+                                      substring(tgl,1,10)<='$tgl2'";
                                    	$rescatat = mysql_query( $sqlcatat );
                                     //echo $sqlcatat;
                                     while($catat = mysql_fetch_array( $rescatat )){
