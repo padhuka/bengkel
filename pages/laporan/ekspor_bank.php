@@ -21,7 +21,11 @@ header("Content-Disposition: attachment; filename=reportbank.xls");
                                     </u>
                                     Jl. Setia Budi No.152 <br>
                                     Srondol Kulon Semarang
-                                    </td>                                   
+                                    </td>      
+                                     <td align="right">
+                                      Tanggal : <?php echo $tgle;?><br>
+                                      Jam : <?php echo $jame;?>
+                                    </td>                             
                                   </tr>                                   
                                 </table>
                                     <span style="font-size: 20px;font-weight: bold;"><center>Laporan Bank</center></span>
