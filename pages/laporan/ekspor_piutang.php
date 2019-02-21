@@ -52,13 +52,13 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                     $tgl2=$_GET['tgl2'];
                                     $j=1;
                                    // $jml=0;
-                                    $sqlcatat = " SELECT * FROM (
+                                    $sqlcatat = "SELECT * FROM (
                               SELECT p.id_pkb AS idpkb,p.tgl AS tglpkb, p.kategori AS kat, a.nama AS nmasuransi, k.no_kwitansi AS nokw, k.tgl_kwitansi AS tglkw, c.nama AS nmcus,
                                     k.total_payment AS total_bayar, titip_cash ,titip_bank,or_cash, or_bank, k.total_payment-(ifnull(titip_cash,0)+ifnull(titip_bank,0)+ifnull(or_cash,0)+ifnull(or_bank,0)) as piutang
                                     FROM t_pkb p
-                                    INNER JOIN t_customer c ON p.fk_customer=c.id_customer
-                                    INNER JOIN (SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') as k ON p.id_pkb=k.fk_pkb
-                                    INNER JOIN (SELECT * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') as kor ON p.fk_estimasi=kor.fk_estimasi
+                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
+                                    LEFT JOIN (SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') as k ON p.id_pkb=k.fk_pkb
+                                    LEFT JOIN (SELECT * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') as kor ON p.fk_estimasi=kor.fk_estimasi
                                         LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
                                         FROM t_cash  where tgl_batal='0000-00-00 00:00:00'
                                         GROUP BY no_ref) AS cash ON cash.no_ref=k.no_kwitansi                                     
@@ -72,7 +72,8 @@ header("Content-Disposition: attachment; filename=reportpiutang.xls");
                                            FROM t_bank    where tgl_batal='0000-00-00 00:00:00'
                                         GROUP BY no_ref)AS orbank ON orbank.no_ref=kor.no_kwitansi_or                                 
                                         LEFT JOIN t_asuransi a ON p.fk_asuransi=a.id_asuransi
-                                        WHERE p.tgl_batal='0000-00-00 00:00:00' ) as AR where AR.piutang > 0.9";
+                                        WHERE p.tgl_batal='0000-00-00 00:00:00'
+                                        ) as AR where AR.piutang > 0.9";
                                    	$rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){  
                                                               
