@@ -1,13 +1,12 @@
 <?php
 // Fungsi header dengan mengirimkan raw data excel
-header("Content-type: application/vnd-ms-excel");
+///header("Content-type: application/vnd-ms-excel");
  
 // Mendefinisikan nama file ekspor "hasil-export.xls"
-header("Content-Disposition: attachment; filename=reportbukubesar.xls");
+///header("Content-Disposition: attachment; filename=reportbukubesar.xls");
  
 // Tambahkan table
 //include 'data.php';
-
 ?>
 								      <?php
             include_once '../../lib/config.php';
@@ -52,7 +51,7 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                                       $j=1;
                                         //$jml=$jml+$catat['jumlah'];  
                                 ?>
-              <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
+              <table id="tablebb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
                           <th>No</th>
@@ -69,10 +68,10 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                 </thead>
                 <tbody>
                         <?php
-                          $sqlcatat = "SELECT A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek, B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb FROM t_akun A
-                                      LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2' AND B.status<>'Batal'
-                                      LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2' AND C.status<>'Batal'  
-                                      WHERE (B.no_bukti<>'' OR C.no_bukti<>'') AND A.coa='$catat2[kode]'
+                          $sqlcatat = "SELECT D.*,A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek,B.ref_akun AS nmre1, C.ref_akun AS nmre2,  B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb FROM t_akun A 
+                            LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2' AND B.status<>'Batal'
+                            LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2' AND C.status<>'Batal'  
+                            LEFT JOIN t_acc_cash D ON A.coa=D.ref_akun
                                       ORDER BY kode";
                                       //echo $sqlcatat;
                                     $rescatat = mysql_query( $sqlcatat );
@@ -82,7 +81,15 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                           <th><?php echo $j++;?></th>                 
                           <td><?php echo $catat['kode'];?></td>
                           <td><?php echo $catat['tgl'];?><?php echo $catat['tglb'];?></td>
-                          <td><?php echo $catat['nmrek'];?></td>
+                          
+                          <?php 
+                            if($catat['nmre1']){
+                                $ref = mysql_fetch_array(mysql_query("SELECT description FROM t_akun WHERE coa='$catat[nmre1]'"));
+                            }
+                            if($catat['nmre2']){
+                                $ref = mysql_fetch_array(mysql_query("SELECT description FROM t_akun WHERE coa='$catat[nmre2]'"));
+                            }?>
+                          <td><?php if (isset($ref['description'])){echo $ref['description'];};?></td>
                           <td><?php echo $catat['ket'];?><?php echo $catat['ketb'];?></td>
                           <td><?php //echo rupiah2($catat['jumlah']);?></td>   
                           <td><?php if ($catat['kredit']=='D') {echo $catat['jmle'];$jmlD=$jmlD+$catat['jmle'];};  if ($catat['kreditb']=='D') {echo $catat['jmleb'];$jmlD=$jmlD+$catat['jmleb'];}?></td>
