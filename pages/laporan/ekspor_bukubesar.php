@@ -1,9 +1,9 @@
 <?php
 // Fungsi header dengan mengirimkan raw data excel
-///header("Content-type: application/vnd-ms-excel");
+header("Content-type: application/vnd-ms-excel");
  
 // Mendefinisikan nama file ekspor "hasil-export.xls"
-///header("Content-Disposition: attachment; filename=reportbukubesar.xls");
+header("Content-Disposition: attachment; filename=reportbukubesar.xls");
  
 // Tambahkan table
 //include 'data.php';
@@ -55,7 +55,7 @@
               <table id="tablebb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light" border='1px'>
                 <tr>
-                          <th>Noxx</th>
+                          <th>No</th>
                           <th>Kode Transaksi</th>
                           <th>Tanggal Transaksi</th>
                           <th>Nama Rekening</th>
