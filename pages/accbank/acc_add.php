@@ -29,7 +29,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_akun WHERE coa NOT LIKE '11.02.01%' ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_akun WHERE coa='11.01.01.00.01' or coa='11.01.01.00.02' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
