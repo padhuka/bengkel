@@ -1,6 +1,7 @@
 <?php
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
+        include_once '../../lib/sess.php';
         //$ip = ; // Ambil IP Address dari User
         //$id_estimasi = trim($_POST['id_estimasi']);
         $chasis = trim($_POST['chasis']);
@@ -14,6 +15,7 @@
         $customer = trim($_POST['customer']);
         $asuransi = trim($_POST['asuransi']);
         $tglselesai = trim($_POST['tglselesai']);
+         $sesuname = $_SESSION['sesiuidbpn'];
         //message_back($id_estimasi);
         //$kodeawal = 'est_'.$hrini.'_';
         $hrn2= date('dmy' , strtotime($hrini));
@@ -46,7 +48,7 @@
         
         $kodebaru = $kodeawal.$kodeakhir;     
         
-        $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,tgl_estimasi_selesai) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$tglselesai')";
+        $sqltbemp = "INSERT INTO t_estimasi (id_estimasi,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,tgl_estimasi_selesai,username) VALUES ('$kodebaru','$chasis','$mesin','$polisi','$kmmasuk','$uname','$kategori','$customer','$asuransi','$tglselesai','$sesuname')";
             mysql_query($sqltbemp);
             echo $kodebaru.'-'.$warnanm;
 ?>

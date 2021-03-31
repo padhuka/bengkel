@@ -1,11 +1,13 @@
 <?php
         include_once '../../lib/config.php';
         include_once '../../lib/fungsi.php';
+        include_once '../../lib/sess.php';
          //$ip = ; // Ambil IP Address dari User
         //$id_pkb = trim($_POST['id_pkb']);
         $idestimasi = trim($_POST['idestimasi']);
         //message_back($id_pkb);
         //$kodeawal = 'est_'.$hrini.'_';
+        $sesuname = $_SESSION['sesiuidbpn'];
         $hrn2= date('dmy' , strtotime($hrini));
   //EST.BR.020818.000001
         $kodeawal2 = 'PKB_BR.';
@@ -40,7 +42,7 @@
             $hest= mysql_fetch_array(mysql_query($sqlest));
 
 
-            $sqltbemp = "INSERT INTO t_pkb (id_pkb,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,fk_estimasi,total_gross_harga_panel,total_diskon_rupiah_panel,total_netto_harga_panel,total_gross_harga_part,total_diskon_rupiah_part,total_netto_harga_part,total_gross_harga_jasa,total_diskon_rupiah_jasa,total_netto_harga_jasa) VALUES ('$kodebaru','$hest[fk_no_chasis]','$hest[fk_no_mesin]','$hest[fk_no_polisi]','$hest[km_masuk]','$hest[fk_user]','$hest[kategori]','$hest[fk_customer]','$hest[fk_asuransi]','$hest[id_estimasi]','$hest[total_gross_harga_panel]','$hest[total_diskon_rupiah_panel]','$hest[total_netto_harga_panel]','$hest[total_gross_harga_part]','$hest[total_diskon_rupiah_part]','$hest[total_netto_harga_part]','$hest[total_gross_harga_jasa]','$hest[total_diskon_rupiah_jasa]','$hest[total_netto_harga_jasa]')";
+            $sqltbemp = "INSERT INTO t_pkb (id_pkb,fk_no_chasis,fk_no_mesin,fk_no_polisi,km_masuk,fk_user,kategori,fk_customer,fk_asuransi,fk_estimasi,total_gross_harga_panel,total_diskon_rupiah_panel,total_netto_harga_panel,total_gross_harga_part,total_diskon_rupiah_part,total_netto_harga_part,total_gross_harga_jasa,total_diskon_rupiah_jasa,total_netto_harga_jasa,username) VALUES ('$kodebaru','$hest[fk_no_chasis]','$hest[fk_no_mesin]','$hest[fk_no_polisi]','$hest[km_masuk]','$hest[fk_user]','$hest[kategori]','$hest[fk_customer]','$hest[fk_asuransi]','$hest[id_estimasi]','$hest[total_gross_harga_panel]','$hest[total_diskon_rupiah_panel]','$hest[total_netto_harga_panel]','$hest[total_gross_harga_part]','$hest[total_diskon_rupiah_part]','$hest[total_netto_harga_part]','$hest[total_gross_harga_jasa]','$hest[total_diskon_rupiah_jasa]','$hest[total_netto_harga_jasa]','$sesuname')";
             mysql_query($sqltbemp);
             //echo $sqltbemp;
             //echo $kodebaru.'-'.$warnanm;
