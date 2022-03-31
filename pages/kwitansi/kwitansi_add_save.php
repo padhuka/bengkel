@@ -47,17 +47,8 @@
             $nettototal = $hsl['total_netto_harga_jasa'];
             $nilaior = $hsl['nilai_kwitansi'];
 
-            $tgl_pkb = date('Y-m-d');
-            $tgl = '2022-04-01';
-
-            if ($tgl_pkb < $tgl ){
-                $ppn = $nettototal*10/100;
-            }
-            if ($tgl_pkb >= $tgl ){
-                $ppn = $nettototal*11/100;
-            }
+            $ppn = $nettototal*11/100;
             $payment = $nettototal+$ppn;
-
         
         $sqltbemp = "INSERT INTO t_kwitansi (no_kwitansi,fk_pkb,total_gross_panel,total_gross_part,total_diskon_panel,total_diskon_part,total_netto_panel,total_netto_part,total_ppn_kwitansi,total_kwitansi,total_payment) VALUES ('$kodebaru','$idpkb','$grosspanel','$grosspart','$diskonpanel','$diskonpart','$nettopanel','$nettopart',$ppn,'$nettototal',$payment)";
 
