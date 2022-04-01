@@ -80,7 +80,7 @@
                         </tr>
                     <?php }?>
                         <tr><td colspan="2" align="center">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
-                        <tr><td colspan="2" align="center">PPN</td><td align="right"><?php echo rupiah2((10/100)*$catat['total_netto_harga_jasa']);?></td></tr>
+                        <tr><td colspan="2" align="center">PPN</td><td align="right"><?php echo rupiah2((11/100)*$catat['total_netto_harga_jasa']);?></td></tr>
                         <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td></tr>
                 </tfoot>
               </table>
