@@ -74,13 +74,13 @@
                                 </table>
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                             <tr><td colspan="2" align="right">Sub Total Jasa</td><td align="right" width="20%"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
-                                            <tr><td colspan="2" align="right">PPN</td><td align="right"><?php echo rupiah2((10/100)*$catat['total_netto_harga_jasa']);?></td></tr>
-                                            <tr><td colspan="2" align="right">Total Jasa</td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">PPN</td><td align="right"><?php echo rupiah2((11/100)*$catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">Total Jasa</td><td align="right"><?php echo rupiah2((1.11)*$catat['total_netto_harga_jasa']);?></td></tr>
                                 </table>
                                 <br>
 
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-                                   <tr><td align="right"><strong>GRAND TOTAL RP <?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></strong></td><td width="10%"></td></tr>
+                                   <tr><td align="right"><strong>GRAND TOTAL RP <?php echo rupiah2((1.11)*$catat['total_netto_harga_jasa']);?></strong></td><td width="10%"></td></tr>
                                  </table>
                                 <br><br>
                                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
