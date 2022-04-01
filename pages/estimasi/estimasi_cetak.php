@@ -74,8 +74,22 @@
                                 </table>
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                             <tr><td colspan="2" align="right">Sub Total Jasa</td><td align="right" width="20%"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
-                                            <tr><td colspan="2" align="right">PPN</td><td align="right"><?php echo rupiah2((11/100)*$catat['total_netto_harga_jasa']);?></td></tr>
-                                            <tr><td colspan="2" align="right">Total Jasa</td><td align="right"><?php echo rupiah2((1.11)*$catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">PPN</td><td align="right"><?php 
+
+                                            $per_april = '2022-04-01';
+                                             $tgl_estimasi = $catat['tgl'];
+                                              
+                                              if ($tgl_estimasi < $per_april) {
+                                                $ppn = 0.1;
+                                                $kali = 1.1;
+                                              }
+                                              if ($tgl_estimasi >= $per_april){
+                                                $ppn = 0.11;
+                                                $kali = 1.11;
+                                              }
+
+                                            echo rupiah2($ppn*$catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">Total Jasa</td><td align="right"><?php echo rupiah2($kali*$catat['total_netto_harga_jasa']);?></td></tr>
                                 </table>
                                 <br>
 
