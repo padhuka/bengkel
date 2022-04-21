@@ -82,7 +82,7 @@
                         <tr><td colspan="2" align="center">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
                         <tr><td colspan="2" align="center">PPN</td><td align="right"><?php
 
-                        $per_april = '2022-04-01';
+                         $per_april = '2022-04-01';
                          $tgl_pkb = $catat['tgl'];
                           
                           if ($tgl_pkb < $per_april) {
@@ -95,7 +95,7 @@
                           }
 
                          echo rupiah2($ppn*$catat['total_netto_harga_jasa']);?></td></tr>
-                        <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2((110/100)*$catat['total_netto_harga_jasa']);?></td></tr>
+                        <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2($kali*$catat['total_netto_harga_jasa']);?></td></tr>
                 </tfoot>
               </table>
                        <div class="form-group">
