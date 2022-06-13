@@ -210,7 +210,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="tglpenjmarking2" name="tglpenjmarking12" required value="<?php echo $harinow;?>">
+                              <input type="text" class="form-control pull-right" id="tglpenjmarking2" name="tglpenjmarking2" required value="<?php echo $harinow;?>">
                             </div> </td></tr></table>
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpenjualanmarking()">Generate</span></strong></span></td>
                     </tr>
@@ -289,6 +289,8 @@
     $('#tglgetpas2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpenj1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpenj2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglpenjmarking1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglpenjmarking2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglbukebesar1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglbukebesar2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tgllabarugi1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
