@@ -198,6 +198,24 @@
                     </tr>
                     <tr>
 
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Penjualan Marking</label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglpenjmarking1" name="tglpenjmarking1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglpenjmarking2" name="tglpenjmarking12" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpenjualanmarking()">Generate</span></strong></span></td>
+                    </tr>
+                    <tr>
+
                             <td width="30%" >&nbsp;<label style="font-size: 16px;">Buku Besar </label></td><td>
                               <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
                             <div class="input-group date">
@@ -321,6 +339,10 @@
      function eksporpenjualan(){
       var x =$('#tglpenj1').val(); var y= $('#tglpenj2').val();      
       window.location = "laporan/ekspor_penjualan.php?tgl1="+x+"&tgl2="+y;
+    }
+    function eksporpenjualanmarking(){
+      var x =$('#tglpenjmarking1').val(); var y= $('#tglpenjmarking2').val();      
+      window.location = "laporan/ekspor_penjualan_panel_marking.php?tgl1="+x+"&tgl2="+y;
     }
 
     function eksporbukubesar(){
