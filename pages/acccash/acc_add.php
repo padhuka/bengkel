@@ -29,7 +29,7 @@
                 <tbody>
                 <?php
                                     $j=1;
-                                    $sqlcatat = "SELECT * FROM t_akun WHERE (coa LIKE '61.%' or coa like '51.%') ORDER BY id ASC";
+                                    $sqlcatat = "SELECT * FROM t_akun WHERE coa like '61.%' or coa like '51.%' or coa like '81%' or coa like '12%' ORDER BY id ASC";
                                     $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
