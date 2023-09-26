@@ -32,7 +32,7 @@
                                     <td width="50%"><u style="font-size: 14px;"><strong>GEMILANG BODY & PAINT</strong><br>
                                     </u>
                                     Jl. Setia Budi No.152 <br>
-                                    Srondol Kulon Semarang
+                                    Srondol Wetan Semarang
                                     </td>
                                     <td width="50%" align="center">
                                     <h1>GATE PASS <?php echo strtoupper($catat['status']);?></h1>
