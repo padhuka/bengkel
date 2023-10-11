@@ -92,7 +92,7 @@
                                  </table><br>
                                   <hr width="100%" align="center"> 
                                   <br>
-                                   <tr><td width="50%" align="center"><i>Pembayaran transfer ke rekening Bank Mandiri 138-00-2283522-2 a/n CV. Bintang Putra Mobil Indo </i></td></tr>
+                                   <tr><td width="50%" align="center"><i>Pembayaran transfer ke rekening : <br> Bank Mandiri 138-00-2283522-2 <br> a/n CV. Bintang Putra Mobil Indo </i></td></tr>
                                
 </body>
 </html>
