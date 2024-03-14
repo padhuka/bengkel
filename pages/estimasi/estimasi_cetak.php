@@ -74,6 +74,7 @@
                                 </table>
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                                             <tr><td colspan="2" align="right">Sub Total Jasa</td><td align="right" width="20%"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">Total Diskon</td><td align="right" width="20%"><?php echo rupiah2($catat['total_diskon_rupiah_part']+$catat['total_diskon_rupiah_panel']);?></td></tr>
                                             <tr><td colspan="2" align="right">PPN</td><td align="right"><?php 
 
                                             $per_april = '2022-04-01';
