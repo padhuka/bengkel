@@ -43,6 +43,7 @@
                                             <tr>
                                               <td align="center" width="3%">NO.</td>
                                               <td align="center">PEKERJAAN</td>
+                                              <td align="center">DISKON</td>
                                               <td align="center">TOTAL</td>
                                             </tr>
                                             <tr><td colspan="3"><strong>PANEL</strong></td></tr>
@@ -56,6 +57,7 @@
                                             <tr>
                                               <td ><?php echo $j++;?></td>
                                               <td ><?php echo $catatp['nama'];?></td>
+                                              <td ><?php if($catatp['diskon_panel']>0) { echo $catatp['diskon_panel'] . "%"; } else { echo "";} ?></td>
                                               <td align="right"><?php echo rupiah2($catatp['harga_total_estimasi_panel']);?></td>
                                             </tr>
                                         <?php }?>
@@ -68,12 +70,13 @@
                                             <tr>
                                               <td ><?php echo $j++;?></td>
                                               <td ><?php echo $catat2['nama'];?></td>
+                                              <td ><?php if($catat2['diskon_part']>0) { echo $catat2['diskon_part'] . "%" ; } else { echo "";}?></td>
                                               <td align="right"><?php echo rupiah2($catat2['harga_total_estimasi_part']);?></td>
                                             </tr>
                                         <?php }?>
                                 </table>
                                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-                                            <tr><td colspan="2" align="right">Sub Total Jasa</td><td align="right" width="20%"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">Sub Total Jasa + Part</td><td align="right" width="20%"><?php echo rupiah2($catat['total_netto_harga_jasa']);?></td></tr>
                                             <tr><td colspan="2" align="right">Total Diskon</td><td align="right" width="20%"><?php echo rupiah2($catat['total_diskon_rupiah_part']+$catat['total_diskon_rupiah_panel']);?></td></tr>
                                             <tr><td colspan="2" align="right">PPN</td><td align="right"><?php 
 
@@ -90,7 +93,7 @@
                                               }
 
                                             echo rupiah2($ppn*$catat['total_netto_harga_jasa']);?></td></tr>
-                                            <tr><td colspan="2" align="right">Total Jasa</td><td align="right"><?php echo rupiah2($kali*$catat['total_netto_harga_jasa']);?></td></tr>
+                                            <tr><td colspan="2" align="right">Total Jasa + Part</td><td align="right"><?php echo rupiah2($kali*$catat['total_netto_harga_jasa']);?></td></tr>
                                 </table>
                                 <br>
 
