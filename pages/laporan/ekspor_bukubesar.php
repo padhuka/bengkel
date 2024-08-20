@@ -60,6 +60,8 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                           <th>Tanggal Transaksi</th>
                           <th>Nama Rekening</th>
                           <th>Keterangan</th>
+                          <th>No Bukti</th>
+                          <th>Status</th>
                           <th>Tanggal Kirim</th>
                           <th>Terima/Debet</th>
                           <th>Keluar/Kredit</th>
@@ -69,7 +71,7 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                 </thead>
                 <tbody>
                         <?php
-                          $sqlcatat = "SELECT A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek,B.ref_akun AS nmre1, C.ref_akun AS nmre2,  B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb FROM t_akun A 
+                          $sqlcatat = "SELECT A.coa AS kode, B.tr_date AS tgl,C.tr_date AS tglb, A.description AS nmrek,B.ref_akun AS nmre1, C.ref_akun AS nmre2,  B.description AS ket, C.description ketb, B.transaction_type AS kredit, C.transaction_type AS kreditb, B.amount AS jmle, C.amount AS jmleb, B.status as statusB, C.status as statusC, B.no_Bukti as buktiB, C.no_bukti as buktiC FROM t_akun A 
                             LEFT JOIN t_acc_cash B ON A.coa=B.fk_akun AND B.tr_date>='$tgl1' AND B.tr_date<='$tgl2' AND B.status<>'Batal'AND B.no_bukti<>''
                             LEFT JOIN t_acc_bank C ON A.coa=C.fk_akun AND C.tr_date>='$tgl1' AND C.tr_date<='$tgl2' AND C.status<>'Batal' AND C.no_bukti<>''
                             WHERE A.coa='$catat2[kode]'
@@ -92,6 +94,14 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                             }?>
                           <td><?php if (isset($ref['description'])){echo $ref['description'];};?></td>
                           <td><?php echo $catat['ket'];?><?php echo $catat['ketb'];?></td>
+                            <td><?php if ($catat['nmre1']) {
+                              echo $catat['buktiB'];
+                            } else {     echo $catat['buktiC'];
+                            }?></td>
+                            <td><?php if ($catat['nmre1']) {
+                              echo $catat['statusB'];
+                            } else {     echo $catat['statusC'];
+                            }?></td>
                           <td><?php //echo rupiah2($catat['jumlah']);?></td>   
                           <td align="right"><?php if ($catat['kredit']=='D') {echo $catat['jmle'];$jmlD=$jmlD+$catat['jmle'];};  if ($catat['kreditb']=='D') {echo $catat['jmleb'];$jmlD=$jmlD+$catat['jmleb'];}?></td>
                           <td><?php if ($catat['kredit']=='C') {echo $catat['jmle'];$jmlC=$jmlC+$catat['jmle'];}; if ($catat['kreditb']=='C') {echo $catat['jmleb'];$jmlC=$jmlC+$catat['jmleb'];}?></td>
