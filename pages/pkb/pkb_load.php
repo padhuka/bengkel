@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -18,10 +18,11 @@
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
+                    $j         = 1;
+                    $per_limit = '2024-01-01';
+                    $sqlcatat  = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                   LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON p.id_pkb=k.fk_pkb   
+                                   LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON p.id_pkb=k.fk_pkb
                                    LEFT JOIN (SELECT id, fk_pkb, status
                                       FROM t_status_pkb
                                       WHERE id IN (
@@ -29,32 +30,32 @@
                                       FROM t_status_pkb
                                       GROUP BY fk_pkb
                                     ))AS state ON p.id_pkb=state.fk_pkb
-                                   WHERE p.tgl_batal='0000-00-00 00:00:00'
+                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.tgl >= '$per_limit'
                                    ORDER BY p.tgl DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
+                    $rescatat = mysql_query($sqlcatat);
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
                         <tr>
-                          <td><?php echo $j++;?></td>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
-                       
-                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          
-                          <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo $catat['statuspkb'];?></td>
+                          <td><?php echo $j++; ?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo($catat['id_pkb']); ?></span></button></td>
+
+                          <td ><?php echo date('d-m-Y', strtotime($catat['tgl'])); ?></td>
+                          <td ><?php echo $catat['fk_no_chasis']; ?></td>
+                          <td ><?php echo $catat['fk_no_mesin']; ?></td>
+
+                          <td ><?php echo $catat['fk_no_polisi']; ?></td>
+                          <td ><?php echo $catat['nama']; ?></td>
+                          <td ><?php echo $catat['statuspkb']; ?></td>
 
                           <td >
-                                    <?php 
-                                      $sqlkwcash2="SELECT no_kwitansi FROM t_kwitansi WHERE fk_pkb='$catat[id_pkb]' AND tgl_batal<>'0000-00-00 00:00:00'";
-                                            $hkwcash2=mysql_fetch_array(mysql_query($sqlkwcash2));
-                                            $lunas2=$hkwcash2['no_kwitansi'];
-                                    ?>
-                                    <?php if($catat['statuspkb']=='PROSES REPAIR' || $lunas2){?>
+                                    <?php
+                                        $sqlkwcash2 = "SELECT no_kwitansi FROM t_kwitansi WHERE fk_pkb='$catat[id_pkb]' AND tgl_batal<>'0000-00-00 00:00:00'";
+                                            $hkwcash2   = mysql_fetch_array(mysql_query($sqlkwcash2));
+                                            $lunas2     = $hkwcash2['no_kwitansi'];
+                                        ?>
+<?php if ($catat['statuspkb'] == 'PROSES REPAIR' || $lunas2) {?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_modal(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Edit</span></button>
-                                          
+
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_del(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Batal</span></button>
 
                                          <?php }?>
@@ -62,7 +63,8 @@
 
                                     </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -78,7 +80,7 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
-           
+
            function open_add(){
               $.ajax({
                     url: "pkb/pkb_add.php",
@@ -89,7 +91,7 @@
                       }
                     });
               }
-                        
+
            function open_del(x){
                                 $.ajax({
                                     url: "pkb/pkb_del.php?idpkb="+x,
@@ -100,7 +102,7 @@
                                     }
                                 });
             };
-              
+
             function open_modal(y){
                               $.ajax({
                                   url: "pkb/pkb_edit_detail.php?idpkb="+y,
@@ -110,7 +112,7 @@
                                       $("#ModalEdit").modal({backdrop: 'static',keyboard: false});
                                   }
                               });
-            };         
+            };
             function open_pkb(z){
                               $.ajax({
                                   url: "pkb/pkb_show.php?idpkb="+z,
@@ -131,7 +133,7 @@
                                   }
                               });
             };
-            
+
       </script>
 
 <style type="text/css">

@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <table id="gatepass" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -10,33 +10,36 @@
                           <th>Tgl</th>
                           <th>No PKB</th>
                           <th>Status</th>
-                        
-                     
+
+
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT * FROM t_gate_pass 
+                    $j         = 1;
+                    $per_limit = '2024-01-01';
+                    $sqlcatat  = "SELECT * FROM t_gate_pass
+                                WHERE tgl_trx >= '$per_limit'
                                     ORDER BY tgl_trx DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
+                    $rescatat = mysql_query($sqlcatat);
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
                         <tr>
-                          <td><?php echo $j++;?></td> 
-                          <td ><?php echo $catat['no_gate_pass'];?></td>
-                          <td ><?php echo $catat['tgl'];?></td>
-                          <td ><?php echo $catat['fk_pkb'];?></td>
-                          <td ><?php echo $catat['status'];?></td>
-                         
+                          <td><?php echo $j++; ?></td>
+                          <td ><?php echo $catat['no_gate_pass']; ?></td>
+                          <td ><?php echo $catat['tgl']; ?></td>
+                          <td ><?php echo $catat['fk_pkb']; ?></td>
+                          <td ><?php echo $catat['status']; ?></td>
+
                           <td >
-                                        
+
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_gate_pass']; ?>" onclick="cetak_get(nogatepass='<?php echo $catat['no_gate_pass']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -52,7 +55,7 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
-           
+
            function open_add(){
               $.ajax({
                     url: "gatepass/gatepass_add.php",
@@ -63,7 +66,7 @@
                       }
                     });
               }
-              
+
            function open_del(x){
                                 $.ajax({
                                     url: "gatepass/gatepass_del.php?nogatepass="+x,
@@ -74,7 +77,7 @@
                                     }
                                 });
             };
-      
+
             function open_gatepass(z){
                               $.ajax({
                                   url: "gatepass/gatepass_show.php?nogatepass="+z,

@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ALL ^ E_DEPRECATED);  
 	include_once 'setting.php';
 	$objConn = mysql_connect("{$host}", "{$user}", "{$passsw}");
 	mysql_select_db( "{$db}", $objConn );

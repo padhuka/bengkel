@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <table id="tablekwitansi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -15,65 +15,69 @@
                           <th>Total</th>
                           <th>PPN</th>
                            <th>Total Bayar</th>
-                         
+
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,p.fk_no_polisi,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k 
-                                      INNER JOIN t_pkb p ON k.fk_pkb=p.id_pkb 
+                    $j         = 1;
+                    $per_limit = '2024-01-01';
+
+                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,p.fk_no_polisi,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k
+                                      INNER JOIN t_pkb p ON k.fk_pkb=p.id_pkb
                                       INNER JOIN t_customer c ON p.fk_customer=c.id_customer
-                                      WHERE k.tgl_batal='0000:00:00 00:00:00'
-                                      ORDER BY k.tgl_kwitansi DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
-                        <tr>  
-                          <td><?php echo $j++;?></td>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_kwitansi(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span><?php echo ($catat['no_kwitansi']);?></span></button></td>
-                       
-                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi']));?></td>
-<!--                           <td ><?php echo $catat['id_pkb'];?></td> --> 
-                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
-                   
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo rupiah2($catat['total_kwitansi']);?></td>
-                          <td ><?php echo rupiah2($catat['total_ppn_kwitansi']);?></td>
-                          <td ><?php echo rupiah2($catat['total_payment']);?></td>
+                                      WHERE k.tgl_batal='0000:00:00 00:00:00' AND k.tgl_kwitansi >= '$per_limit'
+                                      ORDER BY k.tgl_kwitansi DESC ";
+                    $rescatat = mysql_query($sqlcatat);
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
+                        <tr>
+                          <td><?php echo $j++; ?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_kwitansi(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span><?php echo($catat['no_kwitansi']); ?></span></button></td>
+
+                          <td ><?php echo date('d-m-Y', strtotime($catat['tgl_kwitansi'])); ?></td>
+<!--                           <td ><?php echo $catat['id_pkb']; ?></td> -->
+                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo($catat['id_pkb']); ?></span></button></td>
+
+                          <td ><?php echo $catat['fk_no_chasis']; ?></td>
+                          <td ><?php echo $catat['fk_no_polisi']; ?></td>
+                          <td ><?php echo $catat['nama']; ?></td>
+                          <td ><?php echo rupiah2($catat['total_kwitansi']); ?></td>
+                          <td ><?php echo rupiah2($catat['total_ppn_kwitansi']); ?></td>
+                          <td ><?php echo rupiah2($catat['total_payment']); ?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="cetak_kw(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Cetak</span></button>
-                                        <?php 
-                                        #CASH
-                                            $sqlkwcash="SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
-                                            $hkwcash=mysql_fetch_array(mysql_query($sqlkwcash));
-                                            $lunas=$hkwcash['no_bukti'];
+                                        <?php
+                                            #CASH
+                                                $sqlkwcash = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
+                                                $hkwcash   = mysql_fetch_array(mysql_query($sqlkwcash));
+                                                $lunas     = $hkwcash['no_bukti'];
 
-                                           $sqllunas="SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
-                                           $hcekcash=mysql_fetch_array(mysql_query($sqllunas));
-                                           $ada=$hcekcash['no_bukti'];
-                                        #BANK
-                                           $sqlkwcash2="SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
-                                            $hkwcash2=mysql_fetch_array(mysql_query($sqlkwcash2));
-                                            $lunas2=$hkwcash2['no_bukti'];
+                                                $sqllunas = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
+                                                $hcekcash = mysql_fetch_array(mysql_query($sqllunas));
+                                                $ada      = $hcekcash['no_bukti'];
+                                                #BANK
+                                                $sqlkwcash2 = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
+                                                $hkwcash2   = mysql_fetch_array(mysql_query($sqlkwcash2));
+                                                $lunas2     = $hkwcash2['no_bukti'];
 
-                                           $sqllunas2="SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
-                                           $hcekcash2=mysql_fetch_array(mysql_query($sqllunas2));
-                                           $ada2=$hcekcash2['no_bukti'];
+                                                $sqllunas2 = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
+                                                $hcekcash2 = mysql_fetch_array(mysql_query($sqllunas2));
+                                                $ada2      = $hcekcash2['no_bukti'];
 
-                                           if($ada || $ada2){if($lunas || $lunas2){
-                                        ?>
+                                                if ($ada || $ada2) {if ($lunas || $lunas2) {
+                                                ?>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>
-                                         <?php } }else{?>
+                                         <?php
+                                         }} else {?>
                                           <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi']; ?>" onclick="open_del(idkwitansi='<?php echo $catat['no_kwitansi']; ?>');"><span>Batal</span></button>
-                                        <?php  }?>
+                                        <?php }?>
 
                                     </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -89,7 +93,7 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
-           
+
            function open_add(){
               $.ajax({
                     url: "kwitansi/kwitansi_add.php",
@@ -100,7 +104,7 @@
                       }
                     });
               }
-            
+
              function open_del(x){
                                 $.ajax({
                                     url: "kwitansi/kwitansi_del.php?idkwitansi="+x,
@@ -111,7 +115,7 @@
                                     }
                                 });
             };
-                         
+
             function open_pkb(z){
                               $.ajax({
                                   url: "pkb/pkb_show.php?idpkb="+z,
@@ -132,7 +136,7 @@
                                   }
                               });
             };
-            
+
       </script>
 
 <style type="text/css">

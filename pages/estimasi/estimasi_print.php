@@ -1,24 +1,24 @@
 <!-- general form elements disabled -->
    <?php
-// include_once '../../lib/sess.php';
-include_once '../../lib/config.php';
-include_once '../../lib/fungsi.php';
-$idestimasi = $_GET['idestimasi'];
-//   $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
-//  $catat= mysql_fetch_array(mysql_query($sqlpan));
+       // include_once '../../lib/sess.php';
+       include_once '../../lib/config.php';
+       include_once '../../lib/fungsi.php';
+       $idestimasi = $_GET['idestimasi'];
+       //   $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
+       //  $catat= mysql_fetch_array(mysql_query($sqlpan));
 
-?>
+   ?>
 <div class="modal-dialog">
            <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-right: 0px">Data Estimasi <button type="button" class="close" aria-label="Close" onclick="$('#ModalEstPrint').modal('hide');"><span>&times;</span></button></h4>
                     </div>
                   <?php
-$j = 1;
-$sqlcatat = "SELECT * FROM t_estimasi e left join t_customer c on e.fk_customer=c.id_customer where e.id_estimasi='$idestimasi'";
-$rescatat = mysql_query($sqlcatat);
-$catat = mysql_fetch_array($rescatat);
-?>
+                      $j        = 1;
+                      $sqlcatat = "SELECT * FROM t_estimasi e left join t_customer c on e.fk_customer=c.id_customer where e.id_estimasi='$idestimasi'";
+                      $rescatat = mysql_query($sqlcatat);
+                      $catat    = mysql_fetch_array($rescatat);
+                  ?>
                     <div class="modal-body">
                       <div class="modal-title-detail" align="center"><h4><u>ESTIMASI BODY REPAIR</u></h4><h5><?php echo $catat['id_estimasi']; ?></h5></div>
                       <div class="row">
@@ -57,48 +57,45 @@ $catat = mysql_fetch_array($rescatat);
                         </thead>
                         <tbody>
                 <?php
-$j = 1;
-$sqlcatatp = "SELECT * FROM t_estimasi_panel_detail a LEFT JOIN t_panel p ON a.fk_panel=p.id_panel WHERE a.fk_estimasi='$idestimasi'";
-$rescatatp = mysql_query($sqlcatatp);
-while ($catatp = mysql_fetch_array($rescatatp)) {
-    ?>
+                    $j         = 1;
+                    $sqlcatatp = "SELECT * FROM t_estimasi_panel_detail a LEFT JOIN t_panel p ON a.fk_panel=p.id_panel WHERE a.fk_estimasi='$idestimasi'";
+                    $rescatatp = mysql_query($sqlcatatp);
+                    while ($catatp = mysql_fetch_array($rescatatp)) {
+                    ?>
                         <tr>
                           <td ><?php echo $j++; ?></td>
                           <td ><?php echo $catatp['nama']; ?></td>
                           <td align="right"><?php echo rupiah2($catatp['harga_total_estimasi_panel']); ?></td>
                         </tr>
                     <?php
-}
-$j = $j;
-$sqlcatat2 = "SELECT * FROM t_estimasi_part_detail a LEFT JOIN t_part p ON a.fk_part=p.id_part WHERE a.fk_estimasi='$idestimasi'";
-$rescatat2 = mysql_query($sqlcatat2);
-while ($catat2 = mysql_fetch_array($rescatat2)) {
-    ?>
+                        }
+                        $j         = $j;
+                        $sqlcatat2 = "SELECT * FROM t_estimasi_part_detail a LEFT JOIN t_part p ON a.fk_part=p.id_part WHERE a.fk_estimasi='$idestimasi'";
+                        $rescatat2 = mysql_query($sqlcatat2);
+                        while ($catat2 = mysql_fetch_array($rescatat2)) {
+                        ?>
                         <tr>
                           <td ><?php echo $j++; ?></td>
                           <td ><?php echo $catat2['nama']; ?></td>
                           <td align="right"><?php echo rupiah2($catat2['harga_total_estimasi_part']); ?></td>
                         </tr>
                     <?php
-}?>
+                    }?>
                         <tr><td colspan="2" align="center">Sub Total Jasa</td><td align="right"><?php echo rupiah2($catat['total_netto_harga_jasa']); ?></td></tr>
                         <tr><td colspan="2" align="center">PPN</td><td align="right"><?php
-$per_april = '2022-04-01';
-$per_jan = '2025-01-01';
+                                                                                         $per_april = '2022-04-01';
+                                                                                         $per_jan   = '2025-01-01';
 
-$tgl_estimasi = $catat['tgl'];
+                                                                                         $tgl_estimasi = $catat['tgl'];
 
-if ($tgl_estimasi < $per_april) {
-    $ppn = 0.1;
-    $kali = 1.1;
-} else if ($tgl_estimasi >= $per_april && $tgl_estimasi < $per_jan) {
-    $ppn = 0.11;
-    $kali = 1.11;
-} else {
-    $ppn = 0.12;
-    $kali = 1.12;
-}
-echo rupiah2($ppn * $catat['total_netto_harga_jasa']);?></td></tr>
+                                                                                         if ($tgl_estimasi < $per_april) {
+                                                                                             $ppn  = 0.1;
+                                                                                             $kali = 1.1;
+                                                                                         } else {
+                                                                                             $ppn  = 0.11;
+                                                                                             $kali = 1.11;
+                                                                                     }
+                                                                                     echo rupiah2($ppn * $catat['total_netto_harga_jasa']); ?></td></tr>
                         <tr><td colspan="2" align="center">Total Jasa</td><td align="right"><?php echo rupiah2(($kali) * $catat['total_netto_harga_jasa']); ?></td></tr>
                 </tfoot>
               </table>

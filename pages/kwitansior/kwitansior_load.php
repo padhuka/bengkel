@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <table id="tablekwitansior" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -19,34 +19,36 @@
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT k.no_kwitansi_or, k.tgl_kwitansi_or,e.id_estimasi,e.fk_no_polisi,e.fk_no_chasis,e.fk_no_mesin,c.nama,k.nilai_kwitansi,k.tgl_batal from t_kwitansi_or k 
-                                      INNER JOIN t_estimasi e ON k.fk_estimasi=e.id_estimasi 
+                    $j         = 1;
+                    $per_limit = '2024-01-01';
+                    $sqlcatat  = "SELECT k.no_kwitansi_or, k.tgl_kwitansi_or,e.id_estimasi,e.fk_no_polisi,e.fk_no_chasis,e.fk_no_mesin,c.nama,k.nilai_kwitansi,k.tgl_batal from t_kwitansi_or k
+                                      INNER JOIN t_estimasi e ON k.fk_estimasi=e.id_estimasi
                                       INNER JOIN t_customer c ON e.fk_customer=c.id_customer
-                                      WHERE k.tgl_batal='0000:00:00 00:00:00'
+                                      WHERE k.tgl_batal='0000:00:00 00:00:00' AND k.tgl_kwitansi_or >= '$per_limit'
                                       ORDER BY k.tgl_kwitansi_or DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
-                        <tr> 
-                        <td><?php echo $j++;?></td> 
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_kwitansior(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span><?php echo ($catat['no_kwitansi_or']);?></span></button></td>
-                       
-                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl_kwitansi_or']));?></td>
-<!--                           <td ><?php echo $catat['id_estimasi'];?></td> --> 
-                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo ($catat['id_estimasi']);?></span></button></td>
-                     <td ><?php echo $catat['fk_no_polisi'];?></td>
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo rupiah2($catat['nilai_kwitansi']);?></td>
+                    $rescatat = mysql_query($sqlcatat);
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
+                        <tr>
+                        <td><?php echo $j++; ?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_kwitansior(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span><?php echo($catat['no_kwitansi_or']); ?></span></button></td>
+
+                          <td ><?php echo date('d-m-Y', strtotime($catat['tgl_kwitansi_or'])); ?></td>
+<!--                           <td ><?php echo $catat['id_estimasi']; ?></td> -->
+                      <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo($catat['id_estimasi']); ?></span></button></td>
+                     <td ><?php echo $catat['fk_no_polisi']; ?></td>
+                          <td ><?php echo $catat['fk_no_chasis']; ?></td>
+                          <td ><?php echo $catat['fk_no_mesin']; ?></td>
+                          <td ><?php echo $catat['nama']; ?></td>
+                          <td ><?php echo rupiah2($catat['nilai_kwitansi']); ?></td>
                           <td >
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="cetak_or(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Cetak</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_kwitansi_or']; ?>" onclick="open_del(idkwitansior='<?php echo $catat['no_kwitansi_or']; ?>');"><span>Batal</span></button>
 
                                     </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -62,7 +64,7 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
-           
+
            function open_add(){
               $.ajax({
                     url: "kwitansior/kwitansior_add.php",
@@ -73,7 +75,7 @@
                       }
                     });
               }
-            
+
              function open_del(x){
                                 $.ajax({
                                     url: "kwitansior/kwitansior_del.php?idkwitansior="+x,
@@ -84,7 +86,7 @@
                                     }
                                 });
             };
-                         
+
             function open_est(z){
                               $.ajax({
                                   url: "estimasi/estimasi_show.php?idestimasi="+z,
@@ -105,7 +107,7 @@
                                   }
                               });
             };
-            
+
       </script>
 
 <style type="text/css">

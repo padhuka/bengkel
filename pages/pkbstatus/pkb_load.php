@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -18,33 +18,35 @@
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT p.*,c.nama FROM t_pkb p
+                    $j         = 1;
+                    $per_limit = '2024-01-01';
+                    $sqlcatat  = "SELECT p.*,c.nama FROM t_pkb p
                                     LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                    WHERE tgl_batal='0000-00-00 00:00:00' 
+                                    WHERE tgl_batal='0000-00-00 00:00:00' AND p.tgl >= '$per_limit'
                                     ORDER BY id_pkb DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
+                    $rescatat = mysql_query($sqlcatat);
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
                         <tr>
-                          <td><?php echo $j++;?></td>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>
-                       
-                          <td ><?php echo date('d-m-Y',strtotime($catat['tgl']));?></td>
-                          <td ><?php echo $catat['fk_no_chasis'];?></td>
-                          <td ><?php echo $catat['fk_no_mesin'];?></td>
-                          <td ><?php echo $catat['fk_no_polisi'];?></td>
-                           <td ><?php echo $catat['nama'];?></td>
-                          <td ><?php echo $catat['status_pkb'];?></td>
+                          <td><?php echo $j++; ?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo($catat['id_pkb']); ?></span></button></td>
+
+                          <td ><?php echo date('d-m-Y', strtotime($catat['tgl'])); ?></td>
+                          <td ><?php echo $catat['fk_no_chasis']; ?></td>
+                          <td ><?php echo $catat['fk_no_mesin']; ?></td>
+                          <td ><?php echo $catat['fk_no_polisi']; ?></td>
+                           <td ><?php echo $catat['nama']; ?></td>
+                          <td ><?php echo $catat['status_pkb']; ?></td>
                           <td >
-                                        <?php if($catat['status_pkb']=='Buka'){ ?>
+                                        <?php if ($catat['status_pkb'] == 'Buka') {?>
                                         <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['id_pkb']; ?>" onclick="open_tutup(idpkb='<?php echo $catat['id_pkb']; ?>');"><span>Tutup</span></button>
-                                        <?php }else{?>
-                                        
+                                        <?php } else {?>
+
                                         <?php }?>
                                     </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -60,8 +62,8 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
-           
-              
+
+
            function open_tutup(x){
                                 $.ajax({
                                     url: "pkbstatus/pkb_tutup.php?idpkb="+x,
@@ -82,8 +84,8 @@
                                     }
                                 });
             };
-              
-                 
+
+
             function open_pkb(z){
                               $.ajax({
                                   url: "pkb/pkb_show.php?idpkb="+z,
@@ -94,7 +96,7 @@
                                   }
                               });
             };
-            
+
       </script>
 
 <style type="text/css">

@@ -4,21 +4,21 @@ include_once '../../lib/fungsi.php';
 
 $idpkb = trim($_POST['idpkb']);
 
-$hrn2 = date('dmy', strtotime($hrini));
+$hrn2      = date('dmy', strtotime($hrini));
 $kodeawal2 = 'SI_BR.';
-$kodeawal = 'SI_BR.' . $hrn2 . '.';
+$kodeawal  = 'SI_BR.' . $hrn2 . '.';
 //$sqljur = "SELECT * FROM t_kwitansi WHERE no_kwitansi LIKE '$kodeawal2%' ORDER BY no_kwitansi DESC";
-$sqljur = "SELECT * FROM t_kwitansi ORDER BY tgl_kwitansi DESC";
+$sqljur    = "SELECT * FROM t_kwitansi ORDER BY tgl_kwitansi DESC";
 $resultjur = mysql_query($sqljur);
-$jur = mysql_fetch_array($resultjur);
+$jur       = mysql_fetch_array($resultjur);
 if (empty($jur['no_kwitansi'])) {
     $kodeakhir = '000001';
 } else {
     # GENERATE
-    $kode = $jur['no_kwitansi'];
-    $pecah = explode('.', $kode);
+    $kode    = $jur['no_kwitansi'];
+    $pecah   = explode('.', $kode);
     $nilbaru = $pecah[2] + 1;
-    $panj = strlen($nilbaru);
+    $panj    = strlen($nilbaru);
     //message_back($panj);
     switch ($panj) {
         default:break;
@@ -40,20 +40,20 @@ if (empty($jur['no_kwitansi'])) {
 $kodebaru = $kodeawal . $kodeakhir;
 
 $sqlest = "SELECT * FROM t_pkb p LEFT JOIN t_kwitansi_or k  ON p.fk_estimasi=k.fk_estimasi WHERE id_pkb='$idpkb'";
-$hsl = mysql_fetch_array(mysql_query($sqlest));
+$hsl    = mysql_fetch_array(mysql_query($sqlest));
 
-$grosspanel = $hsl['total_gross_harga_panel'];
+$grosspanel  = $hsl['total_gross_harga_panel'];
 $diskonpanel = $hsl['total_diskon_rupiah_panel'];
-$nettopanel = $hsl['total_netto_harga_panel'];
-$grosspart = $hsl['total_gross_harga_part'];
-$diskonpart = $hsl['total_diskon_rupiah_part'];
-$nettopart = $hsl['total_netto_harga_part'];
-$grosstotal = $hsl['total_gross_harga_jasa'];
+$nettopanel  = $hsl['total_netto_harga_panel'];
+$grosspart   = $hsl['total_gross_harga_part'];
+$diskonpart  = $hsl['total_diskon_rupiah_part'];
+$nettopart   = $hsl['total_netto_harga_part'];
+$grosstotal  = $hsl['total_gross_harga_jasa'];
 $diskontotal = $hsl['total_diskon_rupiah_jasa'];
-$nettototal = $hsl['total_netto_harga_jasa'];
-$nilaior = $hsl['nilai_kwitansi'];
+$nettototal  = $hsl['total_netto_harga_jasa'];
+$nilaior     = $hsl['nilai_kwitansi'];
 
-$ppn = $nettototal * 12 / 100;
+$ppn     = $nettototal * 11 / 100;
 $payment = $nettototal + $ppn;
 
 $sqltbemp = "INSERT INTO t_kwitansi (no_kwitansi,fk_pkb,total_gross_panel,total_gross_part,total_diskon_panel,total_diskon_part,total_netto_panel,total_netto_part,total_ppn_kwitansi,total_kwitansi,total_payment) VALUES ('$kodebaru','$idpkb','$grosspanel','$grosspart','$diskonpanel','$diskonpart','$nettopanel','$nettopart',$ppn,'$nettototal',$payment)";
