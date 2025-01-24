@@ -107,10 +107,12 @@
                 </thead>
                 <tbody>
                 <?php
-                    $j        = 1;
-                    $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_bank A
+                    $j         = 1;
+                    $per_limit = '2024-01-01';
+                    $sqlcatat  = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_bank A
                                                 LEFT JOIN t_akun B ON A.fk_akun=B.coa
                                                 LEFT JOIN t_akun C ON A.ref_akun=C.coa
+                                                WHERE A.tr_date >= '$per_limit'
                                                 ORDER BY A.urut DESC";
                     $rescatat = mysql_query($sqlcatat);
                     //echo $sqlcatat;
