@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';            
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <form class="form-horizontal" enctype="multipart/form-data" novalidate id="formbankacc">
         <table width="40%" class="table table-condensed table-bordered table-striped table-hover">
            <tr valign="middle" id="nbukti">
@@ -17,7 +17,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datebank" name="datebank" required value="<?php echo $harinow;?>">
+                              <input type="text" class="form-control pull-right" id="datebank" name="datebank" required value="<?php echo $harinow; ?>">
                             </div>
                           </td>
            <td width="10%"></td>
@@ -35,7 +35,7 @@
            <td width="15%">Account Name :</td>
            <td width="35%"><label id="nmaccbank"></label></td>
           </tr>
-         
+
         </table>
 <br>
         <table width="40%" class="table table-condensed table-bordered table-striped table-hover" id="reffacc">
@@ -88,11 +88,11 @@
           </tr>
         </table>
 
-                      
+
       </form>
       <br><br>
       <table id="example1" class="table table-condensed table-bordered table-striped table-hover">
-      
+
                 <thead class="thead-light">
                 <tr>
                           <th>No</th>
@@ -107,47 +107,48 @@
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_bank A
+                    $j        = 1;
+                    $sqlcatat = "SELECT A.*,A.description AS descrip, B.description AS nmakun,C.description AS nmref FROM t_acc_bank A
                                                 LEFT JOIN t_akun B ON A.fk_akun=B.coa
                                                 LEFT JOIN t_akun C ON A.ref_akun=C.coa
                                                 ORDER BY A.urut DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    //echo $sqlcatat;
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
+                    $rescatat = mysql_query($sqlcatat);
+                    //echo $sqlcatat;
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
                         <tr>
-                          <td><?php echo $j++;?></td>
-                          <td><?php echo $catat['no_bukti'];?></td>
-                          <td ><?php echo $catat['tr_date'];?></td>
-                          <td><?php echo $catat['transaction_type'];?></td>
-                          <td><?php echo $catat['description'];?></td>
-                          <td align="right"><?php echo rupiah2($catat['amount']);?></td>
-                          <td><?php echo $catat['status'];?></td>
+                          <td><?php echo $j++; ?></td>
+                          <td><?php echo $catat['no_bukti']; ?></td>
+                          <td ><?php echo $catat['tr_date']; ?></td>
+                          <td><?php echo $catat['transaction_type']; ?></td>
+                          <td><?php echo $catat['description']; ?></td>
+                          <td align="right"><?php echo rupiah2($catat['amount']); ?></td>
+                          <td><?php echo $catat['status']; ?></td>
                           <td>
-                            <?php if ($catat['status']<>'Batal'){?>
-                              <?php if ($catat['status']<>'Approve'){?>
+                            <?php if ($catat['status'] != 'Batal') {?>
+<?php if ($catat['status'] != 'Approve') {?>
                             <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>"  onclick="ubahacc(
-                                         '<?php echo $catat['no_bukti'];?>',
-                                         '<?php echo $catat['tr_date'];?>',
-                                         '<?php echo $catat['transaction_type'];?>',
-                                         '<?php echo $catat['fk_akun'];?>',  
-                                         '<?php echo $catat['nmakun'];?>', 
-                                         '<?php echo $catat['ref_akun'];?>',  
-                                         '<?php echo $catat['nmref'];?>',
-                                         '<?php echo $catat['amount'];?>',
-                                         '<?php echo $catat['descrip'];?>',
+                                         '<?php echo $catat['no_bukti']; ?>',
+                                         '<?php echo $catat['tr_date']; ?>',
+                                         '<?php echo $catat['transaction_type']; ?>',
+                                         '<?php echo $catat['fk_akun']; ?>',
+                                         '<?php echo $catat['nmakun']; ?>',
+                                         '<?php echo $catat['ref_akun']; ?>',
+                                         '<?php echo $catat['nmref']; ?>',
+                                         '<?php echo $catat['amount']; ?>',
+                                         '<?php echo $catat['descrip']; ?>',
                                         );"><span>Ubah</span></button>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_approve(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Approve</span></button>
-                           <?php } ?>
-                            <?php if ($catat['status']=='Approve'){
-                            }else{?>
+                           <?php }?>
+<?php if ($catat['status'] == 'Approve') {
+    } else {?>
                              <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
                             <?php }}?>
 
                           </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -167,7 +168,7 @@
                 $('#keterangan').val('');
                 $('#saveadd').show();
                 $('#canceledit').hide();
-                $('#datebank').val('<?php echo $harinow;?>');
+                $('#datebank').val('<?php echo $harinow; ?>');
               }
 
               function reff(){
@@ -196,7 +197,7 @@
                   }
              });
 
-             $('#datebank').datepicker({       
+             $('#datebank').datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true,
               });
@@ -222,7 +223,7 @@
                     });
               }
 
-              function ubahacc(a,b,c,d,e,f,g,h,i){                
+              function ubahacc(a,b,c,d,e,f,g,h,i){
                 //no_bukti,tr_date,transaction_type,fk_akun,nmakun,ref_akun,nmref,amount
                 $('#canceledit').show();
                 $('#nbukti').show();
@@ -245,16 +246,16 @@
                 if (akun=='C'){
                   var myobject = {
                       C : 'Kredit',
-                      D : 'Debet',                     
+                      D : 'Debet',
                   };
                 }
-                  
+
                   $('#saveadd').hide()
                   $('#saveedit').show();
 
                   //var sel = document.getElementById("transaction_type");
 
-                  
+
 
                   var select = document.getElementById("transaction_type");
                   select.options.length = 0;
@@ -268,30 +269,30 @@
               function simpanubah(){
                   var nobkt = document.getElementById("nobukti").innerHTML;
                   var fk_akun = $('#idaccbank').val();
-                  var ref_akun = $('#idacc').val(); 
-                  var amount = $('#nominal').val();  
-                  var description = $('#keterangan').val(); 
+                  var ref_akun = $('#idacc').val();
+                  var amount = $('#nominal').val();
+                  var description = $('#keterangan').val();
                   var transaction_type= $('#transaction_type').val();
                   var tr_date = $('#datebank').val();
                   //alert('accbank/accbank_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date);
                    $.ajax({
                                 url: 'accbank/accbank_edit_save.php?no_bukti='+nobkt+'&fk_akun='+fk_akun+'&ref_akun='+ref_akun+'&amount='+amount+'&description='+description+'&transaction_type='+transaction_type+'&tr_date='+tr_date,
                                 type: 'GET',
-                                success: function (response){               
-                                  //var hsl=data.trim();       
-                                  //alert(hsl);              
-                                  alert('Data Berhasil Disimpan');  
+                                success: function (response){
+                                  //var hsl=data.trim();
+                                  //alert(hsl);
+                                  alert('Data Berhasil Disimpan');
                                   $('#nbukti').hide();
                                   $('#saveadd').show();
-                                  $('#saveedit').hide();            
+                                  $('#saveedit').hide();
                                   $("#tableaccbank").load('accbank/accbank_load.php');
 
                                 }
                         });
               }
-           
+
            $(document).ready(function (){
-              
+
 
                       $("#formbankacc").on('submit', function(e){
 
@@ -319,18 +320,18 @@
                                                   contentType: false,
                                                   cache: false,
                                                   processData:false,
-                                                  success: function(data){                  
-                                                            //var hsl=data.trim();       
-                                                            //alert(hsl);              
-                                                            alert('Data Berhasil Disimpan');              
+                                                  success: function(data){
+                                                            //var hsl=data.trim();
+                                                            //alert(hsl);
+                                                            alert('Data Berhasil Disimpan');
                                                             $("#tableaccbank").load('accbank/accbank_load.php');
 
                                                   }
-                                                      
+
                                                 });
 
-                                      
-              
+
+
                       });
     });
            function open_del(x){

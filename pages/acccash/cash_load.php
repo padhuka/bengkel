@@ -1,7 +1,7 @@
-      <?php
-            include_once '../../lib/config.php';
-            include_once '../../lib/fungsi.php';
-      ?>
+<?php
+    include_once '../../lib/config.php';
+    include_once '../../lib/fungsi.php';
+?>
       <table id="cash" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -13,35 +13,38 @@
                           <th>Total</th>
                           <th>Keterangan</th>
 
-                     
+
                           <th><button type="button" class="btn btn btn-default btn-circle" onclick="open_add();"><span>Tambah</span></button></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                                    $j=1;
-                                    $sqlcatat = " SELECT * FROM t_cash 
-                                    WHERE tgl_batal='0000:00:00 00:00:00' ORDER BY no_bukti DESC ";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                ?>
+                    $j        = 1;
+                    $sqlcatat = " SELECT * FROM t_cash
+                                    $per_limit = '2024-01-01';
+                                    WHERE tgl_batal='0000:00:00 00:00:00' AND tgl_transaksi >= '$per_limit'
+                                    ORDER BY no_bukti DESC ";
+                    $rescatat = mysql_query($sqlcatat);
+                    while ($catat = mysql_fetch_array($rescatat)) {
+                    ?>
                         <tr>
-                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo ($catat['no_bukti']);?></span></button></td>
-                       
-                          <td ><?php echo date('d-m-Y' , strtotime($catat['tgl_transaksi']));?></td>
-                          <td ><?php echo $catat['tipe_transaksi'];?></td>
-                          <td ><?php echo $catat['diterima_dari'];?></td>
-                          <td ><?php echo $catat['no_ref'];?></td>
-                          
-                           <td ><?php echo rupiah2($catat['total']);?></td>
-                           <td ><?php echo $catat['keterangan'];?></td>
+                          <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo($catat['no_bukti']); ?></span></button></td>
+
+                          <td ><?php echo date('d-m-Y', strtotime($catat['tgl_transaksi'])); ?></td>
+                          <td ><?php echo $catat['tipe_transaksi']; ?></td>
+                          <td ><?php echo $catat['diterima_dari']; ?></td>
+                          <td ><?php echo $catat['no_ref']; ?></td>
+
+                           <td ><?php echo rupiah2($catat['total']); ?></td>
+                           <td ><?php echo $catat['keterangan']; ?></td>
                           <td >
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="open_del(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Batal</span></button>
                                          <button type="button" class="btn btn btn-default btn-circle" id="<?php echo $catat['no_bukti']; ?>" onclick="cetak_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span>Cetak</span></button>
 
                                     </td>
                         </tr>
-                    <?php }?>
+                    <?php
+                    }?>
                 </tfoot>
               </table>
               <script>
@@ -54,7 +57,7 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
-           
+
            function open_add(){
               $.ajax({
                     url: "cash/cash_add.php",
@@ -65,7 +68,7 @@
                       }
                     });
               }
-              
+
            function open_del(x){
                                 $.ajax({
                                     url: "cash/cash_del.php?nobukti="+x,
@@ -76,7 +79,7 @@
                                     }
                                 });
             };
-      
+
             function open_cash(z){
                               $.ajax({
                                   url: "cash/cash_show.php?nobukti="+z,
@@ -98,7 +101,7 @@
                                   }
                               });
             };
-            
+
       </script>
 
 <style type="text/css">
