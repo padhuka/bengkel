@@ -1,17 +1,13 @@
 <?php
 session_start();
-//include_once '../lib/config.php';
-//include_once '../lib/fungsi.php';
-//$sesiuidsfa = $_SESSION['sesiuidsfa'];
-//$setUser = $_SESSION['lvl'];
-if (empty($_SESSION['sesiuidbpn']) && empty($_SESSION['lvl'])){
-	//url_back('login.php');?>
-	<script>self.location.href='login.php'</script>
-<?php }
+
+// Cek apakah sesi sudah di-set
+if (! isset($_SESSION['sesiuidbpn']) || ! isset($_SESSION['lvl']) ||
+    empty($_SESSION['sesiuidbpn']) || empty($_SESSION['lvl'])) {
+    echo "<script>self.location.href='login.php'</script>";
+    exit;
+}
+
+// Ambil nilai session dengan aman
 $seskdlvl = $_SESSION['lvl'];
 $sesuname = $_SESSION['sesiuidbpn'];
-/*if(!empty($_SESSION['cluterq'])){
-	$seskdcluster = $_SESSION['cluterq'];
-}*/
-//echo $seskdlvl;
-?>
