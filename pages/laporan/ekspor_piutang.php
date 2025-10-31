@@ -62,30 +62,98 @@
                     $tgl2 = $_GET['tgl2'];
                     $j    = 1;
                     // $jml=0;
-                    $sqlcatat = "SELECT * FROM (
-                              SELECT p.id_pkb AS idpkb,p.tgl AS tglpkb, p.kategori AS kat, a.nama AS nmasuransi, k.no_kwitansi AS nokw, k.tgl_kwitansi AS tglkw, c.nama AS nmcus,
-                                    k.total_payment AS total_bayar, titip_cash ,titip_bank,titip_bank2,or_cash, or_bank, k.total_payment-(ifnull(titip_cash,0)+ifnull(titip_bank,0)+ifnull(titip_bank2,0)+ifnull(or_cash,0)+ifnull(or_bank,0)) as piutang
-                                    FROM t_pkb p
-                                    LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                    LEFT JOIN (SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') as k ON p.id_pkb=k.fk_pkb
-                                    LEFT JOIN (SELECT * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') as kor ON p.fk_estimasi=kor.fk_estimasi
-                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
-                                        FROM t_cash  where tgl_batal='0000-00-00 00:00:00'
-                                        GROUP BY no_ref) AS cash ON cash.no_ref=k.no_kwitansi
-                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
-                                           FROM t_bank  where tgl_batal='0000-00-00 00:00:00'
-                                        GROUP BY no_ref)AS bank ON bank.no_ref=k.no_kwitansi
-                                         LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank2
-                                           FROM t_bank  where tgl_batal='0000-00-00 00:00:00'
-                                        GROUP BY no_ref)AS bank2 ON bank2.no_ref=k.fk_pkb
-                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as or_cash
-                                        FROM t_cash  where tgl_batal='0000-00-00 00:00:00'
-                                        GROUP BY no_ref) AS orcash ON orcash.no_ref=kor.no_kwitansi_or
-                                        LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as or_bank
-                                           FROM t_bank    where tgl_batal='0000-00-00 00:00:00'
-                                        GROUP BY no_ref)AS orbank ON orbank.no_ref=kor.no_kwitansi_or
-                                        LEFT JOIN t_asuransi a ON p.fk_asuransi=a.id_asuransi
-                                        WHERE p.tgl_batal='0000-00-00 00:00:00') as AR where AR.piutang > 0.9";
+                    // $sqlcatat = "SELECT * FROM (
+                    //           SELECT p.id_pkb AS idpkb,p.tgl AS tglpkb, p.kategori AS kat, a.nama AS nmasuransi, k.no_kwitansi AS nokw, k.tgl_kwitansi AS tglkw, c.nama AS nmcus,
+                    //                 k.total_payment AS total_bayar, titip_cash ,titip_bank,titip_bank2,or_cash, or_bank, k.total_payment-(ifnull(titip_cash,0)+ifnull(titip_bank,0)+ifnull(titip_bank2,0)+ifnull(or_cash,0)+ifnull(or_bank,0)) as piutang
+                    //                 FROM t_pkb p
+                    //                 LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
+                    //                 LEFT JOIN (SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') as k ON p.id_pkb=k.fk_pkb
+                    //                 LEFT JOIN (SELECT * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') as kor ON p.fk_estimasi=kor.fk_estimasi
+                    //                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_cash
+                    //                     FROM t_cash  where tgl_batal='0000-00-00 00:00:00'
+                    //                     GROUP BY no_ref) AS cash ON cash.no_ref=k.no_kwitansi
+                    //                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank
+                    //                        FROM t_bank  where tgl_batal='0000-00-00 00:00:00'
+                    //                     GROUP BY no_ref)AS bank ON bank.no_ref=k.no_kwitansi
+                    //                      LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as titip_bank2
+                    //                        FROM t_bank  where tgl_batal='0000-00-00 00:00:00'
+                    //                     GROUP BY no_ref)AS bank2 ON bank2.no_ref=k.fk_pkb
+                    //                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as or_cash
+                    //                     FROM t_cash  where tgl_batal='0000-00-00 00:00:00'
+                    //                     GROUP BY no_ref) AS orcash ON orcash.no_ref=kor.no_kwitansi_or
+                    //                     LEFT JOIN (SELECT no_bukti, no_ref, sum(total) as or_bank
+                    //                        FROM t_bank    where tgl_batal='0000-00-00 00:00:00'
+                    //                     GROUP BY no_ref)AS orbank ON orbank.no_ref=kor.no_kwitansi_or
+                    //                     LEFT JOIN t_asuransi a ON p.fk_asuransi=a.id_asuransi
+                    //                     WHERE p.tgl_batal='0000-00-00 00:00:00') as AR where AR.piutang > 0.9";
+                    $sqlcatat ="SELECT
+                        p.id_pkb AS idpkb,
+                        p.tgl AS tglpkb,
+                        p.kategori AS kat,
+                        a.nama AS nmasuransi,
+                        k.no_kwitansi AS nokw,
+                        k.tgl_kwitansi AS tglkw,
+                        c.nama AS nmcus,
+                        k.total_payment AS total_bayar,
+                        cash_sum.titip_cash,
+                        bank_sum.titip_bank,
+                        bank_sum2.titip_bank2,
+                        or_cash_sum.or_cash,
+                        or_bank_sum.or_bank,
+                        k.total_payment - (
+                            COALESCE(cash_sum.titip_cash,0)
+                            + COALESCE(bank_sum.titip_bank,0)
+                            + COALESCE(bank_sum2.titip_bank2,0)
+                            + COALESCE(or_cash_sum.or_cash,0)
+                            + COALESCE(or_bank_sum.or_bank,0)
+                        ) AS piutang
+                    FROM t_pkb p
+                    LEFT JOIN t_customer c 
+                        ON p.fk_customer = c.id_customer
+                    LEFT JOIN t_kwitansi k 
+                        ON p.id_pkb = k.fk_pkb 
+                        AND k.tgl_batal = '0000-00-00 00:00:00'
+                    LEFT JOIN t_kwitansi_or kor 
+                        ON p.fk_estimasi = kor.fk_estimasi
+                        AND kor.tgl_batal = '0000-00-00 00:00:00'
+                    LEFT JOIN (
+                        SELECT no_ref, SUM(total) AS titip_cash
+                        FROM t_cash
+                        WHERE tgl_batal = '0000-00-00 00:00:00'
+                        GROUP BY no_ref
+                    ) AS cash_sum ON cash_sum.no_ref = k.no_kwitansi
+                    LEFT JOIN (
+                        SELECT no_ref, SUM(total) AS titip_bank
+                        FROM t_bank
+                        WHERE tgl_batal = '0000-00-00 00:00:00'
+                        GROUP BY no_ref
+                    ) AS bank_sum ON bank_sum.no_ref = k.no_kwitansi
+                    LEFT JOIN (
+                        SELECT no_ref, SUM(total) AS titip_bank2
+                        FROM t_bank
+                        WHERE tgl_batal = '0000-00-00 00:00:00'
+                        GROUP BY no_ref
+                    ) AS bank_sum2 ON bank_sum2.no_ref = k.fk_pkb
+                    LEFT JOIN (
+                        SELECT no_ref, SUM(total) AS or_cash
+                        FROM t_cash
+                        WHERE tgl_batal = '0000-00-00 00:00:00'
+                        GROUP BY no_ref
+                    ) AS or_cash_sum ON or_cash_sum.no_ref = kor.no_kwitansi_or
+                    LEFT JOIN (
+                        SELECT no_ref, SUM(total) AS or_bank
+                        FROM t_bank
+                        WHERE tgl_batal = '0000-00-00 00:00:00'
+                        GROUP BY no_ref
+                    ) AS or_bank_sum ON or_bank_sum.no_ref = kor.no_kwitansi_or
+                    LEFT JOIN t_asuransi a 
+                        ON p.fk_asuransi = a.id_asuransi
+                    WHERE 
+                        p.tgl_batal = '0000-00-00 00:00:00'
+                    HAVING 
+                        piutang > 0.9
+                    ORDER BY 
+                        p.tgl DESC";
                     $rescatat = mysql_query($sqlcatat);
                     while ($catat = mysql_fetch_array($rescatat)) {
 
