@@ -20,18 +20,42 @@
                 <?php
                     $j         = 1;
                     $per_limit = '2024-01-01';
-                    $sqlcatat  = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
-                                   LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
-                                   LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON p.id_pkb=k.fk_pkb
-                                   LEFT JOIN (SELECT id, fk_pkb, status
-                                      FROM t_status_pkb
-                                      WHERE id IN (
-                                      SELECT MAX(id)
-                                      FROM t_status_pkb
-                                      GROUP BY fk_pkb
-                                    ))AS state ON p.id_pkb=state.fk_pkb
-                                   WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.tgl >= '$per_limit'
-                                   ORDER BY p.tgl DESC";
+                    // $sqlcatat  = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
+                    //                LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
+                    //                LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON p.id_pkb=k.fk_pkb
+                    //                LEFT JOIN (SELECT id, fk_pkb, status
+                    //                   FROM t_status_pkb
+                    //                   WHERE id IN (
+                    //                   SELECT MAX(id)
+                    //                   FROM t_status_pkb
+                    //                   GROUP BY fk_pkb
+                    //                 ))AS state ON p.id_pkb=state.fk_pkb
+                    //                WHERE p.tgl_batal='0000-00-00 00:00:00' AND p.tgl >= '$per_limit'
+                    //                ORDER BY p.tgl DESC";
+                    $sqlcatat = "SELECT 
+                                p.*,
+                                s.status AS statuspkb,
+                                c.nama,
+                                k.no_kwitansi
+                            FROM t_pkb p
+                            LEFT JOIN t_customer c 
+                                ON p.fk_customer = c.id_customer
+                            LEFT JOIN t_kwitansi k 
+                                ON p.id_pkb = k.fk_pkb 
+                              AND k.tgl_batal = '0000-00-00 00:00:00'
+                            LEFT JOIN t_status_pkb s
+                                ON s.id = (
+                                    SELECT s2.id
+                                    FROM t_status_pkb s2
+                                    WHERE s2.fk_pkb = p.id_pkb
+                                    ORDER BY s2.id DESC
+                                    LIMIT 1
+                                )
+                            WHERE 
+                                p.tgl_batal = '0000-00-00 00:00:00'
+                                AND p.tgl >= '$per_limit'
+                            ORDER BY p.tgl DESC";
+
                     $rescatat = mysql_query($sqlcatat);
                     while ($catat = mysql_fetch_array($rescatat)) {
                     ?>
