@@ -33,7 +33,18 @@
                                       e.fk_no_chasis as fk_no_chasis,
                                       e.fk_no_mesin as fk_no_mesin,
                                       e.fk_no_polisi as fk_no_polisi,
-                                      c.nama AS nama
+                                      c.nama AS nama,
+                                      e.kategori AS kategori,
+                                      e.fk_asuransi AS fk_asuransi,
+                                      e.total_gross_harga_panel AS total_gross_harga_panel,
+                                      e.total_diskon_rupiah_panel AS total_diskon_rupiah_panel,
+                                      e.total_netto_harga_panel AS total_netto_harga_panel,
+                                      e.total_gross_harga_part AS total_gross_harga_part,
+                                      e.total_diskon_rupiah_part AS total_diskon_rupiah_part,
+                                      e.total_netto_harga_part AS total_netto_harga_part,
+                                      e.total_gross_harga_jasa AS total_gross_harga_jasa,
+                                      e.total_diskon_rupiah_jasa AS total_diskon_rupiah_jasa,
+                                      e.total_netto_harga_jasa AS total_netto_harga_jasa
                                   FROM t_pkb e
                                   LEFT JOIN t_customer c 
                                       ON e.fk_customer = c.id_customer
