@@ -38,7 +38,7 @@
                                     e.kategori AS kategori,
                                     e.km_masuk AS km_masuk,
                                     e.fk_asuransi AS fk_asuransi,
-                                    e.no_telp AS no_telp,
+                                    c.no_telp AS no_telp,
                                     e.tgl AS tgl,
                                     e.total_gross_harga_panel AS total_gross_harga_panel,
                                     e.total_diskon_rupiah_panel AS total_diskon_rupiah_panel,
