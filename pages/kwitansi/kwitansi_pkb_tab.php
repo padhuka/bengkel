@@ -25,10 +25,24 @@
                 <tbody>
                 <?php
                                    $j=1;
-                                   $sqlcatat = "SELECT * FROM t_pkb e 
-                                   LEFT JOIN t_customer c ON e.fk_customer=c.id_customer
-                                   LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON k.fk_pkb=e.id_pkb
-                                   WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.status_pkb='Tutup' AND k.fk_pkb IS NULL ORDER BY e.id_pkb DESC";
+                                  //  $sqlcatat = "SELECT * FROM t_pkb e 
+                                  //  LEFT JOIN t_customer c ON e.fk_customer=c.id_customer
+                                  //  LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON k.fk_pkb=e.id_pkb
+                                  //  WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.status_pkb='Tutup' AND k.fk_pkb IS NULL ORDER BY e.id_pkb DESC";
+                                  $sqlcatat = "SELECT 
+                                      e.id_pkb, e.status_pkb, e.tgl_batal,
+                                      c.nama AS nama_customer
+                                  FROM t_pkb e
+                                  LEFT JOIN t_customer c 
+                                      ON e.fk_customer = c.id_customer
+                                  LEFT JOIN t_kwitansi k 
+                                      ON k.fk_pkb = e.id_pkb 
+                                      AND k.tgl_batal = '0000-00-00 00:00:00'
+                                  WHERE e.tgl_batal = '0000-00-00 00:00:00'
+                                    AND e.status_pkb = 'Tutup'
+                                    AND k.fk_pkb IS NULL
+                                  ORDER BY e.id_pkb DESC
+                                  ";
                                    $rescatat = mysql_query( $sqlcatat );
                                     while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
