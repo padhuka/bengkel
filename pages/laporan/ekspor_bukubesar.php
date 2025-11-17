@@ -46,8 +46,8 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                                       WHERE  B.no_bukti<>'' OR  C.no_bukti<>''
                                       GROUP BY kode";
                                       //echo $sqlcatat2;
-                                    $rescatat2 = mysql_query( $sqlcatat2 );
-                                    while($catat2 = mysql_fetch_array( $rescatat2 )){
+                                    $rescatat2 = mysqli_query($objConn,  $sqlcatat2 );
+                                    while($catat2 = mysqli_fetch_array( $rescatat2 )){
                                       $j=1;
                                         //$jml=$jml+$catat['jumlah'];  
                                       //if ($catat2['tgl'] <>''){
@@ -77,8 +77,8 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                             WHERE A.coa='$catat2[kode]'
                             ORDER BY kode";
                                       //echo $sqlcatat;
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                       
                         ?>
                         <tr>
@@ -87,10 +87,10 @@ header("Content-Disposition: attachment; filename=reportbukubesar.xls");
                           <td><?php echo $catat['tgl'];?><?php echo $catat['tglb'];?></td>
                           <?php 
                             if($catat['nmre1']){
-                                $ref = mysql_fetch_array(mysql_query("SELECT description FROM t_akun WHERE coa='$catat[nmre1]'"));
+                                $ref = mysqli_fetch_array(mysqli_query($objConn, "SELECT description FROM t_akun WHERE coa='$catat[nmre1]'"));
                             }
                             if($catat['nmre2']){
-                                $ref = mysql_fetch_array(mysql_query("SELECT description FROM t_akun WHERE coa='$catat[nmre2]'"));
+                                $ref = mysqli_fetch_array(mysqli_query($objConn, "SELECT description FROM t_akun WHERE coa='$catat[nmre2]'"));
                             }?>
                           <td><?php if (isset($ref['description'])){echo $ref['description'];};?></td>
                           <td><?php echo $catat['ket'];?><?php echo $catat['ketb'];?></td>

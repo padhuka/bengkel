@@ -24,8 +24,8 @@
                 <?php
                                    $j=1;
                                    $sqlcatat = "SELECT * from t_partner_bank order by id_partner_bank";
-                                   $rescatat = mysql_query( $sqlcatat );
-                                   while($catat = mysql_fetch_array( $rescatat )){
+                                   $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                   while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                        

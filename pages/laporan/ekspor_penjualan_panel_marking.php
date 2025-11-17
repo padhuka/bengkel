@@ -88,24 +88,24 @@ header("Content-Disposition: attachment; filename=reportpenjualan-marking.xls");
                                         GROUP BY fk_pkb)) as gt on k.fk_pkb=gt.fk_pkb
                                     where k.tgl_batal='0000-00-00 00:00:00' AND substring(k.tgl_kwitansi,1,10)>='$tgl1' AND substring(k.tgl_kwitansi,1,10)<='$tgl2'
                                     ORDER BY tgl ASC";
-                                   	$rescatat = mysql_query( $sqlcatat );
+                                   	$rescatat = mysqli_query($objConn,  $sqlcatat );
                                     //echo $sqlcatat;
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                         $jml=$jml+$catat['jumlah'];
 
                                         //hitung panel-mark
                                         $sqlmarkpanel = "SELECT mp.*, SUM(harga_total_pkb_panel) AS jump 
                                         FROM t_pkb_panel_detail mp                                        
                                         WHERE mp.mark_panel='1'  AND mp.fk_pkb='$catat[no_pkb]'";
-                                        $resmarkpanel = mysql_query($sqlmarkpanel);
-                                        $hmarkpanel = mysql_fetch_array($resmarkpanel);
+                                        $resmarkpanel = mysqli_query($objConn, $sqlmarkpanel);
+                                        $hmarkpanel = mysqli_fetch_array($resmarkpanel);
                                         
                                         //hitung part-mark
                                         $sqlmarkpart = "SELECT mpart.*,  SUM(harga_total_pkb_part) AS jumpart 
                                         FROM t_pkb_part_detail mpart
                                         WHERE mpart.mark_part='1'  AND mpart.fk_pkb='$catat[no_pkb]'";
-                                        $resmarkpart = mysql_query($sqlmarkpart);
-                                        $hmarkpart = mysql_fetch_array($resmarkpart);
+                                        $resmarkpart = mysqli_query($objConn, $sqlmarkpart);
+                                        $hmarkpart = mysqli_fetch_array($resmarkpart);
                                         
                                         if ($hmarkpanel['jump'] > 0 || $hmarkpart['jumpart'] > 0){
                                 ?>
@@ -139,8 +139,8 @@ header("Content-Disposition: attachment; filename=reportpenjualan-marking.xls");
                                         FROM t_pkb_panel_detail mp
                                         LEFT JOIN t_panel tp on mp.fk_panel = tp.id_panel
                                         WHERE mp.mark_panel='1'  AND mp.fk_pkb='$catat[no_pkb]' AND mp.harga_total_pkb_panel > 0";
-                                        $resmarkpanels = mysql_query($sqlmarkpanels);
-                              while($hmarkpanels = mysql_fetch_array( $resmarkpanels )){ ?>
+                                        $resmarkpanels = mysqli_query($objConn, $sqlmarkpanels);
+                              while($hmarkpanels = mysqli_fetch_array( $resmarkpanels )){ ?>
                               <tr><td></td><td><?php echo $hmarkpanels['nama']; ?></td><td><?php echo rupiah2($hmarkpanels['harga_total_pkb_panel']); ?></td></tr>
                               <?php } ?>
                               <tr><td></td></td></tr>
@@ -154,8 +154,8 @@ header("Content-Disposition: attachment; filename=reportpenjualan-marking.xls");
                                         FROM t_pkb_part_detail mpart
                                          LEFT JOIN t_part tpart on mpart.fk_part = tpart.id_part
                                         WHERE mpart.mark_part='1'  AND mpart.fk_pkb='$catat[no_pkb]' AND mpart.harga_total_pkb_part > 0";
-                                        $resmarkparts = mysql_query($sqlmarkparts);
-                              while($hmarkparts = mysql_fetch_array( $resmarkparts )){?>
+                                        $resmarkparts = mysqli_query($objConn, $sqlmarkparts);
+                              while($hmarkparts = mysqli_fetch_array( $resmarkparts )){?>
                               <tr><td></td><td><?php echo $hmarkparts['nama']; ?>1</td><td><?php echo rupiah2($hmarkparts['harga_total_pkb_part']); ?></td></tr>
                               <?php } ?>
                               <tr><td colspan="18"><hr></td></tr>

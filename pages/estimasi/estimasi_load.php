@@ -26,8 +26,8 @@
                                     LEFT JOIN t_pkb p ON p.fk_estimasi=e.id_estimasi
                                     WHERE e.tgl_batal='0000-00-00 00:00:00' AND e.tgl >= '$per_limit'
                                      ORDER BY e.tgl DESC";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
 
                     ?>
                         <tr>

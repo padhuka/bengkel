@@ -24,8 +24,8 @@
                   ON i.fk_customer=c.id_customer LEFT JOIN t_tipe_kendaraan t
                   ON i.fk_tipe_kendaraan=t.id_tipe_kendaraan LEFT JOIN t_warna_kendaraan w
                   ON i.fk_warna_kendaraan=w.id_warna_kendaraan";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
 
 

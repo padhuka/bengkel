@@ -4,5 +4,5 @@
 		$id_panel = $_GET['id_panel'];
 		# HAPUS DATA 
 		$sqlhapusasuransi = "DELETE FROM t_panel WHERE id_panel='$id_panel'";
-   		mysql_query( $sqlhapusasuransi );
+   		mysqli_query($objConn,  $sqlhapusasuransi );
 ?>

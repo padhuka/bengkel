@@ -8,6 +8,6 @@
         //echo $keterangan_batal;
         
             $updatebatalbank = "UPDATE t_acc_bank SET tgl_batal='$hrini',status='Batal' WHERE no_bukti='$no_bukti'";
-             $query =  mysql_query($updatebatalbank);
+             $query =  mysqli_query($objConn, $updatebatalbank);
               echo $query;
 ?>

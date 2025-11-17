@@ -5,7 +5,7 @@
     include_once '../../lib/fungsi.php';
     $idestimasi= $_GET['idestimasi'];
  //   $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
- //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+ //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
   
    ?>
 <div class="modal-dialog">
@@ -19,8 +19,8 @@
                                                   left join t_customer c
                                                   on e.fk_customer=c.id_customer
                                                   where e.id_estimasi='$idestimasi'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                     <div class="modal-body">
                       <div class="modal-title-detail">ESTIMASI PKB</div>

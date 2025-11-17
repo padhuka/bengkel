@@ -16,7 +16,7 @@
                 <?php 
                   $idestimasi= $_GET['idestimasi'];
                   $sqlest= "SELECT * FROM t_estimasi WHERE id_estimasi = '$idestimasi'";
-                  $hest= mysql_fetch_array(mysql_query($sqlest));
+                  $hest= mysqli_fetch_array(mysqli_query($objConn, $sqlest));
                 ?>              
                         <tr>
                           <td>Part</td>

@@ -24,8 +24,8 @@
                 <?php
                                    $j=1;
                                    $sqlcatat = "SELECT * FROM t_pkb e LEFT JOIN t_customer c ON e.fk_customer=c.id_customer WHERE tgl_batal='0000-00-00 00:00:00' ORDER BY e.id_pkb DESC";
-                                   $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                   $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_pkb']; ?>" onclick="open_pkb(idpkb='<?php echo $catat['id_pkb']; ?>');"><span><?php echo ($catat['id_pkb']);?></span></button></td>

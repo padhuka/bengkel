@@ -5,7 +5,7 @@
     include_once '../../lib/fungsi.php';
     //$idestimasi= 'EST_BR.020818.000001';
  //   $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
- //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+ //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
   
    ?>
 <div class="modal-dialog">

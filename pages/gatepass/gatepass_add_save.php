@@ -10,8 +10,8 @@
         $kodeawal2 = 'GP_BR.';
         $kodeawal = 'GP_BR.'.$hrn2.'.';
         $sqljur = "SELECT * FROM t_gate_pass ORDER BY tgl_trx DESC";
-        $resultjur = mysql_query( $sqljur );
-        $jur = mysql_fetch_array( $resultjur );
+        $resultjur = mysqli_query($objConn,  $sqljur );
+        $jur = mysqli_fetch_array( $resultjur );
         if (empty($jur['no_gate_pass'])){
             $kodeakhir = '000001';
         }else{
@@ -37,6 +37,6 @@
         
             $sqltbemp = "INSERT INTO t_gate_pass (no_gate_pass,tgl,fk_pkb,status) VALUES ('$kodebaru','$tgl','$idpkb','$status')";
            // echo "$sqltbemp";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        
 ?>

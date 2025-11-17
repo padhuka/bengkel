@@ -10,14 +10,14 @@
         //message_back($id_partner_bank);
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_partner_bank WHERE nama='$nama' OR id_partner_bank='$id_partner_bank'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_partner_bank (id_partner_bank,nama,no_telp,alamat) VALUES ('$id_partner_bank','$nama','$no_telp','$alamat')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo 'n';
         }
 ?>

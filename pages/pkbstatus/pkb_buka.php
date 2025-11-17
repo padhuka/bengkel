@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id = $_GET['idpkb'];
     $sqlemp = "SELECT * FROM t_pkb WHERE id_pkb='$id'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
 
 ?>
 

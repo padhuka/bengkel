@@ -9,14 +9,14 @@
         $group = trim($_POST['group']);
 
         $sqlcek = "SELECT * FROM t_tipe_kendaraan WHERE id_tipe_kendaraan='$id_tipe_kendaraan' AND id_tipe_kendaraan<>'$id_tipehiden'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
                 $sqltbemp = "UPDATE t_tipe_kendaraan SET nama='$nama',fk_group_kendaraan='$group' WHERE id_tipe_kendaraan='$id_tipe_kendaraan'";
-                mysql_query($sqltbemp);
+                mysqli_query($objConn, $sqltbemp);
            // echo '
      }
 ?>

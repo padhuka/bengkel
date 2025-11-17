@@ -29,8 +29,8 @@
                                       INNER JOIN t_customer c ON p.fk_customer=c.id_customer
                                       WHERE k.tgl_batal='0000:00:00 00:00:00' AND k.tgl_kwitansi >= '$per_limit'
                                       ORDER BY k.tgl_kwitansi DESC ";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                           <td><?php echo $j++; ?></td>
@@ -51,19 +51,19 @@
                                         <?php
                                             #CASH
                                                 $sqlkwcash = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
-                                                $hkwcash   = mysql_fetch_array(mysql_query($sqlkwcash));
+                                                $hkwcash   = mysqli_fetch_array(mysqli_query($objConn, $sqlkwcash));
                                                 $lunas     = $hkwcash['no_bukti'];
 
                                                 $sqllunas = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
-                                                $hcekcash = mysql_fetch_array(mysql_query($sqllunas));
+                                                $hcekcash = mysqli_fetch_array(mysqli_query($objConn, $sqllunas));
                                                 $ada      = $hcekcash['no_bukti'];
                                                 #BANK
                                                 $sqlkwcash2 = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]' AND tipe_transaksi='Pelunasan' AND tgl_batal<>'0000-00-00 00:00:00'";
-                                                $hkwcash2   = mysql_fetch_array(mysql_query($sqlkwcash2));
+                                                $hkwcash2   = mysqli_fetch_array(mysqli_query($objConn, $sqlkwcash2));
                                                 $lunas2     = $hkwcash2['no_bukti'];
 
                                                 $sqllunas2 = "SELECT no_bukti FROM t_cash WHERE no_ref='$catat[no_kwitansi]'";
-                                                $hcekcash2 = mysql_fetch_array(mysql_query($sqllunas2));
+                                                $hcekcash2 = mysqli_fetch_array(mysqli_query($objConn, $sqllunas2));
                                                 $ada2      = $hcekcash2['no_bukti'];
 
                                                 if ($ada || $ada2) {if ($lunas || $lunas2) {

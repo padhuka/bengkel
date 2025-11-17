@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id = $_GET['id'];
     $sqlemp = "SELECT * FROM t_pengirim WHERE id='$id'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
 ?>
 
             <div class="modal-dialog">

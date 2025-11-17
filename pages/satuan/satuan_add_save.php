@@ -7,14 +7,14 @@
         //message_back($id_satuan);
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_satuan WHERE nama='$nama' OR id_satuan='$id_satuan'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_satuan (id_satuan,nama) VALUES ('$id_satuan','$nama')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo 'n';
         }
 ?>

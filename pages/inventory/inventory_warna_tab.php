@@ -19,8 +19,8 @@
                                 <?php
                                     $j=1;
                                     $sqlcatat = "SELECT * FROM t_warna_kendaraan ORDER BY id_warna_kendaraan ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td ><?php echo $catat['id_warna_kendaraan'];?></td>

@@ -11,13 +11,13 @@
         $email = trim($_POST['email']);
 	
         $sqlcek = "SELECT * FROM t_customer WHERE id_customer='$id_customer' AND id_customer<>'$id_customerhid";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
         if ($row){
             echo 'y';
         }else{
 		        $sqltbemp = "UPDATE t_customer SET nama='$namacustomer',jenis_kelamin='$jeniskelamin',alamat='$alamatcustomer',no_ktp='$noktpcustomer',no_telp='$telpcustomer',email='$email' WHERE id_customer='$id_customerhid'";
-        		mysql_query($sqltbemp);
+        		mysqli_query($objConn, $sqltbemp);
            // echo 'n';
         }
 ?>

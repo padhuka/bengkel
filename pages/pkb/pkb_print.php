@@ -5,7 +5,7 @@
        include_once '../../lib/fungsi.php';
        $idpkb = $_GET['idpkb'];
        //   $sqlpan= "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
-       //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+       //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
 
    ?>
 <div class="modal-dialog">
@@ -16,8 +16,8 @@
                   <?php
                       $j        = 1;
                       $sqlcatat = "SELECT * FROM t_pkb e left join t_customer c on e.fk_customer=c.id_customer where e.id_pkb='$idpkb'";
-                      $rescatat = mysql_query($sqlcatat);
-                      $catat    = mysql_fetch_array($rescatat);
+                      $rescatat = mysqli_query($objConn, $sqlcatat);
+                      $catat    = mysqli_fetch_array($rescatat);
                   ?>
                     <div class="modal-body">
                       <div class="modal-title-detail" align="center"><h4><u>PKB BODY REPAIR</u></h4><h5><?php echo $catat['id_pkb']; ?></h5></div>
@@ -59,8 +59,8 @@
                 <?php
                     $j         = 1;
                     $sqlcatatp = "SELECT * FROM t_pkb_panel_detail a LEFT JOIN t_panel p ON a.fk_panel=p.id_panel WHERE a.fk_pkb='$idpkb'";
-                    $rescatatp = mysql_query($sqlcatatp);
-                    while ($catatp = mysql_fetch_array($rescatatp)) {
+                    $rescatatp = mysqli_query($objConn, $sqlcatatp);
+                    while ($catatp = mysqli_fetch_array($rescatatp)) {
                     ?>
                         <tr>
                           <td ><?php echo $j++; ?></td>
@@ -71,8 +71,8 @@
                         }
                         $j         = $j;
                         $sqlcatat2 = "SELECT * FROM t_pkb_part_detail a LEFT JOIN t_part p ON a.fk_part=p.id_part WHERE a.fk_pkb='$idpkb'";
-                        $rescatat2 = mysql_query($sqlcatat2);
-                        while ($catat2 = mysql_fetch_array($rescatat2)) {
+                        $rescatat2 = mysqli_query($objConn, $sqlcatat2);
+                        while ($catat2 = mysqli_fetch_array($rescatat2)) {
                         ?>
                         <tr>
                           <td ><?php echo $j++; ?></td>

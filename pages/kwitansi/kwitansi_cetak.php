@@ -10,7 +10,7 @@
     include_once '../../lib/fungsi.php';
     $no_kwitansi = $_GET['no_kwitansi'];
     //   $sqlpan= "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
-    //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+    //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
 
 ?>
 <?php
@@ -21,8 +21,8 @@
                                     LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi
                                     LEFT JOIN (select * from t_kwitansi_or where tgl_batal='0000-00-00 00:00:00') kw ON a.fk_estimasi=kw.fk_estimasi
                                     WHERE e.no_kwitansi='$no_kwitansi'";
-    $rescatat = mysql_query($sqlcatat);
-    $catat    = mysql_fetch_array($rescatat);
+    $rescatat = mysqli_query($objConn, $sqlcatat);
+    $catat    = mysqli_fetch_array($rescatat);
     $idpkb    = $catat['id_pkb'];
 
 ?>
@@ -71,8 +71,8 @@
                     $sqlcatatp = "SELECT * FROM t_pkb_panel_detail a
                                     LEFT JOIN t_panel p ON a.fk_panel=p.id_panel
                                     WHERE a.fk_pkb ='$idpkb'";
-                    $rescatatp = mysql_query($sqlcatatp);
-                    while ($catatp = mysql_fetch_array($rescatatp)) {
+                    $rescatatp = mysqli_query($objConn, $sqlcatatp);
+                    while ($catatp = mysqli_fetch_array($rescatatp)) {
                     ?>
                         <tr>
                           <td><?php echo $catatp['nama']; ?></td>
@@ -88,8 +88,8 @@
                                $sqlcatat2                          = "SELECT * FROM t_pkb_part_detail a
                                     LEFT JOIN t_part p ON a.fk_part=p.id_part
                                     WHERE a.fk_pkb='$idpkb'";
-                               $rescatat2 = mysql_query($sqlcatat2);
-                               while ($catat2 = mysql_fetch_array($rescatat2)) {
+                               $rescatat2 = mysqli_query($objConn, $sqlcatat2);
+                               while ($catat2 = mysqli_fetch_array($rescatat2)) {
                                ?>
                         <tr>
                           <td><?php echo $catat2['nama']; ?></td>

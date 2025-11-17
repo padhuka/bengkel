@@ -22,8 +22,8 @@
                     $sqlcatat  = "SELECT * FROM t_gate_pass
                                 WHERE tgl_trx >= '$per_limit'
                                     ORDER BY tgl_trx DESC";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                           <td><?php echo $j++; ?></td>

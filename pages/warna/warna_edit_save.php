@@ -8,14 +8,14 @@
         $namahiden= trim($_POST['namakendaraan']);
 
         $sqlcek = "SELECT * FROM t_warna_kendaraan WHERE id_warna_kendaraan='$id_warna_kendaraan' AND id_warna_kendaraan<>'$id_satuanhiden'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
                 $sqltbemp = "UPDATE t_warna_kendaraan SET nama='$nama' WHERE id_warna_kendaraan='$id_warna_kendaraan'";
-                mysql_query($sqltbemp);
+                mysqli_query($objConn, $sqltbemp);
            // echo '
      }
 ?>

@@ -19,8 +19,8 @@
                                     $sqlcatat = "SELECT ep.*, p.nama as nama FROM t_pkb_panel_detail ep 
                                     LEFT JOIN t_panel p ON ep.fk_panel=p.id_panel
                                     WHERE fk_pkb='$idpkb' ORDER BY id ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td ><?php echo $catat['nama'];?></td>

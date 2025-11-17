@@ -4,5 +4,5 @@
 		$id_customer = $_GET['id_customer'];
 		# HAPUS DATA 
 		$sqlhapusasuransi = "DELETE FROM t_customer WHERE id_customer='$id_customer'";
-   		mysql_query( $sqlhapusasuransi );
+   		mysqli_query($objConn,  $sqlhapusasuransi );
 ?>

@@ -3,8 +3,8 @@
                                     include_once '../../lib/fungsi.php';
                                     $idpkb=$_GET['idpkb'];
                                     $sqlcatat = "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    $catat = mysql_fetch_array( $rescatat );
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    $catat = mysqli_fetch_array( $rescatat );
                       ?>
                       <div class="col-sm-12">
                        <table id="pkbshow" class="table table-condensed table-bordered table-striped table-hover">

@@ -5,10 +5,10 @@
     $id=$_GET['id'];
 
     $sqlpan= "SELECT * FROM t_pkb_part_detail WHERE id='$id'";
-    $hslpan= mysql_fetch_array(mysql_query($sqlpan));
+    $hslpan= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
 
     $snm = "SELECT * FROM t_part WHERE id_part='$hslpan[fk_part]'";
-    $hnm = mysql_fetch_array(mysql_query($snm));
+    $hnm = mysqli_fetch_array(mysqli_query($objConn, $snm));
 
    ?>
 <div class="modal-dialog">

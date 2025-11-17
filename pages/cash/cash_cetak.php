@@ -10,14 +10,14 @@
     include_once '../../lib/fungsi.php';
     $nobukti= $_GET['nobukti'];
     //   $sqlpan= "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
- //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+ //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
   
    ?>
 
    <?php
                                     $sqlcatat = "SELECT * FROM t_cash WHERE no_bukti='$nobukti'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    $catat = mysql_fetch_array( $rescatat );
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    $catat = mysqli_fetch_array( $rescatat );
                                 ?>
                                 <table width="100%" align="center" border="0">
                                   <tr>

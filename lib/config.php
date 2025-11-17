@@ -1,8 +1,15 @@
 <?php
-	error_reporting(E_ALL ^ E_DEPRECATED);  
+	error_reporting(E_ALL ^ E_DEPRECATED);
 	include_once 'setting.php';
-	$objConn = mysql_connect("{$host}", "{$user}", "{$passsw}");
-	mysql_select_db( "{$db}", $objConn );
+
+	// Create mysqli connection
+	$objConn = mysqli_connect("{$host}", "{$user}", "{$passsw}", "{$db}");
+
+	// Check connection
+	if (!$objConn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
 	date_default_timezone_set('Asia/Jakarta');
 	$hrini = date('Y-m-d H:i:s');
 	$tahunnow = date('Y');

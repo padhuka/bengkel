@@ -40,8 +40,8 @@
 						</form>
 						<?php
 						if(isset($_POST['restore'])){
-							$koneksi=mysql_connect($host,$user,$passsw);
-							mysql_select_db($db,$koneksi);
+							$koneksi=mysqli_connect($host,$user,$passsw);
+							mysqli_select_db($db,$koneksi);
 							
 							$nama_file=$_FILES['datafile']['name'];
 							$ukuran=$_FILES['datafile']['size'];
@@ -65,7 +65,7 @@
 									 
 										$templine .= $line;
 										if (substr(trim($line), -1, 1) == ';'){
-											mysql_query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysql_error() . '<br /><br />');
+											mysqli_query($objConn, $templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysqli_error($objConn) . '<br /><br />');
 											$templine = '';
 										}
 									}

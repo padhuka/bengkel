@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id_customer = $_GET['id_customer'];
     $sqlemp = "SELECT * FROM t_customer WHERE id_customer='$id_customer'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
 ?>
 
             <div class="modal-dialog">

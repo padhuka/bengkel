@@ -28,8 +28,8 @@
                                 <?php
                                     $j=1;
                                     $sqlcatat = "SELECT * FROM t_akun WHERE coa LIKE '11.02.01%' ORDER BY id ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                             <td ><?php echo $catat['coa'];?></td>

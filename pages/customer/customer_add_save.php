@@ -15,8 +15,8 @@
         $kodeawal = 'CUST_BR.'.$hrn2.'.';
         $sqljur = "SELECT * FROM t_customer ORDER BY tgl_customer DESC";
         //$sqljur = "SELECT * FROM t_customer WHERE id_customer LIKE '$kodeawal2%' ORDER BY id_customer DESC";
-        $resultjur = mysql_query( $sqljur );
-        $jur = mysql_fetch_array( $resultjur );
+        $resultjur = mysqli_query($objConn,  $sqljur );
+        $jur = mysqli_fetch_array( $resultjur );
         if (empty($jur['id_customer'])){
             $kodeakhir = '000001';
         }else{
@@ -42,5 +42,5 @@
 
         
 		    $sqltbemp = "INSERT INTO t_customer (id_customer,nama,jenis_kelamin,alamat,no_ktp,no_telp,email) VALUES ('$kodebaru','$namacustomer','$jeniskelamin','$alamatcustomer','$noktpcustomer','$telpcustomer','$email')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
 ?>

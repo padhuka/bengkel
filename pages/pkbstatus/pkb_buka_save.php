@@ -4,5 +4,5 @@
         $idpkb = $_GET['idpkb'];
         
             $updatepkb = "UPDATE t_pkb SET status_pkb='Buka' WHERE id_pkb='$idpkb'";
-            mysql_query($updatepkb);
+            mysqli_query($objConn, $updatepkb);
 ?>

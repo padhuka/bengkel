@@ -8,6 +8,6 @@
         echo $keterangan_batal;
         
             $updatekwitansi = "UPDATE t_kwitansi SET tgl_batal='$hrini',keterangan_batal='$keterangan_batal' WHERE no_kwitansi='$no_kwitansi'";
-             $query =  mysql_query($updatekwitansi);
+             $query =  mysqli_query($objConn, $updatekwitansi);
               echo $query;
 ?>

@@ -8,14 +8,14 @@
         //message_back($id_tipe_kendaraan);
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_tipe_kendaraan WHERE nama='$nama' OR id_tipe_kendaraan='$id_tipe_kendaraan'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_tipe_kendaraan (id_tipe_kendaraan,nama,fk_group_kendaraan) VALUES ('$id_tipe_kendaraan','$nama','$group')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             echo 'n';
         }
 ?>

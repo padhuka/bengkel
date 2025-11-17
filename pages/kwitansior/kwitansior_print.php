@@ -5,7 +5,7 @@
     include_once '../../lib/fungsi.php';
     $no_kwitansi_or= $_GET['no_kwitansi_or'];
     //   $sqlpan= "SELECT * FROM t_kwitansi_or WHERE t_kwitansi_or='$no_kwitansi_or'";
- //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+ //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
   
    ?>
 <div class="modal-dialog">
@@ -20,8 +20,8 @@
                                     LEFT JOIN t_customer c ON a.fk_customer=c.id_customer 
                                     LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi 
                                     WHERE e.no_kwitansi_or='$no_kwitansi_or'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    $catat = mysql_fetch_array( $rescatat );
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    $catat = mysqli_fetch_array( $rescatat );
                                     $idestimasi=$catat['id_estimasi'];
                                     $disckw=100-$catat['diskonkw'];
                                 ?>

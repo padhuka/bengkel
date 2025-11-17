@@ -62,8 +62,8 @@
                                       WHERE B.no_bukti<>'' OR C.no_bukti<>''
                                       ORDER BY kode";
                                       echo $sqlcatat;
-                                   	$rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                   	$rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                         //$jml=$jml+$catat['jumlah'];  
                                 ?>
                         <tr>

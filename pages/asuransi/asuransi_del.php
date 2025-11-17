@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id_asuransi = $_GET['id_asuransi'];
     $sqlemp = "SELECT * FROM t_asuransi WHERE id_asuransi='$id_asuransi'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
 ?>
 
             <div class="modal-dialog">

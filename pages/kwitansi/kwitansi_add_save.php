@@ -9,8 +9,8 @@ $kodeawal2 = 'SI_BR.';
 $kodeawal  = 'SI_BR.' . $hrn2 . '.';
 //$sqljur = "SELECT * FROM t_kwitansi WHERE no_kwitansi LIKE '$kodeawal2%' ORDER BY no_kwitansi DESC";
 $sqljur    = "SELECT * FROM t_kwitansi ORDER BY tgl_kwitansi DESC";
-$resultjur = mysql_query($sqljur);
-$jur       = mysql_fetch_array($resultjur);
+$resultjur = mysqli_query($objConn, $sqljur);
+$jur       = mysqli_fetch_array($resultjur);
 if (empty($jur['no_kwitansi'])) {
     $kodeakhir = '000001';
 } else {
@@ -40,7 +40,7 @@ if (empty($jur['no_kwitansi'])) {
 $kodebaru = $kodeawal . $kodeakhir;
 
 $sqlest = "SELECT * FROM t_pkb p LEFT JOIN t_kwitansi_or k  ON p.fk_estimasi=k.fk_estimasi WHERE id_pkb='$idpkb'";
-$hsl    = mysql_fetch_array(mysql_query($sqlest));
+$hsl    = mysqli_fetch_array(mysqli_query($objConn, $sqlest));
 
 $grosspanel  = $hsl['total_gross_harga_panel'];
 $diskonpanel = $hsl['total_diskon_rupiah_panel'];
@@ -58,7 +58,7 @@ $payment = $nettototal + $ppn;
 
 $sqltbemp = "INSERT INTO t_kwitansi (no_kwitansi,fk_pkb,total_gross_panel,total_gross_part,total_diskon_panel,total_diskon_part,total_netto_panel,total_netto_part,total_ppn_kwitansi,total_kwitansi,total_payment) VALUES ('$kodebaru','$idpkb','$grosspanel','$grosspart','$diskonpanel','$diskonpart','$nettopanel','$nettopart',$ppn,'$nettototal',$payment)";
 
-mysql_query($sqltbemp);
+mysqli_query($objConn, $sqltbemp);
 
 $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$idpkb','CETAK KWITANSI')";
-mysql_query($updatestatus);
+mysqli_query($objConn, $updatestatus);

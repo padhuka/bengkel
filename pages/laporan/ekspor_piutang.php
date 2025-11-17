@@ -154,8 +154,8 @@
                         piutang > 0.9
                     ORDER BY 
                         p.tgl DESC";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
 
                     ?>
                         <tr>

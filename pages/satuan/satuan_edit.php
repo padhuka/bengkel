@@ -4,8 +4,8 @@
     include_once '../../lib/fungsi.php';
     $id_satuan = $_GET['id_satuan'];
     $sqlemp = "SELECT * FROM t_satuan WHERE id_satuan='$id_satuan'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
   ?>
 <div class="modal-dialog">
                 <div class="modal-content">

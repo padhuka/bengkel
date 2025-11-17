@@ -25,11 +25,11 @@
                                       LEFT JOIN t_customer c ON i.fk_customer=c.id_customer
                                       LEFT JOIN t_warna_kendaraan w ON i.fk_warna_kendaraan=w.id_warna_kendaraan
                                       ORDER BY no_chasis ASC";
-                                                                          $rescatat = mysql_query( $sqlcatat );
+                                                                          $rescatat = mysqli_query($objConn,  $sqlcatat );
 
-                                    while($catat = mysql_fetch_array( $rescatat )){
-                                      // $qwrn= mysql_query("SELECT * FROM t_warna_kendaraan WHERE id_warna_kendaraan='$catat[fk_warna_kendaraan]'");
-                                      // $swrn= mysql_fetch_array($qwrn);
+                                    while($catat = mysqli_fetch_array( $rescatat )){
+                                      // $qwrn= mysqli_query($objConn, "SELECT * FROM t_warna_kendaraan WHERE id_warna_kendaraan='$catat[fk_warna_kendaraan]'");
+                                      // $swrn= mysqli_fetch_array($qwrn);
                                 ?>
                         <tr>
                           <td ><?php echo $catat['no_chasis'];?></td>

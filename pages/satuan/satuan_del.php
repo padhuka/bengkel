@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id_satuan = $_GET['id_satuan'];
     $sqlsatuan = "SELECT * FROM t_satuan WHERE id_satuan='$id_satuan'";
-    $satuanar = mysql_query( $sqlsatuan );
-    $emp = mysql_fetch_array( $satuanar );
+    $satuanar = mysqli_query($objConn,  $sqlsatuan );
+    $emp = mysqli_fetch_array( $satuanar );
 ?>
 
             <div class="modal-dialog">

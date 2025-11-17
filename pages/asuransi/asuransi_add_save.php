@@ -10,14 +10,14 @@
         //message_back($id_asuransi);
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_asuransi WHERE nama='$nama' OR id_asuransi='$id_asuransi'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_asuransi (id_asuransi,nama,alamat,no_telp,npwp) VALUES ('$id_asuransi','$nama','$alamat','$no_telp','$npwp')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo 'n';
         }
 ?>

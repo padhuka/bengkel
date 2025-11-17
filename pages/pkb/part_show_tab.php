@@ -30,8 +30,8 @@
                                     $sqlcatat = "SELECT * FROM t_pkb_part_detail  pk
                                     LEFT JOIN t_part p ON pk.fk_part=p.id_part
                                     WHERE fk_pkb='$idpkb' ORDER BY id ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td ><?php echo $catat['nama'];?></td>

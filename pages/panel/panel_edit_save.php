@@ -12,13 +12,13 @@
 		 #cek id_panelsurat
         //$sqlcek = "SELECT * FROM t_panel WHERE (id_panel='$id_panel' AND id_panel<>'$id_panelhid') OR (nama='$nama' AND nama<>'$namahid')";
         $sqlcek = "SELECT * FROM t_panel WHERE id_panel='$id_panel' AND id_panel<>'$id_panelhid'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
         if ($row){
             echo 'y';
         }else{
 		        $sqltbemp = "UPDATE t_panel SET id_panel='$id_panel',nama='$nama',harga_pokok='$harga_pokok',harga_jual='$harga_jual',diskon='$diskon', ppn='$ppn' WHERE id_panel='$id_panel'";
-        		mysql_query($sqltbemp);
+        		mysqli_query($objConn, $sqltbemp);
            // echo 'n';
         }
 ?>

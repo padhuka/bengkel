@@ -30,14 +30,14 @@
 			function backup_tables($host,$user,$pass,$name,$nama_file,$tables = '*')
 			{
 				//untuk koneksi database
-				$link = mysql_connect($host,$user,$pass);
-				mysql_select_db($name,$link);
+				$link = mysqli_connect($host,$user,$pass);
+				mysqli_select_db($name,$link);
 				
 				if($tables == '*')
 				{
 					$tables = array();
-					$result = mysql_query('SHOW TABLES');
-					while($row = mysql_fetch_row($result))
+					$result = mysqli_query($objConn, 'SHOW TABLES');
+					while($row = mysqli_fetch_row($result))
 					{
 						$tables[] = $row[0];
 					}
@@ -49,17 +49,17 @@
 				//looping dulu ah
 				foreach($tables as $table)
 				{
-					$result = mysql_query('SELECT * FROM '.$table);
-					$num_fields = mysql_num_fields($result);
+					$result = mysqli_query($objConn, 'SELECT * FROM '.$table);
+					$num_fields = mysqli_num_fields($result);
 					
 					//menyisipkan query drop table untuk nanti hapus table yang lama
 					$return.= 'DROP TABLE '.$table.';';
-					$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
+					$row2 = mysqli_fetch_row(mysqli_query($objConn, 'SHOW CREATE TABLE '.$table));
 					$return.= "\n\n".$row2[1].";\n\n";
 					
 					for ($i = 0; $i < $num_fields; $i++) 
 					{
-						while($row = mysql_fetch_row($result))
+						while($row = mysqli_fetch_row($result))
 						{
 							//menyisipkan query Insert. untuk nanti memasukan data yang lama ketable yang baru dibuat. so toy mode : ON
 							$return.= 'INSERT INTO '.$table.' VALUES(';

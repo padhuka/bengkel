@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id_group_kendaraan = $_GET['id_group_kendaraan'];
     $sqlgroup = "SELECT * FROM t_group_kendaraan WHERE id_group_kendaraan='$id_group_kendaraan'";
-    $groupar = mysql_query( $sqlgroup );
-    $emp = mysql_fetch_array( $groupar );
+    $groupar = mysqli_query($objConn,  $sqlgroup );
+    $emp = mysqli_fetch_array( $groupar );
 ?>
 
             <div class="modal-dialog">

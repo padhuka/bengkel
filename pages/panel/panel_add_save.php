@@ -11,14 +11,14 @@
         //message_back($id_panel);
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_panel WHERE nama='$nama' OR id_panel='$id_panel'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_panel (id_panel,nama,harga_pokok,harga_jual,diskon,ppn) VALUES ('$id_panel','$nama','$harga_pokok','$harga_jual','$diskon','$ppn')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo 'n';
         }
 ?>

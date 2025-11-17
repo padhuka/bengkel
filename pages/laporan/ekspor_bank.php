@@ -52,8 +52,8 @@ header("Content-Disposition: attachment; filename=reportbank.xls");
                                     $jml=0;
                                     $sqlcatat = "SELECT * FROM t_bank 
                                     WHERE tgl_batal='0000:00:00 00:00:00' AND substring(tgl_transaksi,1,10)>='$tgl1' AND  substring(tgl_transaksi,1,10)<='$tgl2' ORDER BY no_bukti DESC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                       $jml=$jml+$catat['total'];  
                                 ?>
                         <tr>

@@ -25,8 +25,8 @@
         }
         
         $sqljur = "SELECT * FROM t_acc_bank ORDER BY urut DESC";
-        $resultjur = mysql_query( $sqljur );
-        $jur = mysql_fetch_array( $resultjur );
+        $resultjur = mysqli_query($objConn,  $sqljur );
+        $jur = mysqli_fetch_array( $resultjur );
         if (empty($jur['no_bukti'])){
             $kodeakhir = '000001';
         }else{
@@ -52,6 +52,6 @@
         
             $sqltbemp = "INSERT INTO t_acc_bank (no_bukti, tr_date, transaction_type, fk_akun, via_bayar, ref_akun, amount, description, status, diterima_dari)VALUES ('$kodebaru', '$tr_date', '$transaction_type', '$fk_akun', '', '$ref_akun', '$amount', '$description', '', '')";
             //echo "$sqltbemp";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo $kodebaru.'-'.$warnanm;    
 ?>

@@ -10,8 +10,8 @@
         
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_user WHERE username='$username'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             //echo 'var obat=new Array("'.$row[kode].'","'.$nama.'","'.$harga.'","'.$row[ukuran].'","'.$stkisi.'","'.$stk.'","'.$carabayar.'","'.$byre.'","'.$jl.'");';
@@ -20,7 +20,7 @@
         }else{
         	
 		    $sqltbemp = "INSERT INTO t_user (username,password,nama,nip,level) VALUES ('$username','$password','$nama','$nip','$level')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             echo 'n';
         }
 ?>

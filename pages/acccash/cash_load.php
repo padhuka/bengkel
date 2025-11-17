@@ -24,8 +24,8 @@
                                     $per_limit = '2024-01-01';
                                     WHERE tgl_batal='0000:00:00 00:00:00' AND tgl_transaksi >= '$per_limit'
                                     ORDER BY no_bukti DESC ";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['no_bukti']; ?>" onclick="open_cash(nobukti='<?php echo $catat['no_bukti']; ?>');"><span><?php echo($catat['no_bukti']); ?></span></button></td>

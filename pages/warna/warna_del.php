@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id_warna_kendaraan = $_GET['id_warna_kendaraan'];
     $sqlwarna = "SELECT * FROM t_warna_kendaraan WHERE id_warna_kendaraan='$id_warna_kendaraan'";
-    $warnaar = mysql_query( $sqlwarna );
-    $emp = mysql_fetch_array( $warnaar );
+    $warnaar = mysqli_query($objConn,  $sqlwarna );
+    $emp = mysqli_fetch_array( $warnaar );
 ?>
 
             <div class="modal-dialog">

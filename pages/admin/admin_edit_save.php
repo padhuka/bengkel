@@ -11,8 +11,8 @@
         $level = trim($_POST['level']); 
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_user WHERE username='$username' AND username<>'$usernamehid'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
         if ($password==''){
                 $passworde=$passwordhid;
         }else{
@@ -25,7 +25,7 @@
             echo 'y';
         }else{
 		        $sqltbemp = "UPDATE t_user SET username='$username',password='$password',nama='$nama',nip='$nip',level='$level' WHERE id='$id'";		        
-        		mysql_query($sqltbemp);
+        		mysqli_query($objConn, $sqltbemp);
             echo 'n';
         }
 ?>

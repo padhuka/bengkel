@@ -57,8 +57,8 @@ header("Content-Disposition: attachment; filename=reportpkbbatal.xls");
                                    LEFT JOIN t_kwitansi k ON p.id_pkb=k.fk_pkb
                                    WHERE p.tgl_batal<>'0000-00-00 00:00:00' AND substring(tgl,1,10)>='$tgl1' AND  substring(tgl,1,10)<='$tgl2' 
                                    ORDER BY p.id_pkb DESC";
-                                   	$rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                   	$rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <th><?php echo $j++;?></th>

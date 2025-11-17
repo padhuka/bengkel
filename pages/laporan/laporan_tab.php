@@ -257,6 +257,23 @@
                             </div> </td></tr></table>
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporlabarugi()">Generate</span></strong></span></td>
                     </tr>
+                    <tr>
+                            <td width="30%" >&nbsp;<label style="font-size: 16px;">Margin Panel </label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglmarginpanel1" name="tglmarginpanel1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglmarginpanel2" name="tglmarginpanel2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="ekspormarginpanel()">Generate</span></strong></span></td>
+                    </tr>
                 </table>
               </div>
             </div>
@@ -295,6 +312,8 @@
     $('#tglbukebesar2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tgllabarugi1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tgllabarugi2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglmarginpanel1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglmarginpanel2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
 
     function eksporestimasi(){
       var x =$('#tglestimasi1').val(); var y= $('#tglestimasi2').val();      
@@ -356,10 +375,14 @@
       window.location = "laporan/ekspor_biaya.php?tgl1="+x;
     }
     function eksporlabarugi(){
-      var x =$('#tgllabarugi1').val(); var y= $('#tgllabarugi2').val();      
+      var x =$('#tgllabarugi1').val(); var y= $('#tgllabarugi2').val();
       window.location = "laporan/ekspor_labarugi.php?tgl1="+x+"&tgl2="+y;
     }
-    
+    function ekspormarginpanel(){
+      var x =$('#tglmarginpanel1').val(); var y= $('#tglmarginpanel2').val();
+      window.location = "laporan/ekspor_margin_panel.php?tgl1="+x+"&tgl2="+y;
+    }
+
   </script>
   <style type="text/css">
 .btn {

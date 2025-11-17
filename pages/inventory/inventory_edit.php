@@ -7,8 +7,8 @@
     include_once 'inventory_customer_tab.php';
     $no_chasis = $_GET['no_chasis'];
     $sqlemp = "SELECT * FROM t_inventory_bengkel WHERE no_chasis='$no_chasis'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
   ?>
 <div class="modal-dialog">
                 <div class="modal-content">

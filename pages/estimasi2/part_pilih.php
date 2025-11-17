@@ -1,0 +1,620 @@
+<?php
+include_once '../../lib/fungsi.php';
+?>
+
+<!-- Modern Part Selection Modal -->
+<div class="modal-dialog modern-modal-dialog modal-xl">
+    <div class="modal-content modern-modal-content">
+        <div class="modal-header modern-modal-header">
+            <button type="button" class="close modern-close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title modern-modal-title" id="myModalLabel">
+                <i class="fa fa-wrench"></i>
+                Pilih Part
+            </h4>
+        </div>
+
+        <div class="modal-body modern-modal-body">
+            <div class="part-selection-container">
+                <div class="table-header">
+                    <div class="table-title">
+                        <h5><i class="fa fa-list"></i> Daftar Part Tersedia</h5>
+                    </div>
+                    <div class="table-info">
+                        <span class="info-badge">
+                            <i class="fa fa-info-circle"></i>
+                            Klik "Pilih" untuk menambahkan part
+                        </span>
+                    </div>
+                </div>
+
+                <div class="modern-table-container">
+                    <table id="partestimasi" class="modern-table table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="table-header-cell">
+                                    <i class="fa fa-tag"></i>
+                                    Nama Part
+                                </th>
+                                <th class="table-header-cell">
+                                    <i class="fa fa-money-bill-wave"></i>
+                                    Harga Pokok
+                                </th>
+                                <th class="table-header-cell">
+                                    <i class="fa fa-tag"></i>
+                                    Harga Jual
+                                </th>
+                                <th class="table-header-cell">
+                                    <i class="fa fa-calculator"></i>
+                                    Harga Total
+                                </th>
+                                <th class="table-header-cell text-center">
+                                    <i class="fa fa-hand-pointer"></i>
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // Debug database connection
+                            echo '<script>console.log("DEBUG: Checking database connection for part_pilih.php");</script>';
+
+                            // Include database connection
+                            include_once '../../lib/config.php';
+
+                            $j = 1;
+                            $sqlcatat = "SELECT * FROM t_part ORDER BY id_part ASC";
+                            echo '<script>console.log("DEBUG: SQL Query: ' . $sqlcatat . '");</script>';
+
+                            $rescatat = mysqli_query($objConn, $sqlcatat);
+
+                            if (!$rescatat) {
+                                echo '<script>console.log("DEBUG: MySQL Error: ' . mysqli_error($objConn) . '");</script>';
+                                echo '<tr><td colspan="5" class="text-center">Error loading part data. Please check database connection.</td></tr>';
+                            } else {
+                                $partCount = mysqli_num_rows($rescatat);
+                                echo '<script>console.log("DEBUG: Found ' . $partCount . ' parts in database");</script>';
+
+                                if ($partCount == 0) {
+                                    echo '<tr><td colspan="5" class="text-center">No parts found in database.</td></tr>';
+                                } else {
+                                    while ($catat = mysqli_fetch_array($rescatat)) {
+                                        $diskon = ($catat['diskon'] / 100) * $catat['harga_jual'];
+                                        $hartot = $catat['harga_jual'] - $diskon;
+                                        echo '<script>console.log("DEBUG: Loading part: ' . addslashes($catat['nama']) . '");</script>';
+                            ?>
+                            <tr class="table-row">
+                                <td class="table-cell">
+                                    <div class="part-info">
+                                        <i class="fa fa-wrench part-icon"></i>
+                                        <span class="part-name"><?php echo htmlspecialchars($catat['nama']); ?></span>
+                                    </div>
+                                </td>
+                                <td class="table-cell">
+                                    <span class="amount pokok-amount"><?php echo rupiah2($catat['harga_beli']); ?></span>
+                                </td>
+                                <td class="table-cell">
+                                    <span class="amount jual-amount"><?php echo rupiah2($catat['harga_jual']); ?></span>
+                                </td>
+                                <td class="table-cell">
+                                    <span class="amount total-amount"><?php echo rupiah2($hartot); ?></span>
+                                </td>
+                                <td class="table-cell text-center">
+                                    <button type="button"
+                                            class="btn btn-modern-primary btn-sm"
+                                            onclick="pilihparte('<?php echo $catat['id_part']; ?>','<?php echo addslashes($catat['nama']); ?>','<?php echo $catat['harga_jual']; ?>','<?php echo $hartot; ?>','<?php echo $catat['diskon']; ?>');">
+                                        <i class="fa fa-check"></i>
+                                        Pilih
+                                    </button>
+                                </td>
+                            </tr>
+                            <?php
+                                    }
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer modern-modal-footer">
+            <div class="form-actions">
+                <button type="button" class="btn btn-modern-secondary" data-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modern JavaScript -->
+<script>
+$(document).ready(function() {
+    // Initialize DataTables
+    $('#partestimasi').DataTable({
+        "language": {
+            "search": "Cari part...",
+            "lengthMenu": "Tampilkan _MENU_ part per halaman",
+            "zeroRecords": "Tidak ada data part",
+            "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ part",
+            "infoEmpty": "Tidak ada data",
+            "infoFiltered": "(disaring dari _MAX_ total data)",
+            "paginate": {
+                "first": "Pertama",
+                "last": "Terakhir",
+                "next": "Selanjutnya",
+                "previous": "Sebelumnya"
+            }
+        },
+        "pageLength": 10,
+        "responsive": true,
+        "ordering": true,
+        "searching": true,
+        "info": true,
+        "autoWidth": false,
+        "initComplete": function(settings, json) {
+            // Style the DataTables search input
+            $('.dataTables_filter input').addClass('modern-search-input');
+            $('.dataTables_filter input').attr('placeholder', 'Cari part...');
+        }
+    });
+});
+
+function pilihparte(a, b, c, d, e) {
+    console.log('DEBUG: pilihparte called with params:', a, b, c, d, e);
+    console.log('DEBUG: ModalPilihPart element:', $('#ModalPilihPart'));
+    console.log('DEBUG: ModalPilihPart length:', $('#ModalPilihPart').length);
+
+    // Check if target elements exist before setting values
+    console.log('DEBUG: #part element exists:', $('#part').length);
+    console.log('DEBUG: #partnm element exists:', $('#partnm').length);
+    console.log('DEBUG: #hargapokokp element exists:', $('#hargapokokp').length);
+    console.log('DEBUG: #hargatotalp element exists:', $('#hargatotalp').length);
+    console.log('DEBUG: #diskonp element exists:', $('#diskonp').length);
+    console.log('DEBUG: #qty element exists:', $('#qty').length);
+
+    try {
+        $("#part").val(a);
+        console.log('DEBUG: Set part value to:', a);
+
+        $("#partnm").val(b);
+        console.log('DEBUG: Set partnm value to:', b);
+
+        $("#hargapokokp").val(c);
+        console.log('DEBUG: Set hargapokokp value to:', c);
+
+        $("#hargatotalp").val(d);
+        console.log('DEBUG: Set hargatotalp value to:', d);
+
+        $("#diskonp").val(e);
+        console.log('DEBUG: Set diskonp value to:', e);
+
+        $("#qty").val('1');
+        console.log('DEBUG: Set qty value to: 1');
+
+        console.log('DEBUG: Attempting to hide ModalPilihPart');
+        $("#ModalPilihPart").modal('hide');
+
+        console.log('DEBUG: ModalPilihPart hide called successfully');
+
+    } catch (error) {
+        console.error('DEBUG: Error in pilihparte function:', error);
+    }
+}
+
+// Debug: Check if modal exists on page load
+$(document).ready(function() {
+    console.log('DEBUG: part_pilih.php loaded');
+    console.log('DEBUG: ModalPilihPart exists:', $('#ModalPilihPart').length > 0);
+    console.log('DEBUG: ModalPilihPart content:', $('#ModalPilihPart').html());
+});
+</script>
+
+<!-- Modern CSS Styles -->
+<style>
+/* Part Selection Modal Styles */
+.modern-modal-dialog.modal-xl {
+    max-width: 1200px;
+    width: 95%;
+}
+
+.modern-modal-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    padding: 1.5rem 2rem;
+}
+
+.modern-modal-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #0056b3, #6f42c1);
+}
+
+.modern-modal-title {
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+}
+
+.modern-close {
+    color: white;
+    opacity: 0.8;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modern-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+    background: rgba(255,255,255,0.1);
+}
+
+.modern-modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.modern-modal-body {
+    padding: 2rem;
+    background: #f8f9fa;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modern-modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 1.5rem 2rem;
+    background: white;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+/* Part Selection Container */
+.part-selection-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.table-title h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.table-title i {
+    color: #007bff;
+}
+
+.info-badge {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1976d2;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modern-table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.modern-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.modern-table thead th {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    border: none;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.modern-table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.modern-table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.modern-table thead th i {
+    margin-right: 0.5rem;
+    opacity: 0.9;
+}
+
+.table-row {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.table-row:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.005);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+.table-cell {
+    padding: 1rem 1.25rem;
+    vertical-align: middle;
+    border: none;
+}
+
+.part-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.part-icon {
+    font-size: 1.2rem;
+    color: #007bff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.part-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.amount {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.pokok-amount {
+    color: #6c757d;
+    background: rgba(108, 117, 125, 0.05);
+}
+
+.jual-amount {
+    color: #007bff;
+    background: rgba(0, 123, 255, 0.05);
+}
+
+.total-amount {
+    color: #28a745;
+    background: rgba(40, 167, 69, 0.05);
+}
+
+.btn-modern-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.btn-modern-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    color: white;
+}
+
+.btn-modern-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-modern-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+/* DataTables Custom Styles */
+.dataTables_wrapper {
+    padding: 0;
+}
+
+.dataTables_filter {
+    margin-bottom: 1rem;
+}
+
+.dataTables_filter input {
+    border: 2px solid #e1e8ed;
+    border-radius: 25px;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    width: 300px;
+    transition: all 0.3s ease;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%238b949e"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>') no-repeat 0.75rem center;
+    background-size: 16px;
+}
+
+.dataTables_filter input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.dataTables_length select {
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: white;
+    cursor: pointer;
+}
+
+.dataTables_info {
+    color: #6c757d;
+    font-size: 0.9rem;
+    padding: 1rem 0;
+}
+
+.dataTables_paginate .pagination {
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.dataTables_paginate .page-link {
+    border: 2px solid #e1e8ed;
+    color: #007bff;
+    margin: 0 0.125rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.dataTables_paginate .page-link:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.dataTables_paginate .page-item.active .page-link {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modern-modal-dialog.modal-xl {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .info-badge {
+        justify-content: center;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .modern-modal-body {
+        padding: 1.5rem;
+    }
+
+    .part-selection-container {
+        padding: 1rem;
+    }
+
+    .table-title h5 {
+        font-size: 1rem;
+    }
+
+    .table-cell {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .part-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .part-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .amount {
+        font-size: 0.8rem;
+    }
+
+    .dataTables_filter input {
+        width: 200px;
+    }
+}
+</style>

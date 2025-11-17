@@ -1,12 +1,15 @@
 <?php
+// Global database connection from config.php
+global $objConn;
 /*
 function setting( )
 {
     global $sett;
+    global $objConn;
     koneksi( );
     $sql = "select * from setting where id= '1'";
-    $result = mysql_query( $sql );
-    $sett = mysql_fetch_array( $result );
+    $result = mysqli_query( $objConn, $sql );
+    $sett = mysqli_fetch_array( $result );
 }
 */
 //untuk mencegah si jahil
@@ -30,7 +33,8 @@ function cegah($str) {
 
 //untuk anti-sql
 function nosql($str) {
-    $str = trim(mysql_real_escape_string(htmlentities(addslashes(htmlspecialchars($str)))));
+    global $objConn;
+    $str = trim(mysqli_real_escape_string($objConn, htmlentities(addslashes(htmlspecialchars($str)))));
 	$str = ereg_replace("%", "persen", $str);
 	$str = ereg_replace("1=1", "1smdgan1", $str);
 	$str = ereg_replace("-", "stri", $str);
@@ -105,8 +109,8 @@ function koneksi( )
     global $host;
     global $user;
     global $domainmu;
-    $objConn = mysql_connect( "{$host}", "{$user}", "{$passs}" );
-    mysql_select_db( "{$db}", $objConn );
+    $objConn = mysqli_connect( "{$host}", "{$user}", "{$passs}" );
+    mysqli_select_db( "{$db}", $objConn );
 }
 */
 function Terbilang($x)
@@ -678,8 +682,8 @@ function login( $id, $pass )
     global $id_ses;
     koneksi( );
     $sql = "Select * from member where  id='{$id}' and pass='{$pass}' and status='yes'";
-    $res = mysql_query( $sql );
-    if ( !( $rs = mysql_fetch_object( $res ) ) )
+    $res = mysqli_query( $objConn, $sql );
+    if ( !( $rs = mysqli_fetch_object( $res ) ) )
     {
         return false;
     }
@@ -707,10 +711,11 @@ function sesi( )
 function cekidmember( $id )
 {
     global $salah;
+    global $objConn;
     koneksi( );
     $sql = "select * from member where id='{$id}'";
-    $res = mysql_query( $sql );
-    $jum = mysql_num_rows( $res );
+    $res = mysqli_query( $objConn, $sql );
+    $jum = mysqli_num_rows( $res );
     if ( $jum == 0 )
     {
         return true;
@@ -745,16 +750,16 @@ function pesanan( )
     $transaksisp = $komisi;
     $transaksiown = $harga - $transaksisp;
     $sql = "INSERT INTO member (no, id, tanggaldaftar,nama, alamat, email, telepon, hp, bank, kota, sponsor, status,lostnumber,pass,traffic,transaksisp,transaksiown)\r\nVALUES('', '{$username}', '{$tanggaldaftar}','{$nama}', '{$alamat}','{$email}', '{$telepon}', '{$hp}', 'SEGERA DI UPDATE !!!', '{$kota}', '{$id_sesi}', 'no','{$lostnumber}','{$password}','0','{$transaksisp}','{$transaksiown}')";
-    mysql_query( $sql );
+    mysqli_query( $objConn, $sql );
     $swl = "select * from member where lostnumber='{$lostnumber}'";
-    $result = mysql_query( $swl );
-    $yes = mysql_fetch_array( $result );
+    $result = mysqli_query( $objConn, $swl );
+    $yes = mysqli_fetch_array( $result );
     $no1 = 100000 + $yes[no];
     $no2 = substr( $no1, -3 );
     $transaksisp = $transaksisp + $no2;
     $transaksiown = $transaksiown + $no2;
     $stl = "update  member set transaksisp='{$transaksisp}',transaksiown='{$transaksiown}' where lostnumber ='{$lostnumber}'";
-    mysql_query( $stl );
+    mysqli_query( $objConn, $stl );
 }
 
 function caridata( $id )
@@ -762,8 +767,8 @@ function caridata( $id )
     global $data;
     koneksi( );
     $sql = "select * from member where id= '{$id}'";
-    $result = mysql_query( $sql );
-    $data = mysql_fetch_array( $result );
+    $result = mysqli_query( $objConn, $sql );
+    $data = mysqli_fetch_array( $result );
 }
 
 function caridata1( $id )
@@ -771,8 +776,8 @@ function caridata1( $id )
     global $data1;
     koneksi( );
     $sql = "select * from member where id= '{$id}'";
-    $result = mysql_query( $sql );
-    $data1 = mysql_fetch_array( $result );
+    $result = mysqli_query( $objConn, $sql );
+    $data1 = mysqli_fetch_array( $result );
 }
 
 function caridata2( $id )
@@ -780,8 +785,8 @@ function caridata2( $id )
     global $data2;
     koneksi( );
     $sql = "select * from member where id= '{$id}'";
-    $result = mysql_query( $sql );
-    $data2 = mysql_fetch_array( $result );
+    $result = mysqli_query( $objConn, $sql );
+    $data2 = mysqli_fetch_array( $result );
 }
 
 function tes( $id )
@@ -811,13 +816,13 @@ function status( $id )
     if ( $id == "" )
     {
         $sol = "select * from member where no='{$defaultsp}' and status='yes'";
-        $res = mysql_query( $sol );
-        $has = mysql_fetch_array( $res );
+        $res = mysqli_query( $objConn, $sol );
+        $has = mysqli_fetch_array( $res );
         $id = $has[id];
     }
     $sql = "select * from member where id='{$id}'";
-    $result = mysql_query( $sql );
-    if ( $dat = mysql_fetch_array( $result ) )
+    $result = mysqli_query( $objConn, $sql );
+    if ( $dat = mysqli_fetch_array( $result ) )
     {
         if ( $dat[status] == "yes" )
         {
@@ -1044,10 +1049,10 @@ function statistik( )
         $set = 0;
     }
     $sql = "select * from member where sponsor='{$id_ses}' and status='yes'";
-    $result = mysql_query( $sql );
-    $total = mysql_num_rows( $result );
+    $result = mysqli_query( $objConn, $sql );
+    $total = mysqli_num_rows( $result );
     $sql1 = "select * from member where sponsor='{$id_ses}' and status='yes' order by tanggaldaftar desc limit {$set},10";
-    $result1 = mysql_query( $sql1 );
+    $result1 = mysqli_query( $objConn, $sql1 );
     if ( $total == 0 )
     {
         echo "<hr align=center color=#000099 width=300 size=10>";
@@ -1057,7 +1062,7 @@ function statistik( )
         echo "<table border=\"1\" bordercolor=\"#003366\" cellpadding=\"1\" cellspacing=\"1\" width=\"90%\">\r\n                      <tr bordercolor=\"#003366\" cellpadding=\"1\" cellspacing=\"1\" bgcolor=\"#CCCCFF\"> \r\n                        <td> <div align=\"center\"><strong><font face=arial size=2>No</font></strong></div></td>\r\n                        <td> <div align=\"center\"><strong><font face=arial size=2>Nama</font></strong></div></td>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>Email</font></strong></div></TD>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>Transfer</font></strong></div></TD>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>BLOKIR</font></strong></div></TD>\r\n                      </tr>";
         $j = 1;
         $color = "#C6C6FF";
-        while ( $yap = mysql_fetch_array( $result1 ) )
+        while ( $yap = mysqli_fetch_array( $result1 ) )
         {
             if ( $color == "#C6C6FF" )
             {
@@ -1087,10 +1092,10 @@ function aktivasi( )
         $set = 0;
     }
     $sql = "select * from member where sponsor='{$id_ses}' and status='no'";
-    $result = mysql_query( $sql );
-    $total = mysql_num_rows( $result );
+    $result = mysqli_query( $objConn, $sql );
+    $total = mysqli_num_rows( $result );
     $sql1 = "select * from member where sponsor='{$id_ses}' and status='no' order by tanggaldaftar desc limit {$set},10";
-    $result1 = mysql_query( $sql1 );
+    $result1 = mysqli_query( $objConn, $sql1 );
     if ( $total == 0 )
     {
         echo "<hr align=center color=#000099 width=300 size=10>";
@@ -1100,7 +1105,7 @@ function aktivasi( )
         echo "<table border=\"1\" bordercolor=\"#003366\" cellpadding=\"1\" cellspacing=\"1\" width=\"90%\">\r\n                      <tr bordercolor=\"#003366\" cellpadding=\"1\" cellspacing=\"1\" bgcolor=\"#CCCCFF\"> \r\n                        <td> <div align=\"center\"><strong><font face=arial size=2>No</font> </strong></div></td>\r\n                        <td> <div align=\"center\"><strong><font face=arial size=2>Nama</font> </strong></div></td>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>Email</font></strong></div></TD>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>HP</font></strong></div></TD>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>Transfer</font></strong></div></TD>\r\n                        <td><div align=\"center\"><strong><font face=arial size=2>Kota</font></strong></div></TD>\r\n                      </tr>";
         $j = 1;
         $color = "#C6C6FF";
-        while ( $yap = mysql_fetch_array( $result1 ) )
+        while ( $yap = mysqli_fetch_array( $result1 ) )
         {
             if ( $color == "#C6C6FF" )
             {

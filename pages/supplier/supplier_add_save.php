@@ -10,14 +10,14 @@
         //message_back($id_supplier);
 		 #cek idsurat
         $sqlcek = "SELECT * FROM t_supplier WHERE nama='$nama' OR id_supplier='$id_supplier'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
 
         if ($row){
             echo 'y';
         }else{
 		    $sqltbemp = "INSERT INTO t_supplier (id_supplier,nama,alamat,no_telp,npwp) VALUES ('$id_supplier','$nama','$alamat','$no_telp','$npwp')";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo 'n';
         }
 ?>

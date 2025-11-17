@@ -20,12 +20,12 @@ if($_POST['txt_kode']!=$kode){
 	*/
 	$sql = "SELECT * FROM t_user WHERE username='$idne' AND password='$passworde'";
 	//message_back($sql);
-    $res = mysql_query( $sql );
+    $res = mysqli_query( $objConn, $sql );
     if ($res === FALSE) {
-    	die(mysql_error());
+    	die(mysqli_error($objConn));
 	}
 
-    $rs = mysql_fetch_array($res);
+    $rs = mysqli_fetch_array($res);
 	//message_back($sql);
 	if(empty($rs['username']))
     {

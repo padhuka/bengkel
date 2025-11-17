@@ -5,8 +5,8 @@
     include_once '../../lib/fungsi.php';
     $nobukti= $_GET['nobukti'];
     $sqlcatat = "SELECT * FROM t_bank WHERE no_bukti='$nobukti'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    $catat = mysql_fetch_array( $rescatat );
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    $catat = mysqli_fetch_array( $rescatat );
    ?>
 <div class="modal-dialog">
            <div class="modal-content">

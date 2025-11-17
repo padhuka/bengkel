@@ -3,8 +3,8 @@
     //include_once '../../lib/fungsi.php';
     $id_partner_bank = $_GET['id_partner_bank'];
     $sqlpartnerbank = "SELECT * FROM t_partner_bank WHERE id_partner_bank='$id_partner_bank'";
-    $partner = mysql_query( $sqlpartnerbank );
-    $emp = mysql_fetch_array( $partner );
+    $partner = mysqli_query($objConn,  $sqlpartnerbank );
+    $emp = mysqli_fetch_array( $partner );
 ?>
 
             <div class="modal-dialog">

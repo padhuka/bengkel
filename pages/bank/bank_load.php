@@ -25,8 +25,8 @@
                     $sqlcatat  = " SELECT * FROM t_bank
                                     WHERE tgl_batal='0000:00:00 00:00:00' AND tgl_transaksi >= '$per_limit'
                                      ORDER BY tgl DESC ";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                           <td><?php echo $j++; ?></td>

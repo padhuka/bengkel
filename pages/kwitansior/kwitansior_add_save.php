@@ -11,8 +11,8 @@
         $kodeawal2 = 'OR_BR.';
         $kodeawal = 'OR_BR.'.$hrn2.'.';
         $sqljur = "SELECT * FROM t_kwitansi_or ORDER BY tgl_kwitansi_or DESC";
-        $resultjur = mysql_query( $sqljur );
-        $jur = mysql_fetch_array( $resultjur );
+        $resultjur = mysqli_query($objConn,  $sqljur );
+        $jur = mysqli_fetch_array( $resultjur );
         if (empty($jur['no_kwitansi_or'])){
             $kodeakhir = '000001';
         }else{
@@ -37,12 +37,12 @@
 
         //echo $idestimasi;
             // $sqlest = "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
-            // $hest= mysql_fetch_array(mysql_query($sqlest));
+            // $hest= mysqli_fetch_array(mysqli_query($objConn, $sqlest));
 
         
         $sqltbemp = "INSERT INTO t_kwitansi_or (no_kwitansi_or,fk_estimasi,nilai_kwitansi,diskon_or,keterangan) VALUES ('$kodebaru','$idestimasi','$nilaikwitansi','$diskonor','$keterangan')";
 
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
            // echo $sqltbemp;
         //    echo $kodebaru.'-'.$warnanm;
         

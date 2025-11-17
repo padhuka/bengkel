@@ -69,11 +69,11 @@ ORDER BY A.coa ASC
                                 ?>
                                 <?php 
                                   $sqlcatat = "SELECT * FROM t_akun WHERE coa LIKE '51%'";
-                                  $rescatat = mysql_query($sqlcatat);
-                                  while($catat = mysql_fetch_array( $rescatat )){
+                                  $rescatat = mysqli_query($objConn, $sqlcatat);
+                                  while($catat = mysqli_fetch_array( $rescatat )){
                                     //cek
-                                    $t_acc_cash= mysql_fetch_array(mysql_query("SELECT ref_akun,sum(amount) AS jmlcash1 FROM t_acc_cash WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
-                                    $t_acc_bank= mysql_fetch_array(mysql_query("SELECT ref_akun,sum(amount) AS jmlbank1 FROM t_acc_bank WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
+                                    $t_acc_cash= mysqli_fetch_array(mysqli_query($objConn, "SELECT ref_akun,sum(amount) AS jmlcash1 FROM t_acc_cash WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
+                                    $t_acc_bank= mysqli_fetch_array(mysqli_query($objConn, "SELECT ref_akun,sum(amount) AS jmlbank1 FROM t_acc_bank WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
                                     if ($t_acc_cash['ref_akun'] || $t_acc_bank['ref_akun']){
                                 ?>
                         <tr>
@@ -85,11 +85,11 @@ ORDER BY A.coa ASC
                               $peri=$tgl1.'-'.$blne;
                               //cash
                               $sqlsum="SELECT sum(amount) AS jmlcashbln FROM t_acc_cash WHERE no_bukti<>''  AND status<>'Batal' AND substring(tr_date,1,7)='$peri' AND ref_akun='$catat[coa]'";
-                              $hsum=mysql_fetch_array(mysql_query($sqlsum));
+                              $hsum=mysqli_fetch_array(mysqli_query($objConn, $sqlsum));
 
                               //bank
                               $sqlsum2="SELECT sum(amount) AS jmlbankbln FROM t_acc_bank WHERE no_bukti<>''  AND status<>'Batal' AND substring(tr_date,1,7)='$peri' AND ref_akun='$catat[coa]'";
-                              $hsum2=mysql_fetch_array(mysql_query($sqlsum2));
+                              $hsum2=mysqli_fetch_array(mysqli_query($objConn, $sqlsum2));
                               //echo "<td>".date( 'm', strtotime( "$i/12/10" ) )."</td>";
                               echo "<td align=right>".rupiah2($hsum['jmlcashbln']+$hsum2['jmlbankbln'])."</td>";
                             } ?>
@@ -100,11 +100,11 @@ ORDER BY A.coa ASC
 
                       <?php 
                                   $sqlcatat = "SELECT * FROM t_akun WHERE coa LIKE '61%'";
-                                  $rescatat = mysql_query($sqlcatat);
-                                  while($catat = mysql_fetch_array( $rescatat )){
+                                  $rescatat = mysqli_query($objConn, $sqlcatat);
+                                  while($catat = mysqli_fetch_array( $rescatat )){
                                     //cek
-                                    $t_acc_cash= mysql_fetch_array(mysql_query("SELECT ref_akun,sum(amount) AS jmlcash2 FROM t_acc_cash WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
-                                    $t_acc_bank= mysql_fetch_array(mysql_query("SELECT ref_akun,sum(amount) AS jmlbank2 FROM t_acc_bank WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
+                                    $t_acc_cash= mysqli_fetch_array(mysqli_query($objConn, "SELECT ref_akun,sum(amount) AS jmlcash2 FROM t_acc_cash WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
+                                    $t_acc_bank= mysqli_fetch_array(mysqli_query($objConn, "SELECT ref_akun,sum(amount) AS jmlbank2 FROM t_acc_bank WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
                                     if ($t_acc_cash['ref_akun'] || $t_acc_bank['ref_akun']){
                                 ?>
                         <tr>
@@ -116,11 +116,11 @@ ORDER BY A.coa ASC
                               $peri=$tgl1.'-'.$blne;
                               //cash
                               $sqlsum="SELECT sum(amount) AS jmlcashbln FROM t_acc_cash WHERE no_bukti<>''  AND status<>'Batal' AND substring(tr_date,1,7)='$peri' AND ref_akun='$catat[coa]'";
-                              $hsum=mysql_fetch_array(mysql_query($sqlsum));
+                              $hsum=mysqli_fetch_array(mysqli_query($objConn, $sqlsum));
 
                               //bank
                               $sqlsum2="SELECT sum(amount) AS jmlbankbln FROM t_acc_bank WHERE no_bukti<>''  AND status<>'Batal' AND substring(tr_date,1,7)='$peri' AND ref_akun='$catat[coa]'";
-                              $hsum2=mysql_fetch_array(mysql_query($sqlsum2));
+                              $hsum2=mysqli_fetch_array(mysqli_query($objConn, $sqlsum2));
                               //echo "<td>".date( 'm', strtotime( "$i/12/10" ) )."</td>";
                               echo "<td align=right>".rupiah2($hsum['jmlcashbln']+$hsum2['jmlbankbln'])."</td>";
                             } ?>
@@ -133,11 +133,11 @@ ORDER BY A.coa ASC
 
                       <?php 
                                   $sqlcatat = "SELECT * FROM t_akun WHERE coa LIKE '81%'";
-                                  $rescatat = mysql_query($sqlcatat);
-                                  while($catat = mysql_fetch_array( $rescatat )){
+                                  $rescatat = mysqli_query($objConn, $sqlcatat);
+                                  while($catat = mysqli_fetch_array( $rescatat )){
                                     //cek
-                                    $t_acc_cash= mysql_fetch_array(mysql_query("SELECT ref_akun,sum(amount) AS jmlcash3 FROM t_acc_cash WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
-                                    $t_acc_bank= mysql_fetch_array(mysql_query("SELECT ref_akun,sum(amount) AS jmlbank3 FROM t_acc_bank WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
+                                    $t_acc_cash= mysqli_fetch_array(mysqli_query($objConn, "SELECT ref_akun,sum(amount) AS jmlcash3 FROM t_acc_cash WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
+                                    $t_acc_bank= mysqli_fetch_array(mysqli_query($objConn, "SELECT ref_akun,sum(amount) AS jmlbank3 FROM t_acc_bank WHERE substring(tr_date,1,4)='$tgl1' AND ref_akun='$catat[coa]' AND status<>'Batal' AND no_bukti<>''") );
                                     if ($t_acc_cash['ref_akun'] || $t_acc_bank['ref_akun']){
                                 ?>
                         <tr>
@@ -149,11 +149,11 @@ ORDER BY A.coa ASC
                               $peri=$tgl1.'-'.$blne;
                               //cash
                               $sqlsum="SELECT sum(amount) AS jmlcashbln FROM t_acc_cash WHERE no_bukti<>''  AND status<>'Batal' AND substring(tr_date,1,7)='$peri' AND ref_akun='$catat[coa]'";
-                              $hsum=mysql_fetch_array(mysql_query($sqlsum));
+                              $hsum=mysqli_fetch_array(mysqli_query($objConn, $sqlsum));
 
                               //bank
                               $sqlsum2="SELECT sum(amount) AS jmlbankbln FROM t_acc_bank WHERE no_bukti<>''  AND status<>'Batal' AND substring(tr_date,1,7)='$peri' AND ref_akun='$catat[coa]'";
-                              $hsum2=mysql_fetch_array(mysql_query($sqlsum2));
+                              $hsum2=mysqli_fetch_array(mysqli_query($objConn, $sqlsum2));
                               //echo "<td>".date( 'm', strtotime( "$i/12/10" ) )."</td>";
                               echo "<td align=right>".rupiah2($hsum['jmlcashbln']+$hsum2['jmlbankbln'])."</td>";
                             } ?>

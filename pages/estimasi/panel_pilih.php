@@ -27,8 +27,8 @@
                 <?php
                                     $j=1;
                                     $sqlcatat = "SELECT * FROM t_panel ORDER BY id_panel ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                       $diskon= ($catat['diskon']/100)*$catat['harga_jual'];
                                       //$ppn= ($catat['ppn']/100)*$catat['harga_jual'];
                                       $hartot= $catat['harga_jual']-$diskon;

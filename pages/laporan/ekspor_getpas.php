@@ -62,8 +62,8 @@ header("Content-Disposition: attachment; filename=reportgatepass.xls");
                                     WHERE substring(A.tgl,1,10)>='$tgl1' AND substring(A.tgl,1,10)<='$tgl2' ORDER BY A.no_gate_pass DESC  
                                     ";
                                     //echo $sqlcatat;
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                     if ($catat['lunascash']){
                                       $tgle=$catat['lunascash'];
                                     }

@@ -4,11 +4,11 @@
     include_once '../../lib/fungsi.php';
     $id_tipe_kendaraan = $_GET['id_tipe_kendaraan'];
     $sqlemp = "SELECT * FROM t_tipe_kendaraan WHERE id_tipe_kendaraan='$id_tipe_kendaraan'";
-    $resemp = mysql_query( $sqlemp );
-    $emp = mysql_fetch_array( $resemp );
+    $resemp = mysqli_query($objConn,  $sqlemp );
+    $emp = mysqli_fetch_array( $resemp );
 
-    $sqlgrup=mysql_query("SELECT * FROM t_group_kendaraan WHERE id_group_kendaraan='$emp[fk_group_kendaraan]'");
-    $hg=mysql_fetch_array($sqlgrup);
+    $sqlgrup=mysqli_query($objConn, "SELECT * FROM t_group_kendaraan WHERE id_group_kendaraan='$emp[fk_group_kendaraan]'");
+    $hg=mysqli_fetch_array($sqlgrup);
     $nmg=$hg['nama'];
   ?>
 <div class="modal-dialog">

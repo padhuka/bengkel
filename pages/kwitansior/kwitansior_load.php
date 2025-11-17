@@ -26,8 +26,8 @@
                                       INNER JOIN t_customer c ON e.fk_customer=c.id_customer
                                       WHERE k.tgl_batal='0000:00:00 00:00:00' AND k.tgl_kwitansi_or >= '$per_limit'
                                       ORDER BY k.tgl_kwitansi_or DESC";
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                         <td><?php echo $j++; ?></td>

@@ -79,8 +79,8 @@
                                           AND bk.tipe_transaksi = 'titipan'
                                       WHERE ko.tgl_batal = '0000-00-00 00:00:00'
                                       GROUP BY ko.no_kwitansi_or, ko.nilai_kwitansi, s.no_ref";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                        

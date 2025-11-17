@@ -88,9 +88,9 @@ header("Content-Disposition: attachment; filename=reportpenjualan.xls");
                                         GROUP BY fk_pkb)) as gt on k.fk_pkb=gt.fk_pkb
                                     where k.tgl_batal='0000-00-00 00:00:00' AND substring(k.tgl_kwitansi,1,10)>='$tgl1' AND substring(k.tgl_kwitansi,1,10)<='$tgl2'
                                     ORDER BY tgl ASC";
-                                   	$rescatat = mysql_query( $sqlcatat );
+                                   	$rescatat = mysqli_query($objConn,  $sqlcatat );
                                     //echo $sqlcatat;
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                         $jml=$jml+$catat['jumlah'];  
                                 ?>
                         <tr>

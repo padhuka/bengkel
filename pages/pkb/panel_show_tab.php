@@ -31,8 +31,8 @@
                                     $sqlcatat = "SELECT * FROM t_pkb_panel_detail pk
                                     LEFT JOIN t_panel p ON pk.fk_panel=p.id_panel
                                     WHERE fk_pkb='$idpkb' ORDER BY id ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td ><?php echo $catat['nama'];?></td>

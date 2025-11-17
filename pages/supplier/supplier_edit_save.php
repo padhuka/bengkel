@@ -10,13 +10,13 @@
         $npwp = trim($_POST['npwp']); 
 	
         $sqlcek = "SELECT * FROM t_supplier WHERE id_supplier='$id_supplier' AND id_supplier<>'$id_asuransihid'";
-        $qrycek = mysql_query($sqlcek);
-        $row = mysql_fetch_array($qrycek);
+        $qrycek = mysqli_query($objConn, $sqlcek);
+        $row = mysqli_fetch_array($qrycek);
         if ($row){
             echo 'y';
         }else{
 		        $sqltbemp = "UPDATE t_supplier SET id_supplier='$id_supplier',nama='$nama',alamat='$alamat',no_telp='$no_telp',npwp='$npwp' WHERE id_supplier='$id_supplier'";
-        		mysql_query($sqltbemp);
+        		mysqli_query($objConn, $sqltbemp);
            // echo 'n';
         }
 ?>

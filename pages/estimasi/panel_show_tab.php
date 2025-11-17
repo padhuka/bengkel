@@ -31,8 +31,8 @@
                                     $sqlcatat = "SELECT * FROM t_estimasi_panel_detail pd
                                     LEFT JOIN t_panel p ON p.id_panel=pd.fk_panel
                                     WHERE fk_estimasi='$idestimasi' ORDER BY id ASC";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                          $markpanel= $catat['mark_panel'];
                                 ?>
                         <tr>

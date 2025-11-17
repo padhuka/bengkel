@@ -5,7 +5,7 @@
     include_once '../../lib/fungsi.php';
     $idpkb= $_GET['idpkb'];
  //   $sqlpan= "SELECT * FROM t_pkb WHERE id_pkb='$idpkb'";
- //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+ //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
   
    ?>
 <div class="modal-dialog">
@@ -16,8 +16,8 @@
                   <?php
                                     $j=1;
                                     $sqlcatat = "SELECT * FROM t_pkb e left join t_customer c on e.fk_customer=c.id_customer where e.id_pkb='$idpkb'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    $catat = mysql_fetch_array( $rescatat );
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    $catat = mysqli_fetch_array( $rescatat );
                                 ?>
                     <div class="modal-body">
                       <div class="modal-title-detail">Data PKB</div>

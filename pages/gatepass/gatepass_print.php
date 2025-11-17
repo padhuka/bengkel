@@ -5,7 +5,7 @@
     include_once '../../lib/fungsi.php';
     $nogatepass= $_GET['nogatepass'];
     //   $sqlpan= "SELECT * FROM t_kwitansi WHERE t_kwitansi='$nogatepass'";
- //  $catat= mysql_fetch_array(mysql_query($sqlpan));
+ //  $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
   
    ?>
 <div class="modal-dialog">
@@ -21,8 +21,8 @@
                                     LEFT JOIN t_asuransi d ON a.fk_asuransi=d.id_asuransi
                                     LEFT JOIN t_estimasi es ON a.fk_estimasi=es.id_estimasi
                                     WHERE e.no_gate_pass='$nogatepass'";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    $catat = mysql_fetch_array( $rescatat );
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    $catat = mysqli_fetch_array( $rescatat );
                                     $idpkb=$catat['id_pkb'];
                                 ?>
                     <div class="modal-body">

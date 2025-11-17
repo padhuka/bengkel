@@ -6,16 +6,16 @@
     include_once '../../lib/fungsi.php';
     $idestimasi= $_GET['idestimasi'];
     $sqlpan= "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi'";
-    $catat= mysql_fetch_array(mysql_query($sqlpan));
+    $catat= mysqli_fetch_array(mysqli_query($objConn, $sqlpan));
 
     $sqlcatat = "SELECT * FROM t_inventory_bengkel A, t_warna_kendaraan B  WHERE A.no_chasis='$catat[fk_no_chasis]' AND A.fk_warna_kendaraan=B.id_warna_kendaraan";  
     
-    $swrn= mysql_fetch_array(mysql_query($sqlcatat));
+    $swrn= mysqli_fetch_array(mysqli_query($objConn, $sqlcatat));
     $wrne=$swrn['nama'];
     $kdwrne=$swrn['fk_warna_kendaraan'];
 
     $sas = "SELECT * FROM t_asuransi WHERE id_asuransi='$catat[fk_asuransi]'";
-    $has= mysql_fetch_array(mysql_query($sas));
+    $has= mysqli_fetch_array(mysqli_query($objConn, $sas));
     $nmas=$has['nama'];
    ?>
 <div class="modal-dialog">

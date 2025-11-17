@@ -4,7 +4,8 @@
 	$db="bodyrepairdb"; // nama database anda.
 	$passsw=""; // password untuk akses database anda
 	// baris dibawah ini jangan diedit
-	$host="localhost";
+	// $host="localhost";
+	$host="host.docker.internal";
 
 	//WEB
 	$title="Gemilang - Cat & Body";

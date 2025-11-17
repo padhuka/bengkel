@@ -56,8 +56,8 @@
                                 AND p.tgl >= '$per_limit'
                             ORDER BY p.tgl DESC";
 
-                    $rescatat = mysql_query($sqlcatat);
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                           <td><?php echo $j++; ?></td>
@@ -74,7 +74,7 @@
                           <td >
                                     <?php
                                         $sqlkwcash2 = "SELECT no_kwitansi FROM t_kwitansi WHERE fk_pkb='$catat[id_pkb]' AND tgl_batal<>'0000-00-00 00:00:00'";
-                                            $hkwcash2   = mysql_fetch_array(mysql_query($sqlkwcash2));
+                                            $hkwcash2   = mysqli_fetch_array(mysqli_query($objConn, $sqlkwcash2));
                                             $lunas2     = $hkwcash2['no_kwitansi'];
                                         ?>
 <?php if ($catat['statuspkb'] == 'PROSES REPAIR' || $lunas2) {?>

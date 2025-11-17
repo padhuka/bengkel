@@ -58,8 +58,8 @@
                                 WHERE e.tgl_batal = '0000-00-00 00:00:00'
                                   AND e.approved = '1'
                                   AND p.fk_estimasi IS NULL";
-                                    $rescatat = mysql_query( $sqlcatat );
-                                    while($catat = mysql_fetch_array( $rescatat )){
+                                    $rescatat = mysqli_query($objConn,  $sqlcatat );
+                                    while($catat = mysqli_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <td><button type="button" class="btn btn-link" id="<?php echo $catat['id_estimasi']; ?>" onclick="open_est(idestimasi='<?php echo $catat['id_estimasi']; ?>');"><span><?php echo $catat['id_estimasi'];?></span></button></td>

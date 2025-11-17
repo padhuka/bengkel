@@ -8,7 +8,7 @@
     $idestimasi=explode('-',$_GET['idestimasi']);
 
     $sqles = "SELECT * FROM t_estimasi WHERE id_estimasi='$idestimasi[0]'";
-    $hes = mysql_fetch_array(mysql_query($sqles));
+    $hes = mysqli_fetch_array(mysqli_query($objConn, $sqles));
    ?>
 <div class="modal-dialog">
                 <div class="modal-content">

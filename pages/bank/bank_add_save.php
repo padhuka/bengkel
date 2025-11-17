@@ -24,8 +24,8 @@
         $kodeawal2 = 'BM_BR.';
         $kodeawal = 'BM_BR.'.$hrn2.'.';
         $sqljur = "SELECT * FROM t_bank ORDER BY tgl DESC";
-        $resultjur = mysql_query( $sqljur );
-        $jur = mysql_fetch_array( $resultjur );
+        $resultjur = mysqli_query($objConn,  $sqljur );
+        $jur = mysqli_fetch_array( $resultjur );
         if (empty($jur['no_bukti'])){
             $kodeakhir = '000001';
         }else{
@@ -51,14 +51,14 @@
         
             $sqltbemp = "INSERT INTO t_bank (no_bukti,tgl_transaksi,tipe_transaksi,diterima_dari,via_bayar,fk_partner_bank,no_ref,total,keterangan) VALUES ('$kodebaru','$tgltransaksi','$tipetransaksi','$diterimadari','$viabayar','$partnerbank','$noref','$total','$keterangan')";
          //   echo "$sqltbemp";
-            mysql_query($sqltbemp);
+            mysqli_query($objConn, $sqltbemp);
             //echo $kodebaru.'-'.$warnanm;        
 
         if ($tipetransaksi == 'Pelunasan') {
             $getIdPkb = "SELECT fk_pkb FROM t_kwitansi where no_kwitansi='$noref'";
-            $result = mysql_fetch_array(mysql_query($getIdPkb));
+            $result = mysqli_fetch_array(mysqli_query($objConn, $getIdPkb));
             $pkb = $result['fk_pkb'];
             $updatestatus = "INSERT INTO t_status_pkb (fk_pkb,status) VALUES ('$pkb','LUNAS')";
-            mysql_query($updatestatus);  
+            mysqli_query($objConn, $updatestatus);  
         }
 ?>

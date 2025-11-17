@@ -114,9 +114,9 @@
                                                 LEFT JOIN t_akun C ON A.ref_akun=C.coa
                                                 WHERE A.tr_date >= '$per_limit'
                                                 ORDER BY A.urut DESC";
-                    $rescatat = mysql_query($sqlcatat);
+                    $rescatat = mysqli_query($objConn, $sqlcatat);
                     //echo $sqlcatat;
-                    while ($catat = mysql_fetch_array($rescatat)) {
+                    while ($catat = mysqli_fetch_array($rescatat)) {
                     ?>
                         <tr>
                           <td><?php echo $j++; ?></td>
