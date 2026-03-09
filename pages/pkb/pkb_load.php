@@ -2,6 +2,42 @@
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
 ?>
+      <div class="panel panel-default" style="margin-bottom: 10px;">
+        <div class="panel-body">
+          <table class="table table-condensed" style="margin-bottom: 0;">
+            <tr>
+              <td width="15%"><strong>Filter Periode:</strong></td>
+              <td width="30%">
+                <div class="input-group date" style="width: 45%;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="tglpkb1" name="tglpkb1"
+                         value="<?php echo $tgl1; ?>" placeholder="Dari Tanggal">
+                </div>
+              </td>
+              <td width="5%" align="center">s/d</td>
+              <td width="30%">
+                <div class="input-group date" style="width: 45%;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="tglpkb2" name="tglpkb2"
+                         value="<?php echo $tgl2; ?>" placeholder="Sampai Tanggal">
+                </div>
+              </td>
+              <td width="20%">
+                <button type="button" class="btn btn-primary" onclick="filterPKB()">
+                  <i class="fa fa-filter"></i> Filter
+                </button>
+                <button type="button" class="btn btn-default" onclick="resetPKB()">
+                  <i class="fa fa-refresh"></i> Reset
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -19,7 +55,9 @@
                 <tbody>
                 <?php
                     $j         = 1;
-                    $per_limit = '2024-01-01';
+                    $current_year = date('Y');
+                    $tgl1 = isset($_GET['tgl1']) ? $_GET['tgl1'] : $current_year . '-01-01';
+                    $tgl2 = isset($_GET['tgl2']) ? $_GET['tgl2'] : $current_year . '-12-31';
                     // $sqlcatat  = "SELECT p.*,state.status as statuspkb,c.nama,k.no_kwitansi FROM t_pkb p
                     //                LEFT JOIN t_customer c ON p.fk_customer=c.id_customer
                     //                LEFT JOIN ( SELECT * from t_kwitansi where tgl_batal='0000-00-00 00:00:00') AS k ON p.id_pkb=k.fk_pkb
@@ -51,9 +89,10 @@
                                     ORDER BY s2.id DESC
                                     LIMIT 1
                                 )
-                            WHERE 
+                            WHERE
                                 p.tgl_batal = '0000-00-00 00:00:00'
-                                AND p.tgl >= '$per_limit'
+                                AND p.tgl >= '$tgl1'
+                                AND p.tgl <= '$tgl2'
                             ORDER BY p.tgl DESC";
 
                     $rescatat = mysqli_query($objConn, $sqlcatat);
@@ -104,6 +143,40 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
+
+            $('#tglpkb1').datepicker({
+              format: 'yyyy-mm-dd',
+              autoclose: true,
+            });
+
+            $('#tglpkb2').datepicker({
+              format: 'yyyy-mm-dd',
+              autoclose: true,
+            });
+
+            function filterPKB() {
+              var tgl1 = $('#tglpkb1').val();
+              var tgl2 = $('#tglpkb2').val();
+
+              if (tgl1 === '' || tgl2 === '') {
+                alert('Harap pilih tanggal awal dan tanggal akhir');
+                return false;
+              }
+
+              if (tgl1 > tgl2) {
+                alert('Tanggal awal tidak boleh lebih besar dari tanggal akhir');
+                return false;
+              }
+
+              $("#tablepkb").load('pkb/pkb_load.php?tgl1=' + tgl1 + '&tgl2=' + tgl2);
+            }
+
+            function resetPKB() {
+              var currentYear = new Date().getFullYear();
+              $('#tglpkb1').val(currentYear + '-01-01');
+              $('#tglpkb2').val(currentYear + '-12-31');
+              $("#tablepkb").load('pkb/pkb_load.php');
+            }
 
            function open_add(){
               $.ajax({
@@ -175,5 +248,14 @@
     padding-top: 3px;
     padding-left: 4px;
     padding-right: 4px;
+  }
+  .panel {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .panel-body {
+    padding: 10px;
   }
 </style>
