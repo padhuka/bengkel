@@ -84,6 +84,23 @@
                             </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpkbbatal()">Generate</span></strong></span></td>
                     </tr>
                     <tr>
+                        <td width="30%" >&nbsp;<label style="font-size: 16px;">PKB Outstanding</label></td><td>
+                              <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglpkboutstanding1" name="tglpkboutstanding1" required value="<?php echo $harinow;?>">
+                            </div></td><td>-</td><td><div class="input-group date">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="tglpkboutstanding2" name="tglpkboutstanding2" required value="<?php echo $harinow;?>">
+                            </div> </td></tr></table>
+                            </td><td align="center" style="font-weight: bold; font-size: 14px;"><span style="cursor: pointer;" onclick="eksporpkboutstanding()">Generate</span></strong></span></td>
+                    </tr>
+                    <tr>
                         <td width="30%" >&nbsp;<label style="font-size: 16px;">Kwitansi OR</label></td><td>
                               <table border="0"><tr><td>Periode :</td><td><div class="input-group date">
                             <div class="input-group date">
@@ -298,6 +315,8 @@
     $('#tglpkb2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpkb1a').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglpkb2a').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglpkboutstanding1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
+    $('#tglpkboutstanding2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglkwor1').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglkwor2').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
     $('#tglkwor1a').datepicker({format: 'yyyy-mm-dd',autoclose: true,});
@@ -334,8 +353,12 @@
       window.location = "laporan/ekspor_pkb.php?tgl1="+x+"&tgl2="+y;
     }
      function eksporpkbbatal(){
-      var x =$('#tglpkb1a').val(); var y= $('#tglpkb2a').val();      
+      var x =$('#tglpkb1a').val(); var y= $('#tglpkb2a').val();
       window.location = "laporan/ekspor_pkb_batal.php?tgl1="+x+"&tgl2="+y;
+    }
+    function eksporpkboutstanding(){
+      var x =$('#tglpkboutstanding1').val(); var y= $('#tglpkboutstanding2').val();
+      window.location = "laporan/ekspor_pkb_outstanding.php?tgl1="+x+"&tgl2="+y;
     }
     //=====
     function eksporkwor(){
