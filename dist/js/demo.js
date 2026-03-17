@@ -345,5 +345,8 @@ $(function () {
 
   setup()
 
-  $('[data-toggle="tooltip"]').tooltip()
+  // Initialize tooltips if Bootstrap tooltip is available
+  if (typeof $.fn.tooltip !== 'undefined') {
+    $('[data-toggle="tooltip"]').tooltip()
+  }
 })

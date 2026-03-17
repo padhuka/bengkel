@@ -33,6 +33,7 @@
                     <ul class="dropdown-menu" id="pkb-dropdown">
                         <li><a href="?p=pkb">PKB</a></li>
                         <li><a href="?p=pkbbukatutup">Buka/Tutup PKB</a></li>
+                        <li><a href="?p=sparepart">Sparepart</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>
@@ -117,6 +118,7 @@
                             <ul class="dropdown-menu" id="pkb-desktop-dropdown">
                                 <li><a href="?p=pkb">PKB</a></li>
                                 <li><a href="?p=pkbbukatutup">Buka/Tutup PKB</a></li>
+                                <li><a href="?p=sparepart">Sparepart</a></li>
                             </ul>
                         </li>
                         <?php endif; ?>
@@ -211,6 +213,7 @@
                 case 'kwitansior' : include_once 'kwitansior/kwitansior_tab.php'; break;
                 case 'kwitansi' : include_once 'kwitansi/kwitansi_tab.php'; break;
                 case 'pkbbukatutup' : include_once 'pkbstatus/pkb_tab.php'; break;
+                case 'sparepart' : include_once 'sparepart/sparepart_tab.php'; break;
                 case 'cash' : include_once 'cash/cash_tab.php'; break;
                 case 'bank' : include_once 'bank/bank_tab.php'; break;
                 case 'gatepass' : include_once 'gatepass/gatepass_tab.php'; break;
@@ -238,6 +241,8 @@
 </div>
 
 <!-- Include necessary scripts from original footer -->
+<!-- Bootstrap JS -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
