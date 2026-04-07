@@ -41,6 +41,8 @@
                           <th>No.Kwitansi</th>
                           <th>Tgl.Kwitansi</th>
                           <th>Nama Customer</th>
+                          <th>No.Polisi</th>
+                          <th>No.Chasis</th>
                           <th>Total Invoice</th>
                           <th>Total Bayar</th>
                           <th>OR Cash</th>
@@ -94,6 +96,8 @@
                         k.no_kwitansi AS nokw,
                         k.tgl_kwitansi AS tglkw,
                         c.nama AS nmcus,
+                        i.no_polisi AS no_polisi,
+                        i.no_chasis AS no_chasis,
                         k.total_payment AS total_bayar,
                         cash_sum.titip_cash,
                         bank_sum.titip_bank,
@@ -108,8 +112,10 @@
                             + COALESCE(or_bank_sum.or_bank,0)
                         ) AS piutang
                     FROM t_pkb p
-                    LEFT JOIN t_customer c 
+                    LEFT JOIN t_customer c
                         ON p.fk_customer = c.id_customer
+                    LEFT JOIN t_inventory_bengkel i
+                        ON p.fk_no_chasis = i.no_chasis
                     LEFT JOIN t_kwitansi k 
                         ON p.id_pkb = k.fk_pkb 
                         AND k.tgl_batal = '0000-00-00 00:00:00'
@@ -166,6 +172,8 @@
                           <td ><?php echo $catat['nokw']; ?></td>
                           <td ><?php echo date('d-m-Y', strtotime($catat['tglkw'])); ?></td>
                           <td ><?php echo $catat['nmcus']; ?></td>
+                          <td ><?php echo $catat['no_polisi']; ?></td>
+                          <td ><?php echo $catat['no_chasis']; ?></td>
                           <td ><?php echo rupiah2($catat['total_bayar']); ?></td>
                           <td ><?php echo rupiah2($catat['titip_cash'] + $catat['titip_bank'] + $catat['titip_bank2']); ?></td>
                           <td ><?php echo rupiah2($catat['or_cash']); ?></td>
