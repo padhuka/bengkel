@@ -41,6 +41,7 @@ header("Content-Disposition: attachment; filename=reportkwitansibatal.xls");
 	                          <th>No. Polisi</th>
 	                          <th>Jenis Kend</th>
 	                          <th>Nama Customer</th>
+	                          <th>Nama Asuransi</th>
 	                          <th>Total Gross Panel</th>
 	                          <th>Total Gross Part</th>
 	                          <th>Total Diskon Panel</th>
@@ -61,9 +62,10 @@ header("Content-Disposition: attachment; filename=reportkwitansibatal.xls");
 	                                    $tgl1=$_GET['tgl1'];
 	                                    $tgl2=$_GET['tgl2'];
 	                                    $j=1;
-	                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi, k.total_gross_panel, k.total_gross_part, k.total_diskon_panel, k.total_diskon_part, k.total_netto_panel, k.total_netto_part, k.total_ppn_kwitansi, k.total_kwitansi, k.materai, k.total_payment, k.keterangan_batal, k.tgl_batal, d.fk_no_polisi, d.id_pkb AS nopkb, c.nama AS nama_customer, g.nama as nmkendaraan from t_kwitansi k
+	                                    $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi, k.total_gross_panel, k.total_gross_part, k.total_diskon_panel, k.total_diskon_part, k.total_netto_panel, k.total_netto_part, k.total_ppn_kwitansi, k.total_kwitansi, k.materai, k.total_payment, k.keterangan_batal, k.tgl_batal, d.fk_no_polisi, d.id_pkb AS nopkb, c.nama AS nama_customer, a.nama AS nama_asuransi, g.nama as nmkendaraan from t_kwitansi k
 	                                      INNER JOIN t_pkb d ON k.fk_pkb=d.id_pkb
 	                                      INNER JOIN t_customer c ON d.fk_customer=c.id_customer
+	                                      LEFT JOIN t_asuransi a ON d.fk_asuransi=a.id_asuransi
 	                                      INNER JOIN t_inventory_bengkel f ON d.fk_no_chasis=f.no_chasis
 	                                      INNER JOIN t_tipe_kendaraan g ON f.fk_tipe_kendaraan=g.id_tipe_kendaraan
 	                                      WHERE k.tgl_batal<>'0000-00-00 00:00:00' AND substring(k.tgl_kwitansi,1,10)>='$tgl1' AND  substring(k.tgl_kwitansi,1,10)<='$tgl2'
@@ -79,6 +81,7 @@ header("Content-Disposition: attachment; filename=reportkwitansibatal.xls");
 	                          <td><?php echo $catat['fk_no_polisi'];?></td>
 	                          <td><?php echo $catat['nmkendaraan'];?></td>
 	                          <td><?php echo $catat['nama_customer'];?></td>
+	                          <td><?php echo $catat['nama_asuransi'];?></td>
 	                          <td><?php echo $catat['total_gross_panel'];?></td>
 	                          <td><?php echo $catat['total_gross_part'];?></td>
 	                          <td><?php echo $catat['total_diskon_panel'];?></td>
