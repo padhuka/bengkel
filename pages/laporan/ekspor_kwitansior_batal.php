@@ -64,8 +64,8 @@ header("Content-Disposition: attachment; filename=reportkwitansiorbatal.xls");
                                       INNER JOIN t_tipe_kendaraan g ON f.fk_tipe_kendaraan=g.id_tipe_kendaraan
                                       WHERE k.tgl_batal<>'0000:00:00 00:00:00' AND substring(tgl_kwitansi_or,1,10)>='$tgl1' AND  substring(tgl_kwitansi_or,1,10)<='$tgl2' 
                                     ORDER BY k.no_kwitansi_or DESC";
-                                   	$rescatat = mysqli_query($objConn,  $sqlcatat );
-                                    while($catat = mysqli_fetch_array( $rescatat )){
+                                   	$rescatat = mysql_query( $sqlcatat );
+                                    while($catat = mysql_fetch_array( $rescatat )){
                                 ?>
                         <tr>
                           <th><?php echo $j++;?></th>                                               

@@ -35,7 +35,8 @@ $jame = date('H:i:s');
             <th>Tgl PKB</th>
             <th>No. PKB</th>
             <th>No Polisi</th>
-            <th>Sparepart</th>
+            <th>No Part</th>
+            <th>Nama Part</th>
             <th>Harga Beli</th>
             <th>Harga Jual</th>
             <th>Supplier</th>
@@ -51,24 +52,26 @@ $jame = date('H:i:s');
         $grand_harga_beli = 0;
         $grand_harga_jual = 0;
 
-        // Query untuk mengambil data sparepart per PKB
+        // Query untuk mengambil data sparepart per PKB dari estimasi_part_detail
         $sql = "SELECT
-                    pp.id,
-                    pp.tgl_pkb,
-                    p.id_pkb,
-                    p.fk_no_polisi,
-                    pt.nama as nama_sparepart,
-                    pp.harga_beli,
-                    pp.harga_jual,
+                    pkb.id_pkb,
+                    pkb.tgl as tgl_pkb,
+                    pkb.fk_no_polisi,
+                    part.id_part as no_part,
+                    part.nama as nama_part,
+                    part.harga_beli,
+                    part.harga_jual,
                     COALESCE(s.nama, '-') as nama_supplier
-                FROM t_part_pkb pp
-                LEFT JOIN t_pkb p ON pp.id_pkb = p.id_pkb
-                LEFT JOIN t_part pt ON pp.id_part = pt.id_part
-                LEFT JOIN t_supplier s ON pt.fk_supplier = s.id_supplier
-                WHERE pp.tgl_pkb >= '$tgl1'
-                AND pp.tgl_pkb <= '$tgl2'
-                AND (p.tgl_batal = '0000-00-00 00:00:00' OR p.tgl_batal IS NULL)
-                ORDER BY pp.tgl_pkb ASC, p.id_pkb ASC, pp.id ASC";
+                FROM t_pkb pkb
+                LEFT JOIN t_estimasi e ON pkb.fk_estimasi = e.id_estimasi
+                LEFT JOIN t_estimasi_part_detail epd ON e.id_estimasi = epd.fk_estimasi
+                LEFT JOIN t_part part ON epd.fk_part = part.id_part
+                LEFT JOIN t_supplier s ON part.fk_supplier = s.id_supplier
+                WHERE pkb.tgl >= '$tgl1'
+                AND pkb.tgl <= '$tgl2'
+                AND epd.fk_part IS NOT NULL
+                AND (pkb.tgl_batal = '0000-00-00 00:00:00' OR pkb.tgl_batal IS NULL)
+                ORDER BY pkb.tgl ASC, pkb.id_pkb ASC, part.id_part ASC";
 
         $result = mysqli_query($objConn, $sql);
 
@@ -87,7 +90,8 @@ $jame = date('H:i:s');
                 <td><?php echo date('d-m-Y', strtotime($row['tgl_pkb'])); ?></td>
                 <td><?php echo $row['id_pkb']; ?></td>
                 <td><?php echo $row['fk_no_polisi']; ?></td>
-                <td><?php echo $row['nama_sparepart']; ?></td>
+                <td><?php echo $row['no_part']; ?></td>
+                <td><?php echo $row['nama_part']; ?></td>
                 <td align="right"><?php echo rupiah2($row['harga_beli']); ?></td>
                 <td align="right"><?php echo rupiah2($row['harga_jual']); ?></td>
                 <td><?php echo $row['nama_supplier']; ?></td>
@@ -97,7 +101,7 @@ $jame = date('H:i:s');
         ?>
         <!-- Grand Total Row -->
         <tr style="font-weight: bold;">
-            <td colspan="5" align="right">GRAND TOTAL</td>
+            <td colspan="6" align="right">GRAND TOTAL</td>
             <td align="right"><?php echo rupiah2($grand_harga_beli); ?></td>
             <td align="right"><?php echo rupiah2($grand_harga_jual); ?></td>
             <td></td>

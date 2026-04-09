@@ -33,7 +33,7 @@
                     <ul class="dropdown-menu" id="pkb-dropdown">
                         <li><a href="?p=pkb">PKB</a></li>
                         <li><a href="?p=pkbbukatutup">Buka/Tutup PKB</a></li>
-                        <li><a href="?p=sparepart">Sparepart</a></li>
+                        <!-- <li><a href="?p=sparepart">Sparepart</a></li> Hidden per request -->
                     </ul>
                 </li>
                 <?php endif; ?>
@@ -118,7 +118,7 @@
                             <ul class="dropdown-menu" id="pkb-desktop-dropdown">
                                 <li><a href="?p=pkb">PKB</a></li>
                                 <li><a href="?p=pkbbukatutup">Buka/Tutup PKB</a></li>
-                                <li><a href="?p=sparepart">Sparepart</a></li>
+                                <!-- <li><a href="?p=sparepart">Sparepart</a></li> Hidden per request -->
                             </ul>
                         </li>
                         <?php endif; ?>
