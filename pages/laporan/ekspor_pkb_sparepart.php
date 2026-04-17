@@ -52,7 +52,7 @@ $jame = date('H:i:s');
         $grand_harga_beli = 0;
         $grand_harga_jual = 0;
 
-        // Query untuk mengambil data sparepart per PKB dari estimasi_part_detail
+        // Query untuk mengambil data sparepart per PKB dari t_pkb_part_detail
         $sql = "SELECT
                     pkb.id_pkb,
                     pkb.tgl as tgl_pkb,
@@ -60,16 +60,15 @@ $jame = date('H:i:s');
                     part.id_part as no_part,
                     part.nama as nama_part,
                     part.harga_beli,
-                    part.harga_jual,
+                    ppd.harga_jual_part,
                     COALESCE(s.nama, '-') as nama_supplier
                 FROM t_pkb pkb
-                LEFT JOIN t_estimasi e ON pkb.fk_estimasi = e.id_estimasi
-                LEFT JOIN t_estimasi_part_detail epd ON e.id_estimasi = epd.fk_estimasi
-                LEFT JOIN t_part part ON epd.fk_part = part.id_part
+                LEFT JOIN t_pkb_part_detail ppd ON pkb.id_pkb = ppd.fk_pkb
+                LEFT JOIN t_part part ON ppd.fk_part = part.id_part
                 LEFT JOIN t_supplier s ON part.fk_supplier = s.id_supplier
                 WHERE pkb.tgl >= '$tgl1'
                 AND pkb.tgl <= '$tgl2'
-                AND epd.fk_part IS NOT NULL
+                AND ppd.fk_part IS NOT NULL
                 AND (pkb.tgl_batal = '0000-00-00 00:00:00' OR pkb.tgl_batal IS NULL)
                 ORDER BY pkb.tgl ASC, pkb.id_pkb ASC, part.id_part ASC";
 
@@ -83,7 +82,7 @@ $jame = date('H:i:s');
         while($row = mysqli_fetch_array($result)) {
             // Accumulate totals
             $grand_harga_beli += $row['harga_beli'];
-            $grand_harga_jual += $row['harga_jual'];
+            $grand_harga_jual += $row['harga_jual_part'];
         ?>
             <tr>
                 <td><?php echo $j++; ?></td>
@@ -93,7 +92,7 @@ $jame = date('H:i:s');
                 <td><?php echo $row['no_part']; ?></td>
                 <td><?php echo $row['nama_part']; ?></td>
                 <td align="right"><?php echo rupiah2($row['harga_beli']); ?></td>
-                <td align="right"><?php echo rupiah2($row['harga_jual']); ?></td>
+                <td align="right"><?php echo rupiah2($row['harga_jual_part']); ?></td>
                 <td><?php echo $row['nama_supplier']; ?></td>
             </tr>
         <?php
