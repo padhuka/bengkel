@@ -2,6 +2,42 @@
     include_once '../../lib/config.php';
     include_once '../../lib/fungsi.php';
 ?>
+      <div class="panel panel-default" style="margin-bottom: 10px;">
+        <div class="panel-body">
+          <table class="table table-condensed" style="margin-bottom: 0;">
+            <tr>
+              <td width="15%"><strong>Filter Periode:</strong></td>
+              <td width="30%">
+                <div class="input-group date" style="width: 45%;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="tglkwitansi1" name="tglkwitansi1"
+                         value="<?php echo $tgl1; ?>" placeholder="Dari Tanggal">
+                </div>
+              </td>
+              <td width="5%" align="center">s/d</td>
+              <td width="30%">
+                <div class="input-group date" style="width: 45%;">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="tglkwitansi2" name="tglkwitansi2"
+                         value="<?php echo $tgl2; ?>" placeholder="Sampai Tanggal">
+                </div>
+              </td>
+              <td width="20%">
+                <button type="button" class="btn btn-primary" onclick="filterKwitansi()">
+                  <i class="fa fa-filter"></i> Filter
+                </button>
+                <button type="button" class="btn btn-default" onclick="resetKwitansi()">
+                  <i class="fa fa-refresh"></i> Reset
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
       <table id="tablekwitansi" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -22,12 +58,14 @@
                 <tbody>
                 <?php
                     $j         = 1;
-                    $per_limit = '2024-01-01';
+                    $current_year = date('Y');
+                    $tgl1 = isset($_GET['tgl1']) ? $_GET['tgl1'] : $current_year . '-01-01';
+                    $tgl2 = isset($_GET['tgl2']) ? $_GET['tgl2'] : $current_year . '-12-31';
 
                     $sqlcatat = "SELECT k.no_kwitansi, k.tgl_kwitansi,p.id_pkb,p.kategori,p.fk_no_chasis,p.fk_no_mesin,p.fk_no_polisi,c.nama,k.total_kwitansi,k.total_ppn_kwitansi,k.total_payment,k.tgl_batal FROM t_kwitansi k
                                       INNER JOIN t_pkb p ON k.fk_pkb=p.id_pkb
                                       INNER JOIN t_customer c ON p.fk_customer=c.id_customer
-                                      WHERE k.tgl_batal='0000:00:00 00:00:00' AND k.tgl_kwitansi >= '$per_limit'
+                                      WHERE k.tgl_batal='0000:00:00 00:00:00' AND k.tgl_kwitansi >= '$tgl1' AND k.tgl_kwitansi <= '$tgl2'
                                       ORDER BY k.tgl_kwitansi DESC ";
                     $rescatat = mysqli_query($objConn, $sqlcatat);
                     while ($catat = mysqli_fetch_array($rescatat)) {
@@ -82,6 +120,7 @@
               </table>
               <script>
             $('#tablekwitansi').DataTable({
+              "destroy": true,
               "columnDefs": [
                   { "orderable": false, "targets": 10 }
                 ],
@@ -93,6 +132,40 @@
                       "infoEmpty": "Tidak ada data di database"
                   }
             });
+
+            $('#tglkwitansi1').datepicker({
+              format: 'yyyy-mm-dd',
+              autoclose: true,
+            });
+
+            $('#tglkwitansi2').datepicker({
+              format: 'yyyy-mm-dd',
+              autoclose: true,
+            });
+
+            function filterKwitansi() {
+              var tgl1 = $('#tglkwitansi1').val();
+              var tgl2 = $('#tglkwitansi2').val();
+
+              if (tgl1 === '' || tgl2 === '') {
+                alert('Harap pilih tanggal awal dan tanggal akhir');
+                return false;
+              }
+
+              if (tgl1 > tgl2) {
+                alert('Tanggal awal tidak boleh lebih besar dari tanggal akhir');
+                return false;
+              }
+
+              $("#kwitansi").load('kwitansi/kwitansi_load.php?tgl1=' + tgl1 + '&tgl2=' + tgl2);
+            }
+
+            function resetKwitansi() {
+              var currentYear = new Date().getFullYear();
+              $('#tglkwitansi1').val(currentYear + '-01-01');
+              $('#tglkwitansi2').val(currentYear + '-12-31');
+              $("#kwitansi").load('kwitansi/kwitansi_load.php');
+            }
 
            function open_add(){
               $.ajax({
@@ -154,5 +227,14 @@
     padding-top: 3px;
     padding-left: 4px;
     padding-right: 4px;
+  }
+  .panel {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .panel-body {
+    padding: 10px;
   }
 </style>

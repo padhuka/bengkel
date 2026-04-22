@@ -132,6 +132,7 @@
               </table>
               <script>
             $('#tablepkb1').DataTable({
+              "destroy": true,
               "columnDefs": [
                   { "orderable": false, "targets": 8 }
                 ],
