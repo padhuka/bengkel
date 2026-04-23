@@ -38,6 +38,31 @@
           </table>
         </div>
       </div>
+      <!-- Panel Pencarian No Polisi -->
+      <div class="panel panel-default" style="margin-bottom: 10px;">
+        <div class="panel-body">
+          <table class="table table-condensed" style="margin-bottom: 0;">
+            <tr>
+              <td width="15%"><strong>Cari No Polisi:</strong></td>
+              <td width="45%">
+                <input type="text" class="form-control" id="searchNoPolisi"
+                       placeholder="Masukkan No Polisi (contoh: H 1022 Y)">
+              </td>
+              <td width="10%">
+                <button type="button" class="btn btn-success" onclick="searchByNoPolisi()">
+                  <i class="fa fa-search"></i> Cari
+                </button>
+              </td>
+              <td width="10%">
+                <button type="button" class="btn btn-warning" onclick="clearNoPolisiSearch()">
+                  <i class="fa fa-times"></i> Reset
+                </button>
+              </td>
+              <td width="20%"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
       <table id="tablepkb1" class="table table-condensed table-bordered table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -131,18 +156,47 @@
                 </tfoot>
               </table>
               <script>
-            $('#tablepkb1').DataTable({
+            var table = $('#tablepkb1').DataTable({
               "destroy": true,
               "columnDefs": [
                   { "orderable": false, "targets": 8 }
                 ],
               "language": {
-                      "search": "Cari",
+                      "search": "Cari Semua Kolom:",
                       "lengthMenu": "Lihat _MENU_ baris per halaman",
                       "zeroRecords": "Maaf, Tidak di temukan - data",
                       "info": "Terlihat halaman _PAGE_ of _PAGES_",
                       "infoEmpty": "Tidak ada data di database"
                   }
+            });
+
+            // Fungsi mencari berdasarkan No Polisi (kolom index 5)
+            function searchByNoPolisi() {
+              var searchTerm = $('#searchNoPolisi').val();
+
+              if (searchTerm.trim() === '') {
+                alert('Harap masukkan No Polisi yang dicari');
+                return false;
+              }
+
+              // Kosongkan pencarian global terlebih dahulu
+              table.search('').draw();
+
+              // Terapkan pencarian ke kolom 5 (No Polisi)
+              table.column(5).search(searchTerm).draw();
+            }
+
+            // Fungsi membersihkan pencarian No Polisi
+            function clearNoPolisiSearch() {
+              $('#searchNoPolisi').val('');
+              table.column(5).search('').draw();
+            }
+
+            // Enable Enter key untuk search input
+            $('#searchNoPolisi').on('keyup', function(e) {
+              if (e.key === 'Enter') {
+                searchByNoPolisi();
+              }
             });
 
             $('#tglpkb1').datepicker({
@@ -169,13 +223,26 @@
                 return false;
               }
 
-              $("#tablepkb").load('pkb/pkb_load.php?tgl1=' + tgl1 + '&tgl2=' + tgl2);
+              // Simpan nilai pencarian No Polisi jika ada
+              var noPolisiSearch = $('#searchNoPolisi').val();
+
+              $("#tablepkb").load('pkb/pkb_load.php?tgl1=' + tgl1 + '&tgl2=' + tgl2, function() {
+                // Kembalikan nilai pencarian No Polisi setelah reload
+                if (noPolisiSearch) {
+                  $('#searchNoPolisi').val(noPolisiSearch);
+                  // Terapkan kembali pencarian setelah tabel reload
+                  setTimeout(function() {
+                    searchByNoPolisi();
+                  }, 500);
+                }
+              });
             }
 
             function resetPKB() {
               var currentYear = new Date().getFullYear();
               $('#tglpkb1').val(currentYear + '-01-01');
               $('#tglpkb2').val(currentYear + '-12-31');
+              $('#searchNoPolisi').val('');
               $("#tablepkb").load('pkb/pkb_load.php');
             }
 
@@ -258,5 +325,13 @@
   }
   .panel-body {
     padding: 10px;
+  }
+  #searchNoPolisi {
+    font-weight: bold;
+    border-color: #5cb85c;
+  }
+  #searchNoPolisi:focus {
+    border-color: #5cb85c;
+    box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
   }
 </style>
